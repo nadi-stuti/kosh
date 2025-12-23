@@ -1,0 +1,129 @@
+---
+title: Ganga Rituals
+description: Rituals performed on ganga rivers
+---
+
+import { Aside, Badge, Icon, Steps, Step } from '@astrojs/starlight/components';
+
+# <Icon name="sparkles" /> Rituals of the Ganga River <Badge text="Sacred Traditions" variant="success" />
+
+The Ganga River, revered as Goddess Ganga in Hindu mythology, is the epicenter of numerous rituals that blend spirituality, culture, and daily life. These practices, performed along its banks and in its waters, symbolize purification, devotion, and the cycle of life and death. From ancient Vedic times to modern festivals, the rituals of the Ganga reflect India's deep-rooted spiritual heritage.
+
+<Aside type="note" title="Mythological Roots">
+  According to legend, Goddess Ganga descended from the heavens to purify the ashes of King Bhagirath's ancestors, making the river a symbol of moksha (liberation).
+</Aside>
+
+## Daily Rituals <Icon name="sun" />
+
+### Morning Bathing (Snan) <Badge text="Purification" variant="tip" />
+
+Bathing in the Ganga is a daily ritual for millions, believed to cleanse sins and grant spiritual merit.
+
+- **Significance**: Removes impurities of body, mind, and soul.
+- **Practice**: Devotees enter the river at dawn, perform prayers, and offer water to the sun.
+- **Locations**: Popular spots include Varanasi, Haridwar, and Rishikesh.
+
+<Steps>
+  <Step title="Preparation">
+    Wear traditional attire and bring offerings like flowers or incense.
+  </Step>
+  <Step title="Immersion">
+    Enter the water facing the rising sun, chanting mantras.
+  </Step>
+  <Step title="Prayer">
+    Offer prayers to Goddess Ganga for blessings.
+  </Step>
+  <Step title="Emergence">
+    Exit slowly, feeling renewed and purified.
+  </Step>
+</Steps>
+
+<Aside type="caution" title="Health Note">
+  Due to pollution, avoid swallowing water or bathing if you have open wounds. Opt for treated areas.
+</Aside>
+
+### Evening Aarti <Icon name="flame" />
+
+The Ganga Aarti is a mesmerizing ritual of light and sound, performed at dusk.
+
+- **Description**: Priests wave lamps, incense, and bells while singing hymns.
+- **Venues**: Ghats in Varanasi and Haridwar draw thousands.
+- **Spiritual Essence**: Symbolizes the triumph of light over darkness and devotion over ignorance.
+
+## Life-Cycle Rituals <Icon name="cycle" />
+
+### Birth Rituals
+
+- **Naming Ceremony**: Water from the Ganga is used to bathe the newborn, invoking purity.
+- **First Feeding**: A drop of Ganga water is mixed with milk for the baby's first meal.
+
+### Marriage Rituals
+
+- **Vedic Wedding**: Couples take seven vows around a sacred fire, often near the Ganga.
+- **Ganga Snan**: Newlyweds bathe in the river for marital bliss and fertility.
+
+### Death Rituals (Antim Sanskar) <Badge text="Sacred Farewell" variant="danger" />
+
+Cremation along the Ganga is considered the ultimate path to liberation.
+
+- **Process**: The body is immersed in the river before cremation, ashes scattered in the waters.
+- **Belief**: Ensures the soul's journey to the afterlife without rebirth.
+- **Sites**: Manikarnika Ghat in Varanasi is the most revered.
+
+<Aside type="note" title="Cultural Insight">
+  The Ganga's waters are thought to sanctify the deceased, granting moksha.
+</Aside>
+
+## Festival Rituals <Icon name="calendar" />
+
+### Kumbh Mela <Badge text="Grand Pilgrimage" variant="success" />
+
+Held every 12 years, it's the world's largest religious gathering.
+
+- **Rituals**: Mass bathing, prayers, and spiritual discourses.
+- **Significance**: Commemorates the churning of the ocean for nectar.
+- **Crowd**: Millions participate, seeking divine blessings.
+
+### Makar Sankranti
+
+- **Ritual**: Bathing and offering sesame seeds to ancestors.
+- **Purpose**: Marks the sun's northward journey, symbolizing renewal.
+
+### Chhath Puja
+
+- **Dedication**: Worship of the sun god, with offerings in the Ganga.
+- **Unique Aspect**: Devotees stand in water for hours, fasting.
+
+<Aside type="tip" title="Festival Tip">
+  Plan visits during festivals for an immersive spiritual experience, but expect crowds.
+</Aside>
+
+## Offerings and Worship <Icon name="gift" />
+
+### Puja and Offerings
+
+- **Items**: Flowers, fruits, incense, and coconuts are offered to the river goddess.
+- **Mantras**: Chanting of "Om Gangaye Namaha" invokes her blessings.
+
+### Pilgrimage (Tirtha Yatra)
+
+- **Routes**: Walking along the Ganga, visiting sacred sites like Gangotri and Ganga Sagar.
+- **Purpose**: To accumulate punya (merit) for spiritual growth.
+
+## Modern Adaptations <Icon name="refresh" />
+
+In contemporary times, rituals evolve with technology and environmental awareness.
+
+- **Online Aarti**: Virtual participation via live streams.
+- **Eco-Rituals**: Using biodegradable offerings to protect the river.
+- **Community Clean-ups**: Volunteers combine rituals with conservation efforts.
+
+<Aside type="caution" title="Environmental Reminder">
+  Many rituals involve offerings that pollute the river. Choose sustainable practices to preserve the Ganga.
+</Aside>
+
+## Cultural Impact <Icon name="heart" />
+
+These rituals foster community bonds, preserve traditions, and promote environmental stewardship. They remind us of the Ganga's role as a lifeline for both body and soul.
+
+For more on the Ganga, explore [Ganga Overview](../index.mdx) or [Conservation Tips](../../guides/conservation.md).
