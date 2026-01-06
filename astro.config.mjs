@@ -1,7 +1,6 @@
 // @ts-check
 import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
-import gruvbox from "starlight-theme-gruvbox";
 import starlightThemeFlexoki from "starlight-theme-flexoki";
 import { SidebarFolders } from "./src/lib/constants/layout";
 
