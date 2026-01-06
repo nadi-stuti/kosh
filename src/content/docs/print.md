@@ -16,8 +16,8 @@ _[View in Canva](https://www.canva.com/design/DAGwDWK7bow/ShwR8MqVWcihfKnKa8mZLA
 
 _[View in Canva](https://www.canva.com/design/DAG9oAhZOIY/XqkyH3q-4uAI45jMc-cXjQ/edit?utm_content=DAG9oAhZOIY&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)_
 
-![Brochure English Front](../../assets/prints/brocher/english-front.png)
-![Brochure English Back](../../assets/prints/brocher/english-back.png)
+![Brochure English Front](../../assets/prints/brocher/English-front.png)
+![Brochure English Back](../../assets/prints/brocher/English-back.png)
 
 ## Flex Card
 
