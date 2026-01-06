@@ -1,12 +1,20 @@
 // @ts-check
 import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
+import gruvbox from "starlight-theme-gruvbox";
+import starlightThemeFlexoki from "starlight-theme-flexoki";
+import { SidebarFolders } from "./src/lib/constants/layout";
 
 // https://astro.build/config
 export default defineConfig({
   integrations: [
     starlight({
-      title: "Nadi stuti wiki",
+      plugins: [
+        starlightThemeFlexoki({
+          accentColor: "yellow",
+        }),
+      ],
+      title: "Kosh",
       social: [
         {
           icon: "github",
@@ -14,33 +22,13 @@ export default defineConfig({
           href: "https://github.com/nadi-stuti",
         },
       ],
+
       sidebar: [
-        {
-          label: "Guides",
-          items: [
-            // Each item here is one entry in the navigation menu.
-            { label: "Github setup", slug: "guides/github" },
-          ],
-        },
-        {
-          label: "Rivers",
-          items: [
-            {
-              label: "Ganga",
-              items: [
-                { label: "Rituals", slug: "rivers/ganga/rituals" },
-                {
-                  label: "NGOs & Ashrams",
-                  slug: "rivers/ganga/ngos-and-ashrams",
-                },
-              ],
-            },
-            {
-              label: "Yamuna",
-              items: [{ label: "Data", slug: "rivers/yamuna/data" }],
-            },
-          ],
-        },
+        ...SidebarFolders,
+        { slug: "about-nadikosh" },
+        { slug: "layout" },
+        { slug: "print" },
+        { label: "Contribute", slug: "contribute" },
       ],
     }),
   ],

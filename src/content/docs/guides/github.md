@@ -1,9 +1,9 @@
 ---
-title: Github account guide
+title: Github
 description: A guide on how to use github
 ---
 
-# How to Edit This Starlight Template Using GitHub
+# How to Edit This Repository Using GitHub
 
 This guide will walk you through the process of editing this Starlight template website using GitHub. Don't worry if you're new to programming or GitHub – we'll go step by step. By the end, you'll be able to make changes to the website and suggest them to the project owners.
 
@@ -49,12 +49,12 @@ VS Code is now installed on your computer!
 
 "Cloning" means downloading a copy of the project to your computer so you can work on it.
 
-For this tutorial, we'll use the demo repository: `https://github.com/example/starlight-template`
+Our github repository for kosh is: [Nadi-Stuti Kosh Github repo](https://github.com/nadi-stuti/kosh)
 
 1. Open VS Code
 2. Look for the "Source Control" icon on the left sidebar (it looks like a branching tree) and click it
 3. If you don't see it, go to View > Command Palette (or press Ctrl+Shift+P), type "Git: Clone", and select it
-4. In the box that appears at the top, paste this URL: `https://github.com/example/starlight-template`
+4. In the box that appears at the top, paste this URL: `https://github.com/nadi-stuti/kosh`
 5. Press Enter
 6. Choose a folder on your computer where you want to save the project (like your Documents folder)
 7. VS Code will ask if you want to open the cloned repository – click "Open"

@@ -1,14 +1,14 @@
 ---
-title: Nadi Stuti WIKI
-description: Get started building your docs site with Starlight.
-template: splash # Remove or comment out this line to display the site sidebar on this page.
+title: NadiKosh
+description: Knowledge repository for our holy rivers
+template: splash 
 hero:
-  tagline: Congrats on setting up a new Starlight project!
+  tagline: Knowledge repository for our holy rivers
   image:
     file: ../../assets/logo.png
   actions:
-    - text: Read Wiki
-      link: /guides/github/
+    - text: Explore
+      link: /about-nadikosh/
       icon: right-arrow
     - text: Visit nadistuti website
       link: https://nadistuti.com/
@@ -18,7 +18,7 @@ hero:
 
 import { Card, CardGrid } from '@astrojs/starlight/components';
 
-## How to edit this wiki?
+## How to edit this repository?
 
 <CardGrid stagger>
 	<Card title="Setup Github" icon="github">
@@ -30,10 +30,11 @@ import { Card, CardGrid } from '@astrojs/starlight/components';
 	<Card title="Add new content" icon="add-document">
 		Add Markdown or MDX files to `src/content/docs` to create new pages.
 	</Card>
-	<Card title="Configure your site" icon="setting">
-		Edit your `sidebar` and to add newly created pages in `astro.config.mjs`.
+	<Card title="Configure site" icon="setting">
+		Open `astro.config.mjs`and edit `sidebar` to add newly created pages in.
 	</Card>
-	<Card title="Read the docs" icon="open-book">
-		Learn more in [the Starlight Docs](https://starlight.astro.build/).
+	<Card title="Developer's reference" icon="vscode">
+		If you are a developer, read our [Development guide](/guides/development/) to better understand how tis website works
+		and how you can contribute to it. 
 	</Card>
 </CardGrid>

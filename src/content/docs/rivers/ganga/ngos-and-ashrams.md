@@ -1,5 +1,5 @@
 ---
-title: Ngos and ashrams working for Ganga
+title: Ngos and ashrams
 description: List of ngos and ashrams working for ganga river
 ---
 
