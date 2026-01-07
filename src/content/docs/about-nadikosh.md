@@ -8,6 +8,23 @@ description: About the project
 Nadi Kosh is a long‑term knowledge repository dedicated to India’s sacred rivers.  
 Right now, this space works as a _dumping ground_ for all kinds of river‑related information, so that nothing is lost while the project is still evolving.
 
+## A kosh for NadiStuti
+
+Nadi Kosh is part of our larger movement **Nadi Stuti** (website: https://nadistuti.com), which is dedicated to India’s holy rivers.
+
+In simple terms, the Nadi Stuti movement seeks to:
+
+- **Restore the sanctity of rivers** to the same sacred stature as our temples, so that people see the river itself as a living place of worship.
+- **Build the world’s largest and most trusted digital platform** for knowledge related to rivers, combining spiritual, cultural, historical, and scientific perspectives.
+- **Unite everyone who serves the rivers** — from government bodies and experts to NGOs and grassroots sevaks — on a common platform and strengthen existing efforts.
+
+Nadi Kosh serves as the **databank and knowledge repository** for the Nadi Stuti movement.  
+Here we gather, store, and refine all the knowledge, information, leads, and data needed to support every aspect of Nadi Stuti’s work for rivers.
+
+Right now, this space works as a _dumping ground_ for all kinds of river‑related information, so that nothing is lost while the project is still evolving.
+
+To know more about the Nadi Stuti movement, please visit our website (https://nadistuti.com) or explore our print materials at: [Print](/print).
+
 ## What Nadi Kosh is doing right now
 
 At this stage, Nadi Kosh focuses on **collecting and preserving** information rather than keeping everything perfectly organized:
@@ -43,13 +60,28 @@ Nadi Kosh aims to become **the definitive database of India's sacred rivers** - 
 
 ## Why this “dump first, organize later” approach
 
-Work on rivers is dynamic: field visits, new books, local stories, government reports, and scientific papers all appear at different times.  
-If we wait for a perfect structure before saving anything, a lot of valuable knowledge will never be written down.
+There is a very simple and honest reason behind this choice: we are a small team standing in front of a mountain of work.
 
-Nadi Kosh therefore prioritizes:
+1. A very small team, working in free time  
+   Right now, everyone contributing to Nadi Kosh and Nadi Stuti is doing this seva in their limited free time, alongside jobs, studies, and family responsibilities.  
+   Because of this, we are consciously prioritising **capturing knowledge** over **polishing structure**. If we first try to make everything perfect, we will lose precious insights that appear in the middle of a busy day.
 
-- Speed over perfection for note‑taking.
-- Completeness over neatness in the early phase.
-- Respect for every small piece of information about our rivers, whether it is spiritual, cultural, technical, or scientific.
+2. Many fronts, one mission  
+   The Nadi Stuti movement is not only about documentation. Even in this early phase, we are already trying to:
 
-This repository is the first step towards a deeper, data‑backed, and spiritually rooted understanding of our holy rivers.
+- Create new apps and software that support river cleaning and river awareness.
+- Connect with people doing ground work and provide them with tools and support.
+- Develop educational materials like videos, articles, and books.
+- Organise events that educate people and encourage them to join this mission.
+
+With so many parallel efforts, it is difficult to give full-time attention to neatly organising Nadi Kosh right now. So we accept a temporary “work-in-progress” state in exchange for moving the mission forward on multiple fronts.
+
+3. Welcoming experts from many domains  
+   We are inviting experts from different fields — environment, hydrology, policy, culture, scriptures, technology, education, and more — to contribute what they know to Nadi Kosh.  
+   Naturally, this means the incoming data will be **unformatted, uneven, and unstructured** in the beginning. Instead of slowing experts down with strict formats, we first give them a simple place to pour their knowledge in.
+
+4. Early phase of a long journey  
+   We are still in the early phase of understanding how to shape the entire Nadi Stuti movement and how Nadi Kosh should eventually look.  
+   Rather than spending years only planning, we chose to **start humbly**, accept imperfections, and trust that with the efforts of the community — and the blessings of Shreeman Narayan — the structure will gradually emerge and everything will fall into place.
+
+We know that, at this stage, Nadi Kosh/Nadi Stuti may look naive and unstructured from the outside. But behind this rough appearance is a sincere intention: to serve our rivers first, collect as much truth as we can, and refine it step by step as more hearts and hands join this journey.

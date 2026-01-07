@@ -71,4 +71,12 @@ export const SidebarFolders = [
       collapsed: true,
     },
   },
+  {
+    label: "Dumping Grounds",
+    collapsed: true,
+    autogenerate: {
+      directory: "dumping-grounds",
+      collapsed: true,
+    },
+  },
 ];
