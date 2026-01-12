@@ -1,0 +1,14 @@
+---
+import BadgeLink from "./BadgeLink.astro";
+const { commit, post } = Astro.props;
+
+const commitUrl = commit
+  ? `https://github.com/nadi-stuti/kosh/commit/${commit}`
+  : null;
+const postUrl = post ? `/blog/${post}` : null;
+---
+
+<span>
+  {post && <BadgeLink url={postUrl} variant={"note"} text={"Blog Post"} />}
+  {commit && <BadgeLink url={commitUrl} variant={"success"} text={"Commit"} />}
+</span>

@@ -3,7 +3,7 @@ title: About NadiKosh
 description: About the project
 ---
 
-**Tagline:** Knowledge repository of our holy rivers
+**Tagline:** Knowledge repository for our holy rivers
 
 Nadi Kosh is a long‑term knowledge repository dedicated to India’s sacred rivers.  
 Right now, this space works as a _dumping ground_ for all kinds of river‑related information, so that nothing is lost while the project is still evolving.

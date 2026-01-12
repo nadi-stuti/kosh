@@ -44,7 +44,7 @@ If you:
 You can:
 
 1. **Join our WhatsApp community** from our website:  
-   👉 Visit [**Nadi Stuti website**](https://nadistuti.com) and follow the link to join the WhatsApp group.
+   👉 Visit [**How we work**](/how-we-work) and follow the link to join the WhatsApp group.
 2. Share small **tidbits of information** – even a few lines, a photo, or a link.
 3. Our team will take care of formatting and publishing it into Nadi Kosh.
 
@@ -76,7 +76,7 @@ You can:
 
 1. Visit the **`Tech/`** section of this repository (and related docs) to see the apps and tools we are planning.
 2. Identify any idea or product that excites you.
-3. Join our WhatsApp community via [**Nadi Stuti website**](https://nadistuti.com) and introduce yourself, your skills, and your interests.
+3. Join our WhatsApp community via [**How we work**](/how-we-work) and introduce yourself, your skills, and your interests.
 4. Volunteer for a specific product or feature that resonates with you.
 
 We are especially grateful for people who can **own a small piece of the ecosystem** — a micro‑service, a data pipeline, a visualization, or a ML model — and shape it with care.
@@ -102,7 +102,7 @@ Then you can help us:
 
 How to join:
 
-1. Visit [**Nadi Stuti website**](https://nadistuti.com) and join our WhatsApp group.
+1. Visit [**How we work**](/how-we-work) and join our Content Creators WhatsApp group.
 2. Briefly share your background and which platforms or formats you enjoy working with.
 3. We will slowly build an **awesome and coordinated content ecosystem** together.
 

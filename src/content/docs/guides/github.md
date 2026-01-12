@@ -113,7 +113,7 @@ Your branch is now on GitHub!
 
 A "Pull Request" (PR) is how you ask the project owners to review and accept your changes.
 
-1. Open your web browser and go to the repository URL: `https://github.com/example/starlight-template`
+1. Open your web browser and go to the repository: [Kosh github repository](https://github.com/nadi-stuti/kosh)
 2. You should see a message at the top saying "Your recently pushed branches:" with your branch name
 3. Click "Compare & pull request" next to your branch
 4. Give your pull request a title (like "My suggested changes")
