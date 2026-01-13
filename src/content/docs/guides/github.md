@@ -5,7 +5,7 @@ description: A guide on how to use github
 
 # How to Edit This Repository Using GitHub
 
-This guide will walk you through the process of editing this Starlight template website using GitHub. Don't worry if you're new to programming or GitHub – we'll go step by step. By the end, you'll be able to make changes to the website and suggest them to the project owners.
+This guide will walk you through the process of editing this knowledgebase using GitHub. Don't worry if you're new to programming or GitHub – we'll go step by step. By the end, you'll be able to make changes to the website and suggest them to the project owners.
 
 ## What You'll Need
 

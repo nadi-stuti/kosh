@@ -4,6 +4,7 @@ import starlight from "@astrojs/starlight";
 import starlightThemeFlexoki from "starlight-theme-flexoki";
 import { SidebarFolders } from "./src/lib/constants/layout";
 import starlightBlog from "starlight-blog";
+import starlightGiscus from "starlight-giscus";
 
 // https://astro.build/config
 export default defineConfig({
@@ -12,6 +13,10 @@ export default defineConfig({
       plugins: [
         starlightBlog({
           title: "Nadi Stuti Blog",
+          metrics: {
+            readingTime: true,
+            words: "rounded",
+          },
           authors: {
             nulligma: {
               name: "Shantanu Kulkarni",
@@ -20,6 +25,17 @@ export default defineConfig({
                 "https://pbs.twimg.com/profile_images/722045969936703488/bLHK_LbW_400x400.jpg",
               url: "https://x.com/Nulligma/",
             },
+          },
+        }),
+        starlightGiscus({
+          repo: "nadi-stuti/kosh",
+          repoId: "R_kgDOQtuzhw",
+          category: "General",
+          categoryId: "DIC_kwDOQtuzh84C03D7",
+          theme: {
+            light: "gruvbox_light",
+            dark: "gruvbox_dark",
+            auto: "gruvbox",
           },
         }),
         starlightThemeFlexoki({
@@ -34,7 +50,6 @@ export default defineConfig({
           href: "https://github.com/nadi-stuti",
         },
       ],
-
       sidebar: [
         ...SidebarFolders,
         { slug: "about-nadikosh" },
