@@ -1,12 +1,14 @@
 ---
 import BadgeLink from "./BadgeLink.astro";
-const { commit, post, note } = Astro.props;
+const { commit, post, release } = Astro.props;
 
 const commitUrl = commit
   ? `https://github.com/nadi-stuti/kosh/commit/${commit}`
   : null;
 const postUrl = post ? `/blog/${post}` : null;
-const noteUrl = note ? `/notes/${note}` : null;
+const noteUrl = release
+  ? `https://github.com/nadi-stuti/kosh/releases/tag/${release}`
+  : null;
 ---
 
 <span>
@@ -17,7 +19,7 @@ const noteUrl = note ? `/notes/${note}` : null;
     )
   }
   {
-    note && (
+    release && (
       <BadgeLink url={noteUrl} variant={"default"} text={"Release Note"} />
     )
   }
