@@ -5,7 +5,7 @@ description: A guide on how to use github
 
 # How to Edit This Repository Using GitHub
 
-This guide will walk you through the process of editing this Starlight template website using GitHub. Don't worry if you're new to programming or GitHub – we'll go step by step. By the end, you'll be able to make changes to the website and suggest them to the project owners.
+This guide will walk you through the process of editing this knowledgebase using GitHub. Don't worry if you're new to programming or GitHub – we'll go step by step. By the end, you'll be able to make changes to the website and suggest them to the project owners.
 
 ## What You'll Need
 
@@ -113,7 +113,7 @@ Your branch is now on GitHub!
 
 A "Pull Request" (PR) is how you ask the project owners to review and accept your changes.
 
-1. Open your web browser and go to the repository URL: `https://github.com/example/starlight-template`
+1. Open your web browser and go to the repository: [Kosh github repository](https://github.com/nadi-stuti/kosh)
 2. You should see a message at the top saying "Your recently pushed branches:" with your branch name
 3. Click "Compare & pull request" next to your branch
 4. Give your pull request a title (like "My suggested changes")

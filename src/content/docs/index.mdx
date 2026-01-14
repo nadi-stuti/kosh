@@ -1,7 +1,8 @@
 ---
-title: NadiKosh
+title: Nadikosh
 description: Knowledge repository for our holy rivers
 template: splash 
+giscus: false
 hero:
   tagline: Knowledge repository for our holy rivers
   image:
@@ -10,6 +11,10 @@ hero:
     - text: Explore
       link: /about-nadikosh/
       icon: right-arrow
+    - text: Read our blog
+      link: /blog
+      icon: open-book
+      variant: secondary
     - text: Visit nadistuti website
       link: https://nadistuti.com/
       icon: external
@@ -18,23 +23,23 @@ hero:
 
 import { Card, CardGrid } from '@astrojs/starlight/components';
 
-## How to edit this repository?
+## How to contribute to this knowledge repository?
 
 <CardGrid stagger>
-	<Card title="Setup Github" icon="github">
-		Read how to use github so that you can modify this wiki: [Github setup guide](/guides/github).
+	<Card title="Share your thoughts" icon="comment">
+		We would love to hear your thoughts on our articles. Share your feedback using the comments section at the bottom of each article or join our whatsapp group: [NadiStuti Sabha](https://chat.whatsapp.com/GWWZngBJzYsDZ8AGzF6Xt4)
 	</Card>
-	<Card title="Change home layout" icon="document">
-		Change contents in `src/content/docs/index.mdx` to modify home page
+	<Card title="Write for us" icon="seti:markdown">
+		Help us build the biggest knowledge repository on holy rivers by writing articles for us. Get a markdown editor and send us your articles. Read more about how to contribute: [How we work](/how-we-work#raw-ideas--temporary-notes).
 	</Card>
-	<Card title="Add new content" icon="add-document">
-		Add Markdown or MDX files to `src/content/docs` to create new pages.
+	<Card title="Add new content youself" icon="github">
+		Read how to use github so that you can modify this knowledgebase yourself: [Github setup guide](/guides/github).
 	</Card>
-	<Card title="Configure site" icon="setting">
-		Open `astro.config.mjs`and edit `sidebar` to add newly created pages in.
+	<Card title="Help us grow" icon="heart">
+		Help us reach more people by sharing our articles on social media, forums, and with your friends and family or share our print materials available at [Print](/print).
 	</Card>
-	<Card title="Developer's reference" icon="vscode">
-		If you are a developer, read our [Development guide](/guides/development/) to better understand how tis website works
-		and how you can contribute to it. 
+	<Card title="Make this website better" icon="vscode">
+		If you are a developer, read our [Developer guide](/guides/developer-guide/) to better understand how this website works
+		and how you can contribute to it and make it super awesome India's own wiki. 
 	</Card>
 </CardGrid>

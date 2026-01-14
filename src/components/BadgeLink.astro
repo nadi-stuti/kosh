@@ -1,0 +1,8 @@
+---
+import { Badge, LinkButton } from "@astrojs/starlight/components";
+const { url, variant, text } = Astro.props;
+---
+
+<LinkButton href={url} variant="minimal" style={{ margin: 0 }}>
+  <Badge variant={variant} text={text} size="medium" />
+</LinkButton>

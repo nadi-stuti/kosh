@@ -1,0 +1,60 @@
+---
+import { Aside, Badge } from "@astrojs/starlight/components";
+
+interface Props {
+  type?: "note" | "tip" | "caution" | "danger";
+  heading: string;
+  content?: string;
+}
+
+const { type = "note", heading, content } = Astro.props;
+---
+
+<div class="hover-note-root" tabindex="0">
+  <div class="badge-trigger">
+    <Badge text={heading} variant={type} size="medium" />
+    <span class="hint">Hover/tap to read more</span>
+  </div>
+
+  <div class="popup-content">
+    <Aside type={type} title={heading}>
+      <slot>{content}</slot>
+    </Aside>
+  </div>
+</div>
+
+<style>
+  .hover-note-root {
+    position: relative;
+    display: inline-block;
+  }
+
+  .badge-trigger {
+    cursor: help;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .hint {
+    font-size: 1rem;
+    opacity: 0.6;
+  }
+
+  .popup-content {
+    display: none;
+    position: absolute;
+    z-index: 100;
+    top: 100%;
+    left: 0;
+    min-width: min(300px, 90vw);
+    max-width: 90vw;
+    margin-top: 0.5rem;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+  }
+
+  .hover-note-root:hover .popup-content,
+  .hover-note-root:focus-within .popup-content {
+    display: block;
+  }
+</style>
