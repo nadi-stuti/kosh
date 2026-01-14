@@ -68,7 +68,9 @@ For those who wish to go deeper, you can read the **full Nadīstuti Sūktam with
 Our movement’s tagline is also taken from the Rigveda:
 
 > **अप्स्वन्तरमृतमप्सु भेषजमपामुत प्रशस्तये।  
-> देवा भवत वाजिनः॥**
+> देवा भवत वाजिनः॥**  
+> apsvantar-amṛtam-apsu bheṣajam-apām-uta praśastaye |  
+> devā bhavata vājinaḥ ||
 
 This line is from the Rigveda, Maṇḍala 1, Sūkta 23, Mantra 19 (Ṛgveda 1.23.19), a hymn addressed to the waters (Āpas), praising the life‑giving amṛta and healing (bheṣajam) present in them.
 
@@ -306,7 +308,7 @@ We have created **focused WhatsApp groups** where people with similar interests 
 - **Tech Group:** Where developers, AI experts, and technology enthusiasts build the apps and tools that power our mission.
 - **Ground Force Group:** Where ground workers, hardware experts, and field coordinators share experiences and plan on-the-ground activities.
 
-Find more about our group and their joinig links in out [How we work](/how-we-work/#casual-day-to-day-conversation) section
+Find more about our group and their joining links in our [How we work](/how-we-work/#casual-day-to-day-conversation) section
 
 These groups serve a vital purpose: **they are where ideas are born, where knowledge is shared, and where real relationships are built.** The best content in Nadi Kosh will come from insights shared in these groups.
 
