@@ -8,18 +8,18 @@ The structure will keep evolving, but these are the current building blocks.
 
 ## Top‑level folders
 
-| Folder             | Purpose                                                            | Examples of contents                                   |
-| ------------------ | ------------------------------------------------------------------ | ------------------------------------------------------ |
-| `Nadi Stuti/`      | Documentation of our core movement to purify our holy rivers       | Our mission, working guide, progress etc.              |
-| `Books/`           | Notes from river‑related books (education, cleaning, rituals)      | Student textbooks, environmental books, ritual manuals |
-| `Events/`          | Documentation of on‑ground river events and activities             | Cleaning drives, awareness walks, workshops            |
-| `Guides/`          | Guides on how to work with this wiki and its development process   | How to add Markdown files, naming rules, contribution  |
-| `Papers/`          | External and internal research papers and their notes              | Summaries, key findings, future paper drafts           |
-| `Rivers/`          | Direct information about individual holy rivers                    | One folder or file per river (Ganga, Yamuna, etc.)     |
-| `Team/`            | Information about teams and organisations involved in this mission | Core team bios, NGOs, ashrams, partner groups          |
-| `Tech/`            | Software, apps, and digital tools used to support Nadi Stuti       | Data apps, scripts, visualization softwares etc        |
-| `Tools/`           | Physical tools and hardware used in river cleaning                 | Nets, skimmers, sensors, safety gear, purchasing info  |
-| `Dumping Grounds/` | Unreviewed, unstructured raw notes and ideas from any contributor  | Quick thoughts, rough notes, links, screenshots        |
+| Folder              | Purpose                                                            | Examples of contents                                   |
+| ------------------- | ------------------------------------------------------------------ | ------------------------------------------------------ |
+| `Nadi Stuti/`       | Documentation of our core movement to purify our holy rivers       | Our mission, working guide, progress etc.              |
+| `Books/`            | Notes from river‑related books (education, cleaning, rituals)      | Student textbooks, environmental books, ritual manuals |
+| `Events/`           | Documentation of on‑ground river events and activities             | Cleaning drives, awareness walks, workshops            |
+| `Guides/`           | Guides on how to work with this wiki and its development process   | How to add Markdown files, naming rules, contribution  |
+| `Papers/`           | External and internal research papers and their notes              | Summaries, key findings, future paper drafts           |
+| `Rivers/`           | Direct information about individual holy rivers                    | One folder or file per river (Ganga, Yamuna, etc.)     |
+| `Team/`             | Information about teams and organisations involved in this mission | Core team bios, NGOs, ashrams, partner groups          |
+| `Tech/`             | Software, apps, and digital tools used to support Nadi Stuti       | Data apps, scripts, visualization softwares etc        |
+| `Tools/`            | Physical tools and hardware used in river cleaning                 | Nets, skimmers, sensors, safety gear, purchasing info  |
+| `Thinking Grounds/` | Unreviewed, unstructured raw notes and ideas from any contributor  | Quick thoughts, rough notes, links, screenshots        |
 
 ### `Nadi Stuti/`
 
@@ -100,7 +100,7 @@ This folder explains the physical tools used in river work:
 
 The aim is to make practical river‑cleaning knowledge reusable for other teams across the country.
 
-### `Dumping Grounds/`
+### `Thinking Grounds/`
 
 This folder is the **free space for contributors**.
 

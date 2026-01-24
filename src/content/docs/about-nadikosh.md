@@ -6,7 +6,7 @@ description: About the project
 **Tagline:** Knowledge repository for our holy rivers
 
 Nadi Kosh is a long‑term knowledge repository dedicated to India’s sacred rivers.  
-Right now, this space works as a _dumping ground_ for all kinds of river‑related information, so that nothing is lost while the project is still evolving.
+Right now, this space works as a _thinking ground_ for all kinds of river‑related information, so that nothing is lost while the project is still evolving.
 
 ## A kosh for NadiStuti
 
@@ -21,7 +21,7 @@ In simple terms, the Nadi Stuti movement seeks to:
 Nadi Kosh serves as the **databank and knowledge repository** for the Nadi Stuti movement.  
 Here we gather, store, and refine all the knowledge, information, leads, and data needed to support every aspect of Nadi Stuti’s work for rivers.
 
-Right now, this space works as a _dumping ground_ for all kinds of river‑related information, so that nothing is lost while the project is still evolving.
+Right now, this space works as a _thinking ground_ for all kinds of river‑related information, so that nothing is lost while the project is still evolving.
 
 To know more about the Nadi Stuti movement, please visit our website (https://nadistuti.com) or explore our print materials at: [Print](/print).
 
