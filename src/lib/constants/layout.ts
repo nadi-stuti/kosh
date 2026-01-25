@@ -72,10 +72,10 @@ export const SidebarFolders = [
     },
   },
   {
-    label: "Dumping Grounds",
+    label: "Thinking Grounds",
     collapsed: true,
     autogenerate: {
-      directory: "dumping-grounds",
+      directory: "thinking-grounds",
       collapsed: true,
     },
   },

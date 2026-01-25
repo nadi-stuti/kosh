@@ -28,4 +28,4 @@ If something feels even slightly useful for the Nadi Stuti movement, **do not ke
 
 Put it here. Let the river of thoughts flow.
 
-Read our [How we work on dumping grounds](/how-we-work/#raw-ideas--temporary-notes) doc to start dumping your thoughts here
+Read our [How we work on thinkng grounds](/how-we-work/#raw-ideas--temporary-notes) doc to start dumping your thoughts here
