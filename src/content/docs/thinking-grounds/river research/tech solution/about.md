@@ -32,7 +32,7 @@ Together, these three tools form Triveni-Net: **the sky watching, the data audit
 
 **Please read about all 3 project first before your proceed to next section.**
 
-- [**Nadi-Drishti** _eye in the sky_](/thinking-grounds/river-research/tech-solution/nadi-drishti): a satellite-based system for river health.
+- [**Nadi-Drishti** _eye in the sky_](/thinking-grounds/river-research/tech-solution/nadi-dristi): a satellite-based system for river health.
 - [**Jan-Prahari** _eye on the ground_](/thinking-grounds/river-research/tech-solution/Jan-Prahari): a WhatsApp-powered citizen sentinel for on-ground evidence
 - [**Satya-Setu** _bridge of truth_](/thinking-grounds/river-research/tech-solution/satya-setu): a centralized intelligence dashboard designed to unify fragmented river and pollution data from multiple Indian government and public sources
 

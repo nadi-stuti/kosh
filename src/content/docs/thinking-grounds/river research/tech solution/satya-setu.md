@@ -9,7 +9,7 @@ Satya-Setu is a centralized intelligence dashboard designed to unify fragmented 
 
 Satya-Setu is further strengthened by two sibling systems:
 
-- [**Nadi-Drishti** _eye in the sky_](/thinking-grounds/river-research/tech-solution/nadi-drishti): a satellite-based system for river health.
+- [**Nadi-Drishti** _eye in the sky_](/thinking-grounds/river-research/tech-solution/nadi-dristi): a satellite-based system for river health.
 - [**Jan-Prahari** _eye on the ground_](/thinking-grounds/river-research/tech-solution/Jan-Prahari): a WhatsApp-powered citizen sentinel for on-ground evidence
 
 together they provide independent satellite and crowd-sourced truth streams that Satya-Setu uses to cross-verify government data and expose “Truth Gaps.”
