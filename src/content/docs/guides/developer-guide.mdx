@@ -231,7 +231,7 @@ Understanding our file structure is crucial for contributing effectively. Here i
             - blog/
               - inauguration-blog.md
               - another-article.md
-            - dumping-grounds/
+            - thinking-grounds/
               - raw-notes-1.md
               - temporary-idea.md
             - guides/
@@ -706,7 +706,7 @@ Both have friction. We are planning to solve this with a **Git-based CMS** like 
 
 ### The Problem
 
-Our **dumping-grounds** and **blog** sections need to attract many writers — experts, educators, community members, activists. But requiring:
+Our **thinking-grounds** and **blog** sections need to attract many writers — experts, educators, community members, activists. But requiring:
 
 - GitHub knowledge
 - Local setup (Git, Node.js, VS Code)
@@ -758,7 +758,7 @@ Keystatic is a **headless CMS** that:
 
 </CardGrid>
 
-#### How Keystatic + Dumping Grounds Would Work
+#### How Keystatic + Thinking Grounds Would Work
 
 **Current flow (manual + friction):**
 
@@ -775,7 +775,7 @@ Writer → Writes in Obsidian/Typora
 
 ```
 Writer → Opens kosh.nadistuti.com/admin
-       → Clicks "New Note in Dumping Grounds"
+       → Clicks "New Note in Thinking Grounds"
        → Fills form: Title, Content, Tags, Author
        → Clicks "Save as Draft"
        → Clicks "Publish"
@@ -840,7 +840,7 @@ To implement Keystatic for Nadi Kosh:
    ```
 
 2. **Create a Keystatic config file** (`keystatic.config.ts`) that defines:
-   - Collections (blog, dumping-grounds)
+   - Collections (blog, thinking-grounds)
    - Fields (title, content, author, date, tags)
    - Permissions (who can write/publish)
 
