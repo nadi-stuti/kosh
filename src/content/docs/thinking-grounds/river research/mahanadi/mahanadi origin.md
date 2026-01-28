@@ -1,6 +1,6 @@
 ---
-title: Origin of Mahanadi river
-description: Detailed article on origin of mahanadi river
+title: Origin of Mahanadi River
+description: Detailed article on the origin of the Mahanadi river
 ---
 
 The **Mahanadi**, a name derived from the Sanskrit words Maha (Great) and Nadi (River), is a vital hydrological and spiritual lifeline for East-Central India, specifically within the states of Chhattisgarh and Odisha. Its origin in the granitic highlands of the Dhamtari district represents a unique convergence of deep-time geology and Vedic hagiography. Flowing for approximately **855 to 900 kilometers** before merging with the Bay of Bengal, the river's birth is not merely a geographic coordinate but a site of profound religious significance
@@ -31,7 +31,7 @@ The physical source is ritualistically identified as a pool or reservoir near th
 
 Hindu scriptures categorize the Mahanadi as an evolving spiritual presence that adopts different identities across the four **Yugas** (cosmic ages). These names reflect the river's perceived purity and divine association throughout history.
 
-• **Satya Yuga:** Known as **Nilotpala** , referring to the "blue lotus," a symbol of divine consciousness and transcendental purity.
+• **Satya Yuga:** Known as **Nilotpala**, referring to the "blue lotus," a symbol of divine consciousness and transcendental purity.
 
 • **Treta Yuga**: During the era of the Ramayana, it was called **Kanak Nandini** ("Golden Daughter"), signifying spiritual and material wealth.
 
@@ -57,7 +57,7 @@ The Ascetic Isolation and the Divine Pot
 
 Shringi Rishi was raised in total isolation in the forest to shield him from worldly temptations. In his later years, he established an ashram in the **Sihawa Hills** for deep meditation. According to legend, **Goddess Ganga** was moved by his devotion and descended to fill his **_kamandal_** (ascetic’s water pot) while he was in a state of samadhi (trance).
 
-### The Legend of the Spilled Kamandal
+### The Legend of the Spilt Kamandal
 
 The sage remained in meditation for centuries, oblivious that the divine water was overflowing and beginning to flood the surrounding hills. A disciple named **Mahanad** (or Mahananda) attempted to wake the sage to structure the flow of the water but failed through traditional prayers.
 
