@@ -1,5 +1,5 @@
 ---
-title: Origin of mahanadi river
+title: Origin of Mahanadi river
 description: Detailed article on origin of mahanadi river
 ---
 
