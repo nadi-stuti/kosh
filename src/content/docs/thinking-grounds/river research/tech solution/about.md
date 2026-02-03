@@ -1,6 +1,6 @@
 ---
-title: ReadME [About Triveni-net]
-description: Tech solution suggestions
+Title: ReadME [About Triveni-net]
+Description: Tech solution suggestions
 ---
 
 **Project Triveni-Net**
