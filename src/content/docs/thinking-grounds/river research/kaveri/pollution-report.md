@@ -1,6 +1,6 @@
 ---
 title: Kaveri pollution report
-description: Initial study on pollution in kaveri river
+description: Initial study on pollution in Kaveri River
 ---
 
 ## Introduction
