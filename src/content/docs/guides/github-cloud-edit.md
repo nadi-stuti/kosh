@@ -315,7 +315,16 @@ If you prefer typing Markdown yourself:
 
 This is where Codespaces shines! You can see the actual website running.
 
-### **Option A: Using the Task Menu (Recommended)**
+#### Option A: Using keyboard shortcuts (fastest way)
+
+You have two quick keyboard shortcuts to start the dev server without using the menu:
+
+- **F5** — Starts the development server
+- **Ctrl + Shift + B** — Also starts the development server (alternative shortcut)
+
+Simply press one of these keys when you are ready to run the site. A terminal will appear and the server will start automatically. This is the quickest way if you remember the shortcut.
+
+### **Option B: Using the Task Menu**
 
 1. **Click on the top menu:** `Terminal → Run Task...`
 2. **Select:** `View Live Preview (npm run dev)`
@@ -323,7 +332,7 @@ This is where Codespaces shines! You can see the actual website running.
 4. **Click "Open in Browser"** when the notification appears.
 5. 🌐 **Your live website will open!** You can now browse all pages and see your changes in real-time.
 
-### **Option B: Using the Terminal (Advanced)**
+### **Option C: Using the Terminal (Advanced)**
 
 1. **Open a terminal:** `Terminal → New Terminal` from the top menu
 2. **Type this command** and press Enter:
