@@ -1,13 +1,19 @@
-// .vscode/launch.json
 {
-  "version": "0.2.0",
-  "configurations": [
+  "version": "2.0.0",
+  "tasks": [
     {
-      "name": "Starlight: dev server",
-      "type": "node-terminal",
-      "request": "launch",
-      "command": "npm run dev",
-      "preLaunchTask": "View Live Preview (npm run dev)"
+      "label": "View Live Preview (npm run dev)",
+      "type": "npm",
+      "script": "dev",
+      "problemMatcher": [],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
     }
   ]
 }
