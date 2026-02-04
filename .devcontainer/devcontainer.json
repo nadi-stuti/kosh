@@ -1,6 +1,6 @@
 {
   "name": "Starlight Docs Environment",
-  "image": "://mcr.microsoft.com",
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:latest",
   "customizations": {
     "vscode": {
       "extensions": [
