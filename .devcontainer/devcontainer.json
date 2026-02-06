@@ -1,0 +1,22 @@
+{
+  "name": "Starlight Docs Environment",
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:latest",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "astro-build.astro-vscode",         // Astro support
+        "yzhang.markdown-all-in-one",      // Professional Markdown tools
+        "shabdog.starlight-docs-snippets", // Starlight-specific snippets
+        "esbenp.prettier-vscode",           // Auto-format for clean docs
+        "zaaack.markdown-editor",            // Markdown editor
+        "unifiedjs.vscode-mdx"              // .mdx file support
+      ],
+      "settings": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+      }
+    }
+  },
+  "postCreateCommand": "npm install",
+  "waitFor": "postCreateCommand"
+}

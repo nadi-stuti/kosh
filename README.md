@@ -48,6 +48,29 @@ We welcome contributions! Whether it's adding new river details, correcting info
 
 Check out our [GitHub Guide](src/content/docs/guides/github.md) for more details.
 
+## 🚀 How to Contribute (Cloud Editor)
+
+You can edit and preview this documentation without installing anything (like VScode or Node.js or Docker) on your computer by using **GitHub Codespaces**.
+
+### 1. Start Coding
+* Click the green **"<> Code"** button at the top of this page.
+* Select the **Codespaces** tab and click **"Create codespace on main"**.
+* This will open a full editor in your browser (or VS Code Desktop) with all plugins pre-installed.
+
+### 2. Live Preview
+* **Markdown Preview:** Open any file and press `Cmd + Shift + V` (Mac) or `Ctrl + Shift + V` (Windows) for an instant document preview.
+* **Website Preview:** To see the actual Starlight site, go to the top menu: **Terminal > Run Task > View Live Preview**. A browser tab will open with your live changes.
+
+### 3. ⚠️ Important: Save Your Free Hours
+GitHub gives you 60 hours of free development time per month. To make sure you don't use them up while you aren't typing:
+1. Go to your [GitHub Codespaces Settings](https://github.com/settings/codespaces).
+2. Change the **"Default idle timeout"** to **5 minutes**.
+3. This ensures the cloud machine "sleeps" automatically if you walk away from your computer.
+
+### 4. Saving Changes
+Once you are happy with your edits, use the **Source Control** tab on the left to commit your changes and open a Pull Request!
+
+
 ## 👀 Want to Learn More?
 
 Check out [Starlight’s docs](https://starlight.astro.build/) for documentation site features, read [the Astro documentation](https://docs.astro.build), or join the [Astro Discord server](https://astro.build/chat).

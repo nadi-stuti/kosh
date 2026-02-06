@@ -99,3 +99,7 @@ Following points explains, in simple language, how our three tools work together
 - Nadi-Drishti makes sure **no part of the river is invisible** , even remote stretches.
 - Jan-Prahari makes sure **no citizen’s pain is ignored** , turning their phone into a voice for the river.
 - Satya-Setu brings all of this together to **challenge false claims and demand honest action** for the river’s health.
+
+### 6. We are going to connect Kosh to Triveni Net
+- We will be connecting Triveni Net to the Kosh. 
+- We will be creating a live component. That time, we will have live data and visuals. 
