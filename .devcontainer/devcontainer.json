@@ -21,6 +21,17 @@
 
   "onCreateCommand": "npm ci",
 
+  "postStartCommand": "npm run dev -- --host",
+
+  "portsAttributes": {
+    "4321": {
+      "label": "Astro Dev Server",
+      "onAutoForward": "openBrowser"
+    }
+  },
+
+  "forwardPorts": [4321],
+
   "mounts": [
     "source=starlight-node-modules,target=/workspaces/${localWorkspaceFolderBasename}/node_modules,type=volume"
   ],
