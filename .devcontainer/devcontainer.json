@@ -20,8 +20,6 @@
   },
 
   "onCreateCommand": "npm ci",
-  "postStartCommand": "echo '\n✅ Repo setup complete!\n\n👉 Press Cmd+Shift+B (Mac) or Ctrl+Shift+B (Windows/Linux)\n👉 Select: View Live Preview (npm run dev)\n👉 Then Ctrl+click on localhost:4321 to preview website\n'",
-
   "mounts": [
     "source=starlight-node-modules,target=/workspaces/${localWorkspaceFolderBasename}/node_modules,type=volume"
   ],
