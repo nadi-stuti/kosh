@@ -21,7 +21,7 @@
 
   "onCreateCommand": "npm ci",
 
-  "postStartCommand": "npm run dev -- --host",
+  "postStartCommand": "code --command 'workbench.action.tasks.runTask' --args 'View Live Preview (npm run dev)'",
 
   "portsAttributes": {
     "4321": {
