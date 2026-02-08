@@ -20,17 +20,7 @@
   },
 
   "onCreateCommand": "npm ci",
-
-  "postStartCommand": "code --command 'workbench.action.tasks.runTask' --args 'View Live Preview (npm run dev)'",
-
-  "portsAttributes": {
-    "4321": {
-      "label": "Astro Dev Server",
-      "onAutoForward": "openBrowser"
-    }
-  },
-
-  "forwardPorts": [4321],
+  "postStartCommand": "echo '\n✅ Repo setup complete!\n\n👉 Press Cmd+Shift+B (Mac) or Ctrl+Shift+B (Windows/Linux)\n👉 Select: View Live Preview (npm run dev)\n👉 Then Ctrl+click on localhost:4321 to preview website\n'",
 
   "mounts": [
     "source=starlight-node-modules,target=/workspaces/${localWorkspaceFolderBasename}/node_modules,type=volume"
