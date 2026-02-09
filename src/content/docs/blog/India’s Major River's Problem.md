@@ -6,7 +6,7 @@ excerpt: India’s great rivers – from the Ganga and Yamuna to the Godavari an
 featured: false
 cover:
   alt: River pollution in india
-  image: ./assets/banner.png
+  image: ./assets/water-pollution.png
 authors: nulligma
 tags:
   - Pollution
