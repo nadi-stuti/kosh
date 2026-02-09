@@ -1,15 +1,16 @@
 {
-  "name": "Starlight Docs Environment",
-  "image": "mcr.microsoft.com/devcontainers/typescript-node:latest",
+  "name": "Starlight Docs (Fast)",
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:20",
+
+  "features": {},
+
   "customizations": {
     "vscode": {
       "extensions": [
-        "astro-build.astro-vscode",         // Astro support
-        "yzhang.markdown-all-in-one",      // Professional Markdown tools
-        "shabdog.starlight-docs-snippets", // Starlight-specific snippets
-        "esbenp.prettier-vscode",           // Auto-format for clean docs
-        "zaaack.markdown-editor",            // Markdown editor
-        "unifiedjs.vscode-mdx"              // .mdx file support
+        "astro-build.astro-vscode",
+        "zaaack.markdown-editor",
+        "esbenp.prettier-vscode",
+        "unifiedjs.vscode-mdx"
       ],
       "settings": {
         "editor.formatOnSave": true,
@@ -17,6 +18,11 @@
       }
     }
   },
-  "postCreateCommand": "npm install",
-  "waitFor": "postCreateCommand"
+
+  "onCreateCommand": "npm ci",
+  "mounts": [
+    "source=starlight-node-modules,target=/workspaces/${localWorkspaceFolderBasename}/node_modules,type=volume"
+  ],
+
+  "waitFor": "onCreateCommand"
 }

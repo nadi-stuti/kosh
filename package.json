@@ -2,6 +2,9 @@
   "name": "nadikosh",
   "type": "module",
   "version": "1.0.2",
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
