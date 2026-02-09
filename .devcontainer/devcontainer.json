@@ -21,8 +21,13 @@
 
   "onCreateCommand": "npm ci",
   "mounts": [
-    "source=starlight-node-modules,target=/workspaces/${localWorkspaceFolderBasename}/node_modules,type=volume"
+    {
+      "source": "starlight-node-modules",
+      "target": "${containerWorkspaceFolder}/node_modules",
+      "type": "volume"
+    }
   ],
+
 
   "waitFor": "onCreateCommand"
 }
