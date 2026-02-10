@@ -17,5 +17,8 @@
         "editor.defaultFormatter": "esbenp.prettier-vscode"
       }
     }
-  }
+  },
+
+  "postCreateCommand": "npm ci",
+  "waitFor": "postCreateCommand"
 }
