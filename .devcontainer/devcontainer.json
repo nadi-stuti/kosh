@@ -19,10 +19,6 @@
     }
   },
 
-  "onCreateCommand": "npm ci",
-  "mounts": [
-    "source=starlight-node-modules,target=/workspaces/${localWorkspaceFolderBasename}/node_modules,type=volume"
-  ],
-
-  "waitFor": "onCreateCommand"
+  "postCreateCommand": "npm i",
+  "waitFor": "postCreateCommand"
 }
