@@ -471,6 +471,161 @@ Since Giscus uses GitHub Discussions, moderation happens through GitHub:
 
 ---
 
+### 4. **starlight-image-zoom** — Interactive Image Exploration
+
+**What is it?**
+
+A plugin that enables **click-to-zoom functionality** for images in your documentation. Readers can click on images to view them in a larger, fullscreen-like modal, perfect for detailed diagrams, maps, charts, and photos.
+
+**Why we use it:**
+
+Nadi Kosh contains many visual assets — river maps, pollution data charts, satellite imagery, historical photographs, and detailed diagrams. Static, fixed-size images limit reader experience:
+
+- Small images are hard to read and analyze
+- Readers cannot zoom into details
+- Diagrams and maps lose important information
+
+With `starlight-image-zoom`, we can:
+
+- **Display preview-sized images** on the page (fast to load, clean appearance)
+- **Allow readers to click and zoom** into the full, high-resolution version
+- **Create a seamless experience** — zoom modal appears over the page, readers click to close
+- **Improve readability** for users on all devices (mobile, tablet, desktop)
+
+**How we configured it (in `astro.config.mjs`):**
+
+```typescript
+starlightImageZoom({
+  // No special configuration needed — works out of the box
+}),
+```
+
+The plugin is minimal and unopinionated, enabling zoom on all images by default.
+
+**How to use it in your content:**
+
+To enable zoom on images, **wrap them with the `.image-preview-wrapper` class**. This reduces their display size, giving them a preview appearance, while the zoom plugin allows users to expand them when clicked.
+
+<Tabs>
+<TabItem label="Markdown (.md files)">
+
+```html
+<div class="image-preview-wrapper">
+  <img src="/src/assets/hindi-back.png" alt="Hindi text banner" />
+</div>
+```
+
+**Simple and direct.** For plain Markdown content, use standard HTML `<img>` tags wrapped in the preview class.
+
+</TabItem>
+
+<TabItem label="MDX (.mdx files)">
+
+```jsx
+import { Image } from 'astro:assets';
+import myImage from '../../assets/prints/flex-card/hindi-back.png';
+
+<div class="not-content image-preview-wrapper">
+  <Image src={myImage} width={800} alt="Click to zoom" />
+</div>
+```
+
+**For MDX**, use Astro's optimized `<Image>` component (which provides automatic optimization, srcsets, and responsive behavior).
+
+Key points:
+- **Import the image file** at the top of your MDX
+- **Use `<Image>` from `'astro:assets'`** for Astro optimization
+- **Add `not-content` class** to prevent Starlight content styling from interfering
+- **Set a reasonable `width`** (e.g., `800`) — this is the preview size
+- **Provide descriptive `alt` text** for accessibility
+
+</TabItem>
+</Tabs>
+
+**Custom CSS for preview styling:**
+
+We've added custom CSS in `src/styles/custom.css` to handle the preview appearance:
+
+```css
+.image-preview-wrapper {
+  /* Reduce image size to create a "preview" effect */
+  max-width: 400px;
+  margin: 1rem auto;
+  border-radius: 8px;
+  overflow: hidden;
+  
+  /* Subtle shadow to indicate interactivity */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  
+  /* Cursor indicates images are clickable */
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.image-preview-wrapper:hover {
+  /* Gentle hover effect to show interactivity */
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.image-preview-wrapper img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+```
+
+**How it works:**
+
+1. **Image renders small** on the page with a preview appearance
+2. **User hovers over image** — subtle scale and shadow effects appear
+3. **User clicks** — zoom plugin opens a modal with the full-size image
+4. **User clicks modal** or pressing Escape — modal closes, back to the page
+
+**Best practices:**
+
+<CardGrid>
+
+  <Card title="High-Resolution Source" icon="image">
+    Always provide high-resolution images (1200px+ width). The preview shrinks them, but users see full quality when zoomed.
+  </Card>
+
+  <Card title="Descriptive Alt Text" icon="document">
+    Alt text is crucial for accessibility. Describe what the image shows, not just "image" or "photo". Example: "Map of Ganga River pollution zones" or "Chart showing water pH levels over time".
+  </Card>
+
+  <Card title="Appropriate Preview Size" icon="seti:css">
+    Adjust `max-width` in CSS for different content types. Maps might be 500px, while diagram details might be 300px. Test on mobile and desktop.
+  </Card>
+
+  <Card title="Image Optimization" icon="rocket">
+    Use modern formats (WebP, AVIF) and compress images. Large unoptimized images slow down the entire page. Tools like TinyPNG or ImageOptim help.
+  </Card>
+
+</CardGrid>
+
+**When to use preview + zoom:**
+
+- **Maps and diagrams** — readers need to see details
+- **Data visualizations** — charts, graphs, pollution data
+- **Historical photos** — high detail and resolution matter
+- **Satellite imagery** — large maps that need exploration
+- **Detailed illustrations** — river ecosystems, cleanup processes
+
+**When NOT to use preview + zoom:**
+
+- **Logos and icons** — keep them inline, full-size
+- **Decorative images** — not optimized for inspection
+- **Very small images** — previewing and zooming small images is awkward
+
+**Read the documentation:**
+
+For advanced options and troubleshooting:
+
+👉 **[Starlight Image Zoom Documentation](https://github.com/HiDeoo/starlight-image-zoom)**
+
+---
+
 ## GitHub Workflow & Deployment
 
 Our version control and deployment process is designed to ensure **quality, transparency, and safety**.

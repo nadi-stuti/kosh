@@ -6,12 +6,19 @@ import { SidebarFolders } from "./src/lib/constants/layout";
 import starlightBlog from "starlight-blog";
 import starlightGiscus from "starlight-giscus";
 import starlightSidebarTopics from "starlight-sidebar-topics";
+import starlightImageZoom from "starlight-image-zoom";
 
 // https://astro.build/config
 export default defineConfig({
   integrations: [
     starlight({
+      components: {
+        // Override the default `MarkdownContent` component.
+        MarkdownContent: "./src/components/MarkdownContent.astro",
+      },
+      customCss: ["./src/styles/custom.css"],
       plugins: [
+        starlightImageZoom(),
         starlightBlog({
           title: "Nadi Stuti Blog",
           metrics: {
