@@ -1,0 +1,29 @@
+---
+import Default from "@astrojs/starlight/components/Sidebar.astro";
+import { TagSidebar } from "starlight-tags/components";
+import CustomTopicList from "./CustomTopicList.astro";
+
+const { topics } = Astro.locals.starlightSidebarTopics;
+
+const currentTopic = topics.find((t) => t.isCurrent);
+
+const topicsWithTags = ["/daily-drops"];
+
+const showTags =
+  currentTopic &&
+  topicsWithTags.some((path) => currentTopic.link.startsWith(path));
+
+const isTagsPage = Astro.url.pathname.startsWith("/tags");
+
+const isBlogPage = Astro.url.pathname.startsWith("/blog");
+---
+
+{!isBlogPage && <CustomTopicList />}
+
+{!isTagsPage && <Default {...Astro.props} />}
+
+{
+  showTags && !isTagsPage && (
+    <TagSidebar limit={8} sortBy="count" collapsed={false} />
+  )
+}

@@ -1,0 +1,167 @@
+---
+// src/components/SocialBanner.astro
+import { Icon } from "@astrojs/starlight/components";
+
+const { entry } = Astro.locals.starlightRoute;
+const { social } = entry.data;
+
+const hasSocial = social && typeof social === "object";
+
+import WhatsappIcon from "../../assets/icons/whatsapp-svgrepo-com.svg";
+import Sharechat from "../../assets/icons/toppng.com-sharechat-logo-only-316x316.png";
+import { Image } from "astro:assets";
+---
+
+{
+  hasSocial && (
+    <div class="social-container not-content">
+      {/* First Row: Social Links */}
+      <div class="banner-row">
+        <p>Read this post on:</p>
+        <div class="icon-group">
+          {social.x && (
+            <a href={social.x} aria-label="X">
+              <Icon name="x.com" size="2.5rem" />
+            </a>
+          )}
+          {social.instagram && (
+            <a href={social.instagram} aria-label="Instagram">
+              <Icon name="instagram" size="2.5rem" />
+            </a>
+          )}
+          {social.facebook && (
+            <a href={social.facebook} aria-label="facebook">
+              <Icon name="facebook" size="2.5rem" />
+            </a>
+          )}
+          {social.reddit && (
+            <a href={social.reddit} aria-label="reddit">
+              <Icon name="reddit" size="2.5rem" />
+            </a>
+          )}
+        </div>
+      </div>
+
+      {/* Divider Line */}
+      {(social.youtube || social.reel) && <div class="divider" />}
+
+      {/* Second Row: YouTube (Using same row class for identical styling) */}
+      {
+        <div class="banner-row">
+          <p>
+            Watch this on{" "}
+            {social.youtube && (
+              <a href={social.youtube} target="_blank">
+                YouTube
+                <div class="icon-group">
+                  <Icon name="youtube" size="2.5rem" />
+                </div>
+              </a>
+            )}
+          </p>
+          <p>
+            {social.reel && (
+              <a href={social.reel} target="_blank">
+                Instagram reel
+                <div class="icon-group">
+                  <Icon name="instagram" size="2.5rem" />
+                </div>
+              </a>
+            )}
+          </p>
+          <p>
+            {social.sharechat && (
+              <a href={social.sharechat} aria-label="sharechat">
+                Sharechat
+                <div class="icon-group">
+                  <Image
+                    src={Sharechat}
+                    alt="Sharechat Logo"
+                    width={50}
+                    height={50}
+                  />
+                </div>
+              </a>
+            )}
+          </p>
+        </div>
+      }
+      {/* Divider Line */}
+      {social.whatsapp && <div class="divider" />}
+
+      {social.whatsapp && (
+        <div class="banner-row">
+          <p>
+            Join our whatsapp group and discuss on this{" "}
+            <a href={`https://youtube.com/${social.youtube}`} target="_blank">
+              <div class="icon-group">
+                <WhatsappIcon class="social-svg" />
+              </div>
+            </a>
+          </p>
+        </div>
+      )}
+    </div>
+  )
+}
+
+<style>
+  .social-container {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--sl-color-gray-6);
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 0.5rem;
+  }
+
+  .banner-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.6rem 1rem; /* Consistent padding for both rows */
+  }
+
+  .divider {
+    height: 1px;
+    background-color: var(--sl-color-gray-4);
+    margin: 0 1rem;
+  }
+
+  .icon-group {
+    display: flex;
+    gap: 0.6rem;
+    align-items: center;
+  }
+
+  /* Matching the Gold/Yellow icons from your image */
+  .icon-group a {
+    color: #b38b1d;
+    display: flex;
+    align-items: center;
+  }
+
+  .social-svg {
+    width: 2.5rem;
+    height: 2.5rem;
+    stroke: #e3b341;
+    fill: #e3b341;
+  }
+
+  p {
+    margin: 0 !important;
+    font-size: var(--sl-text-sm);
+    color: var(--sl-color-gray-2);
+    font-weight: 500;
+  }
+
+  a {
+    color: var(--sl-color-text-accent-high);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    font-weight: 600;
+  }
+
+  a:hover {
+    color: var(--sl-color-text-accent);
+  }
+</style>

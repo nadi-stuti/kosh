@@ -7,6 +7,7 @@ import starlightBlog from "starlight-blog";
 import starlightGiscus from "starlight-giscus";
 import starlightSidebarTopics from "starlight-sidebar-topics";
 import starlightImageZoom from "starlight-image-zoom";
+import starlightTags from "starlight-tags";
 
 // https://astro.build/config
 export default defineConfig({
@@ -14,6 +15,7 @@ export default defineConfig({
     starlight({
       components: {
         // Override the default `MarkdownContent` component.
+        Sidebar: "./src/components/Sidebar.astro",
         MarkdownContent: "./src/components/MarkdownContent.astro",
       },
       customCss: ["./src/styles/custom.css"],
@@ -49,65 +51,94 @@ export default defineConfig({
         starlightThemeFlexoki({
           accentColor: "yellow",
         }),
-
-        starlightSidebarTopics([
-          {
-            label: "Why rivers are polluted?😢",
-            link: "/guides/github",
-            icon: "warning",
-            items: ["guides/github", "guides/developer-guide"],
-          },
-          {
-            label: "Join the effort",
-            link: "/papers/about",
-            icon: "seti:bicep",
-            items: ["papers/about"],
-          },
-          {
-            label: "Our holy rivers",
-            link: "/rivers/about",
-            icon: "heart",
-            items: [
-              {
-                label: "Guides",
-                autogenerate: {
-                  directory: "/rivers",
-                  collapsed: true,
+        starlightTags(),
+        starlightSidebarTopics(
+          [
+            {
+              label: "Why rivers are polluted?",
+              link: "/guides/github",
+              icon: "warning",
+              items: ["guides/github", "guides/developer-guide"],
+            },
+            {
+              label: "Join the effort",
+              link: "/papers/about",
+              icon: "seti:bicep",
+              items: ["papers/about"],
+            },
+            {
+              label: "Our holy rivers",
+              link: "/rivers/about",
+              icon: "heart",
+              items: [
+                {
+                  label: "Guides",
+                  autogenerate: {
+                    directory: "/rivers",
+                    collapsed: true,
+                  },
                 },
-              },
-            ],
-          },
-          {
-            label: "Nadi Stuti",
-            link: "/rivers/about",
-            icon: "star",
-            items: [
-              {
-                label: "Guides",
-                autogenerate: {
-                  directory: "/rivers",
-                  collapsed: true,
+              ],
+            },
+            {
+              label: "Daily Drops",
+              link: "/daily-drops/about",
+              icon: "seti:elixir",
+              items: [
+                {
+                  label: "Daily Drops",
+                  autogenerate: {
+                    directory: "/daily-drops",
+                    collapsed: true,
+                  },
                 },
-              },
-            ],
-          },
-          {
-            label: "Thinking Grounds",
-            link: "/thinking-grounds/about",
-            icon: "seti:smarty",
-            items: [
-              {
-                label: "Thinking Grounds",
-                autogenerate: {
-                  directory: "/thinking-grounds",
-                  collapsed: true,
+              ],
+            },
+            {
+              label: "Nadi Stuti",
+              link: "/rivers/about",
+              icon: "starlight",
+              items: [
+                {
+                  label: "Guides",
+                  autogenerate: {
+                    directory: "/rivers",
+                    collapsed: true,
+                  },
                 },
-              },
-            ],
+              ],
+            },
+            {
+              label: "Thinking Grounds",
+              link: "/thinking-grounds/about",
+              icon: "seti:smarty",
+              items: [
+                {
+                  label: "Thinking Grounds",
+                  autogenerate: {
+                    directory: "/thinking-grounds",
+                    collapsed: true,
+                  },
+                },
+              ],
+            },
+          ],
+          {
+            exclude: ["/blog", "/tags", "/blog/**/*", "/tags/**/*"],
           },
-        ]),
+        ),
       ],
       title: "Kosh",
+      locales: {
+        root: {
+          label: "English",
+          lang: "en",
+        },
+        hi: {
+          label: "हिन्दी",
+          lang: "hi",
+        },
+      },
       social: [
         {
           icon: "github",
@@ -115,15 +146,6 @@ export default defineConfig({
           href: "https://github.com/nadi-stuti",
         },
       ],
-      // sidebar: [
-      //   ...SidebarFolders,
-      //   { slug: "about-nadikosh" },
-      //   { slug: "print" },
-      //   { label: "How we work", slug: "how-we-work" },
-      //   { label: "Contribute", slug: "contribute" },
-      //   { slug: "layout" },
-      //   { slug: "updates" },
-      // ],
     }),
   ],
 });

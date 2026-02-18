@@ -1,0 +1,36 @@
+---
+// This logic assumes a 'root' English setup and '/hi/' for Hindi
+const isHindi = Astro.url.pathname.startsWith("/hi/");
+const alternatePath = isHindi
+  ? Astro.url.pathname.replace("/hi/", "/")
+  : `/hi${Astro.url.pathname}`;
+
+const { id } = Astro.locals.starlightRoute;
+
+const PagesWithTranslation = ["daily-drops"];
+
+const shouldShow = PagesWithTranslation.some((path) =>
+  id.split("/").includes(path),
+);
+---
+
+{
+  shouldShow && (
+    <a href={alternatePath} class="lang-switch-btn">
+      {isHindi ? "Read in English" : "हिन्दी में पढ़ें"}
+    </a>
+  )
+}
+
+<style>
+  .lang-switch-btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: var(--sl-color-accent-low);
+    border: 1px solid var(--sl-color-accent);
+    color: var(--sl-color-white);
+    text-decoration: none;
+    border-radius: 0.5rem;
+    font-weight: bold;
+  }
+</style>
