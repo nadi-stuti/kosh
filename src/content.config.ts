@@ -11,7 +11,9 @@ export const collections = {
         blogSchema(context).merge(
           z.object({
             giscus: z.boolean().optional().default(true),
-          })
+            date: z.coerce.date().optional(),
+            tags: z.array(z.string()).optional(),
+          }),
         ),
     }),
   }),

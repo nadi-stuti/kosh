@@ -1,0 +1,271 @@
+---
+import {
+  Tabs,
+  TabItem,
+  CardGrid,
+  Card,
+  LinkButton,
+} from "@astrojs/starlight/components";
+const { story, gallery, social, date, author, profileUrl } = Astro.props;
+---
+
+<Tabs>
+  <TabItem label="English" icon="comment"
+    ><p style={{ whiteSpace: "pre-line" }}>
+      {story.en}
+    </p></TabItem
+  >
+  <TabItem label="हिंदी (Hindi)" icon="comment-alt"
+    ><p style={{ whiteSpace: "pre-line" }}>
+      {story.hi}
+    </p></TabItem
+  >
+</Tabs>
+
+<hr />
+
+{
+  gallery && (
+    <div class="simple-gallery">
+      {gallery.map((img) => (
+        <img src={img.src} alt={img.alt} onclick="openModal(this)" />
+      ))}
+    </div>
+  )
+}
+
+{
+  social && (
+    <div style="margin-top: 2rem;">
+      <h3 style="color: white; margin-bottom: 1rem;">📺 Watch the Story</h3>
+      <CardGrid>
+        {social.watch.map((s) => (
+          <Card title={s.platform} icon={s.icon}>
+            <LinkButton
+              href={s.url}
+              target="_blank"
+              style="font-weight: bold; text-decoration: none;"
+            >
+              Watch Now ↗
+            </LinkButton>
+          </Card>
+        ))}
+      </CardGrid>
+    </div>
+  )
+}
+
+{
+  social && (
+    <div style="margin-top: 3rem;">
+      <h3 style="color: white; margin-bottom: 1rem;">📖 Read the Story</h3>
+      <CardGrid>
+        {social.read.map((s) => (
+          <Card title={s.platform} icon={s.icon}>
+            <LinkButton
+              href={s.url}
+              target="_blank"
+              style="font-weight: bold; text-decoration: none;"
+            >
+              Read More ↗
+            </LinkButton>
+          </Card>
+        ))}
+      </CardGrid>
+    </div>
+  )
+}
+
+<dialog id="simple-modal" onclick="this.close()">
+  <div class="modal-inner">
+    <img id="modal-img" src="" />
+    <p id="modal-cap"></p>
+  </div>
+</dialog>
+
+<a href={profileUrl} class="author-card">
+  <img
+    src={`https://api.dicebear.com/9.x/thumbs/svg?seed=${author}`}
+    alt={`Profile picture of ${author}`}
+    class="author-avatar"
+  />
+
+  <div class="author-meta">
+    <span class="author-label">Written by</span>
+    <span class="author-name">{author}</span>
+    <span class="publish-date">{date}</span>
+  </div>
+</a>
+
+<LinkButton
+  href="/daily-drops/#list-of-our-daily-drops"
+  icon="left-arrow"
+  iconPlacement="start">View All Drops</LinkButton
+>
+
+<script is:inline>
+  function openModal(el) {
+    const modal = document.getElementById("simple-modal");
+    document.getElementById("modal-img").src = el.src;
+    document.getElementById("modal-cap").textContent = el.alt;
+    modal.showModal();
+  }
+</script>
+
+<style>
+  /* 1. HORIZONTAL SLIDER - STABLE & ALIGNED */
+  .simple-gallery {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    align-items: flex-end !important; /* Forces all bottoms to line up */
+    overflow-x: auto !important;
+    gap: 1.5rem;
+    padding: 2rem 0;
+    width: 100%;
+    scrollbar-width: thin;
+  }
+
+  /* Force hidden MDX tags to not interfere with layout */
+  .simple-gallery p,
+  .simple-gallery > * {
+    display: contents !important;
+  }
+
+  .simple-gallery img {
+    width: 250px !important;
+    min-width: 250px !important;
+    height: 150px !important;
+    object-fit: cover !important;
+    cursor: pointer;
+    border-radius: 8px;
+    display: block !important;
+    margin: 0 !important;
+    transition: transform 0.2s ease;
+  }
+
+  .simple-gallery img:hover {
+    transform: scale(1.03);
+  }
+
+  /* 2. SIMPLE MODAL - NO WEIRD FLOW */
+  #simple-modal {
+    width: 100vw;
+    height: 100vh;
+    max-width: 100vw;
+    max-height: 100vh;
+    border: none;
+    background: rgba(0, 0, 0, 0.95);
+    padding: 0;
+    margin: 0;
+    color: white;
+    overflow: hidden;
+  }
+
+  /* Styling for the native backdrop */
+  #simple-modal::backdrop {
+    background: rgba(0, 0, 0, 0.95);
+  }
+
+  .modal-inner {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer; /* Shows user they can click to close */
+  }
+
+  #modal-img {
+    max-width: 90%;
+    max-height: 75vh;
+    object-fit: contain;
+    /* CRITICAL: Prevents image clicks from blocking the modal 'close' click */
+    pointer-events: none;
+    margin-bottom: 20px;
+  }
+
+  #modal-cap {
+    font-size: 1.25rem;
+    text-align: center;
+    max-width: 80%;
+    /* CRITICAL: Prevents text clicks from blocking the modal 'close' click */
+    pointer-events: none;
+  }
+
+  #close-btn {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    background: white;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 100;
+  }
+
+  /* 3. AUTHOR CARD */
+  .author-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 3rem;
+    padding: 1.25rem 1.5rem;
+
+    background: var(--sl-color-surface-2);
+    border: 1px solid var(--sl-color-hairline);
+    border-radius: 12px;
+
+    transition: all 0.2s ease;
+    text-decoration: none;
+  }
+
+  .author-card:hover {
+    border-color: var(--sl-color-accent);
+    background: var(--sl-color-surface-3);
+  }
+
+  .author-avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+
+  .author-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .author-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--sl-color-text-muted);
+  }
+
+  .author-name {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--sl-color-text);
+  }
+
+  .publish-date {
+    font-size: 0.85rem;
+    color: var(--sl-color-text-muted);
+  }
+
+  /* Custom Scrollbar */
+  .simple-gallery::-webkit-scrollbar {
+    height: 6px;
+  }
+  .simple-gallery::-webkit-scrollbar-thumb {
+    background: #444;
+    border-radius: 10px;
+  }
+</style>
