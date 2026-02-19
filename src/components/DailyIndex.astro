@@ -1,0 +1,265 @@
+---
+import { Icon } from "@astrojs/starlight/components";
+import { getCollection } from "astro:content";
+
+const allDailies = await getCollection("docs", ({ id }) => {
+  return id.startsWith("daily-drops/");
+});
+
+const sortedDailies = allDailies
+  .filter((entry) => entry.data.date)
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+const formatDate = (date) => {
+  const d = new Date(date);
+  return {
+    day: d.getDate().toString().padStart(2, "0"),
+    weekday: d.toLocaleDateString("en-US", { weekday: "short" }).toUpperCase(),
+    monthYear: d.toLocaleDateString("en-US", {
+      month: "long",
+      year: "numeric",
+    }),
+    filterKey: d.getFullYear() + "-" + d.getMonth(),
+  };
+};
+---
+
+<div class="month-nav">
+  <button id="prevMonth" class="nav-arrow" type="button">
+    <span><Icon name="left-arrow" /></span>
+  </button>
+  <h2 id="monthDisplay" class="month-title">Daily Drops</h2>
+  <button id="nextMonth" class="nav-arrow" type="button">
+    <span><Icon name="right-arrow" /></span>
+  </button>
+</div>
+
+<div class="daily-container">
+  {
+    sortedDailies.map((entry) => {
+      const dateInfo = formatDate(entry.data.date);
+      const isEven = parseInt(dateInfo.day) % 2 === 0;
+
+      const rowClass = "daily-row filterable-row";
+      const dotClass = isEven ? "dot green" : "dot red";
+      const cardClass = isEven ? "story-card green" : "story-card red";
+      const itemHref = "/" + entry.id;
+
+      return (
+        <div
+          class={rowClass}
+          data-month={dateInfo.filterKey}
+          data-label={dateInfo.monthYear}
+        >
+          <div class="date-side">
+            <div class={dotClass} />
+            <div class="date-label">
+              <span class="day-num">{dateInfo.day}</span>
+              <span class="day-name">{dateInfo.weekday}</span>
+            </div>
+          </div>
+
+          <a href={itemHref} class={cardClass}>
+            <div class="card-header">
+              <h3 class="title">{entry.data.title}</h3>
+              <span class="icon">📖</span>
+            </div>
+            <div class="tags">
+              {entry.data.tags?.map((tag) => (
+                <span class="tag">#{tag}</span>
+              ))}
+            </div>
+          </a>
+        </div>
+      );
+    })
+  }
+</div>
+
+<script>
+  const rows = document.querySelectorAll(".filterable-row");
+  const monthDisplay = document.getElementById("monthDisplay");
+  const prevBtn = document.getElementById("prevMonth");
+  const nextBtn = document.getElementById("nextMonth");
+
+  // Get unique months from the data attributes
+  const availableMonths = [
+    ...new Set(Array.from(rows).map((r) => r.getAttribute("data-month"))),
+  ]
+    .sort()
+    .reverse();
+
+  let currentIndex = 0;
+
+  function updateFilter() {
+    const currentKey = availableMonths[currentIndex];
+    let displayLabel = "";
+
+    rows.forEach((row) => {
+      if (row.getAttribute("data-month") === currentKey) {
+        (row as HTMLElement).style.display = "flex";
+        displayLabel = row.getAttribute("data-label") || "";
+      } else {
+        (row as HTMLElement).style.display = "none";
+      }
+    });
+
+    if (monthDisplay) monthDisplay.textContent = displayLabel;
+    if (prevBtn)
+      (prevBtn as HTMLElement).style.opacity =
+        currentIndex === availableMonths.length - 1 ? "0.2" : "1";
+    if (nextBtn)
+      (nextBtn as HTMLElement).style.opacity = currentIndex === 0 ? "0.2" : "1";
+  }
+
+  prevBtn?.addEventListener("click", () => {
+    if (currentIndex < availableMonths.length - 1) {
+      currentIndex++;
+      updateFilter();
+    }
+  });
+
+  nextBtn?.addEventListener("click", () => {
+    if (currentIndex > 0) {
+      currentIndex--;
+      updateFilter();
+    }
+  });
+
+  if (availableMonths.length > 0) updateFilter();
+</script>
+
+<style>
+  /* Filter Styles */
+  .month-nav {
+    display: flex;
+    justify-content: start;
+    align-items: center; /* Ensures everything is on the same baseline  */
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .month-title {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: var(--sl-color-white);
+    margin: 0 !important; /* Preserves your specific spacing  */
+    min-width: 200px;
+    text-align: center;
+    line-height: 1; /* Forces the text box to match the font height */
+  }
+
+  .nav-arrow {
+    background: var(--sl-color-gray-6);
+    border: 1px solid var(--sl-color-gray-5);
+    color: var(--sl-color-white);
+    border-radius: 10px;
+    width: 42px;
+    height: 42px;
+    cursor: pointer;
+    margin-top: 0px;
+
+    /* Perfect Centering Logic */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    line-height: 0;
+    transition: all 0.2s;
+  }
+
+  .nav-arrow:hover {
+    background: var(--sl-color-gray-5);
+    border-color: var(--sl-color-accent);
+  }
+
+  .daily-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  .daily-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .date-side {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-width: 70px;
+  }
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+  .date-label {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+  .day-num {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--sl-color-white);
+    line-height: 1;
+  }
+  .day-name {
+    font-size: 0.7rem;
+    color: var(--sl-color-gray-3);
+    font-weight: bold;
+  }
+  .story-card {
+    flex: 1;
+    padding: 1rem;
+    border-radius: 1rem;
+    color: white;
+    text-decoration: none;
+    transition: transform 0.2s;
+    box-shadow: var(--sl-shadow-sm);
+  }
+  .story-card:hover {
+    transform: scale(1.02);
+  }
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .title {
+    margin: 0 !important;
+    font-size: 1.1rem;
+    color: white !important;
+  }
+  .tags {
+    margin-top: 0.5rem;
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+  .tag {
+    font-size: 0.65rem;
+    opacity: 0.8;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  .red {
+    background-color: #ff5a5f;
+  }
+  .green {
+    background-color: #90e0c0;
+    color: #1e3a2f;
+  }
+  .green .title,
+  .green .tag {
+    color: #1e3a2f !important;
+  }
+  .dot.red {
+    background-color: #ff5a5f;
+  }
+  .dot.green {
+    background-color: #90e0c0;
+  }
+</style>
