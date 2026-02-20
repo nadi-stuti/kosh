@@ -37,7 +37,7 @@ const { story, gallery, social, date, author, profileUrl } = Astro.props;
 {
   social && (
     <div style="margin-top: 2rem;">
-      <h3 style="color: white; margin-bottom: 1rem;">📺 Watch the Story</h3>
+      <h3 style="margin-bottom: 1rem;">📺 Watch the Story</h3>
       <CardGrid>
         {social.watch.map((s) => (
           <Card title={s.platform} icon={s.icon}>
@@ -58,7 +58,7 @@ const { story, gallery, social, date, author, profileUrl } = Astro.props;
 {
   social && (
     <div style="margin-top: 3rem;">
-      <h3 style="color: white; margin-bottom: 1rem;">📖 Read the Story</h3>
+      <h3 style="margin-bottom: 1rem;">📖 Read the Story</h3>
       <CardGrid>
         {social.read.map((s) => (
           <Card title={s.platform} icon={s.icon}>
