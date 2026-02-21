@@ -131,7 +131,7 @@ If needed, we can ask NotebookLM (still grounded in the same Final Article) to h
 ## Summary of Principles
 
 - **Narrow topics first:** Breaking a big river into many small, focused themes gives us better control and reduces AI drift.
-- **Humans choose sources:** We never outsource the canon; AI operates inside a human‑curated document set. [web:72][web:78]
+- **Humans choose sources:** We never outsource the canon; AI operates inside a human‑curated document set.
 - **AI drafts, humans decide:** NotebookLM accelerates reading and drafting, but every final article and script is checked and owned by us.
 - **AI video as reference, not product:** We use NotebookLM videos as internal inspiration, while real publishing happens through our own editing pipeline.
 - **One consistent voice:** Narration and final edit are controlled by Nadi Stuti, so the content feels authentic, not generic AI output.
