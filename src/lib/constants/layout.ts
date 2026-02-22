@@ -72,6 +72,14 @@ export const SidebarFolders = [
     },
   },
   {
+    label: "Daily Drops",
+    collapsed: true,
+    autogenerate: {
+      directory: "daily-drops",
+      collapsed: true,
+    },
+  },
+  {
     label: "Thinking Grounds",
     collapsed: true,
     autogenerate: {

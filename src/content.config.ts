@@ -25,6 +25,8 @@ export const collections = {
               })
               .optional()
               .nullable(),
+            date: z.coerce.date().optional(),
+            tags: z.array(z.string()).optional(),
           }),
         ),
     }),
