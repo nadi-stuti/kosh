@@ -1,0 +1,99 @@
+---
+import { blogAuthors } from "../../lib/constants/authors";
+
+const { entry } = Astro.locals.starlightRoute;
+const { authors, date } = entry.data;
+
+// Helper to get full details for a single ID or Object
+const resolve = (item: any) => {
+  if (typeof item === "string") {
+    // Lookup from our constant file
+    return (
+      blogAuthors[item as keyof typeof blogAuthors] || {
+        name: item,
+        url: "#",
+        picture: " https://api.dicebear.com/9.x/thumbs/svg?seed=${author.name}",
+      }
+    );
+  }
+  return item; // It's an inline object from frontmatter
+};
+
+const resolvedAuthors = Array.isArray(authors)
+  ? authors.map(resolve)
+  : [resolve(authors)].filter(Boolean);
+
+const formattedDate = date?.toLocaleDateString("en-GB").replace(/\//g, "-");
+---
+
+<div class="authors-grid">
+  {
+    resolvedAuthors.map((author) => (
+      <a href={author.url} class="author-card" target="_blank">
+        <img src={author.picture} alt={author.name} class="author-avatar" />
+        <div class="author-meta">
+          <span class="author-label">Written by</span>
+          <span class="author-name">{author.name}</span>
+          {author.title && <span class="author-title">{author.title}</span>}
+          {formattedDate && <span class="publish-date">{formattedDate}</span>}
+        </div>
+      </a>
+    ))
+  }
+</div>
+
+<style>
+  .authors-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 3rem;
+  }
+  .author-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem;
+    background: var(--sl-color-surface-2);
+    border: 1px solid var(--sl-color-hairline);
+    border-radius: 1rem;
+    text-decoration: none !important;
+    color: inherit;
+    transition: all 0.2s ease;
+  }
+  .author-card:hover {
+    border-color: var(--sl-color-accent);
+    transform: translateY(-3px);
+  }
+  .author-avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: 2px solid var(--sl-color-bg);
+  }
+  .author-meta {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+  }
+  .author-label {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    color: var(--sl-color-text-muted);
+    font-weight: 700;
+  }
+  .author-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--sl-color-white);
+  }
+  .author-title {
+    font-size: 0.85rem;
+    color: var(--sl-color-accent-high);
+  }
+  .publish-date {
+    font-size: 0.8rem;
+    color: var(--sl-color-text-muted);
+    margin-top: 0.25rem;
+  }
+</style>

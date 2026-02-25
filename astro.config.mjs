@@ -8,6 +8,7 @@ import starlightGiscus from "starlight-giscus";
 import starlightSidebarTopics from "starlight-sidebar-topics";
 import starlightImageZoom from "starlight-image-zoom";
 import starlightTags from "starlight-tags";
+import { blogAuthors } from "./src/lib/constants/authors";
 
 // https://astro.build/config
 export default defineConfig({
@@ -27,15 +28,7 @@ export default defineConfig({
             readingTime: true,
             words: "rounded",
           },
-          authors: {
-            nulligma: {
-              name: "Shantanu Kulkarni",
-              title: "Nadi Sevak",
-              picture:
-                "https://pbs.twimg.com/profile_images/722045969936703488/bLHK_LbW_400x400.jpg",
-              url: "https://x.com/Nulligma/",
-            },
-          },
+          authors: blogAuthors,
         }),
         starlightGiscus({
           repo: "nadi-stuti/kosh",
@@ -82,7 +75,7 @@ export default defineConfig({
             },
             {
               label: "Daily Drops",
-              link: "/daily-drops/about",
+              link: "/daily-drops/",
               icon: "seti:elixir",
               items: [
                 {

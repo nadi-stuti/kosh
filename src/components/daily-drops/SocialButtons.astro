@@ -1,104 +1,140 @@
 ---
-// src/components/SocialBanner.astro
 import { Icon } from "@astrojs/starlight/components";
-
 const { entry } = Astro.locals.starlightRoute;
-const { social } = entry.data;
+const social_read = entry.data.social_read || [];
+const social_watch = entry.data.social_watch || [];
+const social_connect = entry.data.social_connect || [];
+const hasSocial =
+  social_read.length > 0 ||
+  social_watch.length > 0 ||
+  social_connect.length > 0;
 
-const hasSocial = social && typeof social === "object";
+const STARLIGHT_ICONS = [
+  "star",
+  "heart",
+  "rocket",
+  "book",
+  "book-open",
+  "video",
+  "link",
+  "share",
+  "external",
+  "comment",
+  "chat",
+  "discord",
+  "youtube",
+  "github",
+  "twitter",
+  "x.com",
+  "facebook",
+  "instagram",
+  "reddit",
+  "linkedin",
+] as const;
+type StarlightIcon = (typeof STARLIGHT_ICONS)[number];
 
-import WhatsappIcon from "../../assets/icons/whatsapp-svgrepo-com.svg";
-import Sharechat from "../../assets/icons/toppng.com-sharechat-logo-only-316x316.png";
-import { Image } from "astro:assets";
+const getPlatformIcon = (url: string): StarlightIcon => {
+  try {
+    const hostname = new URL(url).hostname.replace("www.", "").toLowerCase();
+    const iconMap: Record<string, StarlightIcon> = {
+      "x.com": "x.com",
+      "twitter.com": "twitter",
+      "reddit.com": "reddit", // Consider using "external-link" if share looks off
+      "youtube.com": "youtube",
+      "instagram.com": "instagram",
+      "whatsapp.com": "comment",
+      "discord.com": "discord",
+      "facebook.com": "facebook",
+      "linkedin.com": "linkedin",
+      "github.com": "github",
+    };
+    return iconMap[hostname] || "external";
+  } catch {
+    return "external";
+  }
+};
+
+const getPlatformLabel = (url: string): string => {
+  try {
+    const hostname = new URL(url).hostname.replace("www.", "");
+    return (
+      hostname.charAt(0).toUpperCase() + hostname.slice(1).replace(/\..*/, "")
+    );
+  } catch {
+    return "Link";
+  }
+};
 ---
 
 {
   hasSocial && (
-    <div class="social-container not-content">
-      {/* First Row: Social Links */}
-      <div class="banner-row">
-        <p>Read this post on:</p>
-        <div class="icon-group">
-          {social.x && (
-            <a href={social.x} aria-label="X">
-              <Icon name="x.com" size="2.5rem" />
-            </a>
-          )}
-          {social.instagram && (
-            <a href={social.instagram} aria-label="Instagram">
-              <Icon name="instagram" size="2.5rem" />
-            </a>
-          )}
-          {social.facebook && (
-            <a href={social.facebook} aria-label="facebook">
-              <Icon name="facebook" size="2.5rem" />
-            </a>
-          )}
-          {social.reddit && (
-            <a href={social.reddit} aria-label="reddit">
-              <Icon name="reddit" size="2.5rem" />
-            </a>
-          )}
+    <div class="social-hub">
+      {social_read.length > 0 && (
+        <div class="social-category">
+          <h3 class="category-title">📖 Read the Story</h3>
+          <div class="button-grid">
+            {social_read.map((url) => (
+              <a
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="platform-btn"
+                aria-label={`Read on ${getPlatformLabel(url)}`}
+              >
+                <div class="btn-icon">
+                  <Icon name={getPlatformIcon(url)} size="1.5rem" />
+                </div>
+                <span class="btn-text">{getPlatformLabel(url)}</span>
+                <span class="btn-action">Read More</span>
+              </a>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
 
-      {/* Divider Line */}
-      {(social.youtube || social.reel) && <div class="divider" />}
-
-      {/* Second Row: YouTube (Using same row class for identical styling) */}
-      {
-        <div class="banner-row">
-          <p>
-            Watch this on{" "}
-            {social.youtube && (
-              <a href={social.youtube} target="_blank">
-                YouTube
-                <div class="icon-group">
-                  <Icon name="youtube" size="2.5rem" />
+      {social_watch.length > 0 && (
+        <div class="social-category">
+          <h3 class="category-title">🎥 Watch the Story</h3>
+          <div class="button-grid">
+            {social_watch.map((url) => (
+              <a
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="platform-btn"
+                aria-label={`Watch on ${getPlatformLabel(url)}`}
+              >
+                <div class="btn-icon">
+                  <Icon name={getPlatformIcon(url)} size="1.5rem" />
                 </div>
+                <span class="btn-text">{getPlatformLabel(url)}</span>
+                <span class="btn-action">Watch Now</span>
               </a>
-            )}
-          </p>
-          <p>
-            {social.reel && (
-              <a href={social.reel} target="_blank">
-                Instagram reel
-                <div class="icon-group">
-                  <Icon name="instagram" size="2.5rem" />
-                </div>
-              </a>
-            )}
-          </p>
-          <p>
-            {social.sharechat && (
-              <a href={social.sharechat} aria-label="sharechat">
-                Sharechat
-                <div class="icon-group">
-                  <Image
-                    src={Sharechat}
-                    alt="Sharechat Logo"
-                    width={50}
-                    height={50}
-                  />
-                </div>
-              </a>
-            )}
-          </p>
+            ))}
+          </div>
         </div>
-      }
-      {/* Divider Line */}
-      {social.whatsapp && <div class="divider" />}
+      )}
 
-      {social.whatsapp && (
-        <div class="banner-row">
-          <p>
-            Join our whatsapp group and discuss on this{" "}
-            <a href={`https://youtube.com/${social.youtube}`} target="_blank">
-              <div class="icon-group">
-                <WhatsappIcon class="social-svg" />
-              </div>
-            </a>
-          </p>
+      {social_connect.length > 0 && (
+        <div class="social-category">
+          <h3 class="category-title">🔗 Connect</h3>
+          <div class="button-grid">
+            {social_connect.map((url) => (
+              <a
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="platform-btn"
+                aria-label={`Connect on ${getPlatformLabel(url)}`}
+              >
+                <div class="btn-icon">
+                  <Icon name={getPlatformIcon(url)} size="1.5rem" />
+                </div>
+                <span class="btn-text">{getPlatformLabel(url)}</span>
+                <span class="btn-action">Join</span>
+              </a>
+            ))}
+          </div>
         </div>
       )}
     </div>
@@ -106,62 +142,112 @@ import { Image } from "astro:assets";
 }
 
 <style>
-  .social-container {
-    display: flex;
-    flex-direction: column;
-    background-color: var(--sl-color-gray-6);
-    border: 1px solid var(--sl-color-gray-5);
-    border-radius: 0.5rem;
+  .social-hub {
+    margin: 2.5rem 0;
   }
 
-  .banner-row {
+  .social-category {
+    margin-bottom: 2rem;
+  }
+
+  .category-title {
+    font-size: var(--sl-text-lg);
+    font-weight: 700;
+    color: var(--sl-color-text-high);
+    margin: 0 0 1.25rem 0;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--sl-color-gray-5);
+  }
+
+  .button-grid {
+    display: grid;
+    /* Changed to auto-fill to prevent stretching */
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1rem;
+    /* Prevents the grid from being too wide on ultra-wide monitors */
+    max-width: 100%;
+  }
+
+  .platform-btn {
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    padding: 0.6rem 1rem; /* Consistent padding for both rows */
+    padding: 0.75rem 1rem;
+    /* Use Starlight variables for proper Light/Dark support */
+    background: var(--sl-color-gray-6);
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 0.5rem;
+    text-decoration: none;
+    color: var(--sl-color-text-high);
+    transition:
+      transform 0.2s ease,
+      border-color 0.2s ease;
+  }
+  /* Specific fix for desktop: ensure buttons don't grow infinitely */
+  @media (min-width: 768px) {
+    .platform-btn {
+      max-width: 350px;
+    }
   }
 
-  .divider {
-    height: 1px;
-    background-color: var(--sl-color-gray-4);
-    margin: 0 1rem;
+  /* Hover States */
+  .platform-btn:hover {
+    transform: translateY(-2px);
+    border-color: var(--sl-color-accent);
+    background: var(--sl-color-accent-low);
+    text-decoration: none;
   }
 
-  .icon-group {
+  /* Dark Mode Overrides (Respects Starlight Toggle) */
+  :global([data-theme="dark"]) .platform-btn {
+    background-color: var(--sl-color-gray-6);
+    border-color: var(--sl-color-gray-5);
+  }
+
+  :global([data-theme="dark"]) .platform-btn:hover {
+    background-color: var(--sl-color-accent-low);
+    border-color: var(--sl-color-accent-high);
+  }
+
+  .btn-icon {
     display: flex;
-    gap: 0.6rem;
     align-items: center;
+    color: var(--sl-color-accent);
   }
 
-  /* Matching the Gold/Yellow icons from your image */
-  .icon-group a {
-    color: #b38b1d;
-    display: flex;
-    align-items: center;
-  }
-
-  .social-svg {
-    width: 2.5rem;
-    height: 2.5rem;
-    stroke: #e3b341;
-    fill: #e3b341;
-  }
-
-  p {
-    margin: 0 !important;
-    font-size: var(--sl-text-sm);
-    color: var(--sl-color-gray-2);
-    font-weight: 500;
-  }
-
-  a {
-    color: var(--sl-color-text-accent-high);
-    text-decoration: underline;
-    text-underline-offset: 3px;
+  .btn-text {
+    flex: 1;
     font-weight: 600;
+    font-size: var(--sl-text-sm);
+    /* Prevent text from wrapping awkwardly */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
-  a:hover {
-    color: var(--sl-color-text-accent);
+  .btn-action {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--sl-color-accent);
+    background: var(--sl-color-accent-low);
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    border: 1px solid var(--sl-color-accent);
+  }
+
+  .platform-btn:hover .btn-action {
+    opacity: 1;
+  }
+
+  @media (max-width: 500px) {
+    .button-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  :global([data-theme="dark"]) .platform-btn {
+    background: var(--sl-color-gray-6);
+    border-color: var(--sl-color-gray-5);
   }
 </style>

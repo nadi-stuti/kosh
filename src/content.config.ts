@@ -11,22 +11,9 @@ export const collections = {
         blogSchema(context).merge(
           z.object({
             giscus: z.boolean().optional().default(true),
-            social: z
-              .object({
-                whatsapp: z.string().optional(),
-                x: z.string().optional(),
-                facebook: z.string().optional(),
-                instagram: z.string().optional(),
-                youtube: z.string().optional(),
-                sharechat: z.string().optional(),
-                github: z.string().optional(),
-                reddit: z.string().optional(),
-                reel: z.string().optional(),
-              })
-              .optional()
-              .nullable(),
-            date: z.coerce.date().optional(),
-            tags: z.array(z.string()).optional(),
+            social_read: z.array(z.string()).optional().nullable(),
+            social_watch: z.array(z.string()).optional().nullable(),
+            social_connect: z.array(z.string()).optional().nullable(),
           }),
         ),
     }),
