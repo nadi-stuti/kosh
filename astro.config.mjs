@@ -10,14 +10,16 @@ import starlightImageZoom from "starlight-image-zoom";
 import starlightTags from "starlight-tags";
 import { blogAuthors } from "./src/lib/constants/authors";
 
+import react from "@astrojs/react";
+
 // https://astro.build/config
 export default defineConfig({
   integrations: [
     starlight({
       components: {
         // Override the default `MarkdownContent` component.
-        Sidebar: "./src/components/Sidebar.astro",
-        MarkdownContent: "./src/components/MarkdownContent.astro",
+        Sidebar: "./src/components/override/Sidebar.astro",
+        MarkdownContent: "./src/components/override/MarkdownContent.astro",
       },
       customCss: ["./src/styles/custom.css"],
       plugins: [
@@ -54,7 +56,7 @@ export default defineConfig({
               items: ["guides/github", "guides/developer-guide"],
             },
             {
-              label: "Join the effort",
+              label: "Get Involved",
               link: "/papers/about",
               icon: "seti:bicep",
               items: ["papers/about"],
@@ -140,5 +142,6 @@ export default defineConfig({
         },
       ],
     }),
+    react(),
   ],
 });
