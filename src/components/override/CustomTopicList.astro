@@ -28,18 +28,18 @@ const { topics } = Astro.locals.starlightSidebarTopics;
   }
 
   /* 2. Dark Mode (Specific to Starlight/Astro logic) */
-  :global([data-theme='dark']) {
+  :global([data-theme="dark"]) {
     --drop-color: lightblue;
   }
 
   :root {
     /* Deep Crimson: Better contrast against light backgrounds (Starlight White) */
-    --heart-red: #D32F2F; 
+    --heart-red: #d32f2f;
   }
 
-  :global([data-theme='dark']) {
+  :global([data-theme="dark"]) {
     /* Soft Coral Red: Prevents "vibrating" on dark backgrounds and reduces eye strain */
-    --heart-red: #FF5252; 
+    --heart-red: #ff5252;
   }
 
   .topic-nav {
@@ -125,7 +125,8 @@ const { topics } = Astro.locals.starlightSidebarTopics;
     35%,
     100% {
       background-color: var(--sl-color-accent);
-      box-shadow: 0 0 20px 10px color-mix(in srgb, var(--sl-color-accent), transparent 40%); Glow */
+      box-shadow: 0 0 20px 10px
+        color-mix(in srgb, var(--sl-color-accent), transparent 40%);
       color: var(--sl-color-text-invert);
       opacity: 1;
     }
@@ -163,11 +164,25 @@ const { topics } = Astro.locals.starlightSidebarTopics;
   }
 
   @keyframes heartPulse {
-    0%, 100% { transform: scale(1); color: var(--drop-color); }
-    14% { transform: scale(1.2); color: var(--heart-red); }
-    28% { transform: scale(1); }
-    42% { transform: scale(1.35); color: var(--heart-red); }
-    70% { transform: scale(1); }
+    0%,
+    100% {
+      transform: scale(1);
+      color: var(--drop-color);
+    }
+    14% {
+      transform: scale(1.2);
+      color: var(--heart-red);
+    }
+    28% {
+      transform: scale(1);
+    }
+    42% {
+      transform: scale(1.35);
+      color: var(--heart-red);
+    }
+    70% {
+      transform: scale(1);
+    }
   }
 
   .topic-item:hover .icon-heart svg {
@@ -182,7 +197,7 @@ const { topics } = Astro.locals.starlightSidebarTopics;
     0%,
     100% {
       transform: translateY(0);
-       color: var(--drop-color); 
+      color: var(--drop-color);
     }
     50% {
       transform: translateY(7px);
