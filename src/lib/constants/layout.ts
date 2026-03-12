@@ -106,19 +106,19 @@ export const SidebarTopics = [
   },
   {
     label: "Get Involved",
-    link: "/papers/about",
+    link: "/get-involved/about",
     icon: "seti:bicep",
-    items: ["papers/about"],
+    items: ["get-involved/about"],
   },
   {
     label: "Our Rivers",
-    link: "/rivers/about",
+    link: "/rivers",
     icon: "heart",
     items: [
       {
-        label: "Guides",
+        label: "Our Rivers",
         autogenerate: {
-          directory: "/rivers",
+          directory: "/our-rivers",
           collapsed: true,
         },
       },
@@ -126,13 +126,13 @@ export const SidebarTopics = [
   },
   {
     label: "Data & Research",
-    link: "/daily-drops/",
+    link: "/data-research",
     icon: "seti:notebook",
     items: [
       {
-        label: "Daily Drops",
+        label: "Data & Research",
         autogenerate: {
-          directory: "/daily-drops",
+          directory: "/data-research",
           collapsed: true,
         },
       },
@@ -140,13 +140,13 @@ export const SidebarTopics = [
   },
   {
     label: "Itihaas",
-    link: "/daily-drops/",
+    link: "/itihaas/",
     icon: "seti:info",
     items: [
       {
-        label: "Daily Drops",
+        label: "Itihaas",
         autogenerate: {
-          directory: "/daily-drops",
+          directory: "/itihaas/",
           collapsed: true,
         },
       },

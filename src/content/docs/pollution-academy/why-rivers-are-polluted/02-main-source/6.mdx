@@ -1,0 +1,90 @@
+---
+title: "Sewage: What Really Happens After We Flush?"
+description: "We press a button and our waste vanishes. But where does it go? Uncover the dark, subterranean journey of domestic sewage and why it is the greatest enemy of our rivers."
+---
+import { Aside, Steps } from '@astrojs/starlight/components';
+import { Image } from 'astro:assets';
+import img1 from './6-img1.jpeg';
+import BarChart from "@/components/infographic/BarChart.tsx";
+import barChartData from "@/data/article-6-sewage-gap.json";
+import ScenarioToggle from "@/components/interactive/ScenarioToggle.tsx";
+import scenarioData from "@/data/sewage-treatment-scenario-toggle.json";
+
+We live in an era of miraculous convenience. Every day, millions of times across a city, we press a silver button or pull a lever, and with a sudden rush of clean water, our waste simply vanishes. It swirls down a porcelain bowl and disappears into the dark. Out of sight, out of mind. 
+
+But the universe has a strict rule: nothing truly vanishes. The water we flush does not magically cease to exist. It merely begins a subterranean journey—one that, in many growing cities, ends directly in the heart of our most sacred and vital rivers.
+
+To understand why our rivers are suffocating, we have to look away from the factories and the floating plastic for a moment. We need to look in the mirror. Domestic sewage—the wastewater from our toilets, showers, washing machines, and kitchen sinks—is the single largest source of river pollution in South Asia. 
+
+<Image src={img1} width={1376} alt="A cross-section illustration showing the underground journey of wastewater from a residential toilet directly into a river system." />
+
+## The Labyrinth Beneath Our Streets
+
+When you flush, the wastewater embarks on a rapid journey through a complex, hidden anatomy of urban plumbing. In an ideal world, this journey ends at a state-of-the-art Sewage Treatment Plant (STP). But in reality, the path is often much more direct—and damaging.
+
+<Steps>
+1. **The Building Drain:** Water leaves your home, cascading down vertical pipes inside your apartment building or house, mixing with soapy water from the showers and grease from the kitchen.
+2. **The Street Sewer:** The pipes connect to a larger municipal sewer line running beneath your street. Here, the waste from thousands of homes merges into a thick, slow-moving underground river.
+3. **The Nalla (Open Drain):** In many cities, underground sewers eventually surface into open concrete nallas. Originally, these were natural rainwater streams. Today, they are often heavily engineered, foul-smelling channels of raw, untreated sewage.
+4. **The River Collision:** The nalla empties directly into the main river, unleashing a massive volume of organic waste, chemicals, and bacteria into the natural ecosystem.
+</Steps>
+
+## A Cocktail of Modern Life
+
+It is a common misconception that sewage is merely biological human waste. If that were true, the river might be able to digest it more easily. But modern sewage is a complex, synthetic cocktail. 
+
+When we wash our clothes, we send microplastics from synthetic fabrics and harsh chemical detergents down the drain. When we shower, we wash off parabens and sulfates. When we clean our toilets, we flush highly toxic bleach and acids. 
+
+<Aside type="danger" title="The Invisible Pharmacy">
+**Pharmaceuticals in the Water:** One of the most dangerous hidden elements in modern sewage is unmetabolized medicine. Painkillers, antibiotics, and hormones pass through our bodies and enter the nallas. These drugs cause severe hormonal disruptions in aquatic life and contribute to the rise of antibiotic-resistant "superbugs" in our rivers.
+</Aside>
+
+## The Oxygen Thieves
+
+Why exactly does raw sewage kill a river? It comes down to a biological war for oxygen. 
+
+When raw organic waste enters the river, it acts like an all-you-can-eat buffet for naturally occurring bacteria. These bacteria multiply explosively to feast on the sewage. But to digest the waste, the bacteria must breathe. They pull massive amounts of Dissolved Oxygen (DO) out of the water. 
+
+This process is measured by scientists as **Biochemical Oxygen Demand (BOD)**. When sewage levels are high, the BOD skyrockets. The bacteria consume oxygen faster than the river can replenish it from the air. The water turns hypoxic (low oxygen) or anoxic (zero oxygen). 
+
+Fish cannot survive. Aquatic plants rot. The river loses its natural, earthy scent and begins to emit the rotten-egg stench of hydrogen sulfide. The river doesn't just look dirty; it is literally suffocating.
+
+<ScenarioToggle
+  client:visible
+  scenarios={scenarioData.scenarios}
+  title={scenarioData.title}
+  caption={scenarioData.caption}
+/>
+
+## The Great Capacity Gap
+
+If the solution is simply to treat the sewage, why are we failing? The answer is a matter of mathematics and explosive urban growth. 
+
+Cities in India and across the developing world are expanding at an unprecedented rate. Millions of people migrate to urban centers, building new homes and generating millions of liters of new wastewater every single day. 
+
+Building a Sewage Treatment Plant takes years of planning, massive funding, and vast tracts of land. Laying underground sewer pipelines requires tearing up congested city streets. As a result, our cities generate sewage much faster than we can build the infrastructure to clean it. 
+
+
+<BarChart
+  client:visible
+  data={barChartData.items}
+  title={barChartData.title}
+  caption={barChartData.caption}
+  colors={barChartData.colors}
+  yAxisLabel={barChartData.yAxisLabel} 
+  xAxisLabel={barChartData.xAxisLabel}
+/>
+
+## Reclaiming the Flush
+
+The reality of our plumbing is grim, but it is not a lost cause. The gap between generation and treatment is the exact battlefield where the war for our rivers will be won. 
+
+By decentralizing treatment—building smaller, neighborhood-level plants instead of waiting for massive, city-wide megaprojects—communities can stop sewage from ever reaching the main nallas. By reducing our water usage at home, we reduce the sheer volume of water pushing through the system, giving treatment plants a chance to catch up.
+
+The next time you press that silver button, remember: the journey is just beginning. What we flush today becomes the river of tomorrow.
+
+***
+
+🔗 **This builds on concepts from:** *Why Our Rivers Are Polluted? - Article 5: Different Kinds of River Pollution.*
+🔗 **Coming next in the series:** *Article 7: Garbage, Plastics, and Offerings: The Trash We Can See*, where we shift our focus from the pipes below the street to the banks of the river itself.
+🔗 **Read more in the Ongoing Efforts in River Cleaning series:** *Article 4: Decentralized STPs*, to learn how innovative small-scale treatment plants are solving the capacity gap in crowded neighborhoods.
