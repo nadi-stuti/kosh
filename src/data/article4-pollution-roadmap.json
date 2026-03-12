@@ -1,0 +1,91 @@
+{
+    "title": "How Rivers Become Polluted: A Learning Roadmap",
+    "subtitle": "We will explore the different ways human activity affects river systems, step by step.",
+    "items": [
+        {
+            "id": "pollution-sources",
+            "category": "Article 4",
+            "title": "Where Does River Pollution Come From?",
+            "description": "Understand the major sources of river pollution including sewage, industrial waste, and agricultural runoff.",
+            "meta": "Articles 4–5 · 2 articles",
+            "topics": [
+                {
+                    "label": "Sewage and untreated wastewater",
+                    "link": "/articles/4-sewage-pollution"
+                },
+                {
+                    "label": "Industrial chemicals entering rivers",
+                    "link": "/articles/5-industrial-pollution"
+                }
+            ]
+        },
+        {
+            "id": "pollution-pathways",
+            "category": "Article 6",
+            "title": "How Pollution Travels Through Rivers",
+            "description": "Pollution rarely stays in one place. Discover how contaminants move through river currents, groundwater, and connected ecosystems.",
+            "meta": "Articles 6–7 · 2 articles",
+            "topics": [
+                {
+                    "label": "Pollution spreading downstream",
+                    "link": "/articles/6-pollution-flow"
+                },
+                {
+                    "label": "Groundwater connections",
+                    "link": "/articles/7-groundwater-links"
+                }
+            ]
+        },
+        {
+            "id": "ecosystem-impact",
+            "category": "Article 8",
+            "title": "How Pollution Disrupts River Ecosystems",
+            "description": "Learn how pollution affects fish, plants, microbes, and the delicate balance that keeps rivers healthy.",
+            "meta": "Articles 8–9 · 2 articles",
+            "topics": [
+                {
+                    "label": "Loss of aquatic biodiversity",
+                    "link": "/articles/8-biodiversity-loss"
+                },
+                {
+                    "label": "Oxygen depletion and dead zones",
+                    "link": "/articles/9-oxygen-loss"
+                }
+            ]
+        },
+        {
+            "id": "human-impact",
+            "category": "Article 10",
+            "title": "Why River Pollution Affects People",
+            "description": "River pollution impacts drinking water, agriculture, livelihoods, and public health.",
+            "meta": "Articles 10–11 · 2 articles",
+            "topics": [
+                {
+                    "label": "Drinking water safety",
+                    "link": "/articles/10-drinking-water"
+                },
+                {
+                    "label": "Economic and community effects",
+                    "link": "/articles/11-community-impact"
+                }
+            ]
+        },
+        {
+            "id": "solutions",
+            "category": "Article 12",
+            "title": "What Can Be Done to Restore Rivers",
+            "description": "Explore the technologies, policies, and community efforts that can help reduce pollution and revive river ecosystems.",
+            "meta": "Articles 12–13 · 2 articles",
+            "topics": [
+                {
+                    "label": "Wastewater treatment and infrastructure",
+                    "link": "/articles/12-wastewater-treatment"
+                },
+                {
+                    "label": "Community-led river restoration",
+                    "link": "/articles/13-community-restoration"
+                }
+            ]
+        }
+    ]
+}

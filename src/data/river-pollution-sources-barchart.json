@@ -1,0 +1,22 @@
+{
+    "title": "Share of Pollution Load in a Major Urban River Basin",
+    "caption": "Generalized estimates reflecting typical urban river profiles in South Asia. Domestic sewage consistently accounts for the largest share, despite receiving less public attention than industrial waste or plastic debris.",
+    "items": [
+        {
+            "category": "Domestic Sewage",
+            "value": 62
+        },
+        {
+            "category": "Industrial Effluents",
+            "value": 20
+        },
+        {
+            "category": "Agricultural Runoff",
+            "value": 12
+        },
+        {
+            "category": "Solid Waste / Plastics",
+            "value": 6
+        }
+    ]
+}

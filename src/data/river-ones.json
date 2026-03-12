@@ -1,0 +1,64 @@
+{
+    "decor": {
+        "connectDots": true,
+        "backgroundImage": null,
+        "labels": [
+            {
+                "text": "⛰ Mountains",
+                "x": 32,
+                "y": 8.4
+            },
+            {
+                "text": "🌊 Sea",
+                "x": 80,
+                "y": 78.4
+            }
+        ]
+    },
+    "zones": [
+        {
+            "id": "source",
+            "label": "River Source",
+            "description": "High in mountains or forests, rivers begin as small streams from glaciers, springs, or rain. The water here is cold, clear, and oxygen-rich.",
+            "position": {
+                "x": 20,
+                "y": 15
+            },
+            "icon": "🏔️",
+            "color": "#7EC8E3"
+        },
+        {
+            "id": "tributaries",
+            "label": "Tributaries",
+            "description": "Smaller streams join the main river, adding water, nutrients, and sediment. The river grows wider and more powerful.",
+            "position": {
+                "x": 35,
+                "y": 35
+            },
+            "icon": "🌿",
+            "color": "#4EAAD1"
+        },
+        {
+            "id": "floodplains",
+            "label": "Floodplains",
+            "description": "The river slows down in flatter areas. It deposits sediment, recharges groundwater, and supports agriculture and settlements.",
+            "position": {
+                "x": 60,
+                "y": 55
+            },
+            "icon": "🌾",
+            "color": "#3A8F7F"
+        },
+        {
+            "id": "delta",
+            "label": "Delta / River Mouth",
+            "description": "The river reaches the sea and deposits sediment, forming a network of wetlands and islands. Deltas are often rich in biodiversity.",
+            "position": {
+                "x": 85,
+                "y": 70
+            },
+            "icon": "🌊",
+            "color": "#2E7D6B"
+        }
+    ]
+}

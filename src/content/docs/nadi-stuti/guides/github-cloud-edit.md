@@ -2,6 +2,7 @@
 title: Github Cloud Edit
 description: A guide on how to use github cloud tools like github web editor and github codespace and build and run code of this repository without a computer
 ---
+
 # 📝 Easy Guide: How to Edit Nadi Stuti Kosh Documentation
 
 Welcome! This guide will help you contribute to our documentation website, even if you've never coded before. You don't need to install any software on your computer — everything works directly in your web browser! 🎉
@@ -54,8 +55,7 @@ The Web Editor is perfect for writing documentation without using any Codespace 
 
 1. **Click this special link:** [https://github.dev/nadi-stuti/kosh](https://github.dev/nadi-stuti/kosh)
 
-*(This opens GitHub's web-based editor directly in your browser — no downloads needed!)*
-2. You'll see a screen that looks like a code editor. Don't worry, it's simpler than it looks! 😊
+_(This opens GitHub's web-based editor directly in your browser — no downloads needed!)_ 2. You'll see a screen that looks like a code editor. Don't worry, it's simpler than it looks! 😊
 
 ---
 
@@ -122,7 +122,7 @@ This is regular paragraph text. Just type normally!
 
 **This text is bold** (wrap text in double asterisks)
 
-*This text is italic* (wrap text in single asterisks)
+_This text is italic_ (wrap text in single asterisks)
 
 - This is a bullet point
 - Another bullet point
@@ -190,11 +190,7 @@ A "Pull Request" is how you ask others to review your changes before they go liv
 
 1. After pushing your changes, **a notification will appear** at the bottom-right with a button that says **"Create Pull Request"**. Click it!
 
-*(If you don't see it, go to [github.com/nadi-stuti/kosh/pulls](https://github.com/nadi-stuti/kosh/pulls) and click "New Pull Request")*
-2. **Add a title** describing your changes.
-3. **Add a description** if you want to explain what you did.
-4. **Click "Create Pull Request"**.
-5. Done! Someone will review your changes and merge them into the main website. 🎊
+_(If you don't see it, go to [github.com/nadi-stuti/kosh/pulls](https://github.com/nadi-stuti/kosh/pulls) and click "New Pull Request")_ 2. **Add a title** describing your changes. 3. **Add a description** if you want to explain what you did. 4. **Click "Create Pull Request"**. 5. Done! Someone will review your changes and merge them into the main website. 🎊
 
 ---
 
@@ -237,9 +233,9 @@ When you use Codespaces for this project, we've already set up:
 4. **Click the green "Create codespace on main" button**.
 5. **Wait 1-2 minutes** while GitHub prepares your workspace. ⏳
 
-![](assets/create-codespace-screenshot.png)
+![](./assets/create-codespace-screenshot.png)
 
-*(You'll see a loading screen — this is normal! GitHub is installing all the tools you need.)*
+_(You'll see a loading screen — this is normal! GitHub is installing all the tools you need.)_
 
 ### **Transferring from Web Editor:**
 
@@ -418,9 +414,8 @@ When you're happy with all your changes:
 
 ## 🆘 Helpful Shortcuts to Remember
 
-
 | Action               | Windows             | Mac                |
-| :--------------------- | :-------------------- | :------------------- |
+| :------------------- | :------------------ | :----------------- |
 | Save file            | `Ctrl + S`          | `Cmd + S`          |
 | Markdown preview     | `Ctrl + Shift + V`  | `Cmd + Shift + V`  |
 | Side-by-side preview | `Ctrl + K` then `V` | `Cmd + K` then `V` |
@@ -486,4 +481,3 @@ Happy documenting! Your contributions help preserve and share knowledge about In
 ---
 
 **Questions or need help?** Reach out to the team on our communication channels!
-

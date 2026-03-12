@@ -17,8 +17,13 @@
     cursor: zoom-in;
 }
 
+.image-preview-wrapper.large img {
+    max-width: 400px !important;
+}
+
 .image-preview-wrapper img:hover {
     transform: scale(1.05);
+    transition: 0.3s;
 }
 
 

@@ -1,0 +1,211 @@
+.progressive-reveal {
+    --step-bg: var(--sl-color-gray-6);
+    --step-border: var(--sl-color-gray-5);
+    --accent-color: var(--sl-color-accent);
+    --text-muted: var(--sl-color-text-muted);
+}
+
+.prr-title {
+    font-size: clamp(1.375rem, 4vw, 1.75rem);
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: var(--rc-space-sm);
+}
+
+.prr-subtitle {
+    text-align: center;
+    font-size: 1.125rem;
+    opacity: 0.8;
+    margin-bottom: var(--rc-space-lg);
+    color: var(--text-muted);
+}
+
+.prr-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--rc-space-lg) 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--rc-space-lg);
+}
+
+.prr-item {
+    display: flex;
+    gap: var(--rc-space-lg);
+    padding: var(--rc-space-lg);
+    border: 1px solid var(--step-border);
+    border-radius: var(--rc-radius-lg);
+    background: var(--sl-color-gray-7);
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.prr-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.prr-item::before {
+    content: "";
+    position: absolute;
+    left: 3.25rem;
+    top: 2.75rem;
+    bottom: -3.75rem;
+    width: 2px;
+    background: var(--step-border);
+}
+
+.prr-item:last-child::before {
+    display: none;
+}
+
+.prr-step-indicator {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    position: relative;
+    z-index: 1;
+}
+
+.prr-step-number {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    background: var(--accent-color);
+    color: var(--sl-color-text-invert);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    box-shadow: 0 4px 12px color-mix(in srgb, var(--accent-color) 30%, transparent);
+}
+
+.prr-step-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+}
+
+.prr-content {
+    flex: 1;
+}
+
+.prr-group-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: var(--rc-space-sm);
+}
+
+.prr-summary {
+    line-height: 1.6;
+    margin-bottom: var(--rc-space-sm);
+}
+
+.prr-meta {
+    margin-bottom: var(--rc-space-sm);
+}
+
+.prr-badge {
+    padding: 0.35rem 0.75rem;
+    border-radius: var(--rc-radius-pill);
+    border: 1px solid var(--step-border);
+    background: var(--step-bg);
+    font-size: 0.875rem;
+}
+
+.prr-badge-count {
+    background: color-mix(in srgb, var(--accent-color) 10%, var(--step-bg));
+    border-color: color-mix(in srgb, var(--accent-color) 20%, transparent);
+}
+
+.prr-topics {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.prr-topic {
+    position: relative;
+    padding-left: 1.25rem;
+    font-size: 0.95rem;
+}
+
+.prr-topic::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    font-weight: 700;
+    color: var(--accent-color);
+}
+
+.prr-topic-link {
+    text-decoration: none;
+    color: var(--sl-color-text);
+}
+
+.prr-topic-link:hover {
+    color: var(--accent-color);
+}
+
+.prr-controls {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    padding-top: var(--rc-space-lg);
+    border-top: 1px solid var(--step-border);
+}
+
+.prr-btn {
+    padding: 0.875rem 2rem;
+    border-radius: var(--rc-radius-md);
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    width: 100%;
+    transition: all 0.2s ease;
+}
+
+.prr-btn-primary {
+    background: var(--accent-color);
+    color: var(--sl-color-text-invert);
+    box-shadow: 0 4px 12px color-mix(in srgb, var(--accent-color) 30%, transparent);
+    margin-top: 0 !important;
+}
+
+.prr-btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 20px color-mix(in srgb, var(--accent-color) 35%, transparent);
+}
+
+.prr-btn-secondary {
+    background: var(--step-bg);
+    border: 1px solid var(--step-border);
+    margin-top: 0 !important;
+}
+
+.prr-btn-secondary:hover {
+    border-color: var(--accent-color);
+}
+
+.prr-all-visible {
+    font-style: italic;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+@media (min-width: 768px) {
+    .prr-controls {
+        justify-content: center;
+    }
+
+    .prr-btn {
+        width: auto;
+    }
+}

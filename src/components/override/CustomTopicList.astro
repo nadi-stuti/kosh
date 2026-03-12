@@ -13,7 +13,10 @@ const { topics } = Astro.locals.starlightSidebarTopics;
       >
         {topic.icon && (
           <span class={`icon-wrapper icon-${topic.icon?.replace(":", "-")}`}>
-            <Icon name={topic.icon} />
+            <Icon name={topic.icon} size="500px" />
+            {topic.icon === "seti:notebook" && (
+              <Icon name="seti:react" class="morph-target" />
+            )}
           </span>
         )}
         <span class="label">{topic.label}</span>
@@ -78,8 +81,8 @@ const { topics } = Astro.locals.starlightSidebarTopics;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 28px;
-    height: 28px;
+    width: 36px;
+    height: 36px;
     border-radius: 6px;
     background: var(--sl-color-gray-6);
     border: 1px solid var(--sl-color-gray-5);
@@ -90,8 +93,8 @@ const { topics } = Astro.locals.starlightSidebarTopics;
 
   /* Make SVG inherit color */
   .icon-wrapper svg {
-    width: 16px;
-    height: 16px;
+    width: 20px;
+    height: 20px;
     color: inherit;
     fill: currentColor;
     stroke: currentColor;
@@ -206,6 +209,83 @@ const { topics } = Astro.locals.starlightSidebarTopics;
 
   .topic-item:hover .icon-seti-elixir svg {
     animation: dropBounce 0.8s ease-in-out infinite;
+  }
+
+  /* Container setup for stacking */
+  .icon-seti-notebook {
+    position: relative;
+    perspective: 1000px; /* Gives the 3D depth */
+  }
+
+  /* Common SVG transition styles */
+  .icon-seti-notebook svg {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    backface-visibility: hidden;
+  }
+
+  /* The "Open Book" (hidden by default) */
+  .icon-seti-notebook .morph-target {
+    position: absolute;
+    opacity: 0;
+    transform: rotateY(-90deg); /* Start "folded" back */
+  }
+
+  /* Hover State: Hide the Notebook */
+  .topic-item:hover .icon-seti-notebook svg:not(.morph-target) {
+    opacity: 0;
+    transform: rotateY(90deg); /* Swing closed/away */
+  }
+
+  /* Hover State: Show and "Open" the Book */
+  .topic-item:hover .icon-seti-notebook .morph-target {
+    opacity: 1;
+    transform: rotateY(0deg); /* Swing into view */
+    color: var(--sl-color-accent); /* Optional: change color when open */
+  }
+
+  /* Active State adjustment */
+  .topic-item.active .icon-seti-notebook .morph-target {
+    opacity: 1;
+    transform: rotateY(0deg);
+    color: var(--sl-color-text-invert);
+  }
+  .topic-item.active .icon-seti-notebook svg:not(.morph-target) {
+    opacity: 0;
+  }
+
+  /* ℹ️ Information Impact Pop */
+  @keyframes infoPop {
+    0% {
+      transform: scale(1);
+    }
+    60% {
+      transform: scale(1.25);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  /* Create a radiating ring behind the icon */
+  @keyframes infoRing {
+    0% {
+      box-shadow: 0 0 0 0px
+        color-mix(in srgb, var(--sl-color-accent), transparent 20%);
+    }
+    100% {
+      box-shadow: 0 0 0 12px transparent;
+    }
+  }
+
+  .topic-item:hover .icon-seti-info {
+    animation: infoRing 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+    border-color: var(--sl-color-accent-high);
+    z-index: 10; /* Ensure it pops over other items */
+  }
+
+  .topic-item:hover .icon-seti-info svg {
+    animation: infoPop 1s ease-in-out infinite;
+    transform-origin: center;
   }
 
   /* ✨ Starlight Spin (starlight icon) */

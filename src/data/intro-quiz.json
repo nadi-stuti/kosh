@@ -1,0 +1,87 @@
+{
+    "questions": [
+        {
+            "id": "q1",
+            "text": "Which typically contributes the largest volume of pollution to big Indian rivers?",
+            "options": [
+                "Plastic bags and bottles",
+                "Untreated sewage from homes and cities",
+                "Oil spills from ships",
+                "Religious offerings"
+            ],
+            "correctOptionIndex": 1,
+            "explanation": "In many Indian rivers, untreated sewage is the largest source by volume."
+        },
+        {
+            "id": "q2",
+            "text": "What does DO stand for in water quality testing?",
+            "options": [
+                "Dirty Oxygen",
+                "Dissolved Oxygen",
+                "Depth of Ocean",
+                "Degree of Oil"
+            ],
+            "correctOptionIndex": 1,
+            "explanation": "Dissolved Oxygen measures how much oxygen is available for aquatic life."
+        },
+        {
+            "id": "q3",
+            "text": "Which is a major reason rivers get polluted near cities?",
+            "options": [
+                "Too many birds",
+                "Urban drainage systems",
+                "Natural soil erosion",
+                "Moon phases"
+            ],
+            "correctOptionIndex": 1,
+            "explanation": "Storm drains carry city waste directly into rivers during rains."
+        },
+        {
+            "id": "q4",
+            "text": "What is the main goal of river cleaning projects?",
+            "options": [
+                "Build more dams",
+                "Remove visible trash only",
+                "Restore natural ecosystem health",
+                "Change river paths"
+            ],
+            "correctOptionIndex": 2,
+            "explanation": "Cleaning aims to restore water quality, biodiversity, and uses for communities."
+        },
+        {
+            "id": "q5",
+            "text": "Which technology helps track river pollution in real-time?",
+            "options": [
+                "Weather apps",
+                "Satellite imagery and sensors",
+                "Paper records",
+                "Guessing"
+            ],
+            "correctOptionIndex": 1,
+            "explanation": "Satellites and sensors provide data on water quality from space and ground."
+        }
+    ],
+    "resultLabels": [
+        {
+            "key": "beginner",
+            "minScore": 0,
+            "maxScore": 1,
+            "title": "Beginner",
+            "message": "You're just getting started. This series will guide you step by step."
+        },
+        {
+            "key": "developing",
+            "minScore": 2,
+            "maxScore": 3,
+            "title": "Developing Understanding",
+            "message": "You understand some basics. The upcoming articles will deepen your knowledge."
+        },
+        {
+            "key": "advanced",
+            "minScore": 4,
+            "maxScore": 5,
+            "title": "Strong Understanding",
+            "message": "You already understand many concepts. You can now explore deeper river science and solutions."
+        }
+    ]
+}
