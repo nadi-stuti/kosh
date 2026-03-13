@@ -1,0 +1,266 @@
+---
+title: Three Layers of Data — Static, Periodic & Live
+description: How static, periodically updated, and real-time data co-exist on every river page — and where each layer comes from.
+sidebar:
+  order: 7
+---
+
+import { Aside } from '@astrojs/starlight/components';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+import { Badge } from '@astrojs/starlight/components';
+import { Steps } from '@astrojs/starlight/components';
+import { Code } from '@astrojs/starlight/components';
+
+# Three Layers of Data — Static, Periodic & Live
+
+Not all data on a river page is the same.
+
+Some facts about a river never change.
+Some change slowly — weekly or monthly.
+Some change by the minute.
+
+If we treated all three the same way, we would either update the site constantly
+(exhausting and error-prone) or leave time-sensitive data permanently stale
+(useless and misleading).
+
+Instead, **Our Rivers uses three clearly separated data layers.**
+Each layer has its own source, its own update frequency, and its own rendering strategy.
+
+---
+
+## The three layers at a glance
+
+| Layer | Type | Update frequency | Who owns it | Example fields |
+|-------|------|-----------------|-------------|---------------|
+| Layer 1 | Static | Rarely — only on verified corrections | Nadikosh editorial team | `river_name`, `length_km`, `origin_point`, `zone` |
+| Layer 2 | Periodic | Weekly — automated cron rebuild | Nadikosh DB + cron | `pollution_index`, `avg_annual_flow_cumecs`, `last_data_updated` |
+| Layer 3 | Live | Real-time — by the minute | Triveni-net (external) | DO, BOD, turbidity, current flow rate |
+
+These layers never mix. A field belongs to exactly one layer.
+
+---
+
+## Layer 1 — Static data
+
+<Tabs>
+  <TabItem label="Simple">
+
+Static data is the bedrock.
+
+Facts like where a river begins, how long it is, which states it flows through —
+these do not change unless there is a genuine error or a rare political event
+(like a state bifurcation changing which state a river flows through).
+
+Static data is entered by a contributor, verified by an editor, and then left alone.
+
+  </TabItem>
+  <TabItem label="Technical">
+
+Static fields are populated once at data entry time and stored in the Postgres DB.
+They are read at build time by Astro and written into the page's frontmatter.
+
+These fields should never be touched by the cron job.
+Any update to a static field requires a manual edit + editorial review.
+
+Static fields: `river_name` · `also_known_as` · `zone` · `river_type` ·
+`origin_point` · `confluence_or_mouth` · `length_km` · 
+`states_covered` · `flow_direction` · `is_holy`
+
+  </TabItem>
+</Tabs>
+
+---
+
+## Layer 2 — Periodic data
+
+<Tabs>
+  <TabItem label="Simple">
+
+Some facts about a river change over time — slowly, but they do change.
+
+A river's pollution level might worsen after an industrial discharge event.
+Average flow readings shift across seasons and years.
+A new monitoring station might come online.
+
+We do not update these facts in real time —
+that would require the site to rebuild constantly.
+
+Instead, the site rebuilds **once a week** from the latest database state.
+Every river page then shows a small badge that says when it was last updated.
+
+You might see: *"Data last updated: 4 days ago"*
+
+This is honest. It tells the reader exactly how fresh the data is
+without pretending it is live when it is not.
+
+  </TabItem>
+  <TabItem label="Technical">
+
+Periodic fields are updated in the DB by scripts, contributors, or editorial review —
+not in real time, but on a regular cadence.
+
+A **weekly cron job** triggers a full Astro site rebuild.
+At build time, all DB rows are re-queried and all pages are regenerated
+with the latest values for periodic fields.
+
+The `last_data_updated` field drives the "last updated X days ago" badge
+rendered on every river page. It is set to the date of the most recent
+DB row update for that river.
+
+Periodic fields: `pollution_index` · `avg_annual_flow_cumecs` · `last_data_updated`
+
+In v0.1+, additional periodic fields will be added:
+`main_pollution_sources` · `known_hotspot_stretches` · `monitoring_station_count`
+
+  </TabItem>
+</Tabs>
+
+---
+
+## Layer 3 — Live data (Triveni-net)
+
+<Badge text="Triveni-net: Early Phase" variant="caution" />
+
+<Aside type="note" title="What is Triveni-net?">
+Triveni-net is a separate, parallel project being built alongside Nadikosh.
+Its purpose is to aggregate live river data from multiple sources —
+official sensor networks, satellite feeds, scraping pipelines — 
+using AI and ML to clean, validate, and serve the data via an API.
+
+Triveni-net is in its very early stages. Its architecture is not yet finalised.
+What is confirmed: Nadikosh will consume its data via a React component,
+not by storing any live values in the Nadikosh database.
+</Aside>
+
+<Tabs>
+  <TabItem label="Simple">
+
+Live data is the most ambitious layer.
+
+Imagine visiting a river page and seeing a small strip at the top that shows —
+right now, updated minutes ago —
+the dissolved oxygen level at the nearest sensor,
+the turbidity of the water, and the current flow rate.
+
+Like a live subscriber counter on a YouTube channel,
+but for a river's health.
+
+That is what the live layer will eventually be.
+For now, it is reserved space — the component is there,
+but it shows "data coming soon" until Triveni-net is connected.
+
+  </TabItem>
+  <TabItem label="Technical">
+
+Live data is handled entirely outside the Nadikosh build pipeline.
+
+A React component — let's call it `<TriveniLiveStrip />` —
+is mounted at the top of each river's `health.mdx` page.
+It receives one prop: the river's `triveni_net_id`.
+
+At runtime (not build time), the component fetches live readings
+from the Triveni-net API for that river ID and renders them inline.
+
+**Nadikosh stores nothing from this layer.**
+No live values are written to the DB.
+No live values appear in frontmatter.
+The only Nadikosh-owned field related to Layer 3 is `triveni_net_id` —
+which is just the lookup key the component needs.
+
+The component handles all its own states:
+
+<Code
+  lang="yaml"
+  title="TriveniLiveStrip — component states"
+  code={`State: active
+  → Shows: DO, BOD, turbidity, flow rate — updated in real time
+
+State: offline  
+  → Shows: "Triveni-net is currently offline. Last reading: [timestamp]"
+
+State: no_sensor
+  → Shows: "No live sensor data available for this river yet."
+
+State: triveni_net_id is null
+  → Shows: "Live data integration coming soon for this river."`}
+/>
+
+This architecture means Triveni-net can go offline, change its API,
+or be unavailable for a river — and the Nadikosh page continues to render correctly.
+The wiki never breaks because of a live data failure.
+
+  </TabItem>
+</Tabs>
+
+---
+
+## How the weekly rebuild works
+
+<Steps>
+
+1. **Cron job triggers**  
+   A scheduled task runs once a week (exact day configurable).  
+   It sends a rebuild signal to the Astro deployment pipeline.
+
+2. **Astro queries the database**  
+   At build time, Astro queries the full rivers table in Postgres.  
+   Every row is fetched. Every field is read.
+
+3. **Pages are regenerated**  
+   For each river row, all 7 sub-pages are regenerated using the latest field values.  
+   The `last_data_updated` field is read and converted to a relative timestamp badge
+   ("last updated 3 days ago") at render time.
+
+4. **Static pages are unchanged**  
+   Pages that do not read from the DB — blueprint files, zone stubs, `/misc` pages —
+   are rebuilt from their source files unchanged.
+
+5. **Deployment**  
+   The freshly built site replaces the previous version.  
+   Readers visiting the site now see the latest periodic data
+   without any manual intervention.
+
+</Steps>
+
+<Aside type="tip">
+The cron rebuild is the mechanism that makes Layer 2 feel "live enough"
+without the complexity and cost of true real-time rendering.
+For a reference section like Our Rivers, weekly freshness is sufficient
+for fields like pollution index and average flow.
+True real-time data — DO, BOD, turbidity — belongs in Layer 3 (Triveni-net).
+</Aside>
+
+---
+
+## What each layer looks like on a river page
+
+When all three layers are active, a river's `health.mdx` page will show:
+
+<Code
+  lang="yaml"
+  title="health.mdx — data rendering order (top to bottom)"
+  code={`[Layer 3] TriveniLiveStrip component
+  → Live DO, BOD, turbidity readings
+  → Updated in real time by Triveni-net
+
+[Layer 2] Pollution index badge
+  → colour-coded: low / moderate / high / critical
+  → "Last updated 4 days ago" timestamp
+
+[Layer 2] Main pollution sources
+  → List pulled from DB at last cron build
+
+[Layer 2] Known hotspot stretches
+  → List pulled from DB at last cron build
+
+[Layer 1] River identity context
+  → Zone, type, states covered — static, never stale`}
+/>
+
+The layers stack visually: live data at the top, 
+periodic data in the middle, static context at the bottom.
+Freshness decreases as you scroll — the most time-sensitive information is always first.
+
+---
+
+*Continue reading: [How to Build the POC →](/our-rivers/how-to-build-the-poc/)*

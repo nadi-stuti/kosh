@@ -106,13 +106,21 @@ export const SidebarTopics = [
   },
   {
     label: "Get Involved",
-    link: "/get-involved/about",
+    link: "/get-involved",
     icon: "seti:bicep",
-    items: ["get-involved/about"],
+    items: [
+      {
+        label: "Get Involved",
+        autogenerate: {
+          directory: "/get-involved",
+          collapsed: true,
+        },
+      },
+    ],
   },
   {
     label: "Our Rivers",
-    link: "/rivers",
+    link: "/our-rivers",
     icon: "heart",
     items: [
       {
@@ -168,7 +176,7 @@ export const SidebarTopics = [
   },
   {
     label: "Thinking Grounds",
-    link: "/thinking-grounds/about",
+    link: "/thinking-grounds",
     icon: "seti:smarty",
     items: [
       {

@@ -1,0 +1,188 @@
+---
+title: Our Rivers — Phased Roadmap
+description: The complete version-by-version roadmap for Our Rivers — from the 4-river POC to the largest structured Indian river database ever built.
+sidebar:
+  order: 9
+---
+
+import { Aside } from '@astrojs/starlight/components';
+import { Badge } from '@astrojs/starlight/components';
+import { CardGrid, Card } from '@astrojs/starlight/components';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+# Our Rivers — Phased Roadmap
+
+This page shows where Our Rivers is going — 
+version by version, from the first four rivers to a complete, 
+live, AI-augmented database of every significant Indian river.
+
+Each version has a clear scope, a clear goal, and clear success criteria.
+Nothing is added to a version unless it is needed to prove that version's goal.
+
+---
+
+## Where we are now
+
+<Badge text="Current: v0.01 — POC" variant="caution" />
+
+The blueprint is written. The schema is confirmed. The folder structure is defined.
+Four demo rivers are chosen. The first build is in progress.
+
+---
+
+## v0.01 — Proof of Concept
+
+**Goal**: Prove the architecture works. Show the vision to the world.
+
+| Dimension | Detail |
+|-----------|--------|
+| Rivers | 4 — Kaveri, Mahanadi, Seonath, Netravati |
+| Zones | 2 live (Kaveri, Mahanadi) + 7 stubs |
+| Data entry | 100% manual |
+| DB | Local Postgres, queried at build time |
+| Automation | None |
+| Live data | Triveni-net component mounted, showing "coming soon" |
+| Map | Placeholder only |
+| Contributors | Team only |
+
+**Done when**: All 4 rivers browsable, all 7 sub-pages rendering, 
+all stub zones accessible, no broken pages, vision clearly communicable to anyone who visits.
+
+---
+
+## v0.1 — First Real Version
+
+**Goal**: Open to contributors. Make data feel fresh. Grow to ~15 rivers.
+
+<CardGrid>
+  <Card title="🗃️ More Rivers" icon="document">
+    10–15 rivers total across at least 4 zones.  
+    All zone pages live with real river cards.
+  </Card>
+  <Card title="🔄 Cron Rebuild" icon="refresh">
+    Weekly automated rebuild.  
+    "Last updated X days ago" badge live on all river pages.
+  </Card>
+  <Card title="👥 Contributors" icon="add-document">
+    Structured contribution process for adding new rivers.  
+    Editorial review before any DB row is published.
+  </Card>
+  <Card title="📱 Mobile layouts" icon="laptop">
+    All layout templates verified and optimised for mobile readers.
+  </Card>
+</CardGrid>
+
+**Additional fields added to schema in v0.1:**
+`main_pollution_sources` · `known_hotspot_stretches` · `monitoring_station_count`
+
+**Done when**: A contributor outside the core team can successfully add a river
+from scratch and see it published after review.
+
+---
+
+## v1 — Complete Zone Coverage
+
+**Goal**: All 9 zones live. Semi-automated data. Map component. Triveni-net connected.
+
+<Tabs>
+  <TabItem label="What changes">
+
+| Feature | Detail |
+|---------|--------|
+| Rivers | ~30 total — all 9 zones have at least 2–3 rivers |
+| Automation | Scripts pull from India-WRIS and CPCB to pre-fill periodic fields |
+| Editorial gate | All automated data reviewed before publishing |
+| Map component | Basic interactive river map per zone — course, tributaries, pollution colour-coding |
+| Triveni-net | Live strip component connected for rivers with sensor coverage |
+| Suggestion system | Popup/icon appears when `pollution_index: critical` — links to Pollution Academy and Get Involved |
+| Search | All river fields indexed and searchable within Nadikosh |
+
+  </TabItem>
+  <TabItem label="What it looks like">
+
+A reader visiting `/our-rivers/ganga-zone/` will see:
+- A zone aggregate stats panel showing all Ganga basin rivers in the DB
+- An interactive map of the Ganga basin with rivers coloured by pollution index
+- A cards grid for every river in the zone — live `pollution_index` data, Triveni-net strip where available
+
+A researcher visiting `/our-rivers/kaveri/health/` will see:
+- A live reading strip at the top — DO, BOD, turbidity — powered by Triveni-net
+- Weekly-updated pollution index with timestamp
+- Known hotspot stretches and main pollution sources
+- A cross-link suggestion: *"Pollution is critical on 2 stretches — explore Pollution Academy"
+</TabItem>
+</Tabs>
+
+**Done when**: All 9 zones have real data, the map renders for at least 2 zones,
+Triveni-net is connected for at least 1 river, and automated data flow is proven end-to-end.
+
+---
+
+## v2 — Intelligence & Scale
+
+**Goal**: AI/ML data pipeline live. Advanced map. Full sensor coverage via Triveni-net.
+
+| Feature | Detail |
+|---------|--------|
+| Rivers | Full zone coverage — all significant named rivers |
+| AI/ML pipeline | Automated extraction from satellite imagery, news, research publications |
+| Human validation | All AI-proposed data reviewed and approved before publishing |
+| Advanced map | Flowing diagram with pollution hotspots, flow density, seasonal animation |
+| Triveni-net | Live data for all rivers with available sensor coverage |
+| Data freshness | Periodic fields updated daily for high-priority rivers |
+| Cross-section intelligence | Suggestion system reads Triveni-net live data — alerts based on real-time readings |
+
+<Aside type="note" title="The advanced map">
+The v2 map is the most ambitious visual component in Nadikosh.  
+It will be a purpose-built interactive diagram — not a Google Maps embed.  
+It will show river courses, tributaries, pollution hotspots, flow density,  
+and live sensor locations in a single, flowing visual.  
+It will be the same component used across all river and zone pages,
+configured by each river's data.  
+Design and development of this component is a standalone workstream beginning in v1.
+</Aside>
+
+---
+
+## Full Vision — The Destination
+
+<Aside type="tip">
+This is not a version with a number. It is the direction we are always moving toward.
+</Aside>
+
+<CardGrid>
+  <Card title="🗺️ Every significant river" icon="open-book">
+    Every named river in India with permanent or seasonal flow — 
+    documented, profiled, and maintained.
+  </Card>
+  <Card title="⚡ Three layers, always fresh" icon="information">
+    Static facts permanently accurate.  
+    Periodic data updated continuously.  
+    Live sensor readings in real time via Triveni-net.
+  </Card>
+  <Card title="🤖 AI-maintained at scale" icon="puzzle">
+    An AI/ML pipeline that monitors, extracts, validates, and proposes
+    data updates — with humans as the final gate before publishing.
+  </Card>
+  <Card title="🌐 The reference standard" icon="star">
+    The place every student, researcher, devotee, NGO, journalist,
+    and government body goes first when they need to understand an Indian river.
+  </Card>
+</CardGrid>
+
+---
+
+## Summary table
+
+| Version | Rivers | Zones | Auto-data | Map | Live data | Contributors |
+|---------|--------|-------|-----------|-----|-----------|-------------|
+| v0.01 | 4 | 2 live, 7 stubs | ❌ | Placeholder | Triveni-net slot (empty) | Team only |
+| v0.1 | 10–15 | 4+ live | ❌ | Placeholder | Triveni-net slot (empty) | Open (reviewed) |
+| v1 | ~30 | All 9 live | Partial (WRIS + CPCB scripts) | Basic | Connected | Open (reviewed) |
+| v2 | Full coverage | All 9 complete | AI/ML pipeline | Advanced | Full Triveni-net | Open + automated |
+| Vision | All rivers | Complete | Continuous | Full flowing diagram | Real-time everywhere | Ecosystem |
+
+---
+
+*This roadmap is a living document. It will be updated as versions are completed and priorities shift.*  
+*Last reviewed: March 2026*

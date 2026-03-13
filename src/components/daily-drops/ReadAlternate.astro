@@ -7,7 +7,7 @@ const alternatePath = isHindi
 
 const { id } = Astro.locals.starlightRoute;
 
-const PagesWithTranslation = ["daily-drops"];
+const PagesWithTranslation = ["daily-drops"]; //["river-drops"];
 
 const shouldShow = PagesWithTranslation.some((path) =>
   id.split("/").includes(path),

@@ -3,7 +3,7 @@ import { Icon } from "@astrojs/starlight/components";
 import { getCollection } from "astro:content";
 
 const allDailies = await getCollection("docs", ({ id }) => {
-  return id.startsWith("daily-drops/");
+  return id.startsWith("thinking-grounds/river-drops/");
 });
 
 const sortedDailies = allDailies

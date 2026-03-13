@@ -1,0 +1,180 @@
+---
+title: The Full Vision — What Our Rivers Will Become
+description: The complete picture of what Our Rivers is being built to be — from its simple purpose to its complex architecture.
+sidebar:
+ order: 2
+---
+
+import { Aside } from '@astrojs/starlight/components';
+import { Badge } from '@astrojs/starlight/components';
+
+# The Full Vision — What Our Rivers Will Become
+
+<Aside type="note">
+This page exists to communicate intent. 
+Not everything described here is built yet. 
+What you are reading is a design document — a commitment to a direction.
+</Aside>
+
+---
+
+## The simple version
+
+India has thousands of rivers.  
+They are documented in fragments — a Wikipedia page here, a government PDF there, 
+a WRIS layer somewhere else, a news article about a specific flood, 
+a temple website about a specific ghat.  
+
+No single place brings it all together.  
+No single place organises it uniformly.  
+No single place serves the student, the researcher, the devotee, and the activist 
+with the same information structured in a way that makes sense to each of them.
+
+**Our Rivers is being built to be that place.**
+
+A clean, uniform, structured encyclopedia of India's rivers.  
+Every river with the same pages. Every page with the same fields.  
+Factual. Data-backed. Consistently maintained.  
+Sensitive to the cultural and spiritual identity of these rivers.  
+Accessible to someone with no technical background.  
+Rigorous enough to be useful to a researcher.
+
+That is the simple version.
+
+---
+
+## The complex version
+
+<Aside type="tip" title="For non-programmers">
+The section below describes the technical architecture of this system. 
+If you are not from a programming background, you can skip to 
+[What makes this different](#what-makes-this-different) below. 
+Everything before that is for developers and data engineers.
+</Aside>
+
+### The data backbone
+
+Every river page in this section is generated from a structured database — 
+not written by hand.
+
+In the first version, this database is a **PostgreSQL** instance 
+holding a table of rivers with 15 confirmed fields per row.  
+The Astro/Starlight site queries this database at **build time** 
+and generates one page per river, automatically, using a shared layout template.
+
+This means:
+- Every river page has identical structure
+- A contributor adding a new river only needs to insert a database row — 
+  not write a single line of markdown
+- Fixing an error across all rivers is a single database update, 
+  not editing 100 individual files
+
+As scale increases, the database will evolve from a simple Postgres table 
+to a more sophisticated multi-source data system — 
+drawing from official portals, contributor inputs, automated scrapers, 
+and eventually AI/ML pipelines.
+
+### The three data layers
+
+Not all data on a river page behaves the same way.  
+Data is organised into three clearly separated layers:
+
+**Layer 1 — Static**  
+Facts that do not change: origin point, length, states covered, zone, river type.  
+These are entered once, validated, and remain stable.
+
+**Layer 2 — Periodic**  
+Data that changes but not in real time: pollution index, water quality category, 
+last known monitoring station readings.  
+These are updated via an automated **weekly build** — the site rebuilds 
+from the latest database state and each page shows a "last updated X days ago" badge.
+
+**Layer 3 — Live**  
+Real-time readings: dissolved oxygen (DO), biochemical oxygen demand (BOD), 
+turbidity, flow rate where available.  
+This layer is handled entirely by **Triveni-net** — 
+a separate, parallel project building an AI/ML-powered live river data service.  
+On each river page, a React component mounts at the top and pulls live data 
+from Triveni-net independently. The wiki never owns or stores this data.  
+If Triveni-net is offline or a river has no live sensor, 
+the component handles that state gracefully.
+
+### The map
+
+Each river will eventually have a **custom interactive map** —
+not a Google Maps embed, not a static image.  
+A purpose-built flowing diagram that shows:
+- The river's course from source to mouth
+- Its major tributaries in context
+- Pollution hotspots (fed from Layer 2 data)
+- Flow density and seasonal variation
+- Live sensor locations (fed from Triveni-net)
+
+This map component will be shared across the entire Our Rivers section —
+the same component, configured differently per river via its data.  
+
+<Badge text="Roadmap: v1" variant="note" />  
+The map is a future milestone. Current pages reserve space for it with a placeholder.
+
+### The automation pipeline
+
+Manual data entry works for 3–4 rivers.  
+It does not work for 300.  
+
+The long-term pipeline is designed in stages:
+
+1. **Manual** (now): team enters data directly into the database
+2. **Contributors** (v0.1): a structured contribution system where verified contributors 
+   add river data via a submission form, reviewed before publishing
+3. **Semi-automated** (v1): scripts pull from official sources 
+   (India-WRIS, CPCB, state pollution boards) and pre-fill fields for editorial review
+4. **AI/ML pipeline** (v2+): automated extraction from satellite data, 
+   news, research publications, and sensor networks — 
+   human editors validate and approve before any data is published
+
+---
+
+## What makes this different
+
+There are existing resources for Indian river data. None of them do what this does.
+
+| Resource | What it does well | What it lacks |
+|----------|------------------|---------------|
+| India-WRIS | Authoritative official data, rich GIS layers | Designed for technical experts, no narrative, no cultural context |
+| Wikipedia river pages | Good general overview | Inconsistent structure, no live data, no pollution focus |
+| CPCB portals | Official pollution monitoring data | Very technical, no geographic or cultural context |
+| State irrigation department sites | Basin-specific depth | Fragmented, inconsistent across states, rarely updated |
+| News archives | Strong on events and crises | Not structured, not searchable as reference |
+
+**Our Rivers** is not competing with any of these.  
+It is the layer that sits above them — interpreting, organising, and presenting 
+their data uniformly, with cultural sensitivity and multi-audience accessibility.
+
+Where possible, Our Rivers links *back* to these sources 
+so that users who want to go deeper can go directly to the authority.
+
+---
+
+## What this section will feel like when complete
+
+A reader arriving at `/our-rivers/kaveri/` will see:
+
+- A zone overview with aggregate stats for the entire Kaveri basin 
+  and a map showing all rivers in the zone
+- A clean grid of every river in the Kaveri zone, 
+  each with a small card: name, type, length, pollution index, and status
+- Clicking any river opens its dedicated pages — 
+  an overview tab with structured facts, 
+  a health tab showing the latest pollution data and a live sensor strip from Triveni-net, 
+  a hydrology tab describing seasonal and climatic behaviour, 
+  and so on
+
+The entire experience will feel like reading a well-maintained, 
+living reference — somewhere between an encyclopedia, a data portal, 
+and a field guide.
+
+That is what **Our Rivers** is being built to become.
+
+---
+
+*Continue reading: [How We Organise Indian Rivers →](/our-rivers/how-rivers-are-organised/)*
