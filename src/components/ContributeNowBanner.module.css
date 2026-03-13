@@ -1,0 +1,89 @@
+/* src/components/ContributeBanner/ContributeBanner.module.css */
+
+.wrapper {
+  width: 100%;
+  padding: 2rem;
+  border: 1px solid var(--sl-color-hairline);
+  border-radius: 1rem;
+  background: var(--sl-color-bg-nav);
+  margin-block: 2rem;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 1.75rem;
+}
+
+.title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--sl-color-white);
+  margin: 0 0 0.5rem;
+}
+
+.subtitle {
+  font-size: 0.9rem;
+  color: var(--sl-color-gray-3);
+  max-width: 52ch;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.75rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 1.25rem 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid var(--sl-color-hairline);
+  background: var(--sl-color-bg);
+  text-decoration: none;
+  color: var(--sl-color-text);
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.card:hover {
+  border-color: var(--sl-color-accent);
+  background: color-mix(in srgb, var(--sl-color-accent) 6%, transparent);
+  text-decoration: none;
+}
+
+.icon {
+  font-size: 1.6rem;
+}
+
+.cardTitle {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--sl-color-text);
+}
+
+.cardDesc {
+  font-size: 0.8rem;
+  color: var(--sl-color-gray-3);
+  line-height: 1.45;
+  margin: 0;
+  flex: 1;
+}
+
+.cardCta {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--sl-color-accent-high);
+  margin-top: 0.25rem;
+}
+
+@media (max-width: 600px) {
+  .wrapper {
+    padding: 1.25rem 1rem;
+  }
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}

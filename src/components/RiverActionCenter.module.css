@@ -1,0 +1,514 @@
+/* src/components/RiverActionCenter/RiverActionCenter.module.css
+   All colours use Starlight CSS variables — works in light & dark themes.
+   ─────────────────────────────────────────────────────────────────────── */
+
+:root {
+  --sl-color-teal-low: #064e3b;
+  --sl-color-yellow-low: #422006;
+  --sl-color-indigo-low: #1e1b4b;
+  --sl-color-pink-low: #500724;
+}
+
+/* Light Mode Values */
+:root[data-theme='light'] {
+  --sl-color-teal-low: #f0fdfa;
+  --sl-color-yellow-low: #fefce8;
+  --sl-color-indigo-low: #eef2ff;
+  --sl-color-pink-low: #fdf2f8;
+}
+
+/* ── Wrapper ── */
+.wrapper {
+  width: 100%;
+  border: 1px solid var(--sl-color-hairline);
+  border-radius: 1rem;
+  overflow: hidden;
+  background: var(--sl-color-bg-nav);
+  margin-block: 2.5rem;
+}
+
+/* ── Header ── */
+.header {
+  padding: 2rem 2rem 1.25rem;
+  border-bottom: 1px solid var(--sl-color-hairline);
+  text-align: center;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--sl-color-accent-high);
+  background: color-mix(in srgb, var(--sl-color-accent) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--sl-color-accent) 30%, transparent);
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  margin-bottom: 1rem;
+}
+
+.badgeDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--sl-color-accent-high);
+  display: inline-block;
+}
+
+.title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--sl-color-white);
+  margin: 0 0 0.5rem;
+  line-height: 1.2;
+}
+
+.subtitle {
+  font-size: 0.95rem;
+  color: var(--sl-color-gray-3);
+  max-width: 52ch;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* ── Stepper ── */
+.stepper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  padding: 1.25rem 2rem;
+  border-bottom: 1px solid var(--sl-color-hairline);
+  background: var(--sl-color-bg);
+}
+
+.stepItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1;
+  max-width: 180px;
+  margin-top: 0 !important;
+}
+
+.stepDot {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--sl-color-gray-6);
+  color: var(--sl-color-gray-3);
+  font-size: 0.75rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: 2px solid var(--sl-color-hairline);
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.stepActive .stepDot {
+  background: var(--sl-color-accent);
+  border-color: var(--sl-color-accent-high);
+  color: var(--sl-color-black);
+}
+
+.stepDone .stepDot {
+  background: color-mix(in srgb, var(--sl-color-accent) 25%, transparent);
+  border-color: var(--sl-color-accent);
+  color: var(--sl-color-accent-high);
+}
+
+.stepLabel {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--sl-color-gray-3);
+  white-space: nowrap;
+}
+
+.stepActive .stepLabel {
+  color: var(--sl-color-text);
+}
+
+.stepLine {
+  flex: 1;
+  height: 1px;
+  background: var(--sl-color-hairline);
+  margin: 0 0.75rem;
+  display: block;
+}
+
+/* ── Panel Shell ── */
+.panelShell {
+  min-height: 340px;
+}
+
+.panel {
+  padding: 1.75rem 2rem;
+}
+
+.panelHint {
+  font-size: 0.875rem;
+  color: var(--sl-color-gray-3);
+  margin: 0 0 1rem;
+}
+
+/* ── River Type Toggle ── */
+.toggleRow {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.toggleBtn {
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+  border: 1px solid var(--sl-color-hairline);
+  background: transparent;
+  color: var(--sl-color-gray-3);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: var(--sl-font);
+  margin-top: 0 !important;
+}
+
+.toggleBtn:hover {
+  border-color: var(--sl-color-accent);
+  color: var(--sl-color-text);
+}
+
+.toggleActive {
+  background: color-mix(in srgb, var(--sl-color-accent) 15%, transparent);
+  border-color: var(--sl-color-accent);
+  color: var(--sl-color-accent-high);
+}
+
+/* ── River Grid ── */
+.riverGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 0.6rem;
+}
+
+.riverBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.55rem 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--sl-color-hairline);
+  background: var(--sl-color-red-low);
+  color: var(--sl-color-text);
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+  font-family: var(--sl-font);
+  text-align: left;
+  margin-top: 0 !important;
+}
+
+.riverBtn:hover {
+  border-color: var(--sl-color-accent);
+  background: color-mix(in srgb, var(--sl-color-accent) 8%, transparent);
+}
+
+.riverSelected {
+  border-color: var(--sl-color-accent-high);
+  background: color-mix(in srgb, var(--sl-color-accent) 15%, transparent);
+  color: var(--sl-color-accent-high);
+}
+
+.riverWave {
+  font-size: 0.9rem;
+}
+
+/* ── Action Grid ── */
+.actionGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.actionBtn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid var(--sl-color-hairline);
+  background: var(--sl-color-bg);
+  color: var(--sl-color-text);
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+  text-align: left;
+  font-family: var(--sl-font);
+  margin-top: 0 !important;
+}
+
+.actionBtn:hover {
+  border-color: var(--sl-color-accent);
+  background: color-mix(in srgb, var(--sl-color-accent) 8%, transparent);
+}
+
+.actionSelected {
+  border-color: var(--sl-color-accent-high);
+  background: color-mix(in srgb, var(--sl-color-accent) 15%, transparent);
+}
+
+.actionEmoji {
+  font-size: 1.4rem;
+}
+
+.actionLabel {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--sl-color-text);
+}
+
+.actionDesc {
+  font-size: 0.78rem;
+  color: var(--sl-color-gray-3);
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* ── Generate Row ── */
+.generateRow {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 1rem;
+}
+
+.generateBtn {
+  padding: 0.65rem 1.5rem;
+  border-radius: 0.6rem;
+  border: none;
+  background: var(--sl-color-accent);
+  color: var(--sl-color-black);
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.15s;
+  font-family: var(--sl-font);
+}
+
+.generateBtn:hover {
+  opacity: 0.88;
+}
+
+/* ── Back Button ── */
+.backBtn {
+  background: none;
+  border: none;
+  color: var(--sl-color-gray-3);
+  font-size: 0.82rem;
+  cursor: pointer;
+  padding: 0;
+  margin-top: 0.25rem;
+  font-family: var(--sl-font);
+  transition: color 0.15s;
+}
+
+.backBtn:hover {
+  color: var(--sl-color-text);
+}
+
+/* ── Triveni WIP ── */
+.wipRoot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.25rem;
+}
+
+.wipOrbitWrap {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0.5rem auto 0;
+}
+
+.wipOrbitRing {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px dashed color-mix(in srgb, var(--sl-color-accent) 50%, transparent);
+}
+
+.wipOrbitRingSmall {
+  position: absolute;
+  inset: 14px;
+  border-radius: 50%;
+  border: 1.5px dashed color-mix(in srgb, var(--sl-color-accent) 30%, transparent);
+}
+
+.wipCenterIcon {
+  font-size: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.wipContext {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--sl-color-accent-high);
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.wipTitle {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--sl-color-white);
+  margin: 0;
+}
+
+.wipDesc {
+  font-size: 0.9rem;
+  color: var(--sl-color-gray-3);
+  max-width: 48ch;
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* ── Stream Cards ── */
+.streamGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.75rem;
+  width: 100%;
+  text-align: left;
+}
+
+.streamCard {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid var(--sl-color-hairline);
+  background: var(--sl-color-bg);
+  margin-top: 0 !important;
+}
+
+.streamPulseWrap {
+  position: relative;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.streamPulse {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--sl-color-accent) 35%, transparent);
+}
+
+.streamIcon {
+  font-size: 1.1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.streamText {
+  flex: 1;
+}
+
+.streamText strong {
+  font-size: 0.85rem;
+  color: var(--sl-color-text);
+  display: block;
+  margin-bottom: 0.2rem;
+}
+
+.streamDesc {
+  font-size: 0.78rem;
+  color: var(--sl-color-gray-3);
+  line-height: 1.45;
+  margin: 0;
+}
+
+/* ── WIP CTA ── */
+.wipCta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1.25rem;
+  border-radius: 0.75rem;
+  border: 1px solid color-mix(in srgb, var(--sl-color-accent) 30%, transparent);
+  background: color-mix(in srgb, var(--sl-color-accent) 6%, transparent);
+  width: 100%;
+}
+
+.wipCtaText {
+  font-size: 0.88rem;
+  color: var(--sl-color-gray-3);
+  margin: 0;
+}
+
+.wipCtaBtn {
+  padding: 0.55rem 1.25rem;
+  border-radius: 0.5rem;
+  background: var(--sl-color-accent);
+  color: var(--sl-color-black);
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: opacity 0.2s;
+  font-family: var(--sl-font);
+}
+
+.wipCtaBtn:hover {
+  opacity: 0.85;
+  text-decoration: none;
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+
+  .header,
+  .panel {
+    padding: 1.25rem 1rem;
+  }
+
+  .stepper {
+    padding: 1rem;
+  }
+
+  .stepLabel {
+    display: none;
+  }
+
+  .riverGrid {
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  }
+
+  .actionGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .streamGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .title {
+    font-size: 1.3rem;
+  }
+}

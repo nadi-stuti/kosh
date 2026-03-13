@@ -4,6 +4,16 @@ import { blogAuthors } from "../../lib/constants/authors";
 const { entry } = Astro.locals.starlightRoute;
 const { authors, date } = entry.data;
 
+const contributionPaths = ["/"];
+
+const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
+
+// 3. Check if current path is in the array OR starts with one of the folders
+const showContribution = contributionPaths.some(
+  (path) =>
+    currentPath === path || (path !== "/" && currentPath.startsWith(path)),
+);
+
 // Helper to get full details for a single ID or Object
 const resolve = (item: any) => {
   if (typeof item === "string") {
@@ -32,7 +42,9 @@ const formattedDate = date?.toLocaleDateString("en-GB").replace(/\//g, "-");
       <a href={author.url} class="author-card" target="_blank">
         <img src={author.picture} alt={author.name} class="author-avatar" />
         <div class="author-meta">
-          <span class="author-label">Written by</span>
+          <span class="author-label">
+            {(showContribution && author.contribution) || "Written by"}
+          </span>
           <span class="author-name">{author.name}</span>
           {author.title && <span class="author-title">{author.title}</span>}
           {formattedDate && <span class="publish-date">{formattedDate}</span>}

@@ -1,48 +1,109 @@
 ---
+
 title: Nadikosh
-description: Knowledge repository for our holy rivers
-template: splash 
+description: An open knowledge repository for India's holy rivers — from ground volunteers to expert researchers.
+template: splash
 giscus: false
+contribution: true
+authors:
+  - gopala
+  - nulligma
 hero:
-  tagline: Knowledge repository for our holy rivers
+  tagline: The open knowledge repository for India's holy rivers
   image:
     file: ../../assets/logo.png
   actions:
-    - text: Explore
-      link: nadi-stuti/about-nadikosh
+    - text: Start Exploring
+      link: /river-pollution/
       icon: right-arrow
     - text: Read our blog
       link: /blog
       icon: open-book
       variant: secondary
-    - text: Visit nadistuti website
+    - text: NadiStuti Website
       link: https://nadistuti.com/
       icon: external
       variant: minimal
 ---
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
+import { Card, CardGrid, LinkCard, Badge } from '@astrojs/starlight/components';
+import RiverActionCenter from '@/components/RiverActionCenter';
+import AuthorCard from '@/components/daily-drops/AuthorCard.astro';
+import ContributeBanner from '@/components/ContributeBanner';
+import ContributeNowBanner from '@/components/ContributeNowBanner';
 
-## How to contribute to this knowledge repository?
+Nadikosh is a living knowledge base dedicated to India's holy rivers.
+Whether you are a first-time volunteer joining a cleanup drive, a student preparing for competitive exams, a researcher working with satellite and hydrology data,
+or a devotee seeking guidance on rituals and scriptures — **this is your river.**
+We are building this together, one article, one dataset, and one story at a time.
+
+---
+
+## What's inside Nadikosh
 
 <CardGrid stagger>
-	<Card title="Share your thoughts" icon="comment">
-		We would love to hear your thoughts on our articles. Share your feedback using the comments section at the bottom of each article or join our whatsapp group: [NadiStuti Sabha](https://chat.whatsapp.com/GWWZngBJzYsDZ8AGzF6Xt4)
-	</Card>
-	<Card title="Write for us" icon="seti:markdown">
-		Help us build the biggest knowledge repository on holy rivers by writing articles for us. Get a markdown editor and send us your articles. Read more about how to contribute: [How we work](/how-we-work#raw-ideas--temporary-notes).
-	</Card>
-	<Card title="Setup a mobile friendly workflow" icon="apple">
-		Setup a mobile friendly workflow to contribute to this knowledgebase from your phone. [Mobile workflow guide](/guides/mobile-workflow).
-	</Card>
-	<Card title="Add new content youself" icon="github">
-		Read how to use github so that you can modify this knowledgebase yourself: [Github setup guide](/guides/github) or use Github cloud editor: [Github cloud guide](/guides/github-cloud-edit).
-	</Card>
-	<Card title="Help us grow" icon="heart">
-		Help us reach more people by sharing our articles on social media, forums, and with your friends and family or share our print materials available at [Print](/print).
-	</Card>
-	<Card title="Make this website better" icon="vscode">
-		If you are a developer, read our [Developer guide](/guides/developer-guide/) to better understand how this website works
-		and how you can contribute to it and make it super awesome India's own wiki. 
-	</Card>
+
+  <LinkCard
+    title="🎓 Pollution Academy"
+    href="/pollution-academy/"
+    description="Nadikosh's educational core — a structured library of articles covering why India's rivers are polluted, how pollution is measured, and what tools researchers and NGOs use on the ground. Includes a 27-part deep-dive series, tool guides, and curated reading paths. Best for: students, volunteers, and professionals."
+  />
+  <LinkCard
+    title="🌱 Get Involved"
+    href="/get-involved/"
+    description="Practical playbooks for every level of contribution. Ground-worker field guides, digital tool documentation (GIS, dashboards, citizen-science apps), advocacy guides, and step-by-step cleanup protocols. Best for: NGOs, ground workers, and active volunteers."
+  />
+  <LinkCard
+    title="🗺️ Our Rivers"
+    href="/our-rivers/"
+    description="A reference encyclopedia organised into 9 major river zones — Ganga, Yamuna, Sindhu, Brahmaputra, Godavari, Narmada, Mahanadi, Krishna, and Kaveri. Each zone and river has a consistent structured profile: geography, health, culture, governance, and data. Best for: students, researchers, and devotees."
+  />
+  <LinkCard
+    title="🔬 Data & Research"
+    href="/data-research/"
+    description="The expert desk. A curated index of official portals (India-WRIS, CPCB), global datasets (HydroATLAS, GloRiC, GRWL), citizen-science repositories, and methods. Each entry has a plain-language summary, usage notes, and citation guidance. Best for: researchers, data scientists, and planners."
+  />
+  <LinkCard
+    title="🪔 Itihaas"
+    href="/itihaas/"
+    description="The cultural and spiritual spine of Nadikosh. Covers holy rituals and their practical guides, references in Vedic and classical texts, the living history of rivers in Indian civilisation, and an interactive course on how our rivers were in the past. Best for: devotees, cultural researchers, and historians."
+  />
+  <LinkCard
+    title="💬 Thinking Grounds"
+    href="/thinking-grounds/"
+    description="The community layer. Curated links to river discussions on forums, subreddits, and research groups worldwide. River Drops — bite-sized, timeless river facts tagged by theme. Guest contributions, social summaries, and pointers to where the global river conversation is happening. Best for: thinkers, community builders, and the curious."
+  />
 </CardGrid>
+
+---
+
+## River Action Center
+
+Select your river and tell us what you want to do. Our upcoming AI system — **Triveni-net** — will
+combine live web intelligence, satellite imagery, and the full Nadikosh knowledge base to surface
+the most relevant actions, data, and resources for your river, tailored to your goal.
+This feature is in active development. The demo below shows where we are headed.
+
+<RiverActionCenter client:load />
+
+---
+
+## Write for Nadikosh
+
+Nadikosh is built by people who care about rivers — writers, researchers, devotees, scientists, and everyday citizens. This contribution studio will guide anyone through creating richly structured articles for any section of the wiki, complete with AI-assisted image suggestions, a full interactive component library, and automated series linking.
+
+This feature is in active development. The demo below shows the full writing workflow we are building.
+
+
+<ContributeBanner client:load/>
+
+---
+
+## Contribute Right Now
+Why wait for the AI-powered studio when Nadikosh already welcomes you with open arms? We've built a complete, battle-tested contribution system — from mobile-friendly Markdown editors to GitHub workflows, detailed writing guides, and a welcoming community ready to review and publish your work. Whether you're writing your first river article or updating hydrology data for researchers, you can start building the world's most comprehensive river knowledge base today.
+
+<ContributeNowBanner client:load />
+
+---
+
+## Contributors
