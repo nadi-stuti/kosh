@@ -31,6 +31,8 @@ import RiverActionCenter from '@/components/RiverActionCenter';
 import AuthorCard from '@/components/daily-drops/AuthorCard.astro';
 import ContributeBanner from '@/components/ContributeBanner';
 import ContributeNowBanner from '@/components/ContributeNowBanner';
+import { BEST_FOR, COMMUNITY, CULTURAL, CURIOUS, DATA_SCI, DEVOTEE, GROUND_WORKER, HISTORIAN, NGO, PLANNER, RESEARCHER, STUDENT, THINKER, VOLUNTEER, PRO } from '@/lib/constants/strings';
+
 
 Nadikosh is a living knowledge base dedicated to India's holy rivers.
 Whether you are a first-time volunteer joining a cleanup drive, a student preparing for competitive exams, a researcher working with satellite and hydrology data,
@@ -46,32 +48,31 @@ We are building this together, one article, one dataset, and one story at a time
   <LinkCard
     title="🎓 Pollution Academy"
     href="/pollution-academy/"
-    description="Nadikosh's educational core — a structured library of articles covering why India's rivers are polluted, how pollution is measured, and what tools researchers and NGOs use on the ground. Includes a 27-part deep-dive series, tool guides, and curated reading paths. Best for: students, volunteers, and professionals."
-  />
+    description={`Nadikosh's educational core — a structured library of articles covering why India's rivers are polluted, how pollution is measured, and what tools researchers and NGOs use on the ground. Includes a 27-part deep-dive series, tool guides, and curated reading paths. ${BEST_FOR} ${STUDENT} ${VOLUNTEER} ${PRO}`}/>
   <LinkCard
     title="🌱 Get Involved"
     href="/get-involved/"
-    description="Practical playbooks for every level of contribution. Ground-worker field guides, digital tool documentation (GIS, dashboards, citizen-science apps), advocacy guides, and step-by-step cleanup protocols. Best for: NGOs, ground workers, and active volunteers."
+    description={`Practical playbooks for every level of contribution. Ground-worker field guides, digital tool documentation (GIS, dashboards, citizen-science apps), advocacy guides, and step-by-step cleanup protocols. ${BEST_FOR} ${NGO} ${GROUND_WORKER} ${VOLUNTEER}`}
   />
   <LinkCard
     title="🗺️ Our Rivers"
     href="/our-rivers/"
-    description="A reference encyclopedia organised into 9 major river zones — Ganga, Yamuna, Sindhu, Brahmaputra, Godavari, Narmada, Mahanadi, Krishna, and Kaveri. Each zone and river has a consistent structured profile: geography, health, culture, governance, and data. Best for: students, researchers, and devotees."
+    description={`A reference encyclopedia organised into 9 major river zones — Ganga, Yamuna, Sindhu, Brahmaputra, Godavari, Narmada, Mahanadi, Krishna, and Kaveri. Each zone and river has a consistent structured profile: geography, health, culture, governance, and data. ${BEST_FOR} ${STUDENT} ${RESEARCHER} ${DEVOTEE}`}
   />
   <LinkCard
     title="🔬 Data & Research"
     href="/data-research/"
-    description="The expert desk. A curated index of official portals (India-WRIS, CPCB), global datasets (HydroATLAS, GloRiC, GRWL), citizen-science repositories, and methods. Each entry has a plain-language summary, usage notes, and citation guidance. Best for: researchers, data scientists, and planners."
+    description={`The expert desk. A curated index of official portals (India-WRIS, CPCB), global datasets (HydroATLAS, GloRiC, GRWL), citizen-science repositories, and methods. Each entry has a plain-language summary, usage notes, and citation guidance. ${BEST_FOR} ${PLANNER} ${RESEARCHER} ${DATA_SCI}`}
   />
   <LinkCard
     title="🪔 Itihaas"
     href="/itihaas/"
-    description="The cultural and spiritual spine of Nadikosh. Covers holy rituals and their practical guides, references in Vedic and classical texts, the living history of rivers in Indian civilisation, and an interactive course on how our rivers were in the past. Best for: devotees, cultural researchers, and historians."
+    description={`The cultural and spiritual spine of Nadikosh. Covers holy rituals and their practical guides, references in Vedic and classical texts, the living history of rivers in Indian civilisation, and an interactive course on how our rivers were in the past. ${BEST_FOR} ${DEVOTEE} ${CULTURAL} ${HISTORIAN}`}
   />
   <LinkCard
     title="💬 Thinking Grounds"
     href="/thinking-grounds/"
-    description="The community layer. Curated links to river discussions on forums, subreddits, and research groups worldwide. River Drops — bite-sized, timeless river facts tagged by theme. Guest contributions, social summaries, and pointers to where the global river conversation is happening. Best for: thinkers, community builders, and the curious."
+    description={`The community layer. Curated links to river discussions on forums, subreddits, and research groups worldwide. River Drops — bite-sized, timeless river facts tagged by theme. Guest contributions, social summaries, and pointers to where the global river conversation is happening. Best for: thinkers, community builders, and the curious. ${BEST_FOR} ${THINKER} ${COMMUNITY} ${CURIOUS}`}
   />
 </CardGrid>
 
