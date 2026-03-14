@@ -13,12 +13,23 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/react": "^4.4.2",
     "@astrojs/starlight": "^0.37.4",
+    "@nivo/bar": "^0.99.0",
+    "@nivo/core": "^0.99.0",
+    "@nivo/sankey": "^0.99.0",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
     "astro": "^5.16.15",
+    "motion": "^12.34.3",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
     "sharp": "^0.34.5",
     "starlight-blog": "^0.25.2",
     "starlight-giscus": "^0.8.1",
     "starlight-image-zoom": "^0.13.2",
+    "starlight-sidebar-topics": "^0.6.2",
+    "starlight-tags": "^0.4.0",
     "starlight-theme-flexoki": "^0.2.2"
   }
 }

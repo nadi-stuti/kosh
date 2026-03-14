@@ -1,0 +1,97 @@
+{
+    "nodes": [
+        {
+            "id": "Households"
+        },
+        {
+            "id": "Agriculture"
+        },
+        {
+            "id": "Industry"
+        },
+        {
+            "id": "Urban Stormwater"
+        },
+        {
+            "id": "Untreated Sewage"
+        },
+        {
+            "id": "Fertilizer Runoff"
+        },
+        {
+            "id": "Industrial Waste"
+        },
+        {
+            "id": "Plastic & Street Waste"
+        },
+        {
+            "id": "River System"
+        },
+        {
+            "id": "Water Quality Decline"
+        },
+        {
+            "id": "Aquatic Ecosystem Damage"
+        },
+        {
+            "id": "Human Health Risk"
+        }
+    ],
+    "links": [
+        {
+            "source": "Households",
+            "target": "Untreated Sewage",
+            "value": 40
+        },
+        {
+            "source": "Agriculture",
+            "target": "Fertilizer Runoff",
+            "value": 30
+        },
+        {
+            "source": "Industry",
+            "target": "Industrial Waste",
+            "value": 20
+        },
+        {
+            "source": "Urban Stormwater",
+            "target": "Plastic & Street Waste",
+            "value": 10
+        },
+        {
+            "source": "Untreated Sewage",
+            "target": "River System",
+            "value": 40
+        },
+        {
+            "source": "Fertilizer Runoff",
+            "target": "River System",
+            "value": 30
+        },
+        {
+            "source": "Industrial Waste",
+            "target": "River System",
+            "value": 20
+        },
+        {
+            "source": "Plastic & Street Waste",
+            "target": "River System",
+            "value": 10
+        },
+        {
+            "source": "River System",
+            "target": "Water Quality Decline",
+            "value": 40
+        },
+        {
+            "source": "River System",
+            "target": "Aquatic Ecosystem Damage",
+            "value": 35
+        },
+        {
+            "source": "River System",
+            "target": "Human Health Risk",
+            "value": 25
+        }
+    ]
+}

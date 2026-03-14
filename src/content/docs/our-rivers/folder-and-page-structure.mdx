@@ -1,0 +1,403 @@
+---
+title: Folder & Page Structure
+description: The definitive reference for how Our Rivers is organised as files, folders, and pages — including the full zone tree, sub-page anatomy, and how each page type is built.
+sidebar:
+  order: 5
+---
+
+import { FileTree } from '@astrojs/starlight/components';
+import { Aside } from '@astrojs/starlight/components';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+import { Badge } from '@astrojs/starlight/components';
+import { Code } from '@astrojs/starlight/components';
+
+This page is the definitive map of how **Our Rivers** is structured —
+as folders, as URLs, and as individual pages.
+
+If you want to know where a river lives, what pages it has, 
+and how each page is built, this is the document to read.
+
+---
+
+## How to read this page
+
+<Tabs>
+  <TabItem label="I am not a programmer">
+
+Think of each **folder** as a drawer in a large filing cabinet.
+
+- The top-level drawer is labelled "Our Rivers"
+- Inside are 9 zone drawers — one per major river system
+- Inside each zone drawer are individual river folders
+- Inside each river folder are exactly the same set of pages every time
+
+The structure is identical for every river.
+Whether you open the Kaveri folder or the Ganga folder,
+you will find the same pages in the same order.
+That is the point.
+
+  </TabItem>
+  <TabItem label="I am a programmer">
+
+Each folder maps to a URL path and a set of Astro content collection entries.
+Zone folders contain an `index.mdx` (auto-generated from DB query) 
+and one sub-folder per river.
+Each river sub-folder contains 7 fixed MDX files,
+each using a shared layout component fed by the river's frontmatter schema.
+
+The folder structure below is the **canonical routing specification** for the Our Rivers section.
+All layout templates, DB queries, and sidebar configs should be derived from this structure.
+
+  </TabItem>
+</Tabs>
+
+---
+
+## The full folder tree
+
+This is the complete intended structure for the Our Rivers section —
+showing the v1 demo rivers fully expanded 
+and all other zones as stubs waiting to be filled.
+
+<FileTree>
+- our-rivers/
+  - index.mdx — Section landing page
+  - what-this-section-will-become.mdx
+  - how-rivers-are-organised.mdx
+  - the-data-schema.mdx
+  - folder-and-page-structure.mdx ← you are here
+  - database-driven-design.mdx
+  - live-and-dynamic-data.mdx
+  - how-to-build-the-poc.mdx
+  - roadmap.mdx
+  - kaveri-zone/
+    - index.mdx — Zone overview (auto-generated)
+    - kaveri/ — main-stem
+      - overview.mdx
+      - health.mdx
+      - hydrology.mdx
+      - ecology.mdx
+      - governance.mdx
+      - cultural-hook.mdx
+      - misc.mdx
+    - netravati/ — independent
+      - overview.mdx
+      - health.mdx
+      - hydrology.mdx
+      - ecology.mdx
+      - governance.mdx
+      - cultural-hook.mdx
+      - misc.mdx
+  - mahanadi-zone/
+    - index.mdx — Zone overview (auto-generated)
+    - mahanadi/ — main-stem
+      - overview.mdx
+      - health.mdx
+      - hydrology.mdx
+      - ecology.mdx
+      - governance.mdx
+      - cultural-hook.mdx
+      - misc.mdx
+    - seonath/ — minor-tributary
+      - overview.mdx
+      - health.mdx
+      - hydrology.mdx
+      - ecology.mdx
+      - governance.mdx
+      - cultural-hook.mdx
+      - misc.mdx
+  - ganga-zone/
+    - index.mdx — stub
+  - yamuna-zone/
+    - index.mdx — stub
+  - sindhu-zone/
+    - index.mdx — stub
+  - brahmaputra-zone/
+    - index.mdx — stub
+  - godavari-zone/
+    - index.mdx — stub
+  - narmada-zone/
+    - index.mdx — stub
+  - krishna-zone/
+    - index.mdx — stub
+</FileTree>
+
+<Aside type="note">
+Blueprint files (`what-this-section-will-become.mdx`, `how-rivers-are-organised.mdx`, etc.)
+live directly inside `/our-rivers/` alongside the zone folders.
+These planning documents are part of the section, not separate from it.
+They exist so readers understand what this section is becoming.
+Once the section reaches v1 maturity, these files will be moved 
+to a dedicated `/about/` or `/meta/` area.
+</Aside>
+
+---
+
+## Anatomy of a Zone page
+
+Every zone has one `index.mdx` — the chapter cover page for that zone.  
+It is almost entirely auto-generated from database queries.
+
+A zone page contains three blocks in this fixed order:
+
+**Block 1 — Zone aggregate stats panel**
+A structured data card showing zone-wide numbers:
+total rivers in DB, states covered, combined basin area (when available),
+overall zone pollution trend.
+All values pulled from DB query: `SELECT * FROM rivers WHERE zone = 'kaveri'`.
+
+**Block 2 — Map component placeholder**
+A reserved space for the future interactive zone map — 
+showing all rivers in the zone, colour-coded by type and pollution index.  
+<Badge text="Roadmap: v1" variant="note" />  
+Currently renders a clearly labelled placeholder with zone name.
+
+**Block 3 — River cards grid**
+An auto-generated grid of every river in the zone.
+One card per river, showing:
+`river_name` · `river_type` · `length_km` · `pollution_index` · `status` badge · link to overview page.
+Cards with `status: coming-soon` render in a muted state with a "queued" label.
+
+---
+
+## Anatomy of a River — the 7 sub-pages
+
+Every river — whether main-stem, tributary, or independent — 
+has exactly these 7 pages:
+
+| Page | File | Built from | Purpose |
+|------|------|-----------|---------|
+| Overview | `overview.mdx` | Frontmatter + DB layout | Identity, key facts, basic stats |
+| Health & Pollution | `health.mdx` | Frontmatter + DB layout + Triveni-net component | Pollution data, live readings strip |
+| Hydrology | `hydrology.mdx` | Frontmatter + DB layout | Flow patterns, basin, seasonal behaviour |
+| Ecology | `ecology.mdx` | Frontmatter + DB layout | Species, habitats, protected areas |
+| Governance | `governance.mdx` | Frontmatter + DB layout | Agencies, schemes, legal status, projects |
+| Cultural Hook | `cultural-hook.mdx` | Frontmatter + DB layout | 3–4 lines of cultural context + Itihaas links |
+| Misc | `misc.mdx` | Free markdown | Anything that does not fit the schema |
+
+<Aside type="tip" title="The misc page">
+`misc.mdx` is the only page in a river folder that is not DB-driven.
+It is a free-form markdown page for content that cannot be expressed as a structured field —
+a contested dam project, a unique geological feature, a specific legal dispute.
+It should be used sparingly. If something *can* fit the schema, it should.
+</Aside>
+
+---
+
+## What each Overview page shows
+
+The `overview.mdx` is the first page a reader lands on 
+when they open a river. It sets the complete identity of the river.
+
+All content is rendered from frontmatter by a shared layout template:
+
+<Code
+  lang="yaml"
+  title="What the overview page renders from frontmatter"
+  code={`River name + alternate names banner
+Zone badge + River type badge
+Origin → Mouth flow diagram (text-based for v1, map-based for v2)
+Length in km
+States covered (tag list)
+Flow direction
+Average annual flow (if available)
+Pollution index badge (colour-coded)
+Is holy: Yes/No — with link to Itihaas if true
+Status badge
+Last data updated timestamp
+Triveni-net live strip (top of page — component handles its own state)`}
+/>
+
+---
+
+## What each Health page shows
+
+The `health.mdx` is the most data-active page per river.
+
+<Code
+  lang="yaml"
+  title="What the health page renders"
+  code={`Triveni-net live data strip (DO, BOD, turbidity — real time)
+Pollution index + last updated badge
+Main pollution sources (list from DB field — added in v0.1)
+Known hotspot stretches (list from DB — added in v0.1)
+Monitoring station count (from DB)
+Trend indicator: improving / stable / worsening (from DB — added in v1)
+Cross-link: → Learn why rivers get polluted (Pollution Academy)
+Cross-link: → Take action on this river (Get Involved)`}
+/>
+
+---
+
+## Naming conventions for folders
+
+All folder and file names follow these rules:
+
+- Lowercase English only
+- Hyphens for spaces — no underscores, no camelCase
+- Zone folders: `[river-name]-zone/` — e.g., `kaveri-zone/`, `ganga-zone/`
+- River folders: `[river-name]/` — e.g., `kaveri/`, `seonath/`, `netravati/`
+- Sub-pages: fixed names as listed in the anatomy table above
+
+<Aside type="caution">
+Do not create any folder or file outside this structure without 
+updating this document and raising it for review.
+The uniformity of this structure is what makes auto-generation possible.
+A single misnamed folder breaks the sidebar config and the DB query mapping.
+</Aside>
+
+---
+
+## Our proposed release folder structure
+
+```md
+/our-rivers/
+│
+├── index.mdx                          ← Welcome + how to navigate the 9 zones
+│
+├── ganga/
+│   ├── index.mdx                      ← Ganga Zone overview (zone template)
+│   ├── ganga-main-stem/               ← River entry (river template)
+│   ├── yamuna/                        ← Major tributary (cross-ref to Yamuna zone)
+│   ├── ramganga/
+│   ├── ghaghara/
+│   ├── gandak/
+│   ├── kosi/
+│   ├── son/
+│   └── chambal/
+│
+├── yamuna/
+│   ├── index.mdx                      ← Yamuna Zone overview
+│   ├── yamuna-main-stem/
+│   ├── hindon/
+│   ├── betwa/
+│   ├── ken/
+│   └── tons/
+│
+├── sindhu/
+│   ├── index.mdx                      ← Sindhu Zone overview
+│   ├── sindhu-main-stem/
+│   ├── jhelum/
+│   ├── chenab/
+│   ├── ravi/
+│   ├── beas/
+│   └── sutlej/
+│
+├── brahmaputra/
+│   ├── index.mdx                      ← Brahmaputra Zone overview
+│   ├── brahmaputra-main-stem/
+│   ├── subansiri/
+│   ├── kameng/
+│   ├── manas/
+│   ├── sankosh/
+│   └── teesta/
+│
+├── godavari/
+│   ├── index.mdx                      ← Godavari Zone overview
+│   ├── godavari-main-stem/
+│   ├── indravati/
+│   ├── pranhita/
+│   ├── manjira/
+│   └── wainganga/
+│
+├── narmada/
+│   ├── index.mdx                      ← Narmada Zone overview
+│   ├── narmada-main-stem/
+│   ├── tawa/
+│   ├── hiran/
+│   └── sher/
+│
+├── mahanadi/
+│   ├── index.mdx                      ← Mahanadi Zone overview
+│   ├── mahanadi-main-stem/
+│   ├── seonath/
+│   ├── jonk/
+│   ├── hasdeo/
+│   └── ib/
+│
+├── krishna/
+│   ├── index.mdx                      ← Krishna Zone overview
+│   ├── krishna-main-stem/
+│   ├── bhima/
+│   ├── tungabhadra/
+│   ├── musi/
+│   └── koyna/
+│
+├── kaveri/
+│   ├── index.mdx                      ← Kaveri Zone overview
+│   ├── kaveri-main-stem/
+│   ├── kabini/
+│   ├── hemavathi/
+│   ├── shimsha/
+│   └── arkavathi/
+│
+└── _templates/                        ← Internal reference (not published)
+    ├── zone-template.md               ← Master copy of zone page structure
+    └── river-template.md              ← Master copy of river page structure
+
+```
+
+### The two master templates (recap)
+
+#### Zone page template — fixed section order
+
+Every `zone/index.mdx` follows this skeleton:
+
+1. **Overview** — where the basin lies, states, key cities, one zone map
+2. **Hydrology snapshot** — source, mouth, major tributaries, flow/climate character
+3. **Cultural \& spiritual significance** — key religious sites, major festivals, link to Itihaas
+4. **Ecology \& natural character** — ecoregions, notable species, protected areas
+5. **Pressures \& health** — main pollution sources at zone level, overall health summary, link to Pollution Academy
+6. **Governance \& projects** — agencies, missions, schemes, basin-wide projects
+7. **Data \& research links** — India-WRIS layers, relevant datasets, link to Data \& Research section
+8. **Rivers in this zone** — table: river name, type (main stem / tributary), link to river page
+
+***
+
+#### River page template — fixed section order
+
+Every `river-name/index.mdx` follows this skeleton:
+
+1. **Identity \& map** — 1–2 sentences, small map thumbnail
+2. **Basic stats** — length, catchment area, source, confluence
+3. **Role in the zone** — how it fits the zone hydrology (perennial? seasonal? snowfed?)
+4. **Cultural \& Itihaas hooks** — key ghats/temples, scripture mentions, key rituals, link to Itihaas
+5. **Current condition: health snapshot** — 3–5 bullet points on main issues, simple health indicator card
+6. **Local actions \& organisations** — active NGOs, groups, temple committees, link to Get Involved
+7. **Relevant data \& references** — monitoring stations, datasets, links to Data \& Research
+
+***
+
+### A note on the `_templates/` folder
+
+This is an **internal editorial tool**, not published content. Anyone contributing a new river page or zone page opens the master template, copies it, and fills it in. This is what enforces the uniformity we discussed — without it, contributors will inevitably drift from the structure over time.
+
+***
+
+### Sidebar as a reader sees it
+
+```
+Our Rivers
+├── Welcome & How to Navigate
+│
+├── Ganga Zone
+│   ├── Zone Overview
+│   ├── Ganga (Main Stem)
+│   ├── Ramganga
+│   └── [tributaries...]
+│
+├── Yamuna Zone
+│   ├── Zone Overview
+│   ├── Yamuna (Main Stem)
+│   └── [tributaries...]
+│
+├── Sindhu Zone
+├── Brahmaputra Zone
+├── Godavari Zone
+├── Narmada Zone
+├── Mahanadi Zone
+├── Krishna Zone
+└── Kaveri Zone
+```
+
+*Continue reading: [Why Database-Driven →](/our-rivers/database-driven-design/)*

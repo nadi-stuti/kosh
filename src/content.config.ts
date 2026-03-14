@@ -11,8 +11,9 @@ export const collections = {
         blogSchema(context).merge(
           z.object({
             giscus: z.boolean().optional().default(true),
-            date: z.coerce.date().optional(),
-            tags: z.array(z.string()).optional(),
+            social_read: z.array(z.string()).optional().nullable(),
+            social_watch: z.array(z.string()).optional().nullable(),
+            social_connect: z.array(z.string()).optional().nullable(),
           }),
         ),
     }),

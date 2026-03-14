@@ -1,3 +1,0 @@
----
-title: About map app
----

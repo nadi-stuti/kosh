@@ -1,0 +1,82 @@
+{
+    "cards": [
+        {
+            "id": "pollution-clarity-1",
+            "sides": [
+                {
+                    "label": "Myth",
+                    "content": "Muddy, brown water is a sign of a heavily polluted river."
+                },
+                {
+                    "label": "Reality",
+                    "content": "Silt and sediment are a natural part of a river's life cycle. Many native fish evolved in turbid, monsoon-fed waters. Muddy water can simply mean the river is carrying natural sediment."
+                }
+            ]
+        },
+        {
+            "id": "pollution-clarity-2",
+            "sides": [
+                {
+                    "label": "Myth",
+                    "content": "Crystal-clear water is safe to drink or swim in."
+                },
+                {
+                    "label": "Reality",
+                    "content": "Many dangerous pollutants like heavy metals and dissolved chemicals are invisible. Water can appear clear while still being toxic."
+                }
+            ]
+        },
+        {
+            "id": "pollution-clarity-3",
+            "sides": [
+                {
+                    "label": "Myth",
+                    "content": "If there is no visible garbage, a river is not polluted."
+                },
+                {
+                    "label": "Reality",
+                    "content": "The most harmful pollutants—such as nitrates, phosphates, pathogens, and synthetic chemicals—are microscopic and cannot be seen on the water surface."
+                }
+            ]
+        },
+        {
+            "id": "pollution-clarity-4",
+            "sides": [
+                {
+                    "label": "Myth",
+                    "content": "A river with fish in it must be healthy."
+                },
+                {
+                    "label": "Reality",
+                    "content": "Some fish species can survive in polluted water. The presence of a few tolerant species does not indicate a healthy ecosystem."
+                }
+            ]
+        },
+        {
+            "id": "pollution-clarity-5",
+            "sides": [
+                {
+                    "label": "Myth",
+                    "content": "Green, algae-covered water is just a natural occurrence."
+                },
+                {
+                    "label": "Reality",
+                    "content": "Large algal blooms often signal eutrophication caused by excess nutrients like fertilizer runoff. These blooms reduce oxygen and can release toxins."
+                }
+            ]
+        },
+        {
+            "id": "pollution-clarity-6",
+            "sides": [
+                {
+                    "label": "Myth",
+                    "content": "Warm river water is harmless."
+                },
+                {
+                    "label": "Reality",
+                    "content": "Thermal pollution from power plants can raise river temperatures, reducing oxygen levels and disrupting fish reproduction."
+                }
+            ]
+        }
+    ]
+}

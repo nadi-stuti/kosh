@@ -1,0 +1,269 @@
+---
+title: Why 95% of This Section is Database-Driven
+description: The rationale, architecture, and trade-offs behind the decision to make Our Rivers almost entirely generated from structured data rather than hand-written content.
+sidebar:
+  order: 6
+---
+
+import { Code } from '@astrojs/starlight/components';
+import { Aside } from '@astrojs/starlight/components';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+import { Steps } from '@astrojs/starlight/components';
+import { Badge } from '@astrojs/starlight/components';
+
+# Why 95% of This Section is Database-Driven
+
+The most important architectural decision in the Our Rivers section 
+is also the most visible one: almost nothing is written by hand.
+
+Every river page — its layout, its facts, its structure —
+is generated automatically from a database.
+This page explains why, what that means in practice, 
+and what trade-offs it comes with.
+
+---
+
+## What "database-driven" means
+
+<Tabs>
+  <TabItem label="Simple explanation">
+
+Imagine you are building a library catalogue.
+
+You could write a card for each book by hand —
+type the title, author, year, subject on a separate index card.
+If you have 20 books, that is fine.
+If you have 20,000 books, you cannot do it by hand.
+
+Instead, you create a form with fixed fields.
+Every book fills in the same form.
+The catalogue is then generated automatically from those forms.
+
+That is exactly what we do with rivers.
+
+Instead of someone writing "The Kaveri is 800 km long and flows from Karnataka..."
+we store `length_km: 800` and `origin_point: Talakaveri, Karnataka` in a database,
+and the page is built from those values — automatically, instantly, uniformly.
+
+  </TabItem>
+  <TabItem label="Technical explanation">
+
+Each river is a row in a PostgreSQL table with 15 typed columns 
+(see [The Data Schema](/our-rivers/the-data-schema/)).
+
+At build time, Astro queries the database and generates one set of pages per river row.
+Each page type (overview, health, hydrology, etc.) uses a shared MDX layout template
+that reads from frontmatter fields and renders them into components.
+
+The river's frontmatter is populated from the DB row at build time.
+The MDX file itself contains almost no prose — 
+only frontmatter and a layout component import.
+
+This is the contrast:
+
+<Code
+  lang="mdx"
+  title="❌ Hand-written approach (what we are NOT doing)"
+  code={`---
+title: Kaveri River
+---
+
+The Kaveri is a major river in South India.
+It originates at Talakaveri in Kodagu, Karnataka
+and flows approximately 800 km before meeting the Bay of Bengal
+near Poompuhar in Tamil Nadu.
+It flows through Karnataka, Tamil Nadu, Kerala, and Puducherry.
+The river is considered holy and is known as Dakshina Ganga.
+Its current pollution level is moderate...`}
+/>
+
+<Code
+  lang="mdx"
+  title="✅ Database-driven approach (what we ARE doing)"
+  code={`---
+river_name: "Kaveri"
+also_known_as: ["Cauvery", "Dakshina Ganga", "Ponni"]
+zone: "kaveri"
+river_type: "main-stem"
+origin_point: "Talakaveri, Kodagu, Karnataka"
+confluence_or_mouth: "Bay of Bengal, Poompuhar, Tamil Nadu"
+length_km: 800
+states_covered: ["Karnataka", "Tamil Nadu", "Kerala", "Puducherry"]
+flow_direction: "east-flowing"
+pollution_index: "moderate"
+is_holy: true
+status: "published"
+---
+
+<RiverOverviewLayout />`}
+/>
+
+The layout component reads the frontmatter and renders everything.
+No prose is written. No river gets a "special" page. All are equal.
+
+  </TabItem>
+</Tabs>
+
+---
+
+## Why this is the right decision for Our Rivers
+
+### 1. Consistency at scale
+
+When a human writes a page for each river, no two pages are the same.
+One writer calls it "length", another says "approximate distance", another says "course".
+One mentions states, another skips it. One adds cultural context, another doesn't.
+
+With a database, every river has exactly the same fields, in exactly the same order,
+rendered in exactly the same layout.
+A reader who knows how to read one river page can read all of them.
+
+### 2. Updatability
+
+<Tabs>
+  <TabItem label="Simple">
+
+If a river's pollution level changes, 
+one person updates one number in the database.
+Every page that shows that number — overview, health, zone grid card —
+updates automatically at the next weekly rebuild.
+
+Nobody has to find and edit a paragraph buried in a markdown file.
+
+  </TabItem>
+  <TabItem label="Technical">
+
+A single `UPDATE rivers SET pollution_index = 'high' WHERE river_name = 'Kaveri'`
+triggers updated output across every page that reads that field at the next cron build.
+
+This is impossible to guarantee with hand-written markdown.
+You cannot `grep` for "moderate" and safely replace it across 300 river files.
+
+  </TabItem>
+</Tabs>
+
+### 3. Contributor-friendliness
+
+Adding a new river to Nadikosh should not require writing a long article.
+It should require filling a form.
+
+A contributor who knows nothing about Astro, Starlight, or MDX
+can add a complete, correctly structured river page
+by inserting one row into the database with all 15 fields.
+
+The site generates the page automatically.
+No markdown skills required. No layout knowledge required.
+Just: fill the form.
+
+### 4. Automation readiness
+
+The long-term vision is an AI/ML pipeline that ingests data from satellite imagery,
+official portals, news sources, and research publications —
+and proposes pre-filled database rows for editorial review.
+
+That pipeline can only work if the target is structured data.
+It cannot generate well-formed prose articles at scale.
+It can fill in `length_km`, `pollution_index`, and `states_covered` reliably.
+
+By committing to a database-driven architecture now,
+we make ourselves ready for that pipeline when it arrives.
+
+---
+
+## How the architecture evolves
+
+<Steps>
+
+1. **v0.01 — Manual, Postgres at build time**  
+   4 rivers entered by hand directly into a local Postgres instance.  
+   Astro queries Postgres at build time and generates pages.  
+   No automation. No cron. No contributors.  
+   Goal: prove that the layout templates work and all 4 rivers render correctly.
+
+2. **v0.1 — Contributors + cron**  
+   A structured contribution form for new rivers.  
+   Weekly cron rebuild pulls latest DB state and redeploys.  
+   `last_data_updated` and "last updated X days ago" badge go live.  
+   10–15 rivers in DB.
+
+3. **v1 — Semi-automated data pipeline**  
+   Scripts pull from India-WRIS and CPCB to pre-fill periodic fields.  
+   Editors review and approve before any automated data is published.  
+   30 rivers in DB. Map component mounted (even if basic).  
+   Triveni-net component mounted (even if showing "coming soon").
+
+4. **v2 — AI/ML pipeline**  
+   Automated extraction from satellite data, news, and research publications.  
+   Human editors validate and approve.  
+   Full zone coverage. Advanced map live.  
+   Triveni-net fully integrated.
+
+</Steps>
+
+---
+
+## The 5% that is not database-driven
+
+The `/misc` page inside every river folder is the only exception.
+
+It exists because some information genuinely cannot be expressed as a field.
+
+Examples of what belongs in `/misc`:
+
+- A specific dam project's contested history that requires explanation
+- A legal case that affects this river's governance in a nuanced way  
+- A unique geological feature that needs description, not a data point
+- A folk story or local name that is meaningful but hard to classify
+
+`/misc` is free-form markdown. It has no schema. It is written by a human.
+It should be used sparingly — only when no schema field can hold the content.
+
+<Aside type="caution">
+If you find yourself writing substantial prose on any page *other* than `/misc`,
+stop and ask: can this be a structured field instead?
+If yes, add the field to the schema first. Then populate it.
+The goal is always to make data extractable and queryable — not just readable.
+</Aside>
+
+---
+
+## The known trade-off: SEO
+
+Database-driven pages with minimal prose are thin on the kind of narrative text
+that search engines traditionally use to rank pages.
+
+A river page that is 90% structured data and components
+with little readable paragraph text 
+may rank lower for searches like "Kaveri river pollution" 
+compared to a hand-written article about the same topic.
+
+This is a known and accepted trade-off for v1.
+
+**The `/misc` page partially mitigates this.**
+Narrative text, historical context, and detailed descriptions written on `/misc`
+contribute readable content to the river's overall page cluster,
+giving search engines more signal to work with.
+
+<Badge text="SEO strategy: deferred to v1" variant="note" />
+
+A formal SEO strategy for Our Rivers will be designed once 
+the core DB architecture is stable and the first 30 rivers are published.
+
+---
+
+## What this means for you as a contributor
+
+If you are adding a river:
+- Fill the 15 schema fields completely and accurately
+- Use `/misc` only for content that genuinely has no structured home
+- Never write prose on `overview.mdx`, `health.mdx`, or other layout pages —
+  those files should only contain frontmatter and the layout component import
+
+If you are building a layout template:
+- Read only from frontmatter fields defined in [The Data Schema](/our-rivers/the-data-schema/)
+- Never hardcode river-specific content inside a layout component
+- Design every component to degrade gracefully when optional fields are null
+
+---
+
+*Continue reading: [Live & Dynamic Data →](/our-rivers/live-and-dynamic-data/)*

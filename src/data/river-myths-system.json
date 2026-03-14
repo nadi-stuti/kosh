@@ -1,0 +1,43 @@
+{
+    "cards": [
+        {
+            "id": "river-flow",
+            "sides": [
+                {
+                    "label": "Common Belief",
+                    "content": "Rivers only flow when it rains."
+                },
+                {
+                    "label": "Reality",
+                    "content": "Forests and groundwater slowly release water into rivers, helping them flow even during dry months."
+                }
+            ]
+        },
+        {
+            "id": "river-definition",
+            "sides": [
+                {
+                    "label": "Common Belief",
+                    "content": "A river is just the water flowing in a channel."
+                },
+                {
+                    "label": "Reality",
+                    "content": "A river includes the channel, floodplains, groundwater, and the entire ecosystem connected to it."
+                }
+            ]
+        },
+        {
+            "id": "river-cleaning",
+            "sides": [
+                {
+                    "label": "Common Belief",
+                    "content": "Rivers naturally clean all the pollution we put into them."
+                },
+                {
+                    "label": "Reality",
+                    "content": "Natural processes help break down some waste, but excessive pollution overwhelms the ecosystem."
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,137 @@
+{
+    "items": [
+        {
+            "id": "big-picture",
+            "category": "Chapter",
+            "title": "Big Picture: Getting to Know Rivers",
+            "description": "Start your journey by understanding what rivers are, why they matter to our lives and culture, and how pollution enters these living systems.",
+            "meta": "Articles 2–5 · 4 articles",
+            "topics": [
+                {
+                    "label": "What is a river as a living ecosystem?",
+                    "link": "/pollution-academy/why-rivers-are-polluted/what-is-a-river"
+                },
+                {
+                    "label": "Why clean rivers matter to daily life and spirituality"
+                },
+                {
+                    "label": "The journey of pollution—how a river turns dirty"
+                },
+                {
+                    "label": "Different types of pollution: visible and invisible"
+                }
+            ]
+        },
+        {
+            "id": "main-sources",
+            "category": "Chapter",
+            "title": "Main Sources of Pollution: Everyday Language",
+            "description": "Explore the biggest pollution sources—sewage, plastic, industrial waste, farm chemicals, and construction—explained in simple, everyday terms.",
+            "meta": "Articles 6–10 · 5 articles",
+            "topics": [
+                {
+                    "label": "Where sewage goes after you flush"
+                },
+                {
+                    "label": "Plastic, garbage, and religious offerings"
+                },
+                {
+                    "label": "Invisible industrial poisons"
+                },
+                {
+                    "label": "Farm fertilizers and pesticides washing into rivers"
+                },
+                {
+                    "label": "Sand mining and construction damage"
+                }
+            ]
+        },
+        {
+            "id": "science-simple",
+            "category": "Chapter",
+            "title": "Science Made Simple: How We Measure River Health",
+            "description": "Learn key water quality indicators like dissolved oxygen (DO), BOD, pH, and more using everyday comparisons—no chemistry degree required.",
+            "meta": "Articles 11–15 · 5 articles",
+            "topics": [
+                {
+                    "label": "Visual signs of pollution"
+                },
+                {
+                    "label": "Key parameters: DO and BOD explained simply"
+                },
+                {
+                    "label": "pH, toxins, and microbial tests"
+                },
+                {
+                    "label": "Water testing methods for citizens"
+                },
+                {
+                    "label": "Biological indicators of river health"
+                }
+            ]
+        },
+        {
+            "id": "people-culture",
+            "category": "Chapter",
+            "title": "People, Culture, and Power Structures",
+            "description": "Understand the cultural significance of holy rivers, who is responsible for protection, and India's environmental laws in clear language.",
+            "meta": "Articles 16–18 · 3 articles",
+            "topics": [
+                {
+                    "label": "Sacred rivers and modern challenges"
+                },
+                {
+                    "label": "Shared responsibility: government, industry, citizens"
+                },
+                {
+                    "label": "Indian environmental laws and missions"
+                }
+            ]
+        },
+        {
+            "id": "case-studies",
+            "category": "Chapter",
+            "title": "Case Studies: Real Rivers, Real Stories",
+            "description": "Real examples from Ganga and Yamuna, peninsular rivers, urban nallas, plus inspiring global success stories of polluted rivers revived.",
+            "meta": "Articles 19–22 · 4 articles",
+            "topics": [
+                {
+                    "label": "Ganga and Yamuna pollution challenges"
+                },
+                {
+                    "label": "Peninsular river case studies"
+                },
+                {
+                    "label": "Urban nallas and drainage networks"
+                },
+                {
+                    "label": "International river restoration successes"
+                }
+            ]
+        },
+        {
+            "id": "tech-action",
+            "category": "Chapter",
+            "title": "Technology, Data, and Citizen Action",
+            "description": "Modern tools like satellites, apps, and sensors plus practical steps you can take to monitor, protect, and restore rivers.",
+            "meta": "Articles 23–27 · 5 articles",
+            "topics": [
+                {
+                    "label": "Remote sensing and GIS for rivers"
+                },
+                {
+                    "label": "Digital monitoring tools and apps"
+                },
+                {
+                    "label": "Personal actions for river protection"
+                },
+                {
+                    "label": "Adopting and documenting a river stretch"
+                },
+                {
+                    "label": "Vision of a restored river future"
+                }
+            ]
+        }
+    ]
+}

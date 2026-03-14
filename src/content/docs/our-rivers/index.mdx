@@ -1,0 +1,120 @@
+---
+title: "About the 'Our Rivers' section"
+description: A structured, living encyclopedia of India's rivers — organised by zone, driven by data, and built for every kind of reader.
+sidebar:
+ order: 1
+---
+
+import { Badge } from '@astrojs/starlight/components';
+import { CardGrid, Card } from '@astrojs/starlight/components';
+
+# Our Rivers
+
+<Badge text="Work in Progress" variant="caution" />
+
+This is not a collection of stories about rivers.  
+This is not a blog. It is not a gallery.  
+
+**Our Rivers** is a structured, data-driven reference encyclopaedia — 
+the most organised attempt to document India's rivers in one place, 
+uniformly, for every kind of reader.
+
+Whether you are a student looking up facts about the Kaveri, 
+a researcher comparing pollution indices across river zones, 
+a developer building on river data, 
+or a devotee wanting to understand the river you stand beside — 
+this section is built for you.
+
+---
+
+## What you will find here
+
+Every river in this section follows an identical structure. No exceptions.
+
+Each river has the same set of pages, the same data fields, and the same layout.
+This uniformity is intentional. It is what makes this section a *reference* 
+rather than a collection of articles.
+
+Each river page covers:
+
+- **Overview** — geography, basic facts, zone, type, and key numbers
+- **Health & Pollution** — pollution index, key pressures, monitoring status
+- **Hydrology** — flow patterns, seasonal behaviour, basin characteristics  
+- **Ecology** — notable species, habitats, protected areas
+- **Governance** — agencies, schemes, legal status, major projects
+- **Cultural Hook** — a brief note on cultural and spiritual significance, 
+  with links to [Itihaas](/itihaas/) for deeper exploration
+- **Misc** — anything important that does not fit the structured pages above
+
+---
+
+## How rivers are organised
+
+India's rivers are grouped into **9 major river zones**:
+
+| Zone | Major River System |
+|------|--------------------|
+| 🔵 Ganga Zone | Ganga and her basin |
+| 🔵 Yamuna Zone | Yamuna and her basin |
+| 🔵 Sindhu Zone | Indus system in India |
+| 🔵 Brahmaputra Zone | Brahmaputra and northeast rivers |
+| 🔵 Godavari Zone | Godavari and her basin |
+| 🔵 Narmada Zone | Narmada and central rivers |
+| 🔵 Mahanadi Zone | Mahanadi and Odisha rivers |
+| 🔵 Krishna Zone | Krishna and her basin |
+| 🔵 Kaveri Zone | Kaveri and south rivers |
+
+Within each zone, rivers are typed as:
+`main-stem` · `major-tributary` · `minor-tributary` · `independent`
+
+Rivers that drain independently to the coast — like Netravati — 
+are assigned to the nearest geographic zone with the `independent` type.
+
+→ Read more: [How We Organise Indian Rivers](/our-rivers/how-rivers-are-organised/)
+
+---
+
+## Current status
+
+<CardGrid>
+  <Card title="🟢 Live Rivers" icon="approve-check">
+    Rivers with at least a published overview page.  
+    *Starting with Kaveri, Mahanadi, Seonath, Netravati.*
+  </Card>
+  <Card title="🟡 Stubs" icon="warning">
+    Rivers with a placeholder page — zone and type confirmed, 
+    data entry in progress.
+  </Card>
+  <Card title="⚪ Coming Soon" icon="information">
+    Rivers identified and queued. 
+    Pages not yet created.
+  </Card>
+</CardGrid>
+
+---
+
+## This section is a blueprint in motion
+
+The full vision for **Our Rivers** is large.  
+A live, automated, AI-augmented database of every significant Indian river.  
+Connected to real-time data. Updated continuously.  
+
+Right now, we are at the very beginning of that journey.  
+What exists today is the skeleton — the structure, the schema, the taxonomy.  
+The data is being added one river at a time.
+
+If you want to understand where this is going,  
+start with the planning documents in this folder:
+
+- [The Full Vision](/our-rivers/what-this-section-will-become/)
+- [How Rivers Are Organised](/our-rivers/how-rivers-are-organised/)
+- [The Data Schema](/our-rivers/the-data-schema/)
+- [Folder & Page Structure](/our-rivers/folder-and-page-structure/)
+- [Why Database-Driven](/our-rivers/database-driven-design/)
+- [Live & Dynamic Data](/our-rivers/live-and-dynamic-data/)
+- [How to Build the POC](/our-rivers/how-to-build-the-poc/) *(for developers)*
+- [Roadmap](/our-rivers/roadmap/)
+
+---
+
+*Our Rivers is part of [Nadikosh](/), India's open river knowledge repository.*

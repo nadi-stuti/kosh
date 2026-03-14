@@ -1,0 +1,221 @@
+/* Quiz Component */
+
+.quick-knowledge-check,
+.quiz {
+    --bg-color: var(--sl-color-gray-6);
+    --text-color: var(--sl-color-text);
+    --border-color: var(--sl-color-gray-5);
+    --primary-color: var(--sl-color-accent);
+    --surface-color: var(--sl-color-gray-5);
+}
+
+.quick-knowledge-check,
+.quiz {
+    color: var(--text-color);
+    background: var(--bg-color);
+}
+
+/* Title */
+
+.qk-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: var(--rc-space-md);
+    text-align: center;
+}
+
+/* Progress text */
+
+.qk-progress {
+    text-align: center;
+    font-weight: 500;
+    margin-bottom: var(--rc-space-lg);
+    opacity: 0.8;
+}
+
+/* Question card */
+
+.qk-question {
+    background: var(--surface-color);
+    padding: var(--rc-space-lg);
+    border-radius: var(--rc-radius-lg);
+    border: 1px solid var(--border-color);
+}
+
+.qk-question h4 {
+    font-size: 1.125rem;
+    margin-bottom: var(--rc-space-md);
+    line-height: 1.4;
+}
+
+/* Options list */
+
+.qk-options {
+    display: flex;
+    flex-direction: column;
+    gap: var(--rc-space-sm);
+    margin-bottom: var(--rc-space-lg);
+}
+
+/* Individual option */
+
+.qk-option {
+    display: flex;
+    align-items: center;
+    gap: var(--rc-space-sm);
+    padding: var(--rc-space-md);
+    border: 1px solid var(--border-color);
+    border-radius: var(--rc-radius-md);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: var(--bg-color);
+}
+
+/* Hover state */
+
+.qk-option:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Selected option */
+
+.qk-option.selected {
+    border-color: var(--primary-color);
+    background: color-mix(in srgb, var(--primary-color) 10%, transparent);
+}
+
+/* Radio button styling */
+
+.qk-option input[type="radio"] {
+    flex-shrink: 0;
+    margin: 0;
+    accent-color: var(--primary-color);
+    width: 1.1rem;
+    height: 1.1rem;
+}
+
+/* Buttons */
+
+.qk-btn {
+    background: var(--primary-color);
+    color: var(--sl-color-text-invert);
+    border: none;
+    padding: 0.875rem 1.5rem;
+    border-radius: var(--rc-radius-md);
+    font-weight: 500;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1rem;
+    transition: opacity 0.15s ease;
+}
+
+.qk-btn-primary {
+    background: var(--sl-color-accent);
+    color: var(--sl-color-text-invert);
+}
+
+.qk-btn-secondary {
+    background: var(--border-color);
+    color: var(--text-color);
+}
+
+.qk-btn:hover {
+    opacity: 0.9;
+}
+
+/* Hint text */
+
+.qk-hint {
+    text-align: center;
+    font-style: italic;
+    color: var(--text-color);
+    opacity: 0.7;
+}
+
+/* Score display */
+
+.qk-score {
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-align: center;
+    margin: var(--rc-space-md) 0;
+}
+
+/* Result message */
+
+.qk-result-message {
+    font-size: 1.1rem;
+    text-align: center;
+    margin-bottom: var(--rc-space-lg);
+    line-height: 1.6;
+}
+
+/* Correct answer styling */
+
+.qk-option.correct {
+    border-color: var(--sl-color-green);
+    background: var(--sl-color-green-low);
+    position: relative;
+}
+
+.qk-option.correct::before {
+    content: "✅";
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.25rem;
+}
+
+/* Wrong answer styling */
+
+.qk-option.wrong {
+    border-color: var(--sl-color-red);
+    background: var(--sl-color-red-low);
+    opacity: 0.7;
+}
+
+/* Feedback box */
+
+.qk-feedback {
+    padding: 1.25rem;
+    border-radius: 0.625rem;
+    font-weight: 600;
+    margin-top: var(--rc-space-md);
+    border-left: 4px solid;
+}
+
+/* Correct feedback */
+
+.qk-feedback.correct {
+    background: color-mix(in srgb, var(--sl-color-green) 10%, var(--sl-color-bg));
+    border-left-color: var(--sl-color-green);
+    color: var(--sl-color-green-foreground);
+}
+
+/* Wrong feedback */
+
+.qk-feedback.wrong {
+    background: color-mix(in srgb, var(--sl-color-red) 10%, var(--sl-color-bg));
+    border-left-color: var(--sl-color-red);
+    color: var(--sl-color-red);
+}
+
+/* Explanation text */
+
+.qk-feedback small {
+    font-weight: 400;
+    opacity: 0.9;
+    display: block;
+    margin-top: 0.5rem;
+}
+
+/* Desktop button layout */
+
+@media (min-width: 768px) {
+    .qk-btn {
+        width: auto;
+        margin-left: auto;
+    }
+}

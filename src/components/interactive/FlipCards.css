@@ -1,0 +1,112 @@
+.flipcards {
+    text-align: center;
+}
+
+.flipcards-stage {
+    margin-top: var(--rc-space-md);
+}
+
+.flipcard {
+    perspective: 1000px;
+    position: relative;
+    cursor: pointer;
+    max-width: 420px;
+    margin: 0 auto;
+}
+
+.flipcard-inner {
+    position: relative;
+    height: 200px;
+    transform-style: preserve-3d;
+}
+
+.flipcard-face {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding: var(--rc-space-md);
+
+    border-radius: var(--rc-radius-md);
+    border: 1px solid var(--sl-color-gray-5);
+
+    background: var(--sl-color-gray-6);
+
+    backface-visibility: hidden;
+}
+
+.flipcard-front {
+    background: var(--sl-color-gray-5);
+}
+
+.flipcard-back {
+    transform: rotateY(180deg);
+    background: color-mix(in srgb, var(--sl-color-accent) 10%, var(--sl-color-gray-6));
+}
+
+.flipcard-label {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: var(--rc-space-xs);
+    color: var(--sl-color-red);
+}
+
+.flipcard-label-accent {
+    color: var(--sl-color-green);
+}
+
+.flipcard-content {
+    font-size: 1.1rem;
+    line-height: 1.5;
+}
+
+.flipcard-hint {
+    font-size: 0.9rem;
+    margin-top: var(--rc-space-sm);
+    opacity: 0.6;
+}
+
+.flipcard-ripple {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+
+    width: 40px;
+    height: 40px;
+
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--sl-color-accent) 20%, transparent);
+
+    pointer-events: none;
+}
+
+.flipcards-controls {
+    margin-top: var(--rc-space-md);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--rc-space-sm);
+}
+
+.flipcards-btn {
+    padding: 0.35rem 0.75rem;
+    border-radius: var(--rc-radius-pill);
+    border: 1px solid var(--sl-color-gray-5);
+    background: transparent;
+    cursor: pointer;
+}
+
+.flipcards-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.flipcards-progress {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}

@@ -1,0 +1,75 @@
+{
+    "questions": [
+        {
+            "id": "invisible-connection",
+            "text": "You turn on the tap in your city apartment to drink a glass of water. What invisible journey did that water likely take?",
+            "options": [
+                "It was created entirely inside a municipal water tank.",
+                "It was pumped straight from the ocean and desalinated.",
+                "It began in a flowing river before passing through complex treatment plants.",
+                "It came directly from rainfall caught on the city's rooftops."
+            ],
+            "correctOptionIndex": 2,
+            "explanation": "It's easy to forget, but our modern plumbing is invisibly tethered to the nearest riverbank. Our daily survival depends on those rivers staying healthy."
+        },
+        {
+            "id": "food-chain",
+            "text": "If industrial chemicals are dumped into a river 100 kilometers away from your home, how might they still end up on your dinner plate?",
+            "options": [
+                "The chemicals evaporate and fall as toxic rain on your food.",
+                "Farmers use river water for irrigation, allowing chemicals to absorb into the soil and crops.",
+                "The chemicals only affect fish, not vegetables.",
+                "They won't; river water naturally destroys all chemicals after 50 kilometers."
+            ],
+            "correctOptionIndex": 1,
+            "explanation": "Rivers feed the farms that feed us. Toxic chemicals don't just stay in the water; they accumulate in the soil and the crops we eat."
+        },
+        {
+            "id": "dharma-paradox",
+            "text": "What is the 'heartbreaking contradiction' in how we treat sacred rivers today?",
+            "options": [
+                "We build temples too far away from the riverbanks.",
+                "We worship the river as a Mother, yet we allow raw city sewage to flow directly into her.",
+                "We don't have enough festivals celebrating water anymore.",
+                "We only worship the rivers in the north, but ignore the ones in the south."
+            ],
+            "correctOptionIndex": 1,
+            "explanation": "We have separated our spiritual reverence from our civic responsibility. True Dharma means adapting our rituals and infrastructure so we don't harm the physical water."
+        },
+        {
+            "id": "spiritual-limits",
+            "text": "Many believe a holy river is so powerful it cannot be destroyed. Ecologically speaking, why is this dangerous?",
+            "options": [
+                "Because natural rivers have strict physical limits, and crossing them makes the water toxic regardless of its sacred status.",
+                "Because the river will eventually change its course and flood cities.",
+                "Because it causes people to stop visiting the river entirely.",
+                "Because holy rivers flow much slower than normal rivers."
+            ],
+            "correctOptionIndex": 0,
+            "explanation": "A river is a physical system. While its spiritual essence may be eternal, the physical water has limits and can absolutely become too toxic to support life."
+        }
+    ],
+    "resultLabels": [
+        {
+            "key": "beginner",
+            "minScore": 0,
+            "maxScore": 1,
+            "title": "Beginning the Journey",
+            "message": "You're just starting to untangle the deep connection between our daily lives, our faith, and our rivers. Keep reading—the real story is just beginning."
+        },
+        {
+            "key": "developing",
+            "minScore": 2,
+            "maxScore": 3,
+            "title": "Connecting the Dots",
+            "message": "You clearly see how our survival and culture are tied to the water. In the next article, we will see exactly how this vital system breaks down."
+        },
+        {
+            "key": "advanced",
+            "minScore": 4,
+            "maxScore": 4,
+            "title": "A True River Guardian",
+            "message": "Perfect! You deeply understand that practical cleanliness is the highest form of reverence. You are ready to dive into the science of pollution in Article 4."
+        }
+    ]
+}

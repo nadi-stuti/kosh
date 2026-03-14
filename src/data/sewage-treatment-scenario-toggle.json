@@ -1,0 +1,90 @@
+{
+    "title": "What Happens to the River When Sewage Goes Untreated?",
+    "caption": "Toggle between treatment levels to see the direct effect on river oxygen and aquatic life.",
+    "scenarios": [
+        {
+            "id": "scenario-raw",
+            "label": "0% Treated",
+            "description": "Raw sewage floods the river with organic waste. Bacteria multiply explosively, consuming nearly all dissolved oxygen. The river turns hypoxic — fish die off and the water emits hydrogen sulfide.",
+            "status": "critical",
+            "metrics": [
+                {
+                    "label": "Bacteria Activity",
+                    "value": 95,
+                    "unit": "%"
+                },
+                {
+                    "label": "Dissolved Oxygen Level",
+                    "value": 5,
+                    "unit": "%"
+                },
+                {
+                    "label": "Aquatic Life Survival",
+                    "value": 8,
+                    "unit": "%"
+                },
+                {
+                    "label": "Water Clarity",
+                    "value": 10,
+                    "unit": "%"
+                }
+            ]
+        },
+        {
+            "id": "scenario-partial",
+            "label": "50% Treated",
+            "description": "Partial treatment reduces the organic load but the river still receives significant untreated waste. Oxygen levels drop to a precarious threshold — some hardy species survive, but biodiversity is severely damaged.",
+            "status": "warning",
+            "metrics": [
+                {
+                    "label": "Bacteria Activity",
+                    "value": 55,
+                    "unit": "%"
+                },
+                {
+                    "label": "Dissolved Oxygen Level",
+                    "value": 42,
+                    "unit": "%"
+                },
+                {
+                    "label": "Aquatic Life Survival",
+                    "value": 38,
+                    "unit": "%"
+                },
+                {
+                    "label": "Water Clarity",
+                    "value": 45,
+                    "unit": "%"
+                }
+            ]
+        },
+        {
+            "id": "scenario-full",
+            "label": "100% Treated",
+            "description": "Fully treated effluent removes organic waste before it enters the river. Bacteria starve, oxygen levels recover, and the aquatic ecosystem begins to thrive. The river can breathe again.",
+            "status": "healthy",
+            "metrics": [
+                {
+                    "label": "Bacteria Activity",
+                    "value": 12,
+                    "unit": "%"
+                },
+                {
+                    "label": "Dissolved Oxygen Level",
+                    "value": 88,
+                    "unit": "%"
+                },
+                {
+                    "label": "Aquatic Life Survival",
+                    "value": 91,
+                    "unit": "%"
+                },
+                {
+                    "label": "Water Clarity",
+                    "value": 85,
+                    "unit": "%"
+                }
+            ]
+        }
+    ]
+}

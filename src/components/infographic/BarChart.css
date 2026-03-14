@@ -1,0 +1,243 @@
+/* ─────────────────────────────────────────
+   BAR CHART — WRAPPER
+   ───────────────────────────────────────── */
+
+.bar-chart {
+    padding: var(--rc-space-md) var(--rc-space-lg) var(--rc-space-sm);
+}
+
+
+/* ─────────────────────────────────────────
+   BAR CHART — TITLE
+   ───────────────────────────────────────── */
+
+.bar-chart__title {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--sl-color-text);
+    margin: 0 0 var(--rc-space-md);
+    line-height: 1.4;
+}
+
+
+/* ─────────────────────────────────────────
+   BAR CHART — CANVAS WRAPPER
+   ───────────────────────────────────────── */
+
+.bar-chart__canvas {
+    width: 100%;
+    /* height is set inline — dynamic per instance */
+    border-radius: var(--rc-radius-sm);
+    overflow: hidden;
+}
+
+
+/* ─────────────────────────────────────────
+   BAR CHART — INDIVIDUAL BAR STATES
+   ───────────────────────────────────────── */
+
+/* Nivo injects <rect> elements; target via SVG child selectors */
+
+.bar-chart__canvas svg rect[class] {
+    transition: opacity 0.2s ease, filter 0.2s ease;
+    cursor: default;
+}
+
+/* hover — lighten the hovered bar */
+.bar-chart__canvas svg rect[class]:hover {
+    opacity: 0.82;
+    filter: brightness(1.08);
+}
+
+/* active — slight scale press feedback via parent wrapper */
+.bar-chart__canvas:active {
+    transform: scale(0.995);
+    transition: transform 0.1s ease;
+}
+
+/* selected — handled via Nivo onClick; use outline highlight */
+.bar-chart__canvas svg rect.bar-chart--selected {
+    outline: 2px solid var(--sl-color-accent);
+    outline-offset: 1px;
+}
+
+/* disabled — muted when parent has disabled attribute */
+.bar-chart[aria-disabled="true"] .bar-chart__canvas {
+    opacity: 0.45;
+    pointer-events: none;
+}
+
+
+/* ─────────────────────────────────────────
+   BAR CHART — CAPTION
+   ───────────────────────────────────────── */
+
+.bar-chart__caption {
+    font-size: 0.78rem;
+    color: var(--sl-color-gray-3) !important;
+    margin: var(--rc-space-sm) 0 0;
+    text-align: center;
+    line-height: 1.55;
+    padding: 0 var(--rc-space-sm);
+}
+
+
+/* ─────────────────────────────────────────
+   BAR CHART — LOADING SKELETON
+   ───────────────────────────────────────── */
+
+.bar-chart__skeleton {
+    display: flex;
+    flex-direction: column;
+    gap: var(--rc-space-sm);
+    padding: var(--rc-space-sm) 0;
+}
+
+.bar-chart__skeleton-row {
+    display: flex;
+    align-items: center;
+    gap: var(--rc-space-md);
+}
+
+.bar-chart__skeleton-label {
+    width: 9rem;
+    height: 0.875rem;
+    border-radius: var(--rc-radius-sm);
+    background: var(--sl-color-gray-5);
+    opacity: 0.25;
+    flex-shrink: 0;
+}
+
+.bar-chart__skeleton-bar {
+    height: 1.5rem;
+    border-radius: var(--rc-radius-sm);
+    background: var(--sl-color-gray-5);
+    opacity: 0.2;
+    animation: bar-chart-pulse 1.6s ease-in-out infinite;
+}
+
+
+/* ─────────────────────────────────────────
+   BAR CHART — ANIMATIONS
+   ───────────────────────────────────────── */
+
+@keyframes bar-chart-pulse {
+
+    0%,
+    100% {
+        opacity: 0.18;
+    }
+
+    50% {
+        opacity: 0.32;
+    }
+}
+
+
+/* ─────────────────────────────────────────
+   BAR CHART — RESPONSIVE
+   ───────────────────────────────────────── */
+
+@media (max-width: 480px) {
+    .bar-chart {
+        padding: var(--rc-space-sm) var(--rc-space-md) var(--rc-space-xs);
+    }
+
+    .bar-chart__title {
+        font-size: 0.875rem;
+    }
+
+    .bar-chart__caption {
+        font-size: 0.72rem;
+    }
+}
+
+
+/* ─────────────────────────────────────────
+   BAR CHART — DARK MODE
+   ───────────────────────────────────────── */
+
+@media (prefers-color-scheme: dark) {
+    .bar-chart__title {
+        color: var(--sl-color-text);
+    }
+
+    .bar-chart__caption {
+        color: var(--sl-color-gray-5);
+    }
+
+    .bar-chart__canvas svg rect[class]:hover {
+        filter: brightness(1.15);
+    }
+
+    .bar-chart__skeleton-label,
+    .bar-chart__skeleton-bar {
+        background: var(--sl-color-gray-5);
+    }
+}
+
+/* Custom Tooltip Styling - Themes automatically with Starlight */
+.custom-tooltip {
+    background: var(--sl-color-bg-nav) !important;
+    color: var(--sl-color-white) !important;
+    padding: 12px 16px;
+    border-radius: 8px;
+    border: 1px solid var(--sl-color-gray-6);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    font-family: inherit;
+    font-size: 14px;
+    min-width: 180px;
+    backdrop-filter: blur(8px);
+    z-index: 9999 !important;
+}
+
+/* Tooltip Title (Category name) */
+.custom-tooltip .tooltip-title {
+    font-weight: 600;
+    font-size: 15px;
+    margin-bottom: 4px;
+    color: var(--sl-color-white);
+}
+
+/* Tooltip Value (Number) */
+.custom-tooltip .tooltip-value {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--sl-color-primary);
+    margin-bottom: 6px;
+}
+
+/* Tooltip Description */
+.custom-tooltip .tooltip-desc {
+    font-size: 13px;
+    opacity: 0.9;
+    line-height: 1.4;
+    color: var(--sl-color-neutral);
+}
+
+/* Ensure parent container doesn't clip */
+.bar-chart__canvas {
+    overflow: visible !important;
+    position: relative;
+}
+
+/* Motion div wrapper also needs to allow overflow */
+.river-component.bar-chart {
+    overflow: visible !important;
+}
+
+/* Dark mode enhancements */
+@media (prefers-color-scheme: dark) {
+    .custom-tooltip {
+        background: var(--sl-color-bg-nav) !important;
+        border-color: var(--sl-color-gray-5) !important;
+    }
+
+    .custom-tooltip .tooltip-title {
+        color: var(--sl-color-white);
+    }
+
+    .custom-tooltip .tooltip-value {
+        color: var(--sl-color-primary);
+    }
+}

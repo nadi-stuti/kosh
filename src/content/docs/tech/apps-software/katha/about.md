@@ -1,3 +1,0 @@
----
-title: About katha app
----

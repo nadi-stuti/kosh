@@ -1,0 +1,43 @@
+{
+    "cards": [
+        {
+            "id": "holy-river-immune",
+            "sides": [
+                {
+                    "label": "Common Belief",
+                    "content": "The Ganga is so holy that it can never truly be polluted."
+                },
+                {
+                    "label": "Reality",
+                    "content": "The spiritual reverence for the river is powerful, but the physical water is still vulnerable to pollution from sewage, chemicals, and waste."
+                }
+            ]
+        },
+        {
+            "id": "rivers-clean-themselves",
+            "sides": [
+                {
+                    "label": "Common Belief",
+                    "content": "Rivers naturally clean themselves no matter how much waste enters them."
+                },
+                {
+                    "label": "Reality",
+                    "content": "Rivers do have natural cleaning processes, but excessive pollution overwhelms these systems and turns water toxic."
+                }
+            ]
+        },
+        {
+            "id": "holy-means-safe",
+            "sides": [
+                {
+                    "label": "Common Belief",
+                    "content": "If a river is sacred, bathing in it will always be safe."
+                },
+                {
+                    "label": "Reality",
+                    "content": "When pollution levels become too high, harmful bacteria and chemicals can make the water unsafe even in sacred locations."
+                }
+            ]
+        }
+    ]
+}

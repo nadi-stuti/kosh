@@ -1,0 +1,226 @@
+---
+title: How We Organise Indian Rivers — Zones, Types & Hierarchy
+description: The taxonomy that governs the entire Our Rivers section — zones, river types, hierarchy levels, and how every Indian river finds its place.
+sidebar:
+ order: 3
+---
+
+import { FileTree } from '@astrojs/starlight/components';
+import { Aside } from '@astrojs/starlight/components';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+import { Badge } from '@astrojs/starlight/components';
+import { Steps } from '@astrojs/starlight/components';
+
+# How We Organise Indian Rivers
+
+Every river in Nadikosh has an address — a precise location inside a taxonomy
+that tells you exactly what it is and where it belongs.
+
+This page explains that taxonomy: what the zones are, 
+how rivers are classified, and how the hierarchy works.
+
+---
+
+## Why a taxonomy?
+
+India has thousands of named rivers. Without structure, 
+a database of rivers is just a list.
+
+A consistent taxonomy means:
+- Every river has exactly one zone and one type — no ambiguity
+- A reader can predict where to find any river before they search
+- The database can be queried cleanly (give me all rivers in Kaveri zone, type `major-tributary`)
+- Maps and components can group and colour rivers automatically
+
+---
+
+## The 9 River Zones
+
+India's rivers are grouped into **9 major river zones**, 
+each anchored by a primary river system that defines the geographic and hydrological character of that zone.
+
+| Zone | Primary River | Key States |
+|------|--------------|------------|
+| 🔵 Ganga Zone | Ganga | Uttarakhand, UP, Bihar, West Bengal |
+| 🔵 Yamuna Zone | Yamuna | Himachal, Haryana, Delhi, UP |
+| 🔵 Sindhu Zone | Indus (Indian reaches) | J&K, Ladakh, Punjab, Himachal |
+| 🔵 Brahmaputra Zone | Brahmaputra | Arunachal, Assam, Meghalaya |
+| 🔵 Godavari Zone | Godavari | Maharashtra, Telangana, AP |
+| 🔵 Narmada Zone | Narmada | MP, Maharashtra, Gujarat |
+| 🔵 Mahanadi Zone | Mahanadi | Chhattisgarh, Odisha |
+| 🔵 Krishna Zone | Krishna | Maharashtra, Karnataka, AP |
+| 🔵 Kaveri Zone | Kaveri | Karnataka, Tamil Nadu, Kerala |
+
+<Aside type="note">
+These 9 zones cover the vast majority of India's river drainage area.
+They are not administrative boundaries — they are hydrological groupings 
+that reflect how water actually moves through the land.
+</Aside>
+
+---
+
+## The 3-Level Hierarchy
+
+<Tabs>
+  <TabItem label="Simple explanation">
+
+Think of it like a postal address — country, state, city.
+
+Here, the address is:
+
+**Zone → River → Tributary**
+
+For example:
+- **Kaveri Zone** → **Kaveri (main stem)** → **Harangi** (a tributary of Kaveri)
+- **Mahanadi Zone** → **Mahanadi (main stem)** → **Seonath** (a tributary of Mahanadi)
+
+Every river in Nadikosh has exactly this kind of address.
+You always know which "family" a river belongs to.
+
+  </TabItem>
+  <TabItem label="Technical explanation">
+
+The hierarchy has 3 levels:
+
+- **L1 — Zone**: The top-level grouping. Corresponds to a major drainage basin.  
+  One page per zone. Auto-generated from all rivers where `zone = [zone_name]`.
+
+- **L2 — Major River**: The primary river or a significant named river within the zone.  
+  Includes the main stem and any large, well-known rivers that drain substantially into the zone.
+
+- **L3 — Tributary**: Named tributaries of L2 rivers. Minor rivers that flow into the major river.  
+  For v1, we go to L3. Further nesting (L4 tributaries-of-tributaries) is reserved for future versions.
+
+Each level has its own page template — zone pages aggregate; river and tributary pages are individual profiles.
+
+  </TabItem>
+</Tabs>
+
+---
+
+## The 4 River Types
+
+Every river in the database has one of four types:
+
+| Type | Meaning | Example |
+|------|---------|---------|
+| `main-stem` | The primary river of a zone | Kaveri, Mahanadi, Ganga |
+| `major-tributary` | A large, well-known tributary of the main stem | Ramganga (Ganga), Tungabhadra (Krishna) |
+| `minor-tributary` | A smaller named tributary | Seonath (Mahanadi) |
+| `independent` | Drains directly to the coast or sea — not a tributary of any river in the DB | Netravati, Periyar, Mandovi |
+
+Zone + Type together give every river a precise identity. For example:
+
+- Seonath = `zone: mahanadi` + `type: minor-tributary`
+- Netravati = `zone: kaveri` + `type: independent`
+- Kaveri = `zone: kaveri` + `type: main-stem`
+
+---
+
+## The Independent River Problem
+
+<Aside type="caution" title="A known limitation">
+Some rivers — like Netravati, Periyar, Sharavati, and Mandovi — 
+do not drain into any of the 9 major river systems. 
+They drain independently to the Arabian Sea or Bay of Bengal.
+
+Strictly speaking, they do not "belong" to any zone. 
+But forcing them into a 10th "miscellaneous" bucket would break 
+the geographic coherence of the map and the database.
+
+**Our solution for v1**: assign them to the geographically nearest zone 
+with `type: independent`. Netravati → Kaveri Zone, independent.
+
+This is an acknowledged imperfection. 
+As the database grows and edge cases multiply, 
+the taxonomy will be refined. 
+All such cases will be flagged in the river's frontmatter 
+with a `taxonomy_note` field.
+</Aside>
+
+---
+
+## How this looks as a folder structure
+
+The zone-and-type taxonomy maps directly to the folder and URL structure of the site:
+
+<FileTree>
+- our-rivers/
+  - **index.mdx** — landing page (this section)
+  - what-this-section-will-become.mdx
+  - how-rivers-are-organised.mdx
+  - the-data-schema.mdx
+  - folder-and-page-structure.mdx
+  - database-driven-design.mdx
+  - live-and-dynamic-data.mdx
+  - how-to-build-the-poc.mdx
+  - roadmap.mdx
+  - kaveri-zone/ — L1 Zone
+    - **index.mdx** *zone overview page — auto-generated*
+    - kaveri/ — L2 main-stem
+      - overview.mdx
+      - health.mdx
+      - hydrology.mdx
+      - ecology.mdx
+      - governance.mdx
+      - cultural-hook.mdx
+      - misc.mdx
+    - netravati/ — L2 independent river in Kaveri zone
+      - overview.mdx
+      - health.mdx
+      - …
+  - mahanadi-zone/ — L1 Zone
+    - **index.mdx**
+    - mahanadi/ — L2 main-stem
+      - overview.mdx
+      - …
+    - seonath/ — L3 minor-tributary
+      - overview.mdx
+      - …
+  - ganga-zone/ — *stub — coming soon*
+  - yamuna-zone/ — *stub — coming soon*
+  - sindhu-zone/ — *stub — coming soon*
+  - brahmaputra-zone/ — *stub — coming soon*
+  - godavari-zone/ — *stub — coming soon*
+  - narmada-zone/ — *stub — coming soon*
+  - krishna-zone/ — *stub — coming soon*
+</FileTree>
+
+---
+
+## How to classify a new river
+
+If you are a contributor adding a river to Nadikosh, follow these steps:
+
+<Steps>
+
+1. **Identify the zone**  
+   Look at where the river drains. Does it ultimately flow into one of the 9 major rivers?  
+   If yes → assign that river's zone.  
+   If no (drains independently to the sea) → assign the geographically nearest zone.
+
+2. **Assign a type**  
+   Is it the primary river of the zone? → `main-stem`  
+   Is it a large, well-known river that flows into the main stem? → `major-tributary`  
+   Is it a smaller named river flowing into any river in the zone? → `minor-tributary`  
+   Does it drain directly to the coast? → `independent`
+
+3. **Check for conflicts**  
+   Does your classification feel geographically wrong?  
+   Does the river straddle two zones?  
+   If yes → flag it with `taxonomy_note` in the frontmatter and raise it for review before publishing.
+
+4. **Place the folder**  
+   Create the river's folder inside the correct zone folder.  
+   Name the folder using the river's lowercase English name with hyphens.  
+   Example: `kaveri-zone/netravati/`
+
+5. **Fill the schema**  
+   Set `zone`, `river_type`, and all 15 required frontmatter fields.  
+   See [The Data Schema](/our-rivers/the-data-schema/) for the full field list.
+
+</Steps>
+
+---
+
+*Continue reading: [The Data Schema →](/our-rivers/the-data-schema/)*

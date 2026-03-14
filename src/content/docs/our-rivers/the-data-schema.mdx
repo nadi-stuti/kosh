@@ -1,0 +1,215 @@
+---
+title: What Data We Store for Every River — The Schema
+description: The complete list of 15 frontmatter fields used for every river in Nadikosh — with plain-language explanations and technical specifications.
+sidebar:
+ order: 4
+---
+
+import { Code } from '@astrojs/starlight/components';
+import { Aside } from '@astrojs/starlight/components';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+import { Badge } from '@astrojs/starlight/components';
+
+# The Data Schema
+
+Every river page in Nadikosh is built from a fixed set of data fields —
+the same fields for every river, every time, without exception.
+
+This page documents those fields: what they mean, what they contain, 
+and how they behave.
+
+---
+
+## What a schema is
+
+<Tabs>
+  <TabItem label="Simple explanation">
+
+Think of a schema as a form that every river must fill out completely.
+
+Just like a passport has fixed fields — name, date of birth, nationality — 
+every river in Nadikosh has fixed fields:
+length, origin, zone, pollution index, and so on.
+
+The page you see when you visit a river is built automatically 
+from that filled-out form. Nobody writes the page by hand.
+This is why every river page looks identical in structure, 
+even if the data inside is completely different.
+
+  </TabItem>
+  <TabItem label="Technical explanation">
+
+The schema is the data contract between the PostgreSQL database 
+and the Astro/Starlight frontend.
+
+In v1 (the POC), the schema is implemented as:
+- A Postgres table with one row per river and 15 typed columns
+- An Astro content collection schema that mirrors those columns as frontmatter fields
+- A shared MDX layout template that reads frontmatter and renders it into page components
+
+Every river is a database row. Every river page is that row, rendered.
+
+  </TabItem>
+</Tabs>
+
+---
+
+## A real frontmatter example
+
+Here is what the frontmatter of a river page looks like — 
+using Kaveri as the example:
+
+<Code
+  lang="yaml"
+  title="kaveri/overview.mdx — frontmatter"
+  code={`---
+river_name: "Kaveri"
+also_known_as: ["Cauvery", "Kaveri Amma", "Ponni"]
+zone: "kaveri"
+river_type: "main-stem"
+origin_point: "Talakaveri, Kodagu district, Karnataka"
+confluence_or_mouth: "Bay of Bengal, near Poompuhar, Tamil Nadu"
+length_km: 800
+states_covered: ["Karnataka", "Tamil Nadu", "Kerala", "Puducherry"]
+flow_direction: "east-flowing"
+avg_annual_flow_cumecs: 678
+pollution_index: "moderate"
+is_holy: true
+last_data_updated: 2026-03-01
+triveni_net_id: "TN-KVR-001"
+status: "published"
+---`}
+/>
+
+---
+
+## The 15 fields explained
+
+<Tabs>
+  <TabItem label="Plain English">
+
+| Field | What it means | Example |
+|-------|--------------|---------|
+| `river_name` | The official or most widely recognised name of the river | Kaveri |
+| `also_known_as` | Other names the river is known by — regional, historical, devotional | Cauvery, Ponni |
+| `zone` | Which of the 9 major river zones this river belongs to | kaveri |
+| `river_type` | What kind of river this is — main river, tributary, or independent | main-stem |
+| `origin_point` | Where the river begins — place name and state | Talakaveri, Kodagu, Karnataka |
+| `confluence_or_mouth` | Where it ends — either joining another river, or reaching the sea | Bay of Bengal, Tamil Nadu |
+| `length_km` | Approximate length in kilometres | 800 |
+| `states_covered` | Which Indian states the river flows through | Karnataka, Tamil Nadu, Kerala |
+| `flow_direction` | Does it flow toward the east coast or west coast? | east-flowing |
+| `avg_annual_flow_cumecs` | Average amount of water flowing per second, per year | 678 cumecs |
+| `pollution_index` | Overall pollution level — updated weekly | moderate |
+| `is_holy` | Is this river considered sacred in Hindu, Jain, or other traditions? | true |
+| `last_data_updated` | When was this river's data last reviewed or updated? | 2026-03-01 |
+| `triveni_net_id` | The ID used by Triveni-net to find live sensor data for this river | TN-KVR-001 |
+| `status` | Is this page published, a stub, or coming soon? | published |
+
+  </TabItem>
+  <TabItem label="Technical specification">
+
+| Field | Type | Constraints | Notes |
+|-------|------|-------------|-------|
+| `river_name` | `string` | required, unique | Primary identifier in UI |
+| `also_known_as` | `string[]` | optional | Array of alternate names |
+| `zone` | `enum` | required, one of 9 fixed values | Foreign key to zone table in v2+ |
+| `river_type` | `enum` | required: `main-stem \| major-tributary \| minor-tributary \| independent` | Used for map grouping and filtering |
+| `origin_point` | `string` | required | Free text — place + state |
+| `confluence_or_mouth` | `string` | required | Free text — river name or sea/ocean |
+| `length_km` | `number` | required, positive integer | Approximate, sourced from authoritative reference |
+| `states_covered` | `string[]` | required, min 1 | Array of state names |
+| `flow_direction` | `enum` | required: `east-flowing \| west-flowing` | Used for drainage pattern analysis |
+| `avg_annual_flow_cumecs` | `number` | optional, positive float | Mean annual discharge in cumecs (m³/s) |
+| `pollution_index` | `enum` | required: `low \| moderate \| high \| critical` | Layer 2 field — updated via cron |
+| `is_holy` | `boolean` | required | Triggers Itihaas cross-link component |
+| `last_data_updated` | `date` | required, ISO 8601 | Drives "last updated X days ago" badge |
+| `triveni_net_id` | `string` | optional, nullable | Reserved for Triveni-net integration — set to null until live |
+| `status` | `enum` | required: `published \| stub \| coming-soon` | Controls page visibility and stub banners |
+
+  </TabItem>
+</Tabs>
+
+---
+
+## The three data layers
+
+Not all 15 fields behave the same way. They belong to one of three layers:
+
+<Aside type="tip" title="Why this matters">
+Understanding which layer a field belongs to tells you 
+how often it changes, who updates it, and whether it can be automated.
+</Aside>
+
+**Layer 1 — Static fields** *(manually curated, rarely change)*
+
+These facts are entered once, verified, and updated only if a genuine error is found 
+or a major geographic/political change occurs (e.g., a state bifurcation).
+
+`river_name` · `also_known_as` · `zone` · `river_type` · `origin_point` · 
+`confluence_or_mouth` · `length_km` · `states_covered` · `flow_direction` · `is_holy`
+
+---
+
+**Layer 2 — Periodic fields** *(updated via weekly automated rebuild)*
+
+These fields reflect real-world conditions that change over time 
+but do not need to be updated in real time.
+
+`pollution_index` · `avg_annual_flow_cumecs` · `last_data_updated`
+
+The site rebuilds from the latest database state once a week via a cron job.
+Every river page shows a **"Last updated X days ago"** badge sourced from `last_data_updated`.
+
+---
+
+**Layer 3 — Live fields** *(handled by Triveni-net, not stored in this DB)*
+
+Real-time readings — dissolved oxygen, BOD, turbidity, current flow rate — 
+are not stored in the Nadikosh database at all.
+
+They are fetched and displayed by a **React component** 
+that mounts at the top of each river's health page and communicates directly with Triveni-net.
+Nadikosh only stores the `triveni_net_id` field to tell the component which river to query.
+All states (live, offline, no sensor, error) are handled inside the component.
+
+<Badge text="Triveni-net: Early Phase" variant="caution" />  
+Live data is not yet connected. The component currently shows a "coming soon" state 
+for all rivers. `triveni_net_id` is reserved as a forward-looking field.
+
+---
+
+## The `status` field
+
+The `status` field controls how a river page is presented to readers:
+
+| Status | What the reader sees |
+|--------|---------------------|
+| `published` | Full page rendered. All available data shown. |
+| `stub` | Page exists with a banner: *"This river has been identified. Data entry is in progress."* Only `river_name`, `zone`, `river_type` are guaranteed to be filled. |
+| `coming-soon` | Zone or folder exists but individual river page not yet created. A placeholder card shown in the zone overview grid. |
+
+<Aside type="note">
+Setting a river to `stub` rather than hiding it entirely is a deliberate decision.
+It signals that the river is known and queued — 
+not missing — and invites contributors to help fill it.
+</Aside>
+
+---
+
+## What this schema does not cover
+
+The 15-field schema covers the structured, queryable facts about a river.  
+It is intentionally narrow.
+
+For content that cannot fit into a structured field — 
+a specific dam controversy, a unique geological formation, 
+a contested administrative boundary — each river has a `/misc` page 
+where free-form markdown content can live.
+
+See [Folder & Page Structure](/our-rivers/folder-and-page-structure/) 
+for how `/misc` fits into the overall page anatomy.
+
+---
+
+*Continue reading: [Folder & Page Structure →](/our-rivers/folder-and-page-structure/)*

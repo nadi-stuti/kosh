@@ -1,0 +1,258 @@
+---
+title: Building the v0.01 POC — A Guide for Developers
+description: A conceptual step-by-step guide to building the first working version of Our Rivers — 4 rivers, manual data, Postgres at build time, no live data.
+sidebar:
+  order: 8
+---
+
+import { Aside } from '@astrojs/starlight/components';
+import { Steps } from '@astrojs/starlight/components';
+import { FileTree } from '@astrojs/starlight/components';
+import { Code } from '@astrojs/starlight/components';
+import { Badge } from '@astrojs/starlight/components';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+# Building the v0.01 POC
+
+<Aside type="caution" title="This page is for developers">
+This document is written for programmers building the Our Rivers system.
+If you are not from a programming background, 
+there is nothing actionable here for you —
+the [Roadmap](/our-rivers/roadmap/) and 
+[Full Vision](/our-rivers/what-this-section-will-become/) 
+are better reading.
+</Aside>
+
+---
+
+## What v0.01 means
+
+v0.01 is the proof of concept — the smallest possible working version
+of the Our Rivers architecture.
+
+Its only job is to prove that:
+- The DB schema works as designed
+- Astro can query Postgres at build time and generate pages
+- Shared layout templates render correctly for all river types
+- The 7-page river structure works in Starlight's sidebar
+- Stub and coming-soon states render gracefully
+
+**What v0.01 is not:**
+- It is not a live product
+- It is not publicly promoted
+- It does not need to be fast, scalable, or automated
+- It does not need Triveni-net connected
+- It does not need a cron job
+- It does not need contributor tooling
+
+---
+
+## The 4 demo rivers
+
+<Badge text="v0.01 scope" variant="tip" />
+
+v0.01 covers exactly 4 rivers — chosen to exercise all river types and two zones:
+
+| River | Zone | Type | Purpose in POC |
+|-------|------|------|---------------|
+| Kaveri | Kaveri Zone | `main-stem` | Tests zone + major river template |
+| Netravati | Kaveri Zone | `independent` | Tests independent river type in same zone |
+| Mahanadi | Mahanadi Zone | `main-stem` | Tests second zone |
+| Seonath | Mahanadi Zone | `minor-tributary` | Tests tributary type |
+
+All other zones exist as stubs with only `index.mdx`.
+All other rivers are `status: coming-soon` or absent entirely.
+
+---
+
+## Minimal file structure for v0.01
+
+<FileTree>
+- our-rivers/
+  - index.mdx
+  - what-this-section-will-become.mdx
+  - how-rivers-are-organised.mdx
+  - the-data-schema.mdx
+  - folder-and-page-structure.mdx
+  - database-driven-design.mdx
+  - live-and-dynamic-data.mdx
+  - how-to-build-the-poc.mdx ← this file
+  - roadmap.mdx
+  - kaveri-zone/
+    - index.mdx — zone page (auto-generated from DB)
+    - kaveri/
+      - overview.mdx
+      - health.mdx
+      - hydrology.mdx
+      - ecology.mdx
+      - governance.mdx
+      - cultural-hook.mdx
+      - misc.mdx
+    - netravati/
+      - overview.mdx
+      - health.mdx
+      - hydrology.mdx
+      - ecology.mdx
+      - governance.mdx
+      - cultural-hook.mdx
+      - misc.mdx
+  - mahanadi-zone/
+    - index.mdx — zone page (auto-generated from DB)
+    - mahanadi/
+      - overview.mdx
+      - health.mdx
+      - hydrology.mdx
+      - ecology.mdx
+      - governance.mdx
+      - cultural-hook.mdx
+      - misc.mdx
+    - seonath/
+      - overview.mdx
+      - health.mdx
+      - hydrology.mdx
+      - ecology.mdx
+      - governance.mdx
+      - cultural-hook.mdx
+      - misc.mdx
+  - ganga-zone/
+    - index.mdx — stub only
+  - yamuna-zone/
+    - index.mdx — stub only
+  - sindhu-zone/
+    - index.mdx — stub only
+  - brahmaputra-zone/
+    - index.mdx — stub only
+  - godavari-zone/
+    - index.mdx — stub only
+  - narmada-zone/
+    - index.mdx — stub only
+  - krishna-zone/
+    - index.mdx — stub only
+</FileTree>
+
+---
+
+## Build sequence — conceptual steps
+
+<Aside type="note">
+These steps describe **what to build and in what order** — not how to write code.
+Each step should be completed and verified before moving to the next.
+</Aside>
+
+<Steps>
+
+1. **Set up the Postgres database**  
+   Create a local Postgres instance.  
+   Create one table — `rivers` — with the 15 confirmed columns
+   from [The Data Schema](/our-rivers/the-data-schema/).  
+   Add the correct data types, constraints, and enum values for each column.  
+   Do not add any data yet.  
+   **Done when:** you can connect to the DB and describe the table correctly.
+
+2. **Insert the 4 demo rivers**  
+   Manually insert one row each for Kaveri, Netravati, Mahanadi, and Seonath.  
+   Fill all 15 fields for each river. Use real data — this is the demo.  
+   Set `triveni_net_id` to null for all four.  
+   Set `status` to `published` for all four.  
+   **Done when:** `SELECT * FROM rivers` returns 4 complete rows with no nulls in required fields.
+
+3. **Connect Astro to Postgres at build time**  
+   Configure Astro to query the `rivers` table during the build process.  
+   The query output should be available to MDX page files as props or frontmatter.  
+   No runtime DB connection is needed — build time only.  
+   **Done when:** an MDX page can read `river_name` from the DB row and render it.
+
+4. **Build the Overview layout template**  
+   Create the first shared layout component — for `overview.mdx`.  
+   It should render all 15 fields from the river's DB row into a clean, structured page.  
+   Include: name banner, alternate names, zone + type badges, origin-to-mouth,
+   length, states, flow direction, pollution index badge, is_holy indicator,
+   status badge, last updated timestamp.  
+   Reserve an empty slot for the Triveni-net live strip (renders nothing for now).  
+   **Done when:** Kaveri's overview page renders fully with all real data and no broken fields.
+
+5. **Replicate the layout for all 7 sub-pages**  
+   Build layout templates for health, hydrology, ecology, governance, cultural-hook, and misc.  
+   Each layout reads from the same frontmatter but renders a different subset of fields
+   relevant to that page's focus.  
+   `misc.mdx` has no layout — it is free-form markdown only.  
+   **Done when:** all 7 pages for all 4 rivers render without errors.
+
+6. **Build the Zone index page template**  
+   The zone `index.mdx` queries all rivers in the DB where `zone = [this zone]`
+   and renders three blocks:
+   aggregate stats panel, map placeholder, river cards grid.  
+   Cards show: `river_name`, `river_type`, `length_km`, `pollution_index`, `status` badge, link to `overview.mdx`.  
+   **Done when:** Kaveri Zone page shows cards for both Kaveri and Netravati with correct data.
+
+7. **Add the 7 stub zone pages**  
+   Create `index.mdx` for all 7 remaining zones (Ganga, Yamuna, Sindhu, Brahmaputra, Godavari, Narmada, Krishna).  
+   These pages should render a clear stub state:
+   "This zone is identified and queued. River data coming in future versions."  
+   No DB query needed for stubs — static content only.  
+   **Done when:** all 9 zone URLs resolve and render — 2 with data, 7 as clear stubs.
+
+8. **Verify Starlight sidebar**  
+   Check that all river sub-pages appear correctly in the Starlight sidebar
+   nested under their zone and river.  
+   Confirm sidebar order matches the 7-page sequence:
+   overview → health → hydrology → ecology → governance → cultural-hook → misc.  
+   **Done when:** navigating the sidebar from any zone to any sub-page works without broken links.
+
+9. **Add status guards and null states**  
+   For any optional field that might be null (e.g., `avg_annual_flow_cumecs`, `triveni_net_id`),
+   ensure layout templates render a graceful "not available" state rather than breaking.  
+   Add a "coming soon" banner to the Triveni-net live strip slot on all health pages.  
+   **Done when:** no river page throws an error or renders a blank section without explanation.
+
+10. **Final review — the definition of done**  
+    Walk through every page of all 4 rivers and both zone pages.  
+    Verify: consistent layout, correct data, no broken links, 
+    no missing fields, all stub zones accessible.  
+    v0.01 is complete when a first-time visitor can browse 
+    all 4 rivers, understand the structure, and see the vision clearly — 
+    even in this minimal form.
+
+</Steps>
+
+---
+
+## What is explicitly out of scope for v0.01
+
+<Aside type="caution">
+Do not build any of the following during v0.01.
+They are future-version work. Building them now adds complexity 
+before the core architecture is proven.
+</Aside>
+
+| Feature | Target version |
+|---------|---------------|
+| Cron job / automated rebuild | v0.1 |
+| "Last updated X days ago" logic | v0.1 |
+| Contributor submission form | v0.1 |
+| Triveni-net live component (connected) | v1 |
+| Interactive river map | v1 |
+| Cross-section suggestion system (popup) | v1 |
+| AI/ML data pipeline | v2 |
+| More than 4 rivers in DB | v0.1 |
+| Mobile-optimised layouts | v0.1 |
+
+---
+
+## What a complete v0.01 proves
+
+When v0.01 is done, the following is proven:
+
+- The 15-field schema is sufficient and correct for the four demo river types
+- Astro + Postgres at build time is a viable architecture for this section
+- Shared layout templates can render all river types consistently
+- The 7-page river structure works in Starlight
+- The zone page auto-generation from a DB query works
+- The vision is demonstrable to contributors, partners, and stakeholders —
+  not just as a plan, but as a working prototype
+
+That is everything v0.01 needs to do.
+
+---
+
+*Continue reading: [Roadmap →](/our-rivers/roadmap/)*
