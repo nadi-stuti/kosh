@@ -4,7 +4,7 @@ description: Discover your role in the open knowledge repository for India's hol
 template: doc
 ---
 
-import { Card, CardGrid, Badge, Steps, Tabs, TabItem, Aside, Icon, LinkCard } from '@astrojs/starlight/components';
+import { Card, CardGrid, Badge, Steps, Tabs, TabItem, Aside, Icon, LinkCard, LinkButton } from '@astrojs/starlight/components';
 import PersonaQuiz from '@/components/interactive/PersonaQuiz';
 import personaData from "@/data/river-persona-quiz.json";
 import { CategoryBadge, BEST_FOR } from '@/lib/constants/strings';
@@ -181,7 +181,36 @@ How the Bounty System Works
 3. **Claim Your Glory:** Submit your work. Once verified by the Council, you are showered with XP, digital loot, and your House surges up the Leaderboard! 
 </Steps>
 Sample Live Quests
-<CardGrid> <Card title="Missing Data on the Yamuna" icon="warning"> <Badge text="Epic Quest" variant="danger" size="medium" /> <Badge text="+200 XP" variant="success" size="medium" /> **Target:** House Tattva / House Margdarshak **Mission:** We need the latest 2025 CPCB water quality indices for the Delhi-Agra stretch integrated into the Data Catalog. </Card> <Card title="Document the Ganga Aarti" icon="pencil"> <Badge text="Story Bounty" variant="caution" size="medium" /> <Badge text="+100 XP" variant="success" size="medium" /> **Target:** House Dharohar **Mission:** Write a comprehensive, step-by-step ritual guide for the evening Aarti at Dashashwamedh Ghat for the Itihaas section. </Card> <Card title="Verify: Plastic Audit Protocol" icon="approve-check"> <Badge text="Quick Task" variant="note" size="medium" /> <Badge text="+25 XP" variant="success" size="medium" /> **Target:** House Karmaveer **Mission:** Peer-review the newly submitted "Litter Audit Playbook" in the Get Involved section and approve it for field use. </Card> </CardGrid>
+<CardGrid> 
+<Card title="Missing Data on the Yamuna" icon="warning"> 
+<Badge text="Epic Quest" variant="danger" size="medium" /> <Badge text="+200 XP" variant="success" size="medium" /> 
+**Target:** House Tattva / House Margdarshak 
+
+**Mission:** We need the latest 2025 CPCB water quality indices for the Delhi-Agra stretch integrated into the Data Catalog. 
+
+> Posted by Nadikosh Guru-  Shri Hansji
+
+<LinkButton href="" icon='approve-check' variant="secondary">Accept </LinkButton>
+</Card> 
+<Card title="Document the Ganga Aarti" icon="pencil">
+ <Badge text="Story Bounty" variant="caution" size="medium" /> <Badge text="+100 XP" variant="success" size="medium" /> 
+ **Target:** House Dharohar 
+ 
+ **Mission:** Write a comprehensive, step-by-step ritual guide for the evening Aarti at Dashashwamedh Ghat for the Itihaas section.
+
+ > Posted by Nadikosh Guru-  Shri Mrigji
+
+ <LinkButton href="" icon='approve-check'  variant="secondary">Accept </LinkButton>
+ </Card> 
+ <Card title="Verify: Plastic Audit Protocol" icon="approve-check"> 
+ <Badge text="Quick Task" variant="note" size="medium" /> <Badge text="+25 XP" variant="success" size="medium" /> 
+ **Target:** House Karmaveer **Mission:** Peer-review the newly submitted "Litter Audit Playbook" in the Get Involved section and approve it for field use.
+
+ > Posted by Karmaveer captain CyberDog
+
+ <LinkButton href="" icon='approve-check'  variant="secondary">Accept </LinkButton>
+ </Card> 
+ </CardGrid>
 
 
 As you complete tasks, your personal tier will level up, unlocking special permissions on the wiki (like the ability to directly approve edits or become a House Captain yourself). 
