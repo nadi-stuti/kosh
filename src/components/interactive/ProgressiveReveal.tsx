@@ -63,7 +63,7 @@ export default function ProgressiveReveal({
       initial={{ opacity: 0, y: 40 }}
       transition={{ duration: 0.5 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.7 }}
+      viewport={{ once: true, amount: 0.3 }}
     >
       {title && (
         <motion.h3
@@ -71,7 +71,7 @@ export default function ProgressiveReveal({
           initial={{ opacity: 0, y: 20 }}
           transition={{ duration: 0.5, delay: 0 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.7 }}
+          viewport={{ once: true, amount: 0.3 }}
         >
           {title}
         </motion.h3>

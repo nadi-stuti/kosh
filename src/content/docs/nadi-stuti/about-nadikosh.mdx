@@ -1,0 +1,187 @@
+---
+title: Welcome to Nadikosh
+description: Discover your role in the open knowledge repository for India's holy rivers.
+template: doc
+---
+
+import { Card, CardGrid, Badge, Steps, Tabs, TabItem, Aside, Icon, LinkCard } from '@astrojs/starlight/components';
+import PersonaQuiz from '@/components/interactive/PersonaQuiz';
+import personaData from "@/data/river-persona-quiz.json";
+import { CategoryBadge, BEST_FOR } from '@/lib/constants/strings';
+import img1 from './assets/1.jpeg';
+import img2 from './assets/2.jpeg';
+import img3 from './assets/3.jpeg';
+import img4 from './assets/4.jpeg';
+import img5 from './assets/5.jpeg';
+import img6 from './assets/6.jpeg';
+import img7 from './assets/7.jpeg';
+import img8 from './assets/8.jpeg';
+import img9 from './assets/9.jpeg';
+import img10 from './assets/10.jpeg';
+import { Image } from 'astro:assets';
+
+Nadikosh is a living knowledge base dedicated to India's holy rivers. Built by the people, for the rivers, it is a space where devotion meets data, and learning meets action. Whether you are here to clear the banks, study the hydrology, or preserve the sacred history—**this is your river, and your contribution matters.**
+
+We are building this together, one article, one dataset, and one story at a time. But before you dive in, let's find out exactly where your strengths are needed most.
+
+---
+
+## 🧭 Discover Your River Persona
+
+Take this quick assessment. We will analyze your instincts and assign you to the section of Nadikosh where your specific talents are desperately needed today.
+
+<PersonaQuiz 
+  client:visible 
+  questions={personaData.questions} 
+  personas={personaData.personas} 
+/>
+
+
+<Aside type="tip" title="Your River Calling">
+Based on your persona result above, you have a unique role to play in this mission! Find your recommended section below. 
+</Aside>
+
+<Image src={img1} width={1376} alt="Induction Ceremony of the nadi sevak" />
+
+---
+
+## Nadikosh's categorization
+
+<CardGrid stagger>
+  <LinkCard
+    title="🎓 Pollution Academy"
+    href="/pollution-academy/"
+    description={`Nadikosh's educational core — a structured library of articles covering why India's rivers are polluted, how pollution is measured, and what tools researchers and NGOs use on the ground. Includes a 27-part deep-dive series, tool guides, and curated reading paths. ${BEST_FOR} ${CategoryBadge.STUDENT} ${CategoryBadge.VOLUNTEER} ${CategoryBadge.PRO}`}/>
+  <LinkCard
+    title="🌱 Get Involved"
+    href="/get-involved/"
+    description={`Practical playbooks for every level of contribution. Ground-worker field guides, digital tool documentation (GIS, dashboards, citizen-science apps), advocacy guides, and step-by-step cleanup protocols. ${BEST_FOR} ${CategoryBadge.NGO} ${CategoryBadge.GROUND_WORKER} ${CategoryBadge.VOLUNTEER}`}
+  />
+  <LinkCard
+    title="🗺️ Our Rivers"
+    href="/our-rivers/"
+    description={`A reference encyclopedia organised into 9 major river zones — Ganga, Yamuna, Sindhu, Brahmaputra, Godavari, Narmada, Mahanadi, Krishna, and Kaveri. Each zone and river has a consistent structured profile: geography, health, culture, governance, and data. ${BEST_FOR} ${CategoryBadge.STUDENT} ${CategoryBadge.RESEARCHER} ${CategoryBadge.DEVOTEE}`}
+  />
+  <LinkCard
+    title="🔬 Data & Research"
+    href="/data-research/"
+    description={`The expert desk. A curated index of official portals (India-WRIS, CPCB), global datasets (HydroATLAS, GloRiC, GRWL), citizen-science repositories, and methods. Each entry has a plain-language summary, usage notes, and citation guidance. ${BEST_FOR} ${CategoryBadge.PLANNER} ${CategoryBadge.RESEARCHER} ${CategoryBadge.DATA_SCI}`}
+  />
+  <LinkCard
+    title="🪔 Itihaas"
+    href="/itihaas/"
+    description={`The cultural and spiritual spine of Nadikosh. Covers holy rituals and their practical guides, references in Vedic and classical texts, the living history of rivers in Indian civilisation, and an interactive course on how our rivers were in the past. ${BEST_FOR} ${CategoryBadge.DEVOTEE} ${CategoryBadge.CULTURAL} ${CategoryBadge.HISTORIAN}`}
+  />
+  <LinkCard
+    title="💬 Thinking Grounds"
+    href="/thinking-grounds/"
+    description={`The community layer. Curated links to river discussions on forums, subreddits, and research groups worldwide. River Drops — bite-sized, timeless river facts tagged by theme. Guest contributions, social summaries, and pointers to where the global river conversation is happening. ${BEST_FOR} ${CategoryBadge.THINKER} ${CategoryBadge.COMMUNITY} ${CategoryBadge.CURIOUS}`}
+  />
+</CardGrid>
+
+## Nadikosh's upcoming features
+
+<LinkCard
+  title="Visit River Action center"
+  href="/#river-action-center"
+  description={`Select your river and tell us what you want to do. River action center is a quick dashboard to find out what the river need now`}
+/>
+
+<LinkCard
+  title="Visit Contribution Studio"
+  href="/#write-for-nadikosh"
+  description={`The contribution studio will guide anyone through creating richly structured articles for any section of the wiki, complete with AI-assisted image suggestions, a full interactive component library, and automated series linking.`}/
+>
+  
+
+---
+
+## 🏰 Upcoming: The Great Sorting & Nadi Sevak Houses
+
+Right now, Nadikosh is a wiki. Very soon, it will awaken into a massive, living realm of collective impact.
+
+Imagine a system that feels like stepping into the Great Hall—but instead of magic, our ultimate power is knowledge, and our sacred duty is the revival of India's holy rivers. Soon, completing the Persona Quiz will no longer just give you a recommendation. It will be your Sorting Ceremony.
+
+Much like the Sorting Hat at Hogwarts, our system will soon evolve to assign every registered contributor (*Nadi Sevak*) into one of our prestigious **Nadikosh Houses** based on your persona test. 
+
+Based on your deepest instincts, you will be inducted into one of the prestigious Six Houses of Nadikosh. Once sorted, your solitary journey ends, and your brotherhood begins. You aren’t just a reader anymore; you are a Nadi Sevak fighting for the glory of your House and the survival of our waters.
+
+<Tabs> 
+  <TabItem label="House Vidya 🦉" icon="open-book"> 
+    **The Scholars (Pollution Academy)** *Colors: Indigo & Silver* Seekers of truth and masters of the complex. Vidyadhars believe that the pen and the mind are the greatest weapons against pollution. They synthesize chaos into absolute clarity. 
+  </TabItem>
+  <TabItem label="House Karmaveer 🦁" icon="star"> 
+  **The Ground Warriors (Get Involved)** *Colors: Forest Green & Brass* Fierce, unyielding, and always on the frontlines. Karmaveers don't wait for permission. If there is waste on the ghats, they are the ones with gloves on, moving mountains with their bare hands. 
+  </TabItem> 
+  <TabItem label="House Margdarshak 🧭" icon="magnifiers"> 
+  **The Basin Explorers (Our Rivers)** *Colors: Ocean Blue & White* The cartographers of the sacred. They trace every tributary, document every bend, and know the pulse of the geography. To them, the map is not just paper; it is the blueprint of a civilization. 
+  </TabItem> 
+  <TabItem label="House Tattva 🦅" icon="setting"> 
+  **The Alchemists (Data & Research)** *Colors: Crimson & Iron* Cold, hard, empirical truth. The Hawks of House Tattva hunt for data. They dismantle chemical readouts, wield satellite imagery, and forge the undeniable scientific evidence needed to force real policy change. 
+  </TabItem> 
+  <TabItem label="House Dharohar 🐅" icon="sun"> 
+  **The Cultural Guardians (Itihaas)** *Colors: Saffron & Gold* The keepers of the ancient flame. Dharohars translate the forgotten scripts, preserve the sacred rituals, and ensure that the divine heartbeat of the rivers is never drowned out by modern noise. 
+  </TabItem> 
+  <TabItem label="House Samvad 🕊️" icon="chat">
+   **The Weavers (Thinking Grounds)** *Colors: Dawn Pink & Copper* The heartbeat of the community. They curate, they connect, and they amplify. A Weaver knows that a single drop of insight, shared at the right moment, can start a tidal wave of revolution. 
+   </TabItem> 
+</Tabs>
+The Battle for the River's Heart
+Once sorted, every action you take—writing a new article, adding a citation, logging a weekend cleanup, or translating a single Sanskrit shloka—earns XP (Experience Points) for your House.
+
+<Image src={img2} width={1376} alt="A sample UI showing house categorization" />
+<Image src={img3} width={1376} alt="A sample UI showing house categorization" />
+
+<Card title="The Live Leaderboard" icon="star"> 
+We are building a massive, globally visible **House Leaderboard**. Watch your faction climb the ranks in real-time. Will the *Karmaveers* pull ahead this week with a massive cleanup drive in Kanpur? Or will the *Tattvas* steal the lead by publishing a groundbreaking dataset on the Narmada?
+Expect beautifully crafted digital House Crests, MVP trophies for top contributors, and legendary seasonal rewards for the House that brings the most light to Nadikosh.
+</Card>
+
+<Image src={img10} width={1376} alt="House Leaderboard" />
+
+---
+
+## 🎯 Upcoming: The Contributor Dashboard
+
+Once the House system launches, this very page will transform from a simple welcome screen into your **Personal Mission Control Dashboard**. 
+
+Your House Captains and Nadikosh Editors will post **Live Bounties and Tasks** to the dashboard. You will log in and see a feed of exactly what the wiki needs today:
+- 🔴 *Bounty: We need 3 photos of the Yamuna stretch in Mathura. (Reward: +50 House Points)*
+- 🟡 *Task: Fact-check this article on BOD levels. (Reward: +20 House Points)*
+- 🟢 *Mission: Write the 'Kumbh Mela' ritual guide for Itihaas. (Reward: +100 House Points & 'Cultural Guardian' Badge)*
+
+<Image src={img5} width={1376} alt="Bounty Dashboard" />
+
+As you complete tasks, your personal tier will level up from **River Novice** to **Basin Master**, unlocking special permissions on the wiki (like the ability to directly approve edits or become a House Captain yourself). 
+
+We are turning the massive, divine task of documenting India's rivers into the most rewarding multiplayer experience on the internet. 
+
+<Image src={img8} width={1376} alt="Mission checklist" />
+
+**Get your persona today. Explore the Kosh. The game begins soon.**
+
+# 🎯 Upcoming: Your Mission Control Dashboard
+When the gamified era of Nadikosh begins, you will get your own Personal War Room.
+
+<Image src={img6} width={1376} alt="User ID card" />
+
+Think of it as a live, pulsing RPG quest board, but the quests have real-world stakes. Your House Captains and the Nadikosh High Council will post Live Bounties tailored to your skills. You log in, accept a mission, and shape the wiki.
+
+<Image src={img4} width={1376} alt="Mission control dashboard" />
+
+<Aside type="tip" title="The Leveling System"> You will begin your journey as a **River Novice**. But as you complete Bounties, your XP will forge your legacy. You will rank up to **Basin Master**, unlock special editorial powers, earn exclusive digital artifacts, and perhaps one day, rise to the legendary rank of **House Captain**. </Aside>
+How the Bounty System Works
+
+<Image src={img7} width={1376} alt="User Profile screen" />
+
+<Steps> 
+1. **Accept the Call:** Open your Mission Control and browse the live board. 
+2. **Execute the Task:** Claim a Bounty. Maybe it's a 5-minute fact-check, or a weekend field report. 
+3. **Claim Your Glory:** Submit your work. Once verified by the Council, you are showered with XP, digital loot, and your House surges up the Leaderboard! 
+</Steps>
+Sample Live Quests
+<CardGrid> <Card title="Missing Data on the Yamuna" icon="warning"> <Badge text="Epic Quest" variant="danger" size="medium" /> <Badge text="+200 XP" variant="success" size="medium" /> **Target:** House Tattva / House Margdarshak **Mission:** We need the latest 2025 CPCB water quality indices for the Delhi-Agra stretch integrated into the Data Catalog. </Card> <Card title="Document the Ganga Aarti" icon="pencil"> <Badge text="Story Bounty" variant="caution" size="medium" /> <Badge text="+100 XP" variant="success" size="medium" /> **Target:** House Dharohar **Mission:** Write a comprehensive, step-by-step ritual guide for the evening Aarti at Dashashwamedh Ghat for the Itihaas section. </Card> <Card title="Verify: Plastic Audit Protocol" icon="approve-check"> <Badge text="Quick Task" variant="note" size="medium" /> <Badge text="+25 XP" variant="success" size="medium" /> **Target:** House Karmaveer **Mission:** Peer-review the newly submitted "Litter Audit Playbook" in the Get Involved section and approve it for field use. </Card> </CardGrid>
+We are turning the massive, divine task of documenting and saving India's rivers into the most addictive, rewarding, and meaningful multiplayer experience on the internet.
+
+
+<Image src={img9} width={1376} alt="Major quest completion acheivement screen" />

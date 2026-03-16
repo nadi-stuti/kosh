@@ -1,38 +1,3 @@
-/* src/components/RiverActionCenter/RiverActionCenter.module.css
-   All colours use Starlight CSS variables — works in light & dark themes.
-   ─────────────────────────────────────────────────────────────────────── */
-
-:root {
-  --sl-color-teal-low: #064e3b;
-  --sl-color-teal-high: #2dd4bf;
-  --sl-color-teal: #14b8a6;
-  --sl-color-yellow-low: #422006;
-  --sl-color-yellow-high: #facc15;
-  --sl-color-yellow: #eab308;
-  --sl-color-indigo-low: #1e1b4b;
-  --sl-color-indigo-high: #8b5cf6;
-  --sl-color-indigo: #6366f1;
-  --sl-color-pink-low: #500724;
-  --sl-color-pink-high: #f472b6;
-  --sl-color-pink: #ec4899;
-}
-
-/* Light Mode Values */
-:root[data-theme='light'] {
-  --sl-color-teal-low: #f0fdfa;
-  --sl-color-teal-high: #0f766e;
-  --sl-color-teal: #0d9488;
-  --sl-color-yellow-low: #fefce8;
-  --sl-color-yellow-high: #ca8a04;
-  --sl-color-yellow: #a16207;
-  --sl-color-indigo-low: #eef2ff;
-  --sl-color-indigo-high: #3730a3;
-  --sl-color-indigo: #4338ca;
-  --sl-color-pink-low: #fdf2f8;
-  --sl-color-pink-high: #9d174d;
-  --sl-color-pink: #be185d;
-}
-
 /* ── Wrapper ── */
 .wrapper {
   width: 100%;

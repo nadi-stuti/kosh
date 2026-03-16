@@ -1,11 +1,22 @@
 ---
 title: Nadikosh
 description: An open knowledge repository for India's holy rivers — from ground volunteers to expert researchers.
-template: splash
 giscus: false
 ---
 
 import { Card, CardGrid } from '@astrojs/starlight/components';
+import PersonaQuiz from "@/components/interactive/PersonaQuiz.tsx";
+import personaData from "@/data/river-persona-quiz.json";
+
+Rivers are complex systems, and solving pollution requires many different skill sets. We don't just need people cleaning banks; we need engineers, educators, and policy advocates. 
+
+Take this quick 2-question assessment to see where your natural inclinations lie:
+
+<PersonaQuiz 
+  client:visible 
+  questions={personaData.questions} 
+  personas={personaData.personas} 
+/>
 
 ## How to contribute to this knowledge repository?
 

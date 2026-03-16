@@ -34,7 +34,7 @@ export default defineConfig({
         starlightTags(),
         starlightSidebarTopics(SidebarTopics, ExcludeTopics),
       ],
-      title: "Kosh",
+      title: "NadiKosh",
       locales: LOCALS,
       social: SOCIALS,
     }),

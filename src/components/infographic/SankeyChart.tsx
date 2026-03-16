@@ -50,7 +50,7 @@ export default function SankeyChart({ data, title }: SankeyDataProps) {
       initial={{ opacity: 0, y: 40 }}
       transition={{ duration: 0.8 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.7 }}
+      viewport={{ once: true, amount: 0.3 }}
     >
       {title && <h3 className="sankey-title">{title}</h3>}
 
