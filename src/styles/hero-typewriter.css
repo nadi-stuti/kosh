@@ -1,0 +1,343 @@
+:root {
+    /* North Indian & English */
+    --w-en: 5.2em;
+    /* 1. English (Nadikosh) */
+    --w-hi: 4.5em;
+    /* 2. Hindi (नदीकोश) */
+    --w-pa: 4.6em;
+    /* 3. Punjabi (ਨਦੀਕੋਸ਼) */
+    --w-gu: 4.5em;
+    /* 4. Gujarati (નદીકોશ) */
+    --w-bn: 4.5em;
+    /* 5. Bengali (নদীকোষ) */
+
+    /* South & East Indian */
+    --w-te: 4.9em;
+    /* 6. Telugu (నదికోష్) */
+    --w-ta: 5.9em;
+    /* 7. Tamil (நதிகோஷ்) */
+    --w-kn: 5.8em;
+    /* 8. Kannada (ನದಿಕೋಶ್) */
+    --w-ml: 7em;
+    /* 9. Malayalam (നദികോശ്) */
+    --w-od: 4.5em;
+    /* 10. Odia (ନଦୀକୋଶ) - covers the Eastern/South-Eastern belt */
+}
+
+/* Hide the original static text visually, but keep it for structural width */
+.hero h1 {
+    position: relative;
+    color: transparent !important;
+    display: inline-block;
+}
+
+/* Inject the animated text layer */
+.hero h1::after {
+    content: "Nadikosh";
+    position: absolute;
+    left: 0;
+    /* Replace your 'top: 0;' with these 3 lines: */
+    top: -0.3em;
+    /* Moves the top boundary of the mask UP */
+    padding-top: 0.3em;
+    /* Pushes the text back DOWN to perfectly align with the original */
+    padding-bottom: 0.3em;
+    /* Expands the bottom boundary DOWN for lower matras */
+
+    color: var(--sl-color-white);
+    white-space: nowrap;
+    overflow: hidden;
+    width: var(--w-en);
+    animation:
+        typewriter 80s 10s infinite
+}
+
+/* 
+  Math: Every 10% interval = 20 seconds. 
+  Within each 10%: 
+  - 0% to 0.5% (1s): Delete previous language
+  - 0.6% to 1.25% (1.5s): Type new language
+  - 1.25% to 10% (17.5s): Hold language on screen
+*/
+@keyframes typewriter {
+
+    /* 1. English to 2. Hindi */
+    0% {
+        content: "Nadikosh";
+        width: var(--w-en);
+        animation-timing-function: steps(8, end);
+    }
+
+    0.5% {
+        content: "Nadikosh";
+        width: 0;
+    }
+
+    0.6% {
+        content: "नदीकोश";
+        width: 0;
+        animation-timing-function: steps(8, end);
+    }
+
+    1.25% {
+        content: "नदीकोश";
+        width: var(--w-hi);
+    }
+
+    10% {
+        content: "नदीकोश";
+        width: var(--w-hi);
+    }
+
+    /* 2. Hindi to 3. Punjabi */
+    10.01% {
+        content: "नदीकोश";
+        width: var(--w-hi);
+        animation-timing-function: steps(8, end);
+    }
+
+    10.5% {
+        content: "नदीकोश";
+        width: 0;
+    }
+
+    10.6% {
+        content: "ਨਦੀਕੋਸ਼";
+        width: 0;
+        animation-timing-function: steps(8, end);
+    }
+
+    11.25% {
+        content: "ਨਦੀਕੋਸ਼";
+        width: var(--w-pa);
+    }
+
+    20% {
+        content: "ਨਦੀਕੋਸ਼";
+        width: var(--w-pa);
+    }
+
+    /* 3. Punjabi to 4. Gujarati */
+    20.01% {
+        content: "ਨਦੀਕੋਸ਼";
+        width: var(--w-pa);
+        animation-timing-function: steps(8, end);
+    }
+
+    20.5% {
+        content: "ਨਦੀਕੋਸ਼";
+        width: 0;
+    }
+
+    20.6% {
+        content: "નદીકોશ";
+        width: 0;
+        animation-timing-function: steps(8, end);
+    }
+
+    21.25% {
+        content: "નદીકોશ";
+        width: var(--w-gu);
+    }
+
+    30% {
+        content: "નદીકોશ";
+        width: var(--w-gu);
+    }
+
+    /* 4. Gujarati to 5. Bengali */
+    30.01% {
+        content: "નદીકોશ";
+        width: var(--w-gu);
+        animation-timing-function: steps(8, end);
+    }
+
+    30.5% {
+        content: "નદીકોશ";
+        width: 0;
+    }
+
+    30.6% {
+        content: "নদীকোষ";
+        width: 0;
+        animation-timing-function: steps(8, end);
+    }
+
+    31.25% {
+        content: "নদীকোষ";
+        width: var(--w-bn);
+    }
+
+    40% {
+        content: "নদীকোষ";
+        width: var(--w-bn);
+    }
+
+    /* 5. Bengali to 6. Telugu */
+    40.01% {
+        content: "নদীকোষ";
+        width: var(--w-bn);
+        animation-timing-function: steps(8, end);
+    }
+
+    40.5% {
+        content: "নদীকোষ";
+        width: 0;
+    }
+
+    40.6% {
+        content: "నదికోష్";
+        width: 0;
+        animation-timing-function: steps(8, end);
+    }
+
+    41.25% {
+        content: "నదికోష్";
+        width: var(--w-te);
+    }
+
+    50% {
+        content: "నదికోష్";
+        width: var(--w-te);
+    }
+
+    /* 6. Telugu to 7. Tamil */
+    50.01% {
+        content: "నదికోష్";
+        width: var(--w-te);
+        animation-timing-function: steps(8, end);
+    }
+
+    50.5% {
+        content: "నదికోష్";
+        width: 0;
+    }
+
+    50.6% {
+        content: "நதிகோஷ்";
+        width: 0;
+        animation-timing-function: steps(8, end);
+    }
+
+    51.25% {
+        content: "நதிகோஷ்";
+        width: var(--w-ta);
+    }
+
+    60% {
+        content: "நதிகோஷ்";
+        width: var(--w-ta);
+    }
+
+    /* 7. Tamil to 8. Kannada */
+    60.01% {
+        content: "நதிகோஷ்";
+        width: var(--w-ta);
+        animation-timing-function: steps(8, end);
+    }
+
+    60.5% {
+        content: "நதிகோஷ்";
+        width: 0;
+    }
+
+    60.6% {
+        content: "ನದಿಕೋಶ್";
+        width: 0;
+        animation-timing-function: steps(8, end);
+    }
+
+    61.25% {
+        content: "ನದಿಕೋಶ್";
+        width: var(--w-kn);
+    }
+
+    70% {
+        content: "ನದಿಕೋಶ್";
+        width: var(--w-kn);
+    }
+
+    /* 8. Kannada to 9. Malayalam */
+    70.01% {
+        content: "ನದಿಕೋಶ್";
+        width: var(--w-kn);
+        animation-timing-function: steps(8, end);
+    }
+
+    70.5% {
+        content: "ನದಿಕೋಶ್";
+        width: 0;
+    }
+
+    70.6% {
+        content: "നദികോശ്";
+        width: 0;
+        animation-timing-function: steps(8, end);
+    }
+
+    71.25% {
+        content: "നദികോശ്";
+        width: var(--w-ml);
+    }
+
+    80% {
+        content: "നദികോശ്";
+        width: var(--w-ml);
+    }
+
+    /* 9. Malayalam to 10. Odia */
+    80.01% {
+        content: "നദികോശ്";
+        width: var(--w-ml);
+        animation-timing-function: steps(8, end);
+    }
+
+    80.5% {
+        content: "നദികോശ്";
+        width: 0;
+    }
+
+    80.6% {
+        content: "ନଦୀକୋଶ";
+        width: 0;
+        animation-timing-function: steps(8, end);
+    }
+
+    81.25% {
+        content: "ନଦୀକୋଶ";
+        width: var(--w-od);
+    }
+
+    90% {
+        content: "ନଦୀକୋଶ";
+        width: var(--w-od);
+    }
+
+    /* 10. Odia back to 1. English */
+    90.01% {
+        content: "ନଦୀକୋଶ";
+        width: var(--w-od);
+        animation-timing-function: steps(8, end);
+    }
+
+    90.5% {
+        content: "ନଦୀକୋଶ";
+        width: 0;
+    }
+
+    90.6% {
+        content: "Nadikosh";
+        width: 0;
+        animation-timing-function: steps(8, end);
+    }
+
+    91.25% {
+        content: "Nadikosh";
+        width: var(--w-en);
+    }
+
+    100% {
+        content: "Nadikosh";
+        width: var(--w-en);
+    }
+}

@@ -1,3 +1,5 @@
+@import url('./hero-typewriter.css');
+
 /* src/styles/fonts.css */
 
 :root {
@@ -27,6 +29,10 @@ h1,
 .site-title,
 .hero-title {
     font-family: var(--font-libre), var(--font-yatra), serif !important;
+}
+
+.hero h1 {
+    font-weight: 700 !important;
 }
 
 /* Splash: Show content below hero */

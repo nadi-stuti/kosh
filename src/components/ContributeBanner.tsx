@@ -1025,7 +1025,7 @@ function CompletionScreen({ onReset }: { onReset: () => void }) {
       </p>
       <div className={styles.completionActions}>
         <a
-          href="/how-we-work"
+          href="/nadi-stuti/how-we-work"
           className={styles.nextBtn}
           style={{ textDecoration: "none", display: "inline-block" }}
         >
