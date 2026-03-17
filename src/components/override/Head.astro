@@ -1,0 +1,13 @@
+---
+import type { StarlightPageProps as Props } from "@astrojs/starlight/props";
+import Default from "@astrojs/starlight/components/Head.astro";
+import { Font } from "astro:assets";
+---
+
+<Default {...Astro.props}><slot /></Default>
+
+<!-- Astro injects preload + @font-face automatically for these -->
+<Font cssVariable="--font-libre" preload />
+<Font cssVariable="--font-yatra" />
+<Font cssVariable="--font-noto" preload />
+<Font cssVariable="--font-mukta" preload />

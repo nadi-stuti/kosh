@@ -1,48 +1,34 @@
-/* src/styles/custom.css */
+/* src/styles/fonts.css */
 
-/* --- 1. Import Libre Baskerville (For Titles/Headings) --- */
-@import "@fontsource/libre-baskerville/400.css";
-@import "@fontsource/libre-baskerville/400-italic.css";
-/* Added Italic */
-@import "@fontsource/libre-baskerville/700.css";
-@import "@fontsource/libre-baskerville/700-italic.css";
-/* Added Bold Italic */
-
-/* --- 2. Import Mukta (For Body/UI) --- */
-/* Note: Mukta is a "variable-friendly" font, but Fontsource 
-   usually provides standard weights for stability. */
-@import "@fontsource/mukta/400.css";
-@import "@fontsource/mukta/500.css";
-@import "@fontsource/mukta/700.css";
-/* Mukta is a sans-serif designed to be legible; 
-   browsers will synthesize italics perfectly if needed, 
-   or you can import specific italic weights if available. */
-
-/* --- 3. Apply to Starlight --- */
 :root {
-    /* Global font (Body, Sidebar, UI) */
-    --sl-font: 'Mukta', sans-serif !important;
+    /* Body text: Mukta */
+    --sl-font: var(--font-mukta), sans-serif;
 }
 
-/* Specific overrides for Branding and Headers */
-.site-title,
-.hero h1,
+/* Headings (h2-h6): Noto Serif Devanagari with weight 500 */
 h1,
 h2,
 h3,
 h4,
 h5,
-h6 {
-    font-family: 'Libre Baskerville', serif !important;
-    font-weight: 700;
+h6,
+.sl-markdown-content h1,
+.sl-markdown-content h2,
+.sl-markdown-content h3,
+.sl-markdown-content h4,
+.sl-markdown-content h5,
+.sl-markdown-content h6 {
+    font-family: var(--font-noto), serif;
 }
 
-/* Ensure the Hero tagline uses the italic serif for a "literary" feel */
-.hero .tagline {
-    font-family: 'Libre Baskerville', serif !important;
-    font-style: italic;
-    font-weight: 400;
+/* H1, Site Logo, and Hero Title: Libre Baskerville w/ Yatra One fallback */
+h1,
+.sl-markdown-content h1,
+.site-title,
+.hero-title {
+    font-family: var(--font-libre), var(--font-yatra), serif !important;
 }
+
 
 :root {
     --sl-logo-height: 3rem;

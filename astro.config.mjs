@@ -1,18 +1,19 @@
 // @ts-check
-import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
-import starlightThemeFlexoki from "starlight-theme-flexoki";
-import { ExcludeTopics, SidebarTopics } from "./src/lib/constants/layout";
+import { defineConfig } from "astro/config";
 import starlightBlog from "starlight-blog";
 import starlightGiscus from "starlight-giscus";
-import starlightSidebarTopics from "starlight-sidebar-topics";
 import starlightImageZoom from "starlight-image-zoom";
+import starlightSidebarTopics from "starlight-sidebar-topics";
 import starlightTags from "starlight-tags";
+import starlightThemeFlexoki from "starlight-theme-flexoki";
+import { ExcludeTopics, SidebarTopics } from "./src/lib/constants/layout";
 
 import react from "@astrojs/react";
 import {
   BLOG,
   CUSTOM_CSS,
+  FONTS,
   GISCUSS,
   LOCALS,
   OVERRIDE_COMPONENTS,
@@ -20,6 +21,7 @@ import {
 } from "./src/lib/constants/configs";
 
 export default defineConfig({
+  fonts: FONTS,
   integrations: [
     starlight({
       components: OVERRIDE_COMPONENTS,

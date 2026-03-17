@@ -1,5 +1,7 @@
 import { blogAuthors } from "./authors";
 import type { StarlightBlogUserConfig } from "starlight-blog";
+import { fontProviders } from "astro/config";
+import type { AstroUserConfig } from "astro";
 
 export const LOCALS = {
   root: {
@@ -13,10 +15,13 @@ export const LOCALS = {
   //   },
 };
 
+const overridepath = "./src/components/override/";
+
 export const OVERRIDE_COMPONENTS = {
   // Override the default `MarkdownContent` component.
-  Sidebar: "./src/components/override/Sidebar.astro",
-  MarkdownContent: "./src/components/override/MarkdownContent.astro",
+  Sidebar: `${overridepath}Sidebar.astro`,
+  MarkdownContent: `${overridepath}MarkdownContent.astro`,
+  Head: `${overridepath}Head.astro`,
 };
 
 export const CUSTOM_CSS = ["./src/styles/custom.css"];
@@ -47,5 +52,36 @@ export const SOCIALS: Array<{ icon: "github"; label: string; href: string }> = [
     icon: "github",
     label: "GitHub",
     href: "https://github.com/nadi-stuti",
+  },
+];
+
+export const FONTS: AstroUserConfig["fonts"] = [
+  {
+    provider: fontProviders.google(),
+    name: "Libre Baskerville",
+    cssVariable: "--font-libre",
+    subsets: ["latin"],
+    weights: [400, 500, 700], // ✅ Works perfectly with numbers
+  },
+  {
+    provider: fontProviders.google(),
+    name: "Yatra One",
+    cssVariable: "--font-yatra",
+    subsets: ["devanagari", "latin"],
+    weights: [400],
+  },
+  {
+    provider: fontProviders.google(),
+    name: "Noto Serif Devanagari",
+    cssVariable: "--font-noto",
+    subsets: ["devanagari", "latin"],
+    weights: [400, 500, 600, 700],
+  },
+  {
+    provider: fontProviders.google(),
+    name: "Mukta",
+    cssVariable: "--font-mukta",
+    subsets: ["devanagari", "latin"],
+    weights: [400, 500, 600, 700],
   },
 ];
