@@ -29,6 +29,10 @@ h1,
     font-family: var(--font-libre), var(--font-yatra), serif !important;
 }
 
+/* Splash: Show content below hero */
+main .content-panel:first-of-type {
+    display: block !important;
+}
 
 :root {
     --sl-logo-height: 3rem;
