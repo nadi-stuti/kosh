@@ -1,3 +1,31 @@
+@import "@fontsource/libre-baskerville/400.css";
+/* Regular */
+@import "@fontsource/libre-baskerville/400-italic.css";
+/* Regular Italic */
+@import "@fontsource/libre-baskerville/500.css";
+/* Medium */
+@import "@fontsource/libre-baskerville/600.css";
+/* Semi-Bold */
+@import "@fontsource/libre-baskerville/700.css";
+/* Bold */
+
+:root {
+    --sl-font: 'Libre Baskerville', serif !important;
+}
+
+:root {
+    --sl-logo-height: 3rem;
+    /* Default is usually around 2rem */
+}
+
+.site-title {
+    padding: 20px;
+
+    img {
+        height: calc(var(--sl-nav-height) * 1.35 - 2 * var(--sl-nav-pad-y));
+    }
+}
+
 /* 
    All colours use Starlight CSS variables — works in light & dark themes.
    ─────────────────────────────────────────────────────────────────────── */

@@ -35,6 +35,11 @@ export default defineConfig({
         starlightSidebarTopics(SidebarTopics, ExcludeTopics),
       ],
       title: "NadiKosh",
+      logo: {
+        dark: "./src/assets/wikilogo_dark.jpg",
+        light: "./src/assets/wikilogo_light.jpg",
+        replacesTitle: true,
+      },
       locales: LOCALS,
       social: SOCIALS,
     }),

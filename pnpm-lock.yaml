@@ -14,6 +14,9 @@ importers:
       '@astrojs/starlight':
         specifier: ^0.37.4
         version: 0.37.7(astro@5.18.0(rollup@4.59.0)(typescript@5.9.3))
+      '@fontsource/libre-baskerville':
+        specifier: ^5.2.10
+        version: 5.2.10
       '@nivo/bar':
         specifier: ^0.99.0
         version: 0.99.0(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
@@ -529,6 +532,9 @@ packages:
 
   '@expressive-code/plugin-text-markers@0.41.7':
     resolution: {integrity: sha512-Ewpwuc5t6eFdZmWlFyeuy3e1PTQC0jFvw2Q+2bpcWXbOZhPLsT7+h8lsSIJxb5mS7wZko7cKyQ2RLYDyK6Fpmw==}
+
+  '@fontsource/libre-baskerville@5.2.10':
+    resolution: {integrity: sha512-Y/bGj4cOdWhAxU4+sBPen3MB5Og3t/WvezVL+05CJ7cvhDQUKpQFUuw/hm1IQKRc9u0lWs8VP2MKDOK2uQtloQ==}
 
   '@img/colour@1.1.0':
     resolution: {integrity: sha512-Td76q7j57o/tLVdgS746cYARfSyxk8iEfRxewL9h4OMzYhbW4TAcppl0mT4eyqXddh6L/jwoM75mo7ixa/pCeQ==}
@@ -2999,6 +3005,8 @@ snapshots:
   '@expressive-code/plugin-text-markers@0.41.7':
     dependencies:
       '@expressive-code/core': 0.41.7
+
+  '@fontsource/libre-baskerville@5.2.10': {}
 
   '@img/colour@1.1.0': {}
 
