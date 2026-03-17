@@ -1,16 +1,47 @@
-@import "@fontsource/libre-baskerville/400.css";
-/* Regular */
-@import "@fontsource/libre-baskerville/400-italic.css";
-/* Regular Italic */
-@import "@fontsource/libre-baskerville/500.css";
-/* Medium */
-@import "@fontsource/libre-baskerville/600.css";
-/* Semi-Bold */
-@import "@fontsource/libre-baskerville/700.css";
-/* Bold */
+/* src/styles/custom.css */
 
+/* --- 1. Import Libre Baskerville (For Titles/Headings) --- */
+@import "@fontsource/libre-baskerville/400.css";
+@import "@fontsource/libre-baskerville/400-italic.css";
+/* Added Italic */
+@import "@fontsource/libre-baskerville/700.css";
+@import "@fontsource/libre-baskerville/700-italic.css";
+/* Added Bold Italic */
+
+/* --- 2. Import Mukta (For Body/UI) --- */
+/* Note: Mukta is a "variable-friendly" font, but Fontsource 
+   usually provides standard weights for stability. */
+@import "@fontsource/mukta/400.css";
+@import "@fontsource/mukta/500.css";
+@import "@fontsource/mukta/700.css";
+/* Mukta is a sans-serif designed to be legible; 
+   browsers will synthesize italics perfectly if needed, 
+   or you can import specific italic weights if available. */
+
+/* --- 3. Apply to Starlight --- */
 :root {
-    --sl-font: 'Libre Baskerville', serif !important;
+    /* Global font (Body, Sidebar, UI) */
+    --sl-font: 'Mukta', sans-serif !important;
+}
+
+/* Specific overrides for Branding and Headers */
+.site-title,
+.hero h1,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Libre Baskerville', serif !important;
+    font-weight: 700;
+}
+
+/* Ensure the Hero tagline uses the italic serif for a "literary" feel */
+.hero .tagline {
+    font-family: 'Libre Baskerville', serif !important;
+    font-style: italic;
+    font-weight: 400;
 }
 
 :root {

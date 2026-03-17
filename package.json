@@ -16,6 +16,7 @@
     "@astrojs/react": "^4.4.2",
     "@astrojs/starlight": "^0.37.4",
     "@fontsource/libre-baskerville": "^5.2.10",
+    "@fontsource/mukta": "^5.2.8",
     "@nivo/bar": "^0.99.0",
     "@nivo/core": "^0.99.0",
     "@nivo/sankey": "^0.99.0",

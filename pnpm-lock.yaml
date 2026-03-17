@@ -17,6 +17,9 @@ importers:
       '@fontsource/libre-baskerville':
         specifier: ^5.2.10
         version: 5.2.10
+      '@fontsource/mukta':
+        specifier: ^5.2.8
+        version: 5.2.8
       '@nivo/bar':
         specifier: ^0.99.0
         version: 0.99.0(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
@@ -535,6 +538,9 @@ packages:
 
   '@fontsource/libre-baskerville@5.2.10':
     resolution: {integrity: sha512-Y/bGj4cOdWhAxU4+sBPen3MB5Og3t/WvezVL+05CJ7cvhDQUKpQFUuw/hm1IQKRc9u0lWs8VP2MKDOK2uQtloQ==}
+
+  '@fontsource/mukta@5.2.8':
+    resolution: {integrity: sha512-A+tHog4o2C3LfnG6NeqKjt/7ohJJKMoy7/cXNNj1TNLBqmReXiNk+IZi+Ac6TpYcYjeP1PYwHbsk9Jcxj+9i4Q==}
 
   '@img/colour@1.1.0':
     resolution: {integrity: sha512-Td76q7j57o/tLVdgS746cYARfSyxk8iEfRxewL9h4OMzYhbW4TAcppl0mT4eyqXddh6L/jwoM75mo7ixa/pCeQ==}
@@ -3007,6 +3013,8 @@ snapshots:
       '@expressive-code/core': 0.41.7
 
   '@fontsource/libre-baskerville@5.2.10': {}
+
+  '@fontsource/mukta@5.2.8': {}
 
   '@img/colour@1.1.0': {}
 
