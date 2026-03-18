@@ -1,0 +1,1006 @@
+/* src/components/ContributeBanner/ContributeBanner.module.css */
+
+/* ── Wrapper ── */
+.wrapper {
+  width: 100%;
+  border: 1px solid var(--sl-color-hairline);
+  border-radius: 1rem;
+  overflow: hidden;
+  background: var(--sl-color-bg-nav);
+  margin-block: 2.5rem;
+}
+
+/* ── Top Bar ── */
+.topBar {
+  padding: 2rem 2rem 1.25rem;
+  border-bottom: 1px solid var(--sl-color-hairline);
+  text-align: center;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--sl-color-accent-high);
+  background: color-mix(in srgb, var(--sl-color-accent) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--sl-color-accent) 30%, transparent);
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  margin-bottom: 0.9rem;
+}
+
+.badgeDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--sl-color-accent-high);
+  display: inline-block;
+}
+
+.title {
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: var(--sl-color-white);
+  margin: 0 0 0.45rem;
+}
+
+.subtitle {
+  font-size: 0.9rem;
+  color: var(--sl-color-gray-3);
+  max-width: 58ch;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* ── Stepper ── */
+.stepper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid var(--sl-color-hairline);
+  background: var(--sl-color-bg);
+  overflow-x: auto;
+}
+
+.stepItem {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-shrink: 0;
+}
+
+.stepDot {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--sl-color-gray-6);
+  color: var(--sl-color-gray-3);
+  font-size: 0.7rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--sl-color-hairline);
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+  flex-shrink: 0;
+}
+
+.sActive .stepDot {
+  background: var(--sl-color-accent);
+  border-color: var(--sl-color-accent-high);
+  color: var(--sl-color-black);
+}
+
+.sDone .stepDot {
+  background: color-mix(in srgb, var(--sl-color-accent) 22%, transparent);
+  border-color: var(--sl-color-accent);
+  color: var(--sl-color-accent-high);
+}
+
+.stepLabel {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--sl-color-gray-3);
+  white-space: nowrap;
+}
+
+.sActive .stepLabel {
+  color: var(--sl-color-text);
+}
+
+.stepLine {
+  width: 28px;
+  height: 1px;
+  background: var(--sl-color-hairline);
+  flex-shrink: 0;
+  margin: 0 0.3rem;
+}
+
+/* ── Panel Shell ── */
+.panelShell {
+  min-height: 400px;
+}
+
+.panel {
+  padding: 1.5rem 2rem;
+}
+
+.hint {
+  font-size: 0.875rem;
+  color: var(--sl-color-gray-3);
+  margin: 0 0 1.1rem;
+}
+
+/* ── Step 1: Section Grid ── */
+.sectionGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(148px, 1fr));
+  gap: 0.65rem;
+}
+
+.sectionCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  align-items: flex-start;
+  padding: 0.9rem 0.85rem;
+  border-radius: 0.7rem;
+  border: 1px solid var(--sl-color-hairline);
+  background: var(--sl-color-bg);
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+  font-family: var(--sl-font);
+  text-align: left;
+}
+
+.sectionCard:hover {
+  border-color: var(--sl-color-accent);
+  background: color-mix(in srgb, var(--sl-color-accent) 7%, transparent);
+}
+
+.sectionSelected {
+  border-color: var(--sl-color-accent-high) !important;
+  background: color-mix(in srgb, var(--sl-color-accent) 14%, transparent) !important;
+}
+
+.sectionEmoji {
+  font-size: 1.5rem;
+}
+
+.sectionLabel {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--sl-color-text);
+}
+
+.sectionTag {
+  font-size: 0.73rem;
+  color: var(--sl-color-gray-3);
+}
+
+/* ── Step 2: Type List ── */
+.typeList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.typeRow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 0.9rem;
+  border-radius: 0.6rem;
+  border: 1px solid var(--sl-color-hairline);
+  background: var(--sl-color-bg);
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 0.2s, background 0.2s;
+  font-family: var(--sl-font);
+}
+
+.typeRow:hover {
+  border-color: var(--sl-color-accent);
+  background: color-mix(in srgb, var(--sl-color-accent) 6%, transparent);
+}
+
+.typeSelected {
+  border-color: var(--sl-color-accent-high) !important;
+  background: color-mix(in srgb, var(--sl-color-accent) 13%, transparent) !important;
+}
+
+.typeIcon {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.typeText {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.typeText strong {
+  font-size: 0.875rem;
+  color: var(--sl-color-text);
+}
+
+.typeDesc {
+  font-size: 0.78rem;
+  color: var(--sl-color-gray-3);
+}
+
+.typeArrow {
+  color: var(--sl-color-gray-4);
+  font-size: 1.1rem;
+}
+
+/* ── Step Nav ── */
+.nextRow {
+  margin-bottom: 0.75rem;
+}
+
+.stepNavRow {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.nextBtn {
+  padding: 0.6rem 1.4rem;
+  border-radius: 0.55rem;
+  border: none;
+  background: var(--sl-color-accent);
+  color: var(--sl-color-black);
+  font-size: 0.875rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: var(--sl-font);
+  transition: opacity 0.2s;
+}
+
+.nextBtn:hover {
+  opacity: 0.85;
+}
+
+.backBtn {
+  background: none;
+  border: none;
+  color: var(--sl-color-gray-3);
+  font-size: 0.82rem;
+  cursor: pointer;
+  padding: 0;
+  font-family: var(--sl-font);
+  transition: color 0.15s;
+}
+
+.backBtn:hover {
+  color: var(--sl-color-text);
+}
+
+/* ── Step 3: Editor ── */
+.editorLayout {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 1rem;
+}
+
+.editorLeft {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--sl-color-hairline);
+  border-radius: 0.6rem;
+  overflow: hidden;
+}
+
+.editorToolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  padding: 0.5rem 0.75rem;
+  background: var(--sl-color-bg-nav);
+  border-bottom: 1px solid var(--sl-color-hairline);
+}
+
+.toolbarBtn {
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.3rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--sl-color-gray-3);
+  cursor: default;
+  border: 1px solid var(--sl-color-hairline);
+  background: var(--sl-color-bg);
+  user-select: none;
+}
+
+.toolbarComponent {
+  color: var(--sl-color-accent-high);
+  border-color: color-mix(in srgb, var(--sl-color-accent) 40%, transparent);
+  background: color-mix(in srgb, var(--sl-color-accent) 10%, transparent);
+}
+
+.editorBody {
+  padding: 1rem;
+  background: var(--sl-color-bg);
+  flex: 1;
+  font-family: var(--sl-font-mono, monospace);
+  min-height: 220px;
+}
+
+.editorLine {
+  font-size: 0.82rem;
+  line-height: 1.8;
+  white-space: pre-wrap;
+}
+
+.editorBlank {
+  height: 0.5rem;
+}
+
+.mdH1 {
+  color: var(--sl-color-white);
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.mdH2 {
+  color: var(--sl-color-white);
+  font-weight: 600;
+  font-size: 0.84rem;
+}
+
+.mdMeta {
+  color: var(--sl-color-gray-4);
+  font-size: 0.76rem;
+  font-style: italic;
+}
+
+.mdText {
+  color: var(--sl-color-gray-2);
+}
+
+.mdComponent {
+  color: var(--sl-color-accent-high);
+}
+
+.mdComponentInner {
+  color: var(--sl-color-gray-3);
+  padding-left: 0.5rem;
+  display: block;
+}
+
+.editorCursor {
+  width: 2px;
+  height: 16px;
+  background: var(--sl-color-accent);
+  display: inline-block;
+  animation: blink 1.1s step-end infinite;
+}
+
+@keyframes blink {
+
+  0%,
+  100% {
+    opacity: 1
+  }
+
+  50% {
+    opacity: 0
+  }
+}
+
+/* ── Assist Panel ── */
+.editorRight {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--sl-color-hairline);
+  border-radius: 0.6rem;
+  overflow: hidden;
+  max-height: 380px;
+}
+
+.assistTabs {
+  display: flex;
+  border-bottom: 1px solid var(--sl-color-hairline);
+}
+
+.assistTab {
+  flex: 1;
+  padding: 0.55rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: var(--sl-color-bg-nav);
+  border: none;
+  color: var(--sl-color-gray-3);
+  font-family: var(--sl-font);
+}
+
+.assistTabActive {
+  background: var(--sl-color-bg);
+  color: var(--sl-color-accent-high);
+  border-bottom: 2px solid var(--sl-color-accent);
+}
+
+.assistBody {
+  padding: 0.75rem;
+  overflow-y: auto;
+  flex: 1;
+  background: var(--sl-color-bg);
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.assistHint {
+  font-size: 0.75rem;
+  color: var(--sl-color-gray-4);
+  margin: 0;
+}
+
+.imgCard {
+  border: 1px solid var(--sl-color-hairline);
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.imgPlaceholder {
+  width: 100%;
+  height: 64px;
+  background: color-mix(in srgb, var(--sl-color-accent) 10%, transparent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+}
+
+.imgCaption {
+  font-size: 0.73rem;
+  color: var(--sl-color-gray-3);
+  padding: 0.35rem 0.5rem 0;
+  margin: 0;
+}
+
+.imgInsert {
+  display: block;
+  width: 100%;
+  padding: 0.3rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--sl-color-accent-high);
+  background: none;
+  border: none;
+  border-top: 1px solid var(--sl-color-hairline);
+  cursor: pointer;
+  font-family: var(--sl-font);
+  margin-top: 0.35rem;
+}
+
+.generateMore {
+  font-size: 0.75rem;
+  color: var(--sl-color-gray-4);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--sl-font);
+  padding: 0;
+}
+
+.snippetCard {
+  border: 1px solid var(--sl-color-hairline);
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.snippetLabel {
+  font-size: 0.73rem;
+  font-weight: 700;
+  color: var(--sl-color-gray-3);
+  padding: 0.3rem 0.5rem;
+  background: var(--sl-color-bg-nav);
+  border-bottom: 1px solid var(--sl-color-hairline);
+}
+
+.snippetCode {
+  font-family: var(--sl-font-mono, monospace);
+  font-size: 0.72rem;
+  color: var(--sl-color-accent-high);
+  padding: 0.4rem 0.6rem;
+  margin: 0;
+  white-space: pre;
+}
+
+/* ── Step 4: Component Library ── */
+.compLayout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.compLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.compTabs {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.compTab {
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: var(--sl-color-bg);
+  border: 1px solid var(--sl-color-hairline);
+  color: var(--sl-color-gray-3);
+  font-family: var(--sl-font);
+  transition: all 0.15s;
+}
+
+.compTab:hover {
+  border-color: var(--sl-color-accent);
+  color: var(--sl-color-text);
+}
+
+.compTabActive {
+  background: color-mix(in srgb, var(--sl-color-accent) 14%, transparent);
+  border-color: var(--sl-color-accent);
+  color: var(--sl-color-accent-high);
+}
+
+.compGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: 0.5rem;
+}
+
+.compCard {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem;
+  padding: 0.75rem 0.7rem;
+  border-radius: 0.6rem;
+  border: 1px solid var(--sl-color-hairline);
+  background: var(--sl-color-bg);
+  cursor: pointer;
+  font-family: var(--sl-font);
+  transition: border-color 0.2s, background 0.2s;
+  text-align: left;
+}
+
+.compCard:hover {
+  border-color: var(--sl-color-accent);
+  background: color-mix(in srgb, var(--sl-color-accent) 7%, transparent);
+}
+
+.compSelected {
+  border-color: var(--sl-color-accent-high) !important;
+  background: color-mix(in srgb, var(--sl-color-accent) 14%, transparent) !important;
+}
+
+.compIcon {
+  font-size: 1.3rem;
+}
+
+.compName {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--sl-color-text);
+}
+
+.compDesc {
+  font-size: 0.72rem;
+  color: var(--sl-color-gray-3);
+  line-height: 1.3;
+}
+
+/* Customiser */
+.customizerPanel {
+  border: 1px solid var(--sl-color-hairline);
+  border-radius: 0.7rem;
+  overflow: hidden;
+  background: var(--sl-color-bg);
+  display: flex;
+  flex-direction: column;
+}
+
+.customizerHeader {
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid var(--sl-color-hairline);
+  background: var(--sl-color-bg-nav);
+}
+
+.customizerHeader strong {
+  font-size: 0.875rem;
+  color: var(--sl-color-text);
+  display: block;
+}
+
+.customizerSub {
+  font-size: 0.75rem;
+  color: var(--sl-color-gray-3);
+}
+
+.fieldList {
+  padding: 0.75rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.fieldRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.fieldLabel {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--sl-color-gray-3);
+  width: 110px;
+  flex-shrink: 0;
+}
+
+.fieldInput,
+.fieldSelect {
+  flex: 1;
+  padding: 0.3rem 0.5rem;
+  border-radius: 0.35rem;
+  border: 1px solid var(--sl-color-hairline);
+  background: var(--sl-color-bg-nav);
+  color: var(--sl-color-text);
+  font-size: 0.8rem;
+  font-family: var(--sl-font);
+}
+
+.fieldRange {
+  flex: 1;
+  accent-color: var(--sl-color-accent);
+}
+
+.toggle {
+  width: 36px;
+  height: 20px;
+  border-radius: 999px;
+  background: var(--sl-color-gray-6);
+  position: relative;
+  cursor: default;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+
+.toggleOn {
+  background: var(--sl-color-accent);
+}
+
+.toggleThumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: white;
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  transition: left 0.2s;
+}
+
+.toggleOn .toggleThumb {
+  left: 19px;
+}
+
+.colorSwatch {
+  width: 28px;
+  height: 22px;
+  border-radius: 0.3rem;
+  border: 1px solid var(--sl-color-hairline);
+  flex-shrink: 0;
+}
+
+.customizerFooter {
+  padding: 0.75rem 1rem;
+  border-top: 1px solid var(--sl-color-hairline);
+  background: var(--sl-color-bg-nav);
+}
+
+.codeHint {
+  font-size: 0.72rem;
+  color: var(--sl-color-gray-4);
+  margin-bottom: 0.3rem;
+  display: block;
+}
+
+.customizerCode {
+  font-family: var(--sl-font-mono, monospace);
+  font-size: 0.72rem;
+  color: var(--sl-color-accent-high);
+  background: color-mix(in srgb, var(--sl-color-accent) 8%, transparent);
+  padding: 0.5rem 0.7rem;
+  border-radius: 0.4rem;
+  border: 1px solid color-mix(in srgb, var(--sl-color-accent) 25%, transparent);
+  margin: 0 0 0.6rem;
+  white-space: pre;
+  overflow-x: auto;
+}
+
+.insertCompBtn {
+  padding: 0.4rem 0.9rem;
+  border-radius: 0.4rem;
+  border: none;
+  background: var(--sl-color-accent);
+  color: var(--sl-color-black);
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: var(--sl-font);
+}
+
+.customizerPlaceholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  min-height: 200px;
+  color: var(--sl-color-gray-4);
+  font-size: 0.85rem;
+  gap: 0.5rem;
+  border: 1px dashed var(--sl-color-hairline);
+  border-radius: 0.7rem;
+}
+
+.customizerPlaceholder span {
+  font-size: 1.6rem;
+}
+
+.customizerPlaceholder p {
+  margin: 0;
+}
+
+/* ── Step 5: Series ── */
+.seriesRoot {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.seriesChain {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  overflow-x: auto;
+  padding: 0.5rem 0;
+}
+
+.seriesNode {
+  min-width: 90px;
+  padding: 0.7rem 0.75rem;
+  border-radius: 0.6rem;
+  border: 1.5px solid var(--sl-color-hairline);
+  background: var(--sl-color-bg);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--sl-color-gray-3);
+  text-align: center;
+  line-height: 1.4;
+  flex-shrink: 0;
+}
+
+.seriesNode span {
+  font-size: 0.68rem;
+  font-weight: 400;
+}
+
+.seriesDone {
+  border-color: var(--sl-color-accent);
+  color: var(--sl-color-accent-high);
+  background: color-mix(in srgb, var(--sl-color-accent) 10%, transparent);
+}
+
+.seriesCurrent {
+  border-color: var(--sl-color-white);
+  color: var(--sl-color-white);
+}
+
+.seriesLinked {
+  border-color: var(--sl-color-accent);
+  color: var(--sl-color-accent-high);
+  background: color-mix(in srgb, var(--sl-color-accent) 10%, transparent);
+}
+
+.seriesEmpty {
+  border-style: dashed;
+}
+
+.seriesArrow {
+  color: var(--sl-color-gray-4);
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.linkPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  max-width: 480px;
+}
+
+.linkSelect {
+  padding: 0.45rem 0.65rem;
+  border-radius: 0.45rem;
+  border: 1px solid var(--sl-color-hairline);
+  background: var(--sl-color-bg);
+  color: var(--sl-color-text);
+  font-size: 0.875rem;
+  font-family: var(--sl-font);
+}
+
+.linkSuccess {
+  display: flex;
+  align-items: center;
+  font-size: 0.875rem;
+  color: var(--sl-color-accent-high);
+  padding: 0.65rem 0.9rem;
+  background: color-mix(in srgb, var(--sl-color-accent) 10%, transparent);
+  border-radius: 0.5rem;
+  border: 1px solid color-mix(in srgb, var(--sl-color-accent) 30%, transparent);
+}
+
+/* ── Step 6: Completion ── */
+.completionRoot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.1rem;
+}
+
+.completionCheck {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--sl-color-accent);
+  color: var(--sl-color-black);
+  font-size: 1.5rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.completionTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--sl-color-white);
+  margin: 0;
+}
+
+.completionDesc {
+  font-size: 0.875rem;
+  color: var(--sl-color-gray-3);
+  max-width: 50ch;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.completionSub {
+  font-size: 0.82rem;
+  color: var(--sl-color-gray-4);
+  margin: 0;
+  font-style: italic;
+}
+
+.exampleGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 480px;
+}
+
+.exampleCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 1rem;
+  border-radius: 0.7rem;
+  border: 1px solid var(--sl-color-hairline);
+  background: var(--sl-color-bg);
+  text-decoration: none;
+  color: var(--sl-color-text);
+  transition: border-color 0.2s, transform 0.15s;
+}
+
+.exampleCard:hover {
+  border-color: var(--sl-color-accent);
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+
+.exampleEmoji {
+  font-size: 1.5rem;
+}
+
+.exampleCard strong {
+  font-size: 0.82rem;
+  color: var(--sl-color-text);
+}
+
+.exampleMeta {
+  font-size: 0.73rem;
+  color: var(--sl-color-gray-3);
+}
+
+.exampleCta {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--sl-color-accent-high);
+  margin-top: 0.2rem;
+}
+
+.completionActions {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .editorLayout {
+    grid-template-columns: 1fr;
+  }
+
+  .compLayout {
+    grid-template-columns: 1fr;
+  }
+
+  .editorRight {
+    max-height: 260px;
+  }
+}
+
+@media (max-width: 600px) {
+
+  .topBar,
+  .panel {
+    padding: 1.25rem 1rem;
+  }
+
+  .stepper {
+    padding: 0.75rem 1rem;
+  }
+
+  .stepLabel {
+    display: none;
+  }
+
+  .sectionGrid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  }
+
+  .exampleGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .seriesChain {
+    gap: 0.4rem;
+  }
+}

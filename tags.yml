@@ -1,0 +1,25 @@
+tags:
+  getting-started:
+    label: "Getting Started"
+    description: "Essential first steps"
+    color: "#22c55e"
+    icon: "🚀"
+    priority: 100
+
+  conservation:
+    label: "Conservation"
+    description: "River conservation efforts"
+    color: "#3b82f6"
+    icon: "🧩"
+
+  advanced:
+    label: "Advanced"
+    description: "For experienced users"
+    color: "#f59e0b"
+    icon: "⚡"
+    difficulty: advanced
+    prerequisites:
+      - getting-started
+
+defaults:
+  color: "#6b7280"

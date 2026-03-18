@@ -1,0 +1,290 @@
+/* ─────────────────────────────────────────
+   SCENARIO TOGGLE — WRAPPER
+   ───────────────────────────────────────── */
+
+.scenario-toggle {
+    padding: var(--rc-space-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--rc-space-md);
+}
+
+
+/* ─────────────────────────────────────────
+   SCENARIO TOGGLE — TITLE
+   ───────────────────────────────────────── */
+
+.scenario-toggle__title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--sl-color-text);
+    margin: 0;
+    line-height: 1.4;
+}
+
+
+/* ─────────────────────────────────────────
+   SCENARIO TOGGLE — TABS ROW
+   ───────────────────────────────────────── */
+
+.scenario-toggle__tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--rc-space-sm);
+}
+
+
+/* ─────────────────────────────────────────
+   SCENARIO TOGGLE — TAB BUTTON
+   ───────────────────────────────────────── */
+
+.scenario-toggle__tab {
+    padding: var(--rc-space-xs) var(--rc-space-md);
+    border-radius: var(--rc-radius-pill);
+    border: 1.5px solid var(--sl-color-gray-5);
+    background: transparent;
+    color: var(--sl-color-text);
+    font: inherit;
+    font-size: 0.82rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.18s ease, border-color 0.18s ease,
+        color 0.18s ease, box-shadow 0.18s ease;
+    white-space: nowrap;
+    margin-top: 0 !important;
+}
+
+/* default hover */
+.scenario-toggle__tab:hover {
+    background: var(--sl-color-gray-5);
+    box-shadow: var(--rc-shadow-sm);
+}
+
+/* active (selected) — base */
+.scenario-toggle__tab--active {
+    border-color: transparent;
+    color: #fff;
+    box-shadow: var(--rc-shadow-sm);
+}
+
+/* active per status */
+.scenario-toggle__tab--active.scenario-toggle__tab--critical {
+    background: var(--sl-color-red);
+}
+
+.scenario-toggle__tab--active.scenario-toggle__tab--warning {
+    background: var(--sl-color-accent);
+}
+
+.scenario-toggle__tab--active.scenario-toggle__tab--healthy {
+    background: var(--sl-color-green);
+}
+
+/* disabled */
+.scenario-toggle__tab:disabled {
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+
+/* ─────────────────────────────────────────
+   SCENARIO TOGGLE — PANEL
+   ───────────────────────────────────────── */
+
+.scenario-toggle__panel {
+    border-radius: var(--rc-radius-lg);
+    padding: var(--rc-space-md) var(--rc-space-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--rc-space-md);
+    border: 1.5px solid transparent;
+    transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.scenario-toggle__panel--critical {
+    background: rgba(239, 68, 68, 0.07);
+    border-color: rgba(239, 68, 68, 0.2);
+}
+
+.scenario-toggle__panel--warning {
+    background: rgba(var(--sl-color-accent), 0.07);
+    border-color: rgba(var(--sl-color-accent), 0.2);
+}
+
+.scenario-toggle__panel--healthy {
+    background: rgba(34, 197, 94, 0.07);
+    border-color: rgba(34, 197, 94, 0.2);
+}
+
+
+/* ─────────────────────────────────────────
+   SCENARIO TOGGLE — STATUS BADGE
+   ───────────────────────────────────────── */
+
+.scenario-toggle__badge {
+    display: inline-block;
+    padding: 0.18rem 0.65rem;
+    border-radius: var(--rc-radius-pill);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    align-self: flex-start;
+    color: #fff;
+}
+
+.scenario-toggle__badge--critical {
+    background: var(--sl-color-red);
+}
+
+.scenario-toggle__badge--warning {
+    background: var(--sl-color-accent);
+}
+
+.scenario-toggle__badge--healthy {
+    background: var(--sl-color-green);
+}
+
+
+/* ─────────────────────────────────────────
+   SCENARIO TOGGLE — DESCRIPTION
+   ───────────────────────────────────────── */
+
+.scenario-toggle__description {
+    font-size: 0.88rem;
+    color: var(--sl-color-text);
+    line-height: 1.6;
+    margin: 0;
+}
+
+
+/* ─────────────────────────────────────────
+   SCENARIO TOGGLE — METRICS LIST
+   ───────────────────────────────────────── */
+
+.scenario-toggle__metrics {
+    display: flex;
+    flex-direction: column;
+    gap: var(--rc-space-sm);
+}
+
+.scenario-toggle__metric {
+    display: flex;
+    flex-direction: column;
+    gap: var(--rc-space-xs);
+}
+
+.scenario-toggle__metric-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.scenario-toggle__metric-label {
+    font-size: 0.8rem;
+    color: var(--sl-color-text);
+    font-weight: 500;
+}
+
+.scenario-toggle__metric-value {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--sl-color-text);
+}
+
+
+/* ─────────────────────────────────────────
+   SCENARIO TOGGLE — METER TRACK
+   ───────────────────────────────────────── */
+
+.scenario-toggle__meter-track {
+    width: 100%;
+    height: 0.5rem;
+    border-radius: var(--rc-radius-pill);
+    background: var(--sl-color-gray-5);
+    overflow: hidden;
+}
+
+.scenario-toggle__meter-fill {
+    height: 100%;
+    border-radius: var(--rc-radius-pill);
+    /* width is set inline via motion animate */
+}
+
+.scenario-toggle__meter-fill--critical {
+    background: var(--sl-color-red);
+}
+
+.scenario-toggle__meter-fill--warning {
+    background: var(--sl-color-accent);
+}
+
+.scenario-toggle__meter-fill--healthy {
+    background: var(--sl-color-green);
+}
+
+
+/* ─────────────────────────────────────────
+   SCENARIO TOGGLE — CAPTION
+   ───────────────────────────────────────── */
+
+.scenario-toggle__caption {
+    font-size: 0.78rem;
+    color: var(--sl-color-gray-2);
+    text-align: center;
+    line-height: 1.55;
+    margin: 0;
+    padding: 0 var(--rc-space-sm);
+}
+
+
+/* ─────────────────────────────────────────
+   SCENARIO TOGGLE — RESPONSIVE
+   ───────────────────────────────────────── */
+
+@media (max-width: 480px) {
+    .scenario-toggle {
+        padding: var(--rc-space-md);
+    }
+
+    .scenario-toggle__panel {
+        padding: var(--rc-space-sm) var(--rc-space-md);
+    }
+
+    .scenario-toggle__tab {
+        font-size: 0.76rem;
+        padding: var(--rc-space-xs) var(--rc-space-sm);
+    }
+}
+
+
+/* ─────────────────────────────────────────
+   SCENARIO TOGGLE — DARK MODE
+   ───────────────────────────────────────── */
+
+@media (prefers-color-scheme: dark) {
+    .scenario-toggle__panel--critical {
+        background: rgba(239, 68, 68, 0.1);
+        border-color: rgba(239, 68, 68, 0.25);
+    }
+
+    .scenario-toggle__panel--warning {
+        background: rgba(99, 102, 241, 0.1);
+        border-color: rgba(99, 102, 241, 0.25);
+    }
+
+    .scenario-toggle__panel--healthy {
+        background: rgba(34, 197, 94, 0.1);
+        border-color: rgba(34, 197, 94, 0.25);
+    }
+
+    .scenario-toggle__meter-track {
+        background: var(--sl-color-gray-5);
+        opacity: 0.4;
+    }
+
+    .scenario-toggle__tab:hover {
+        background: var(--sl-color-gray-5);
+        opacity: 0.6;
+    }
+}

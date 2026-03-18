@@ -1,0 +1,87 @@
+{
+    "questions": [
+        {
+            "id": "largest-source-pollution",
+            "text": "What is the largest source of river pollution in many cities?",
+            "options": [
+                "Industrial chemicals",
+                "Untreated sewage",
+                "Plastic bottles",
+                "Fishing activities"
+            ],
+            "correctOptionIndex": 1,
+            "explanation": "In many developing regions, untreated sewage from homes and cities is the largest contributor to river pollution."
+        },
+        {
+            "id": "agriculture-runoff",
+            "text": "How does agriculture contribute to river pollution?",
+            "options": [
+                "Farmers drain rivers for irrigation",
+                "Rain washes fertilizers and pesticides into rivers",
+                "Farm animals drink too much water",
+                "Crops block river flow"
+            ],
+            "correctOptionIndex": 1,
+            "explanation": "Fertilizers and pesticides used in farming can wash into nearby rivers during rainfall, polluting the water."
+        },
+        {
+            "id": "industrial-waste",
+            "text": "Why can industrial waste be especially harmful to rivers?",
+            "options": [
+                "It often contains toxic chemicals",
+                "It increases fish populations",
+                "It makes water flow faster",
+                "It prevents rainfall"
+            ],
+            "correctOptionIndex": 0,
+            "explanation": "Industrial waste can contain heavy metals and toxic chemicals that damage ecosystems and make water unsafe."
+        },
+        {
+            "id": "pollution-travel",
+            "text": "Once pollution enters a river, what usually happens next?",
+            "options": [
+                "It disappears quickly",
+                "It spreads downstream through the river system",
+                "It stays only where it entered",
+                "It turns into clean water automatically"
+            ],
+            "correctOptionIndex": 1,
+            "explanation": "River currents carry pollutants downstream, allowing contamination to spread far from the original source."
+        },
+        {
+            "id": "river-cleaning-limit",
+            "text": "Why can't rivers always clean themselves naturally?",
+            "options": [
+                "Rivers do not contain microbes",
+                "Natural purification systems can be overwhelmed by large amounts of waste",
+                "Water stops moving",
+                "Fish remove oxygen from water"
+            ],
+            "correctOptionIndex": 1,
+            "explanation": "Rivers have natural cleaning processes, but excessive pollution can overwhelm these systems."
+        }
+    ],
+    "resultLabels": [
+        {
+            "key": "beginner",
+            "minScore": 0,
+            "maxScore": 1,
+            "title": "Beginner",
+            "message": "You're just starting to explore how river pollution happens. The upcoming articles will reveal the main pollution sources and how they affect rivers."
+        },
+        {
+            "key": "developing",
+            "minScore": 2,
+            "maxScore": 3,
+            "title": "Developing Understanding",
+            "message": "You understand some of the main pollution sources. The next articles will help you see how these pollutants spread through river ecosystems."
+        },
+        {
+            "key": "advanced",
+            "minScore": 4,
+            "maxScore": 5,
+            "title": "Strong Understanding",
+            "message": "You already understand many causes of river pollution. Now you're ready to explore the deeper science behind ecosystem impacts and restoration."
+        }
+    ]
+}

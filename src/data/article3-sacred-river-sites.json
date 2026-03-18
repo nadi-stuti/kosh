@@ -1,0 +1,42 @@
+{
+    "decor": {
+        "backgroundImage": "https://static.vecteezy.com/system/resources/previews/025/452/363/non_2x/uttar-pradesh-state-map-administrative-division-of-india-illustration-vector.jpg",
+        "connectDots": false,
+        "labels": []
+    },
+    "zones": [
+        {
+            "id": "mathura",
+            "label": "Mathura",
+            "description": "A sacred city on the Yamuna River associated with the life of Lord Krishna and an important pilgrimage center.",
+            "position": {
+                "x": 17,
+                "y": 41
+            },
+            "icon": "🕉️",
+            "color": "#8F7CE3"
+        },
+        {
+            "id": "prayagraj",
+            "label": "Prayagraj",
+            "description": "The sacred confluence of the Ganga, Yamuna, and the mythical Saraswati, and the site of the Kumbh Mela.",
+            "position": {
+                "x": 60,
+                "y": 65
+            },
+            "icon": "🪔",
+            "color": "#F28C38"
+        },
+        {
+            "id": "varanasi",
+            "label": "Varanasi Ghats",
+            "description": "One of the holiest cities in India, where pilgrims gather along the Ganga to perform rituals, prayers, and cremation ceremonies.",
+            "position": {
+                "x": 78,
+                "y": 68
+            },
+            "icon": "🛕",
+            "color": "#E0B84C"
+        }
+    ]
+}

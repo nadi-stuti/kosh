@@ -1,0 +1,475 @@
+{
+    "personas": {
+        "learner": {
+            "title": "The River Scholar",
+            "section": "Pollution Academy",
+            "message": "You love to understand the 'why' and 'how'. You believe that before we can save our rivers, we must truly understand the science, the sources, and the systems behind them.",
+            "summary": "Your strengths lie in learning, synthesizing information, and educating others."
+        },
+        "volunteer": {
+            "title": "The Ground Warrior",
+            "section": "Get Involved",
+            "message": "You are a person of action. You don't just want to read about the river; you want to be on the banks with gloves on, making a physical difference today.",
+            "summary": "Your strengths lie in community organizing, field work, and immediate impact."
+        },
+        "explorer": {
+            "title": "The Basin Mapper",
+            "section": "Our Rivers",
+            "message": "You see the big picture. You love tracing a river from its origin to its mouth, understanding its geography, and cataloging its health and tributaries.",
+            "summary": "Your strengths lie in documentation, reference building, and geographical tracking."
+        },
+        "researcher": {
+            "title": "The Data Sentinel",
+            "section": "Data & Research",
+            "message": "You trust what you can measure. You look for empirical truth through datasets, satellite imagery, water quality indices, and rigorous scientific methodology.",
+            "summary": "Your strengths lie in analysis, academic rigor, and evidence-based planning."
+        },
+        "devotee": {
+            "title": "The Cultural Guardian",
+            "section": "Itihaas",
+            "message": "You view the river as a living, sacred entity. You are drawn to the ancient scriptures, the rituals, and the deep civilisational history that ties our culture to the water.",
+            "summary": "Your strengths lie in preserving traditions, translating texts, and honoring heritage."
+        },
+        "thinker": {
+            "title": "The Community Weaver",
+            "section": "Thinking Grounds",
+            "message": "You know that conversation sparks change. You love connecting ideas, summarizing discussions, and bringing people together to share bite-sized insights.",
+            "summary": "Your strengths lie in communication, curation, and social engagement."
+        }
+    },
+    "questions": [
+        {
+            "id": "q1",
+            "quote": "Let's find your flow...",
+            "text": "When you visit a river, what is the very first thing that captures your attention?",
+            "options": [
+                {
+                    "text": "The physical state of the banks and the waste left behind.",
+                    "weights": {
+                        "volunteer": 3,
+                        "learner": 1
+                    }
+                },
+                {
+                    "text": "The water quality metrics, flow rate, and ecological health.",
+                    "weights": {
+                        "researcher": 3
+                    }
+                },
+                {
+                    "text": "The temples, the ghats, and the people performing rituals.",
+                    "weights": {
+                        "devotee": 3,
+                        "thinker": 1
+                    }
+                },
+                {
+                    "text": "The community living around it and what they are discussing.",
+                    "weights": {
+                        "thinker": 3
+                    }
+                },
+                {
+                    "text": "The geographical flow, the landscape, and where it travels next.",
+                    "weights": {
+                        "explorer": 3
+                    }
+                },
+                {
+                    "text": "The scientific reasons why the river looks the way it does.",
+                    "weights": {
+                        "learner": 3
+                    }
+                }
+            ]
+        },
+        {
+            "id": "q2",
+            "quote": "Interesting instinct! Next question...",
+            "text": "How do you naturally prefer to process new, complex information?",
+            "options": [
+                {
+                    "text": "By learning a practical, step-by-step protocol I can immediately apply.",
+                    "weights": {
+                        "volunteer": 3
+                    }
+                },
+                {
+                    "text": "By reading structured, deeply explained educational articles.",
+                    "weights": {
+                        "learner": 3
+                    }
+                },
+                {
+                    "text": "By looking at raw data, charts, methodologies, and scientific papers.",
+                    "weights": {
+                        "researcher": 3
+                    }
+                },
+                {
+                    "text": "By listening to historical stories, ancient texts, and traditions.",
+                    "weights": {
+                        "devotee": 3
+                    }
+                },
+                {
+                    "text": "By viewing encyclopedias, interactive maps, and geographical facts.",
+                    "weights": {
+                        "explorer": 3
+                    }
+                },
+                {
+                    "text": "By having open discussions and sharing bite-sized thoughts with others.",
+                    "weights": {
+                        "thinker": 3
+                    }
+                }
+            ]
+        },
+        {
+            "id": "q3",
+            "quote": "Your persona is taking shape...",
+            "text": "If you had a completely free weekend to dedicate to a river, what would you do?",
+            "options": [
+                {
+                    "text": "Join a local group to pick up plastic and document waste on the banks.",
+                    "weights": {
+                        "volunteer": 3
+                    }
+                },
+                {
+                    "text": "Start a multi-part online course about river basin hydrology.",
+                    "weights": {
+                        "learner": 3
+                    }
+                },
+                {
+                    "text": "Dive into a complex dataset mapping pollution hotspots over 10 years.",
+                    "weights": {
+                        "researcher": 3
+                    }
+                },
+                {
+                    "text": "Visit a historic ghat to understand the local traditions and history.",
+                    "weights": {
+                        "devotee": 3
+                    }
+                },
+                {
+                    "text": "Trace the route of a major river zone on a map to learn its tributaries.",
+                    "weights": {
+                        "explorer": 3
+                    }
+                },
+                {
+                    "text": "Start a forum thread asking people how their local river has changed.",
+                    "weights": {
+                        "thinker": 3
+                    }
+                }
+            ]
+        },
+        {
+            "id": "q4",
+            "quote": "Diving deeper...",
+            "text": "If you were to write a book or direct a documentary about rivers, what would the title be?",
+            "options": [
+                {
+                    "text": "'The Science of Water: Understanding Pollution at the Source'",
+                    "weights": {
+                        "learner": 3
+                    }
+                },
+                {
+                    "text": "'Grassroots Heroes: Real Action on the Riverbanks'",
+                    "weights": {
+                        "volunteer": 3
+                    }
+                },
+                {
+                    "text": "'Atlas of the Great Indian Basins: A Geographical Journey'",
+                    "weights": {
+                        "explorer": 3
+                    }
+                },
+                {
+                    "text": "'Data and Discharge: Advanced Hydrological Trends'",
+                    "weights": {
+                        "researcher": 3
+                    }
+                },
+                {
+                    "text": "'Sacred Waters: Myths, Legends, and Living Traditions'",
+                    "weights": {
+                        "devotee": 3
+                    }
+                },
+                {
+                    "text": "'Voices of the River: Communities and Conversations'",
+                    "weights": {
+                        "thinker": 3
+                    }
+                }
+            ]
+        },
+        {
+            "id": "q5",
+            "quote": "Halfway there! Keep going.",
+            "text": "When you are browsing social media or the internet, what kind of river content are you most likely to share?",
+            "options": [
+                {
+                    "text": "A detailed thread breaking down a complex environmental concept.",
+                    "weights": {
+                        "learner": 3,
+                        "thinker": 1
+                    }
+                },
+                {
+                    "text": "Photos or calls-to-action for an upcoming local cleanup drive.",
+                    "weights": {
+                        "volunteer": 3
+                    }
+                },
+                {
+                    "text": "A highly detailed, beautifully color-coded map of a river system.",
+                    "weights": {
+                        "explorer": 3
+                    }
+                },
+                {
+                    "text": "A link to a newly published, peer-reviewed study on water quality.",
+                    "weights": {
+                        "researcher": 3
+                    }
+                },
+                {
+                    "text": "A beautiful verse, stotra, or historical fact about a sacred river.",
+                    "weights": {
+                        "devotee": 3
+                    }
+                },
+                {
+                    "text": "A thought-provoking question asking followers for their opinions.",
+                    "weights": {
+                        "thinker": 3
+                    }
+                }
+            ]
+        },
+        {
+            "id": "q6",
+            "quote": "Let's talk about the work...",
+            "text": "If you were to contribute directly to a Wiki like Nadikosh, what task sounds the most fun?",
+            "options": [
+                {
+                    "text": "Writing a 5-part explainer series for absolute beginners.",
+                    "weights": {
+                        "learner": 3
+                    }
+                },
+                {
+                    "text": "Creating a step-by-step checklist toolkit for NGO workers.",
+                    "weights": {
+                        "volunteer": 3
+                    }
+                },
+                {
+                    "text": "Updating the general profile, stats, and overview of a specific tributary.",
+                    "weights": {
+                        "explorer": 3
+                    }
+                },
+                {
+                    "text": "Reviewing and annotating a government dataset on heavy metals.",
+                    "weights": {
+                        "researcher": 3
+                    }
+                },
+                {
+                    "text": "Translating an ancient Sanskrit text detailing a specific river ritual.",
+                    "weights": {
+                        "devotee": 3
+                    }
+                },
+                {
+                    "text": "Curating the best facts and forum debates into bite-sized summaries.",
+                    "weights": {
+                        "thinker": 3
+                    }
+                }
+            ]
+        },
+        {
+            "id": "q7",
+            "quote": "Getting to the root of the issue.",
+            "text": "What frustrates you the *most* about the current state of river conservation?",
+            "options": [
+                {
+                    "text": "The lack of accessible, easy-to-understand education for the general public.",
+                    "weights": {
+                        "learner": 3
+                    }
+                },
+                {
+                    "text": "People talking endlessly on the internet but not doing anything on the ground.",
+                    "weights": {
+                        "volunteer": 3
+                    }
+                },
+                {
+                    "text": "How fragmented, scattered, and hard to find basic river information is.",
+                    "weights": {
+                        "explorer": 3
+                    }
+                },
+                {
+                    "text": "Policies and decisions being made without rigorous, accurate data backing them.",
+                    "weights": {
+                        "researcher": 3
+                    }
+                },
+                {
+                    "text": "The loss of spiritual reverence, respect, and traditional connection to the water.",
+                    "weights": {
+                        "devotee": 3
+                    }
+                },
+                {
+                    "text": "The fact that conversations are isolated and different groups aren't connecting.",
+                    "weights": {
+                        "thinker": 3
+                    }
+                }
+            ]
+        },
+        {
+            "id": "q8",
+            "quote": "Almost done. Think big.",
+            "text": "When someone mentions 'The Ganga', what is the first image that pops into your head?",
+            "options": [
+                {
+                    "text": "The biochemical breakdown of its self-purifying properties.",
+                    "weights": {
+                        "learner": 3
+                    }
+                },
+                {
+                    "text": "Volunteers pulling nets of plastic from the Varanasi ghats.",
+                    "weights": {
+                        "volunteer": 3
+                    }
+                },
+                {
+                    "text": "A map showing its massive 2,500+ km journey from Gangotri to the Bay of Bengal.",
+                    "weights": {
+                        "explorer": 3
+                    }
+                },
+                {
+                    "text": "A line graph showing fluctuating Dissolved Oxygen levels over the last decade.",
+                    "weights": {
+                        "researcher": 3
+                    }
+                },
+                {
+                    "text": "The evening Aarti, the ringing of bells, and floating diyas.",
+                    "weights": {
+                        "devotee": 3
+                    }
+                },
+                {
+                    "text": "Millions of people whose daily lives, economies, and stories depend on it.",
+                    "weights": {
+                        "thinker": 3
+                    }
+                }
+            ]
+        },
+        {
+            "id": "q9",
+            "quote": "Two left! You're doing great.",
+            "text": "If you had to convince a local politician to protect a river, what would be your main weapon?",
+            "options": [
+                {
+                    "text": "A well-structured presentation explaining the root causes of the problem.",
+                    "weights": {
+                        "learner": 3
+                    }
+                },
+                {
+                    "text": "A petition signed by thousands of angry, mobilized local citizens.",
+                    "weights": {
+                        "volunteer": 3
+                    }
+                },
+                {
+                    "text": "A comprehensive report showing all the towns and economies affected downstream.",
+                    "weights": {
+                        "explorer": 3
+                    }
+                },
+                {
+                    "text": "Hard, undeniable, peer-reviewed data proving toxic contamination.",
+                    "weights": {
+                        "researcher": 3
+                    }
+                },
+                {
+                    "text": "Reminding them of their moral, cultural, and historical duty to our ancestors.",
+                    "weights": {
+                        "devotee": 3
+                    }
+                },
+                {
+                    "text": "A viral social media campaign summarizing the public's outrage.",
+                    "weights": {
+                        "thinker": 3
+                    }
+                }
+            ]
+        },
+        {
+            "id": "q10",
+            "quote": "Final question! Calculating your destiny...",
+            "text": "At the deepest level, how do you view a river?",
+            "options": [
+                {
+                    "text": "A complex ecological system waiting to be understood and taught.",
+                    "weights": {
+                        "learner": 3
+                    }
+                },
+                {
+                    "text": "A shared physical resource that requires our immediate, hands-on protection.",
+                    "weights": {
+                        "volunteer": 3
+                    }
+                },
+                {
+                    "text": "A geographical lifeline that connects regions, climates, and topographies.",
+                    "weights": {
+                        "explorer": 3
+                    }
+                },
+                {
+                    "text": "A dynamic set of measurable hydrological and chemical variables.",
+                    "weights": {
+                        "researcher": 3
+                    }
+                },
+                {
+                    "text": "A divine mother, a tirtha, and a living spiritual entity.",
+                    "weights": {
+                        "devotee": 3
+                    }
+                },
+                {
+                    "text": "A focal point for human society, culture, debate, and connection.",
+                    "weights": {
+                        "thinker": 3
+                    }
+                }
+            ]
+        }
+    ]
+}

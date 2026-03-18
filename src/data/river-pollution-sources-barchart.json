@@ -1,0 +1,36 @@
+{
+    "title": "River Pollution by Source: What Contributes the Most?",
+    "caption": "In a typical major Indian river basin, everyday domestic sewage is the overwhelming majority of pollution by volume. Plastics and industrial waste, while visible, are a much smaller fraction.",
+    "yAxisLabel": "Percentage of Total Pollution",
+    "xAxisLabel": "Pollution Source",
+    "items": [
+        {
+            "category": "Domestic Sewage",
+            "value": 62,
+            "label": "62%",
+            "color": "#ef4444",
+            "description": "Untreated wastewater from homes, apartments, and cities—the largest volume by far."
+        },
+        {
+            "category": "Industrial Effluents",
+            "value": 20,
+            "label": "20%",
+            "color": "#f59e0b",
+            "description": "Liquid waste from factories, tanneries, and chemical plants."
+        },
+        {
+            "category": "Agricultural Runoff",
+            "value": 12,
+            "label": "12%",
+            "color": "#10b981",
+            "description": "Fertilizers, pesticides, and animal waste washing off fields during rains."
+        },
+        {
+            "category": "Solid Waste / Plastics",
+            "value": 6,
+            "label": "6%",
+            "color": "#f97316",
+            "description": "Plastic bags, bottles, and other macroscopic trash that floats on the surface."
+        }
+    ]
+}

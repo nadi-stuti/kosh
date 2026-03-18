@@ -1,0 +1,92 @@
+/* ─────────────────────────────────────────
+   COMPONENT WRAPPER
+   ───────────────────────────────────────── */
+
+.river-component {
+    font: inherit;
+    color: var(--sl-color-text);
+    line-height: var(--sl-line-height-body);
+    padding: 1.5rem;
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 0.75rem;
+    background: var(--sl-color-gray-6);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin: 2rem 0;
+}
+
+.river-component :is(p, ul, ol) {
+    margin-block: var(--sl-spacing-xs);
+}
+
+.river-component h3,
+.river-component h4 {
+    font: inherit;
+    font-weight: 600;
+}
+
+@media (min-width: 768px) {
+    .river-component {
+        max-width: 800px;
+        margin: 2rem auto;
+    }
+}
+
+/* ─────────────────────────────────────────
+   SHARED COMPONENT TOKENS
+   ───────────────────────────────────────── */
+
+:root {
+
+    /* spacing */
+    --rc-space-xs: 0.25rem;
+    --rc-space-sm: 0.5rem;
+    --rc-space-md: 1rem;
+    --rc-space-lg: 1.5rem;
+
+    /* radius */
+    --rc-radius-sm: 0.375rem;
+    --rc-radius-md: 0.5rem;
+    --rc-radius-lg: 0.75rem;
+    --rc-radius-pill: 9999px;
+
+    /* shadows */
+    --rc-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+    --rc-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.12);
+
+}
+
+/* ─────────────────────────────────────────
+   UTILITY CLASSES
+   ───────────────────────────────────────── */
+
+.rc-pill {
+    padding: 0.25rem 0.6rem;
+    border-radius: var(--rc-radius-pill);
+}
+
+.rc-card {
+    border-radius: var(--rc-radius-md);
+    box-shadow: var(--rc-shadow-sm);
+}
+
+.rc-flex {
+    display: flex;
+}
+
+.rc-flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rc-gap-sm {
+    gap: var(--rc-space-sm);
+}
+
+.rc-gap-md {
+    gap: var(--rc-space-md);
+}
+
+.rc-gap-lg {
+    gap: var(--rc-space-lg);
+}

@@ -1,0 +1,108 @@
+/* ─────────────────────────────────────────
+   PERSONA QUIZ COMPONENT
+   ───────────────────────────────────────── */
+
+.persona-quiz {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header: Progress & Question Count */
+.persona-quiz-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: var(--sl-text-sm);
+    color: var(--sl-color-gray-3);
+    margin-bottom: var(--rc-space-sm);
+}
+
+/* Question Typography */
+.persona-quiz-question {
+    font-size: var(--sl-text-h4);
+    color: var(--sl-color-text);
+    margin-bottom: var(--rc-space-md);
+    line-height: var(--sl-line-height-headings);
+}
+
+/* Options Grid */
+.persona-quiz-options {
+    display: flex;
+    flex-direction: column;
+    gap: var(--rc-space-sm);
+}
+
+/* Individual Option Button */
+.persona-quiz-option {
+    text-align: left;
+    padding: var(--rc-space-md);
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: var(--rc-radius-md);
+    background-color: transparent;
+    color: var(--sl-color-text);
+    font: inherit;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+/* Option Hover/Focus State - Subtle distinctive styling */
+.persona-quiz-option:hover,
+.persona-quiz-option:focus-visible {
+    border-color: var(--sl-color-accent);
+    /* In Starlight, gray-6 is the surface color, 
+       we use gray-5 or a very slight opacity for hover */
+    background-color: var(--sl-color-gray-5);
+    box-shadow: var(--rc-shadow-sm);
+    outline: none;
+}
+
+/* Result Screen */
+.persona-quiz-result {
+    text-align: center;
+    padding: var(--rc-space-md);
+}
+
+.persona-quiz-result-label {
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: var(--sl-text-xs);
+    font-weight: 600;
+    color: var(--sl-color-gray-3);
+    margin-bottom: var(--rc-space-sm);
+}
+
+.persona-quiz-result-title {
+    font-size: var(--sl-text-h3);
+    color: var(--sl-color-accent);
+    margin-bottom: var(--rc-space-sm);
+}
+
+.persona-quiz-result-message {
+    font-size: var(--sl-text-base);
+    color: var(--sl-color-text);
+    margin-bottom: var(--rc-space-md);
+}
+
+.persona-quiz-result-summary {
+    font-size: var(--sl-text-sm);
+    font-style: italic;
+    color: var(--sl-color-gray-3);
+    margin-bottom: var(--rc-space-lg);
+}
+
+/* Retake Button */
+.persona-quiz-retake-btn {
+    background-color: var(--sl-color-text-accent);
+    color: var(--sl-color-black);
+    /* Automatically handles light/dark contrast in Starlight */
+    border: none;
+    padding: var(--rc-space-sm) var(--rc-space-lg);
+    border-radius: var(--rc-radius-md);
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+.persona-quiz-retake-btn:hover {
+    opacity: 0.85;
+}

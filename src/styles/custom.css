@@ -1,3 +1,93 @@
+@import url('./hero-typewriter.css');
+
+/* src/styles/fonts.css */
+
+:root {
+    /* Body text: Mukta */
+    --sl-font: var(--font-mukta), sans-serif;
+}
+
+/* Headings (h2-h6): Noto Serif Devanagari with weight 500 */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.sl-markdown-content h1,
+.sl-markdown-content h2,
+.sl-markdown-content h3,
+.sl-markdown-content h4,
+.sl-markdown-content h5,
+.sl-markdown-content h6 {
+    font-family: var(--font-noto), serif;
+}
+
+/* H1, Site Logo, and Hero Title: Libre Baskerville w/ Yatra One fallback */
+h1,
+.sl-markdown-content h1,
+.site-title,
+.hero-title {
+    font-family: var(--font-libre), var(--font-yatra), serif !important;
+}
+
+.hero h1 {
+    font-weight: 700 !important;
+}
+
+/* Splash: Show content below hero */
+main .content-panel:first-of-type {
+    display: block !important;
+}
+
+:root {
+    --sl-logo-height: 3rem;
+    /* Default is usually around 2rem */
+}
+
+.site-title {
+
+    img {
+        height: calc(var(--sl-nav-height) * 1.5 - 2 * var(--sl-nav-pad-y));
+    }
+}
+
+/* 
+   All colours use Starlight CSS variables — works in light & dark themes.
+   ─────────────────────────────────────────────────────────────────────── */
+
+:root {
+    --sl-color-teal-low: #064e3b;
+    --sl-color-teal-high: #2dd4bf;
+    --sl-color-teal: #14b8a6;
+    --sl-color-yellow-low: #422006;
+    --sl-color-yellow-high: #facc15;
+    --sl-color-yellow: #eab308;
+    --sl-color-indigo-low: #1e1b4b;
+    --sl-color-indigo-high: #8b5cf6;
+    --sl-color-indigo: #6366f1;
+    --sl-color-pink-low: #500724;
+    --sl-color-pink-high: #f472b6;
+    --sl-color-pink: #ec4899;
+}
+
+/* Light Mode Values */
+:root[data-theme='light'] {
+    --sl-color-teal-low: #f0fdfa;
+    --sl-color-teal-high: #0f766e;
+    --sl-color-teal: #0d9488;
+    --sl-color-yellow-low: #fefce8;
+    --sl-color-yellow-high: #ca8a04;
+    --sl-color-yellow: #a16207;
+    --sl-color-indigo-low: #eef2ff;
+    --sl-color-indigo-high: #3730a3;
+    --sl-color-indigo: #4338ca;
+    --sl-color-pink-low: #fdf2f8;
+    --sl-color-pink-high: #9d174d;
+    --sl-color-pink: #be185d;
+}
+
+
 /* Container to center and size the preview */
 .image-preview-wrapper {
     display: flex;
@@ -17,8 +107,13 @@
     cursor: zoom-in;
 }
 
+.image-preview-wrapper.large img {
+    max-width: 400px !important;
+}
+
 .image-preview-wrapper img:hover {
     transform: scale(1.05);
+    transition: 0.3s;
 }
 
 

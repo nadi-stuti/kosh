@@ -1,71 +1,50 @@
 // @ts-check
-import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
-import starlightThemeFlexoki from "starlight-theme-flexoki";
-import { SidebarFolders } from "./src/lib/constants/layout";
+import { defineConfig } from "astro/config";
 import starlightBlog from "starlight-blog";
 import starlightGiscus from "starlight-giscus";
 import starlightImageZoom from "starlight-image-zoom";
+import starlightSidebarTopics from "starlight-sidebar-topics";
+import starlightTags from "starlight-tags";
+import starlightThemeFlexoki from "starlight-theme-flexoki";
+import { ExcludeTopics, SidebarTopics } from "./src/lib/constants/layout";
 
-// https://astro.build/config
+import react from "@astrojs/react";
+import {
+  BLOG,
+  CUSTOM_CSS,
+  FONTS,
+  GISCUSS,
+  LOCALS,
+  OVERRIDE_COMPONENTS,
+  SOCIALS,
+} from "./src/lib/constants/configs";
+
 export default defineConfig({
+  fonts: FONTS,
   integrations: [
     starlight({
-      components: {
-        // Override the default `MarkdownContent` component.
-        MarkdownContent: "./src/components/MarkdownContent.astro",
-      },
-      customCss: ["./src/styles/custom.css"],
+      components: OVERRIDE_COMPONENTS,
+      customCss: CUSTOM_CSS,
       plugins: [
         starlightImageZoom(),
-        starlightBlog({
-          title: "Nadi Stuti Blog",
-          metrics: {
-            readingTime: true,
-            words: "rounded",
-          },
-          authors: {
-            nulligma: {
-              name: "Shantanu Kulkarni",
-              title: "Nadi Sevak",
-              picture:
-                "https://pbs.twimg.com/profile_images/722045969936703488/bLHK_LbW_400x400.jpg",
-              url: "https://x.com/Nulligma/",
-            },
-          },
-        }),
-        starlightGiscus({
-          repo: "nadi-stuti/kosh",
-          repoId: "R_kgDOQtuzhw",
-          category: "General",
-          categoryId: "DIC_kwDOQtuzh84C03D7",
-          theme: {
-            light: "gruvbox_light",
-            dark: "gruvbox_dark",
-            auto: "gruvbox",
-          },
-        }),
+        starlightBlog(BLOG),
+        starlightGiscus(GISCUSS),
         starlightThemeFlexoki({
           accentColor: "yellow",
         }),
+        starlightTags(),
+        starlightSidebarTopics(SidebarTopics, ExcludeTopics),
       ],
-      title: "Kosh",
-      social: [
-        {
-          icon: "github",
-          label: "GitHub",
-          href: "https://github.com/nadi-stuti",
-        },
-      ],
-      sidebar: [
-        ...SidebarFolders,
-        { slug: "about-nadikosh" },
-        { slug: "print" },
-        { label: "How we work", slug: "how-we-work" },
-        { label: "Contribute", slug: "contribute" },
-        { slug: "layout" },
-        { slug: "updates" },
-      ],
+      title: "NadiKosh",
+      logo: {
+        dark: "./src/assets/wikilogo_dark.jpg",
+        light: "./src/assets/wikilogo_light.jpg",
+        replacesTitle: true,
+      },
+      locales: LOCALS,
+      social: SOCIALS,
     }),
+    react(),
   ],
 });

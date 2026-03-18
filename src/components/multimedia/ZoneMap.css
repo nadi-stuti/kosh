@@ -1,0 +1,187 @@
+.zone-map {
+    padding: var(--rc-space-lg);
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: var(--rc-radius-md);
+    background: var(--sl-color-gray-6);
+    max-width: 720px;
+    margin: var(--rc-space-lg) auto;
+}
+
+/* Title */
+
+.rbm-title {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: var(--rc-space-md);
+}
+
+/* Layout */
+
+.rbm-layout {
+    display: flex;
+    gap: var(--rc-space-md);
+    align-items: flex-start;
+}
+
+.rbm-svg-container {
+    flex: 0 0 55%;
+}
+
+.rbm-svg {
+    width: 100%;
+    border-radius: var(--rc-radius-sm);
+    border: 1px solid var(--sl-color-gray-5);
+    display: block;
+}
+
+/* Grid */
+
+.rbm-grid {
+    stroke: white;
+    stroke-width: 0.15;
+    opacity: 0.08;
+}
+
+/* River delta branches */
+
+.rbm-delta {
+    stroke: #2E7D6B;
+    stroke-width: 1.2;
+    fill: none;
+    opacity: 0.55;
+}
+
+/* Map labels */
+
+.rbm-label-bg {
+    fill: black;
+}
+
+.rbm-label-text {
+    font-size: 5px;
+    fill: white;
+    opacity: 0.9;
+    font-weight: 500;
+}
+
+/* Panel */
+
+.rbm-panel {
+    flex: 1;
+    min-height: 130px;
+    display: flex;
+    align-items: center;
+}
+
+.rbm-info {
+    position: relative;
+    padding: var(--rc-space-sm);
+    background: var(--sl-color-gray-5);
+    border-radius: var(--rc-radius-sm);
+    width: 100%;
+    border: 1px solid var(--sl-color-gray-5);
+}
+
+.rbm-info-icon {
+    font-size: 1.4rem;
+    display: block;
+    margin-bottom: 0.2rem;
+}
+
+.rbm-zone-title {
+    font-size: 0.88rem;
+    font-weight: 700;
+    margin: 0 0 0.4rem;
+    color: var(--sl-color-accent);
+}
+
+.rbm-zone-desc {
+    font-size: 0.82rem;
+    line-height: 1.55;
+    margin: 0;
+}
+
+/* Close button */
+
+.rbm-close {
+    position: absolute;
+    top: 0.35rem;
+    right: 0.45rem;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 0.75rem;
+    opacity: 0.5;
+    padding: 0;
+}
+
+.rbm-close:hover {
+    opacity: 1;
+}
+
+/* Prompt */
+
+.rbm-prompt {
+    text-align: center;
+    width: 100%;
+    opacity: 0.6;
+}
+
+.rbm-prompt-icon {
+    font-size: 1.2rem;
+    display: block;
+    margin-bottom: 0.2rem;
+}
+
+/* Pills */
+
+.rbm-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--rc-space-xs);
+    margin-top: var(--rc-space-md);
+    align-items: center;
+}
+
+.rbm-pill {
+    padding: 0.3rem 0.7rem;
+    border-radius: var(--rc-radius-pill);
+    border: 1.5px solid var(--zone-color, var(--sl-color-gray-5));
+    background: transparent;
+    color: var(--sl-color-text);
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 0 !important;
+    line-height: 1.4;
+}
+
+.rbm-pill:hover {
+    background: color-mix(in srgb,
+            var(--zone-color, var(--sl-color-accent)) 12%,
+            transparent);
+}
+
+.rbm-pill--active {
+    background: color-mix(in srgb,
+            var(--zone-color, var(--sl-color-accent)) 22%,
+            transparent);
+    border-color: var(--zone-color, var(--sl-color-accent));
+    font-weight: 600;
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+    .rbm-layout {
+        flex-direction: column;
+    }
+
+    .rbm-svg-container {
+        flex: none;
+        width: 100%;
+    }
+
+    .rbm-panel {
+        min-height: 100px;
+    }
+}

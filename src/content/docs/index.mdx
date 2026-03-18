@@ -1,48 +1,62 @@
 ---
 title: Nadikosh
-description: Knowledge repository for our holy rivers
-template: splash 
+description: An open knowledge repository for India's holy rivers — from ground volunteers to expert researchers.
+template: splash
 giscus: false
+contribution: true
+authors:
+  - gopala
+  - nulligma
 hero:
-  tagline: Knowledge repository for our holy rivers
+  title: Nadikosh
+  tagline: The open knowledge repository for India's holy rivers
   image:
     file: ../../assets/logo.png
   actions:
-    - text: Explore
-      link: /about-nadikosh/
+    - text: Start Exploring
+      link: /nadi-stuti/about-nadikosh
       icon: right-arrow
-    - text: Read our blog
+    - text: Read blog
       link: /blog
       icon: open-book
       variant: secondary
-    - text: Visit nadistuti website
+    - text: nadistuti.com
       link: https://nadistuti.com/
       icon: external
       variant: minimal
 ---
+import RiverActionCenter from '@/components/RiverActionCenter';
+import AuthorCard from '@/components/daily-drops/AuthorCard.astro';
+import ContributeBanner from '@/components/ContributeBanner';
+import ContributeNowBanner from '@/components/ContributeNowBanner';
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
+## River Action Center
 
-## How to contribute to this knowledge repository?
+Select your river and tell us what you want to do. Our upcoming AI system — **Triveni-net** — will
+combine live web intelligence, satellite imagery, and the full Nadikosh knowledge base to surface
+the most relevant actions, data, and resources for your river, tailored to your goal.
+This feature is in active development. The demo below shows where we are headed.
 
-<CardGrid stagger>
-	<Card title="Share your thoughts" icon="comment">
-		We would love to hear your thoughts on our articles. Share your feedback using the comments section at the bottom of each article or join our whatsapp group: [NadiStuti Sabha](https://chat.whatsapp.com/GWWZngBJzYsDZ8AGzF6Xt4)
-	</Card>
-	<Card title="Write for us" icon="seti:markdown">
-		Help us build the biggest knowledge repository on holy rivers by writing articles for us. Get a markdown editor and send us your articles. Read more about how to contribute: [How we work](/how-we-work#raw-ideas--temporary-notes).
-	</Card>
-	<Card title="Setup a mobile friendly workflow" icon="apple">
-		Setup a mobile friendly workflow to contribute to this knowledgebase from your phone. [Mobile workflow guide](/guides/mobile-workflow).
-	</Card>
-	<Card title="Add new content youself" icon="github">
-		Read how to use github so that you can modify this knowledgebase yourself: [Github setup guide](/guides/github) or use Github cloud editor: [Github cloud guide](/guides/github-cloud-edit).
-	</Card>
-	<Card title="Help us grow" icon="heart">
-		Help us reach more people by sharing our articles on social media, forums, and with your friends and family or share our print materials available at [Print](/print).
-	</Card>
-	<Card title="Make this website better" icon="vscode">
-		If you are a developer, read our [Developer guide](/guides/developer-guide/) to better understand how this website works
-		and how you can contribute to it and make it super awesome India's own wiki. 
-	</Card>
-</CardGrid>
+<RiverActionCenter client:load />
+
+---
+
+## Write for Nadikosh
+
+Nadikosh is built by people who care about rivers — writers, researchers, devotees, scientists, and everyday citizens. This contribution studio will guide anyone through creating richly structured articles for any section of the wiki, complete with AI-assisted image suggestions, a full interactive component library, and automated series linking.
+
+This feature is in active development. The demo below shows the full writing workflow we are building.
+
+
+<ContributeBanner client:load/>
+
+---
+
+## Contribute Right Now
+Why wait for the AI-powered studio when Nadikosh already welcomes you with open arms? We've built a complete, battle-tested contribution system — from mobile-friendly Markdown editors to GitHub workflows, detailed writing guides, and a welcoming community ready to review and publish your work. Whether you're writing your first river article or updating hydrology data for researchers, you can start building the world's most comprehensive river knowledge base today.
+
+<ContributeNowBanner client:load />
+
+---
+
+## Contributors
