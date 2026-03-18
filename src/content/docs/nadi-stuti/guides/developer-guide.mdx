@@ -9,7 +9,7 @@ Welcome, developer! This guide is designed to help you understand the technology
 
 >if you are an experienced developer and have worked with static site generators like astro or nextjs before, feel free to skip ahead to our future development plans section.
 
-<LinkButton href="/guides/developer-guide/#future-making-writing-frictionless" icon='right-arrow'>
+<LinkButton href="#future-making-writing-frictionless" icon='right-arrow'>
   Skip to Future Development
 </LinkButton>
 
@@ -912,6 +912,117 @@ Keystatic is a **headless CMS** that:
   </Card>
 
 </CardGrid>
+
+
+### Keystatic Editor Workflow
+
+![Editor Workflow Diagram](./assets/S%20(1).png)
+
+Keystatic transforms content editing into a **zero-friction, three-step process** — no terminal, no code, no confusion.
+
+#### Step 1 — The Editor's Desk (Writing)
+
+A non-technical writer opens the **Keystatic Admin UI** — a clean, browser-based interface that looks and feels like any modern writing tool (think Notion or Google Docs). They see their articles listed, click **"New Article"**, type their content into a rich text editor, fill in a simple form for metadata (title, description, tags), and hit **Save**.
+
+Under the hood, Keystatic **writes directly to the file system** — creating a `.md` or `.mdx` file in the correct content folder automatically. The writer never sees YAML frontmatter. They never open a terminal. They never touch a file path.
+
+> **The writer's experience:** Open browser → Write → Save. Done.
+
+#### Step 2 — The Backend (Git Does the Heavy Lifting)
+
+When the writer saves their content, Keystatic automatically performs a **Git Commit and Push** in the background. The new article is uploaded to the Git repository as a proper branch (e.g., `New-Article-A` or `Edit-Topic-B`), separate from the live `Wiki-Live` branch.
+
+This means:
+- **No database is needed.** All content lives as plain text files (`.md` / `.mdx`) inside the Git repository.
+- **Every edit is versioned.** Git tracks every change, who made it, and when — giving you a full audit trail by default.
+- **Multiple writers can work in parallel** on isolated branches without stepping on each other.
+
+The Git branch structure looks like this:
+
+```md
+Wiki-Live (production)
+└── develop
+├── New-Article-A ← New contribution
+└── Edit-Topic-B ← Edit to existing page
+```
+
+### Step 3 — Review, Build & Deploy
+
+Once a writer submits their article, it enters a **review pipeline**:
+
+1. A maintainer reviews the proposed changes (via a Pull Request or Keystatic's own review tools).
+2. The **Astro Build Engine** picks up the Markdown/MDX files and compiles them into **static HTML**.
+3. Upon approval, the built site is **deployed to the server** — the Live Version of the wiki is updated.
+
+Writers get feedback. Maintainers stay in control. Nothing goes live without review.
+
+> **The net result:** A community member in a village, an expert botanist, a river activist — anyone can contribute knowledge to NadiKosh without ever learning Git, Node.js, or Markdown syntax.
+
+---
+
+###  Our Tech Stack: How It All Fits Together
+![NadiKosh Tech Stack Architecture](./assets/stack.jpg)
+
+NadiKosh is built on a carefully layered architecture where each layer serves a distinct purpose. From the ground up:
+
+### Layer 1 — The Foundation
+At the very base sits the **web's fundamental trio**: **HTML5**, **CSS3**, and **TypeScript**. These are the raw building blocks — structure, style, and type-safe logic — that everything above depends on.
+
+### Layer 2 — Astro Framework
+Sitting above the foundation is the **Astro Framework**, which acts as the core engine. Astro brings two powerful ideas:
+
+- **Islands Architecture** — The page is mostly static HTML, but isolated "islands" of interactivity (like a search box or a quiz) are hydrated with JavaScript only where needed. This keeps the site blazing fast.
+- **Interactive JS Islands** — React components can be selectively embedded into otherwise static pages, giving us dynamic features without sacrificing performance.
+
+Astro reads all content from the **File System** — the `.md` and `.mdx` files that Keystatic creates and manages.
+
+### Layer 3 — Starlight Theme
+On top of Astro sits the **Starlight Theme** — Astro's official documentation/wiki theme. It gives NadiKosh its polished wiki look: sidebar navigation, table of contents, search, multi-language support, and responsive layout — all out of the box. The output is pure **Static HTML**, which means the site loads instantly for any reader anywhere.
+
+### Layer 4 — Keystatic CMS (The Editor's Gateway)
+Floating above the entire system is **Keystatic CMS**, which connects directly to the **File System**. This is the bridge between human writers and the codebase. Keystatic reads and writes files to the same directory that Astro builds from — meaning what a writer saves in the CMS immediately becomes part of the site's content source.
+
+Keystatic then syncs those file changes upward to **Git Version Control**, maintaining a full history of every article, every edit, every contributor — all without a single database.
+
+---
+
+## The Complete Picture: How Everything Works Together
+
+Here is how a single piece of content — say, an article about the Netravati River — flows through the entire system:
+
+```md
+Writer opens Keystatic UI (browser)
+↓
+Writes article in rich-text editor (no code)
+↓
+Keystatic saves → .mdx file written to /src/content/our-rivers/
+↓
+Git commits & pushes to a new branch on GitHub
+↓
+Maintainer reviews the Pull Request
+↓
+On approval → Astro Build Engine runs
+↓
+Starlight Theme renders the MDX into Static HTML
+↓
+Deployed to server → Article is LIVE on NadiKosh
+```
+
+
+### Why This Stack Is Perfect for NadiKosh
+
+| Concern | How Our Stack Solves It |
+|---|---|
+| Non-technical contributors | Keystatic Admin UI — no code needed |
+| Content versioning & safety | Git tracks every change, forever |
+| No database overhead | All content lives as `.md`/`.mdx` files |
+| Fast loading for all readers | Astro outputs pure static HTML |
+| Beautiful wiki structure | Starlight Theme with sidebar, ToC, search |
+| Selective interactivity | Astro Islands for quizzes, maps, live data |
+| Type-safe content schemas | TypeScript + Keystatic config validates every field |
+
+The architecture is deliberately **simple, durable, and open**. There is no proprietary database to migrate, no expensive hosting plan, and no vendor lock-in. The entire knowledge base of NadiKosh lives as readable text files in a Git repository — meaning it can be archived, forked, mirrored, or moved at any time, ensuring the knowledge of India's sacred rivers is never lost to a platform shutdown.
+
 
 #### How Keystatic + Thinking Grounds Would Work
 
