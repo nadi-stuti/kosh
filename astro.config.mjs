@@ -21,6 +21,9 @@ import {
 } from "./src/lib/constants/configs";
 
 export default defineConfig({
+  redirects: {
+    "/pollution-academy": "/pollution-library",
+  },
   fonts: FONTS,
   integrations: [
     starlight({

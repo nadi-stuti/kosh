@@ -1,13 +1,13 @@
 export const SidebarTopics = [
   {
     label: "Pollution Library",
-    link: "/pollution-academy",
+    link: "/pollution-library",
     icon: "warning",
     items: [
       {
         label: "Pollution Library",
         autogenerate: {
-          directory: "/pollution-academy",
+          directory: "/pollution-library",
           collapsed: true,
         },
       },
