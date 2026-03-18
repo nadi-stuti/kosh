@@ -9,7 +9,7 @@ const SECTIONS = [
   {
     id: "pollution",
     emoji: "🎓",
-    label: "Pollution Academy",
+    label: "Pollution Library",
     tag: "Educate & explain",
   },
   {
@@ -536,7 +536,7 @@ export default function ContributeBanner() {
                     </div>
                     <div className={styles.editorLine}>
                       <span className={styles.mdMeta}>
-                        Part 1 of 27 · Pollution Academy · Nadikosh
+                        Part 1 of 27 · Pollution Library · Nadikosh
                       </span>
                     </div>
                     <div
@@ -1000,13 +1000,13 @@ function CompletionScreen({ onReset }: { onReset: () => void }) {
       </p>
       <div className={styles.exampleGrid}>
         <a
-          href="/pollution-academy/why-rivers-are-polluted/"
+          href="/pollution-library/why-rivers-are-polluted/"
           className={styles.exampleCard}
         >
           <span className={styles.exampleEmoji}>📚</span>
           <strong>"Why Our Rivers Are Polluted"</strong>
           <span className={styles.exampleMeta}>
-            27-part article series · Pollution Academy
+            27-part article series · Pollution Library
           </span>
           <span className={styles.exampleCta}>View series →</span>
         </a>
