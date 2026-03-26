@@ -1,5 +1,5 @@
 // src/components/ContributeBanner/ContributeBanner.tsx
-import { useState } from "react";
+import React, { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import styles from "./ContributeBanner.module.css";
 
@@ -360,6 +360,12 @@ export default function ContributeBanner() {
   const [step, setStep] = useState<Step>(1);
   const [selectedSection, setSelectedSection] = useState<string | null>(null);
   const [selectedType, setSelectedType] = useState<string | null>(null);
+  const [articleTitle, setArticleTitle] = useState("Why Our Rivers Are Polluted");
+  const [articleBody, setArticleBody] = useState(
+    `## The Silent Crisis\n\nIndia's rivers carry the memory of civilisations. But over the last century, the choices we made upstream have begun to silence them...\n\n<Aside type="tip">\n  BOD levels above 3 mg/L indicate moderate pollution. Most Indian urban stretches exceed 8 mg/L during dry season.\n</Aside>`
+  );
+  const [saved, setSaved] = useState(false);
+  const [preview, setPreview] = useState(false);
 
   const sectionObj = SECTIONS.find((s) => s.id === selectedSection);
 
@@ -522,73 +528,69 @@ export default function ContributeBanner() {
                         {t}
                       </span>
                     ))}
-                    <span
-                      className={`${styles.toolbarBtn} ${styles.toolbarComponent}`}
+                    <button
+                      className={`${styles.toolbarBtn} ${styles.toolbarComponent} ${styles.toolbarActionBtn}`}
+                      onClick={() => go(4)}
                     >
-                      ⚡ Component
-                    </span>
+                      ⚡ Add component
+                    </button>
                   </div>
                   <div className={styles.editorBody}>
-                    <div className={styles.editorLine}>
-                      <span className={styles.mdH1}>
-                        # Why Our Rivers Are Polluted
-                      </span>
-                    </div>
-                    <div className={styles.editorLine}>
-                      <span className={styles.mdMeta}>
-                        Part 1 of 27 · Pollution Library · Nadikosh
-                      </span>
-                    </div>
-                    <div
-                      className={styles.editorLine + " " + styles.editorBlank}
-                    />
-                    <div className={styles.editorLine}>
-                      <span className={styles.mdH2}>## The Silent Crisis</span>
-                    </div>
-                    <div className={styles.editorLine}>
-                      <span className={styles.mdText}>
-                        India's rivers carry the memory of civilisations. But
-                        over the last century, the choices
-                      </span>
-                    </div>
-                    <div className={styles.editorLine}>
-                      <span className={styles.mdText}>
-                        we made upstream have begun to silence them...
-                      </span>
-                    </div>
-                    <div
-                      className={styles.editorLine + " " + styles.editorBlank}
-                    />
-                    <div className={styles.editorLine}>
-                      <span className={styles.mdComponent}>
-                        {'<Aside type="tip">'}
-                      </span>
-                    </div>
-                    <div className={styles.editorLine}>
-                      <span className={styles.mdComponentInner}>
-                        {" "}
-                        BOD levels above 3 mg/L indicate moderate pollution.
-                        Most
-                      </span>
-                    </div>
-                    <div className={styles.editorLine}>
-                      <span className={styles.mdComponentInner}>
-                        {" "}
-                        Indian urban stretches exceed 8 mg/L during dry season.
-                      </span>
-                    </div>
-                    <div className={styles.editorLine}>
-                      <span className={styles.mdComponent}>{"</Aside>"}</span>
-                    </div>
-                    <div
-                      className={styles.editorLine + " " + styles.editorBlank}
-                    />
-                    <div className={styles.editorCursor} />
+                    {preview ? (
+                      <div className={styles.previewBody}>
+                        <h1 className={styles.previewH1}>{articleTitle || "Untitled"}</h1>
+                        <p className={styles.previewMeta}>
+                          Part 1 of 27 · {sectionObj?.label ?? "Pollution Library"} · Nadikosh
+                        </p>
+                        {articleBody.split("\n").reduce<React.ReactNode[]>((acc, line, i, arr) => {
+                          if (line.startsWith("## ")) {
+                            acc.push(<h2 key={i} className={styles.previewH2}>{line.slice(3)}</h2>);
+                          } else if (line.startsWith("# ")) {
+                            acc.push(<h1 key={i} className={styles.previewH1}>{line.slice(2)}</h1>);
+                          } else if (line.startsWith("<Aside")) {
+                            // collect until </Aside>
+                            const endIdx = arr.indexOf("</Aside>", i);
+                            const inner = arr.slice(i + 1, endIdx === -1 ? i + 1 : endIdx).join(" ").trim();
+                            acc.push(<div key={i} className={styles.previewAside}><span>💡</span> {inner}</div>);
+                          } else if (line === "</Aside>" || (line.startsWith(" ") && acc.length > 0 && (acc[acc.length - 1] as any)?.props?.className === styles.previewAside)) {
+                            // skip aside inner lines already captured
+                          } else if (line.trim()) {
+                            acc.push(<p key={i} className={styles.previewP}>{line}</p>);
+                          }
+                          return acc;
+                        }, [])}
+                      </div>
+                    ) : (
+                      <>
+                        <input
+                          className={styles.editorTitleInput}
+                          value={articleTitle}
+                          onChange={(e) => setArticleTitle(e.target.value)}
+                          placeholder="Article title..."
+                          spellCheck={false}
+                        />
+                        <div className={styles.editorMeta}>
+                          Part 1 of 27 · {sectionObj?.label ?? "Pollution Library"} · Nadikosh
+                        </div>
+                        <textarea
+                          className={styles.editorTextarea}
+                          value={articleBody}
+                          onChange={(e) => setArticleBody(e.target.value)}
+                          placeholder="Start writing your article here..."
+                          spellCheck={false}
+                          rows={10}
+                        />
+                      </>
+                    )}
                   </div>
                 </div>
                 {/* Right assist panel */}
                 <div className={styles.editorRight}>
-                  <AssistPanel />
+                  <AssistPanel
+                    onInsert={(text) =>
+                      setArticleBody((prev) => prev + "\n" + text)
+                    }
+                  />
                 </div>
               </div>
               <div className={styles.stepNavRow}>
@@ -597,10 +599,30 @@ export default function ContributeBanner() {
                 </button>
                 <motion.button
                   whileHover={{ scale: 1.03 }}
-                  className={styles.nextBtn}
-                  onClick={() => go(4)}
+                  className={saved ? styles.savedBtn : styles.saveBtn}
+                  onClick={() => {
+                    localStorage.setItem("nadikosh-draft-title", articleTitle);
+                    localStorage.setItem("nadikosh-draft-body", articleBody);
+                    setSaved(true);
+                    setTimeout(() => setSaved(false), 2000);
+                  }}
                 >
-                  Add components →
+                  {saved ? "✓ Saved!" : "💾 Save draft"}
+                </motion.button>
+                <motion.button
+                  whileHover={{ scale: 1.03 }}
+                  className={styles.saveBtn}
+                  onClick={() => setPreview((p) => !p)}
+                >
+                  {preview ? "✏️ Edit" : "👁 View preview"}
+                </motion.button>
+                <motion.button
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.97 }}
+                  className={styles.publishBtn}
+                  onClick={() => go(6)}
+                >
+                  🚀 Publish
                 </motion.button>
               </div>
             </motion.div>
@@ -665,8 +687,15 @@ export default function ContributeBanner() {
 }
 
 // ── Assist Panel (Step 3 right column) ─────────────────────────────────────────
-function AssistPanel() {
+function AssistPanel({ onInsert }: { onInsert: (text: string) => void }) {
   const [tab, setTab] = useState<"images" | "syntax">("images");
+  const [inserted, setInserted] = useState<number | null>(null);
+
+  const handleInsert = (text: string, idx: number) => {
+    onInsert(text);
+    setInserted(idx);
+    setTimeout(() => setInserted(null), 1500);
+  };
   return (
     <div className={styles.assistPanel}>
       <div className={styles.assistTabs}>
@@ -711,7 +740,17 @@ function AssistPanel() {
                   <span>🖼️</span>
                 </motion.div>
                 <p className={styles.imgCaption}>{img.caption}</p>
-                <button className={styles.imgInsert}>Insert →</button>
+                <button
+                  className={styles.imgInsert}
+                  onClick={() =>
+                    handleInsert(
+                      `\n![${img.caption}](https://placehold.co/800x400?text=${encodeURIComponent(img.caption)})`,
+                      i
+                    )
+                  }
+                >
+                  {inserted === i ? "✓ Inserted!" : "Insert →"}
+                </button>
               </motion.div>
             ))}
             <button className={styles.generateMore}>
@@ -740,7 +779,12 @@ function AssistPanel() {
               >
                 <div className={styles.snippetLabel}>{s.label}</div>
                 <pre className={styles.snippetCode}>{s.code}</pre>
-                <button className={styles.imgInsert}>Insert →</button>
+                <button
+                  className={styles.imgInsert}
+                  onClick={() => handleInsert("\n" + s.code, i + 100)}
+                >
+                  {inserted === i + 100 ? "✓ Inserted!" : "Insert →"}
+                </button>
               </motion.div>
             ))}
           </motion.div>
