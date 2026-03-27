@@ -1,5 +1,5 @@
 // src/components/ContributeBanner/ContributeBanner.tsx
-import React, { useState } from "react";
+import React, { useState, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import styles from "./ContributeBanner.module.css";
 
@@ -356,6 +356,37 @@ const SYNTAX_SNIPPETS = [
 type Step = 1 | 2 | 3 | 4 | 5 | 6;
 
 // ── Main Component ─────────────────────────────────────────────────────────────
+// ── Toolbar action types ──────────────────────────────────────────────────────
+type ToolbarAction =
+  | { type: "wrap"; prefix: string; suffix: string; placeholder: string }
+  | { type: "line"; prefix: string; placeholder: string };
+
+const TOOLBAR_ACTIONS: Record<string, ToolbarAction> = {
+  H1:  { type: "line", prefix: "# ",    placeholder: "Heading 1" },
+  H2:  { type: "line", prefix: "## ",   placeholder: "Heading 2" },
+  H3:  { type: "line", prefix: "### ",  placeholder: "Heading 3" },
+  B:   { type: "wrap", prefix: "**", suffix: "**", placeholder: "bold text" },
+  I:   { type: "wrap", prefix: "_",  suffix: "_",  placeholder: "italic text" },
+  Q:   { type: "line", prefix: "> ",    placeholder: "Quote" },
+  OL:  { type: "line", prefix: "1. ",   placeholder: "List item" },
+  UL:  { type: "line", prefix: "- ",    placeholder: "List item" },
+  LNK: { type: "wrap", prefix: "[", suffix: "](url)", placeholder: "link text" },
+  IMG: { type: "wrap", prefix: "![", suffix: "](url)", placeholder: "alt text" },
+};
+
+const TOOLBAR_BUTTONS: { key: string; label: string }[] = [
+  { key: "H1",  label: "H1" },
+  { key: "H2",  label: "H2" },
+  { key: "H3",  label: "H3" },
+  { key: "B",   label: "B" },
+  { key: "I",   label: "I" },
+  { key: "Q",   label: `"` },
+  { key: "OL",  label: "1." },
+  { key: "UL",  label: "•" },
+  { key: "LNK", label: "🔗" },
+  { key: "IMG", label: "🖼️" },
+];
+
 export default function ContributeBanner() {
   const [step, setStep] = useState<Step>(1);
   const [selectedSection, setSelectedSection] = useState<string | null>(null);
@@ -366,6 +397,7 @@ export default function ContributeBanner() {
   );
   const [saved, setSaved] = useState(false);
   const [preview, setPreview] = useState(false);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   const sectionObj = SECTIONS.find((s) => s.id === selectedSection);
 
@@ -375,6 +407,54 @@ export default function ContributeBanner() {
     setSelectedSection(null);
     setSelectedType(null);
   };
+
+  // Insert markdown at cursor / around selection
+  const insertMarkdown = useCallback(
+    (actionKey: string) => {
+      const ta = textareaRef.current;
+      if (!ta) return;
+      const action = TOOLBAR_ACTIONS[actionKey];
+      if (!action) return;
+
+      const start = ta.selectionStart;
+      const end   = ta.selectionEnd;
+      const selected = articleBody.slice(start, end);
+
+      let newText: string;
+      let cursorStart: number;
+      let cursorEnd: number;
+
+      if (action.type === "wrap") {
+        const inner = selected || action.placeholder;
+        newText =
+          articleBody.slice(0, start) +
+          action.prefix + inner + action.suffix +
+          articleBody.slice(end);
+        cursorStart = start + action.prefix.length;
+        cursorEnd   = cursorStart + inner.length;
+      } else {
+        // line prefix: insert on a new line if not at line start
+        const beforeCursor = articleBody.slice(0, start);
+        const needsNewline = beforeCursor.length > 0 && !beforeCursor.endsWith("\n");
+        const prefix = (needsNewline ? "\n" : "") + action.prefix;
+        const inner  = selected || action.placeholder;
+        newText =
+          articleBody.slice(0, start) +
+          prefix + inner +
+          articleBody.slice(end);
+        cursorStart = start + prefix.length;
+        cursorEnd   = cursorStart + inner.length;
+      }
+
+      setArticleBody(newText);
+      // Restore focus & selection after React re-render
+      requestAnimationFrame(() => {
+        ta.focus();
+        ta.setSelectionRange(cursorStart, cursorEnd);
+      });
+    },
+    [articleBody]
+  );
 
   return (
     <section className={`not-content ${styles.wrapper}`}>
@@ -523,11 +603,23 @@ export default function ContributeBanner() {
                 {/* Mock editor */}
                 <div className={styles.editorLeft}>
                   <div className={styles.editorToolbar}>
-                    {["H1", "H2", "B", "I", '"', "🔗", "🖼️"].map((t) => (
-                      <span key={t} className={styles.toolbarBtn}>
-                        {t}
-                      </span>
+                    {TOOLBAR_BUTTONS.map(({ key, label }) => (
+                      <button
+                        key={key}
+                        title={key}
+                        className={`${styles.toolbarBtn} ${styles.toolbarActionBtn} ${
+                          key === "B" ? styles.toolbarBold :
+                          key === "I" ? styles.toolbarItalic : ""
+                        }`}
+                        onMouseDown={(e) => {
+                          e.preventDefault();
+                          insertMarkdown(key);
+                        }}
+                      >
+                        {label}
+                      </button>
                     ))}
+                    <span className={styles.toolbarDivider} />
                     <button
                       className={`${styles.toolbarBtn} ${styles.toolbarComponent} ${styles.toolbarActionBtn}`}
                       onClick={() => go(4)}
@@ -573,6 +665,7 @@ export default function ContributeBanner() {
                           Part 1 of 27 · {sectionObj?.label ?? "Pollution Library"} · Nadikosh
                         </div>
                         <textarea
+                          ref={textareaRef}
                           className={styles.editorTextarea}
                           value={articleBody}
                           onChange={(e) => setArticleBody(e.target.value)}

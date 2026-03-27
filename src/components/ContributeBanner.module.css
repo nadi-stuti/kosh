@@ -316,10 +316,44 @@
   font-size: 0.78rem;
   font-weight: 600;
   color: var(--sl-color-gray-3);
-  cursor: default;
+  cursor: pointer;
   border: 1px solid var(--sl-color-hairline);
   background: var(--sl-color-bg);
   user-select: none;
+  font-family: var(--sl-font);
+  transition: background 0.12s, border-color 0.12s, color 0.12s, transform 0.12s;
+  line-height: 1;
+}
+
+.toolbarBtn:hover {
+  background: color-mix(in srgb, var(--sl-color-accent) 10%, transparent);
+  border-color: var(--sl-color-accent);
+  color: var(--sl-color-text);
+  transform: translateY(-1px);
+}
+
+.toolbarBtn:active {
+  transform: translateY(0);
+  opacity: 0.75;
+}
+
+.toolbarBold {
+  font-weight: 900;
+  font-style: normal;
+}
+
+.toolbarItalic {
+  font-style: italic;
+}
+
+.toolbarDivider {
+  display: inline-block;
+  width: 1px;
+  height: 18px;
+  background: var(--sl-color-hairline);
+  margin: 0 0.25rem;
+  align-self: center;
+  flex-shrink: 0;
 }
 
 .toolbarComponent {
