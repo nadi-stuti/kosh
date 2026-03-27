@@ -1,5 +1,5 @@
 // src/components/ContributeBanner/ContributeBanner.tsx
-import { useState } from "react";
+import React, { useState, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import styles from "./ContributeBanner.module.css";
 
@@ -369,6 +369,41 @@ export default function ContributeBanner() {
     setSelectedSection(null);
     setSelectedType(null);
   };
+
+  const insertMarkdown = useCallback(
+    (actionKey: string) => {
+      const ta = textareaRef.current;
+      if (!ta) return;
+      const action = TOOLBAR_ACTIONS[actionKey];
+      if (!action) return;
+      const start = ta.selectionStart;
+      const end   = ta.selectionEnd;
+      const selected = articleBody.slice(start, end);
+      let newText: string;
+      let cursorStart: number;
+      let cursorEnd: number;
+      if (action.type === "wrap") {
+        const inner = selected || action.placeholder;
+        newText = articleBody.slice(0, start) + action.prefix + inner + action.suffix + articleBody.slice(end);
+        cursorStart = start + action.prefix.length;
+        cursorEnd   = cursorStart + inner.length;
+      } else {
+        const beforeCursor = articleBody.slice(0, start);
+        const needsNewline = beforeCursor.length > 0 && !beforeCursor.endsWith("\n");
+        const prefix = (needsNewline ? "\n" : "") + action.prefix;
+        const inner  = selected || action.placeholder;
+        newText = articleBody.slice(0, start) + prefix + inner + articleBody.slice(end);
+        cursorStart = start + prefix.length;
+        cursorEnd   = cursorStart + inner.length;
+      }
+      setArticleBody(newText);
+      requestAnimationFrame(() => {
+        ta.focus();
+        ta.setSelectionRange(cursorStart, cursorEnd);
+      });
+    },
+    [articleBody]
+  );
 
   return (
     <section className={`not-content ${styles.wrapper}`}>
