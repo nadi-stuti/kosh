@@ -370,6 +370,14 @@ export default function ContributeBanner() {
     setSelectedType(null);
   };
 
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const [articleTitle, setArticleTitle] = useState("Why Our Rivers Are Polluted");
+  const [articleBody, setArticleBody] = useState(
+    `## The Silent Crisis\n\nIndia's rivers carry the memory of civilisations. But over the last century, the choices we made upstream have begun to silence them...\n\n<Aside type="tip">\n  BOD levels above 3 mg/L indicate moderate pollution. Most Indian urban stretches exceed 8 mg/L during dry season.\n</Aside>`
+  );
+  const [saved, setSaved] = useState(false);
+  const [preview, setPreview] = useState(false);
+
   const insertMarkdown = useCallback(
     (actionKey: string) => {
       const ta = textareaRef.current;
