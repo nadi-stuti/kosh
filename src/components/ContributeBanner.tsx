@@ -352,6 +352,29 @@ const SYNTAX_SNIPPETS = [
   },
 ];
 
+// ── Toolbar Actions ───────────────────────────────────────────────────────────
+const TOOLBAR_ACTIONS: Record<string, { type: "wrap" | "line"; prefix: string; suffix: string; placeholder: string }> = {
+  H1: { type: "line", prefix: "# ", suffix: "", placeholder: "Heading 1" },
+  H2: { type: "line", prefix: "## ", suffix: "", placeholder: "Heading 2" },
+  B: { type: "wrap", prefix: "**", suffix: "**", placeholder: "bold text" },
+  I: { type: "wrap", prefix: "_", suffix: "_", placeholder: "italic text" },
+  Q: { type: "line", prefix: "> ", suffix: "", placeholder: "quoted text" },
+  LINK: { type: "wrap", prefix: "[", suffix: "](url)", placeholder: "link text" },
+  UL: { type: "line", prefix: "- ", suffix: "", placeholder: "list item" },
+  OL: { type: "line", prefix: "1. ", suffix: "", placeholder: "list item" },
+};
+
+const TOOLBAR_BUTTONS = [
+  { label: "H1", key: "H1", title: "Heading 1" },
+  { label: "H2", key: "H2", title: "Heading 2" },
+  { label: "B", key: "B", title: "Bold" },
+  { label: "I", key: "I", title: "Italic" },
+  { label: "❝", key: "Q", title: "Blockquote" },
+  { label: "🔗", key: "LINK", title: "Insert link" },
+  { label: "UL", key: "UL", title: "Bullet list" },
+  { label: "OL", key: "OL", title: "Numbered list" },
+];
+
 // ── Types ──────────────────────────────────────────────────────────────────────
 type Step = 1 | 2 | 3 | 4 | 5 | 6;
 
@@ -385,7 +408,7 @@ export default function ContributeBanner() {
       const action = TOOLBAR_ACTIONS[actionKey];
       if (!action) return;
       const start = ta.selectionStart;
-      const end   = ta.selectionEnd;
+      const end = ta.selectionEnd;
       const selected = articleBody.slice(start, end);
       let newText: string;
       let cursorStart: number;
@@ -394,15 +417,15 @@ export default function ContributeBanner() {
         const inner = selected || action.placeholder;
         newText = articleBody.slice(0, start) + action.prefix + inner + action.suffix + articleBody.slice(end);
         cursorStart = start + action.prefix.length;
-        cursorEnd   = cursorStart + inner.length;
+        cursorEnd = cursorStart + inner.length;
       } else {
         const beforeCursor = articleBody.slice(0, start);
         const needsNewline = beforeCursor.length > 0 && !beforeCursor.endsWith("\n");
         const prefix = (needsNewline ? "\n" : "") + action.prefix;
-        const inner  = selected || action.placeholder;
+        const inner = selected || action.placeholder;
         newText = articleBody.slice(0, start) + prefix + inner + articleBody.slice(end);
         cursorStart = start + prefix.length;
-        cursorEnd   = cursorStart + inner.length;
+        cursorEnd = cursorStart + inner.length;
       }
       setArticleBody(newText);
       requestAnimationFrame(() => {
@@ -551,99 +574,127 @@ export default function ContributeBanner() {
           {step === 3 && (
             <motion.div key="s3" {...anim} className={styles.panel}>
               <p className={styles.hint}>
-                <strong>
-                  {sectionObj?.emoji} {sectionObj?.label}
-                </strong>{" "}
+                <strong>{sectionObj?.emoji} {sectionObj?.label}</strong>{" "}
                 · {selectedType} — Write your article below
               </p>
               <div className={styles.editorLayout}>
-                {/* Mock editor */}
                 <div className={styles.editorLeft}>
+                  {/* ── Toolbar ── */}
                   <div className={styles.editorToolbar}>
-                    {["H1", "H2", "B", "I", '"', "🔗", "🖼️"].map((t) => (
-                      <span key={t} className={styles.toolbarBtn}>
-                        {t}
-                      </span>
+                    {TOOLBAR_BUTTONS.map((btn) => (
+                      <button
+                        key={btn.key}
+                        title={btn.title}
+                        className={styles.toolbarBtn}
+                        onMouseDown={(e) => {
+                          e.preventDefault();
+                          insertMarkdown(btn.key);
+                        }}
+                      >
+                        {btn.label}
+                      </button>
                     ))}
-                    <span
-                      className={`${styles.toolbarBtn} ${styles.toolbarComponent}`}
+                    <button
+                      className={`${styles.toolbarBtn} ${styles.toolbarComponent} ${styles.toolbarActionBtn}`}
+                      onClick={() => go(4)}
                     >
-                      ⚡ Component
-                    </span>
+                      ⚡ Add component
+                    </button>
                   </div>
+                  {/* ── Body: edit / preview ── */}
                   <div className={styles.editorBody}>
-                    <div className={styles.editorLine}>
-                      <span className={styles.mdH1}>
-                        # Why Our Rivers Are Polluted
-                      </span>
-                    </div>
-                    <div className={styles.editorLine}>
-                      <span className={styles.mdMeta}>
-                        Part 1 of 27 · Pollution Library · Nadikosh
-                      </span>
-                    </div>
-                    <div
-                      className={styles.editorLine + " " + styles.editorBlank}
-                    />
-                    <div className={styles.editorLine}>
-                      <span className={styles.mdH2}>## The Silent Crisis</span>
-                    </div>
-                    <div className={styles.editorLine}>
-                      <span className={styles.mdText}>
-                        India's rivers carry the memory of civilisations. But
-                        over the last century, the choices
-                      </span>
-                    </div>
-                    <div className={styles.editorLine}>
-                      <span className={styles.mdText}>
-                        we made upstream have begun to silence them...
-                      </span>
-                    </div>
-                    <div
-                      className={styles.editorLine + " " + styles.editorBlank}
-                    />
-                    <div className={styles.editorLine}>
-                      <span className={styles.mdComponent}>
-                        {'<Aside type="tip">'}
-                      </span>
-                    </div>
-                    <div className={styles.editorLine}>
-                      <span className={styles.mdComponentInner}>
-                        {" "}
-                        BOD levels above 3 mg/L indicate moderate pollution.
-                        Most
-                      </span>
-                    </div>
-                    <div className={styles.editorLine}>
-                      <span className={styles.mdComponentInner}>
-                        {" "}
-                        Indian urban stretches exceed 8 mg/L during dry season.
-                      </span>
-                    </div>
-                    <div className={styles.editorLine}>
-                      <span className={styles.mdComponent}>{"</Aside>"}</span>
-                    </div>
-                    <div
-                      className={styles.editorLine + " " + styles.editorBlank}
-                    />
-                    <div className={styles.editorCursor} />
+                    {preview ? (
+                      <div className={styles.previewBody}>
+                        <h1 className={styles.previewH1}>{articleTitle || "Untitled"}</h1>
+                        <p className={styles.previewMeta}>
+                          {sectionObj?.label ?? "Pollution Library"} · Nadikosh
+                        </p>
+                        {articleBody.split("\n").reduce<React.ReactNode[]>((acc, line, i, arr) => {
+                          if (line.startsWith("## ")) {
+                            acc.push(<h2 key={i} className={styles.previewH2}>{line.slice(3)}</h2>);
+                          } else if (line.startsWith("# ")) {
+                            acc.push(<h1 key={i} className={styles.previewH1}>{line.slice(2)}</h1>);
+                          } else if (line.startsWith("> ")) {
+                            acc.push(<blockquote key={i} className={styles.previewBlockquote}>{line.slice(2)}</blockquote>);
+                          } else if (line.startsWith("- ") || line.startsWith("* ")) {
+                            acc.push(<li key={i} className={styles.previewLi}>{line.slice(2)}</li>);
+                          } else if (/^\d+\. /.test(line)) {
+                            acc.push(<li key={i} className={styles.previewLi}>{line.replace(/^\d+\. /, "")}</li>);
+                          } else if (line.startsWith("<Aside")) {
+                            const endIdx = arr.indexOf("</Aside>", i);
+                            const inner = arr.slice(i + 1, endIdx === -1 ? i + 1 : endIdx).join(" ").trim();
+                            acc.push(<div key={i} className={styles.previewAside}><span>💡</span> {inner}</div>);
+                          } else if (line === "</Aside>" || (line.startsWith("  ") && acc.length > 0 && (acc[acc.length - 1] as React.ReactElement<{ className?: string }>)?.props?.className === styles.previewAside)) {
+                            // skip aside inner lines already captured
+                          } else if (line.trim()) {
+                            acc.push(<p key={i} className={styles.previewP}>{line}</p>);
+                          }
+                          return acc;
+                        }, [])}
+                      </div>
+                    ) : (
+                      <>
+                        <input
+                          className={styles.editorTitleInput}
+                          value={articleTitle}
+                          onChange={(e) => setArticleTitle(e.target.value)}
+                          placeholder="Article title..."
+                          spellCheck={false}
+                        />
+                        <div className={styles.editorMeta}>
+                          {sectionObj?.label ?? "Pollution Library"} · Nadikosh
+                        </div>
+                        <textarea
+                          ref={textareaRef}
+                          className={styles.editorTextarea}
+                          value={articleBody}
+                          onChange={(e) => setArticleBody(e.target.value)}
+                          placeholder="Start writing your article here..."
+                          spellCheck={false}
+                          rows={10}
+                        />
+                      </>
+                    )}
                   </div>
                 </div>
                 {/* Right assist panel */}
                 <div className={styles.editorRight}>
-                  <AssistPanel />
+                  <AssistPanel
+                    onInsert={(text) => setArticleBody((prev) => prev + "\n" + text)}
+                  />
                 </div>
               </div>
+              {/* Bottom nav */}
               <div className={styles.stepNavRow}>
                 <button className={styles.backBtn} onClick={() => go(2)}>
                   ← Back
                 </button>
                 <motion.button
                   whileHover={{ scale: 1.03 }}
-                  className={styles.nextBtn}
-                  onClick={() => go(4)}
+                  className={saved ? styles.savedBtn : styles.saveBtn}
+                  onClick={() => {
+                    localStorage.setItem("nadikosh-draft-title", articleTitle);
+                    localStorage.setItem("nadikosh-draft-body", articleBody);
+                    setSaved(true);
+                    setTimeout(() => setSaved(false), 2000);
+                  }}
                 >
-                  Add components →
+                  {saved ? "✓ Saved!" : "💾 Save draft"}
+                </motion.button>
+                <motion.button
+                  whileHover={{ scale: 1.03 }}
+                  className={styles.saveBtn}
+                  onClick={() => setPreview((p) => !p)}
+                >
+                  {preview ? "✏️ Edit" : "👁 View preview"}
+                </motion.button>
+                <motion.button
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.97 }}
+                  className={styles.publishBtn}
+                  onClick={() => go(6)}
+                >
+                  🚀 Publish
                 </motion.button>
               </div>
             </motion.div>
@@ -708,8 +759,14 @@ export default function ContributeBanner() {
 }
 
 // ── Assist Panel (Step 3 right column) ─────────────────────────────────────────
-function AssistPanel() {
+function AssistPanel({ onInsert }: { onInsert: (text: string) => void }) {
   const [tab, setTab] = useState<"images" | "syntax">("images");
+  const [inserted, setInserted] = useState<number | null>(null);
+  const handleInsert = (text: string, idx: number) => {
+    onInsert(text);
+    setInserted(idx);
+    setTimeout(() => setInserted(null), 1500);
+  };
   return (
     <div className={styles.assistPanel}>
       <div className={styles.assistTabs}>
